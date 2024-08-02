@@ -1,1 +1,5 @@
-
+{
+  "rewrites": [
+    { "source": "/help", "destination": "/clicky_latin_help_page.html" }
+  ]
+}
