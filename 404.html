@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found</title>
-    <h1 style="font-size: 100px;">404</h1>
+    <title>404 - Page Not Found</title>
     <style>
         body {
+            margin: 0;
             display: flex;
-            justify-content: center; /* Centers the image horizontally */
-            align-items: center;    /* Centers the image vertically */
-            height: 100vh;          /* Full viewport height */
-            margin: 0;              /* Remove default margins */
-            background-color: #f0f0f0; /* Optional: light gray background */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            text-align: center;
         }
-        img {
-            max-width: 100%;   /* Ensure image scales to fit within the viewport */
-            height: auto;     /* Maintain aspect ratio */
+        .responsive-text {
+            font-size: 10vw; /* 10% of the viewport width */
+            white-space: nowrap; /* Prevent text wrapping */
         }
     </style>
 </head>
 <body>
+    <div class="responsive-text">404</div>
 </body>
 </html>
