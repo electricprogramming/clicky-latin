@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
+    <title>404 Page Not Found</title>
     <style>
         body {
-            margin: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            margin: 0;
+            background-color: #f0f0f0; /* Optional: light gray background */
             text-align: center;
         }
-        .404 {
-            font-size: 30vw;
-            white-space: nowrap;
-            color: red;
+        .error-code {
+            font-size: 10rem; /* Adjust size as needed */
+            color: red; /* Red color for the "404" text */
+            margin: 0;
         }
-        .PAGENOTFOUND {
-            font-size: 8vw;
-            white-space: nowrap;
-            color: black;
+        .error-message {
+            font-size: 2rem; /* Adjust size as needed */
+            color: black; /* Black color for the message text */
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <div class="404">404</div>
-    <div class="PAGENOTFOUND">This page does not exist.</div>
+    <div>
+        <div class="error-code">404</div>
+        <div class="error-message">This page does not exist.</div>
+    </div>
 </body>
 </html>
