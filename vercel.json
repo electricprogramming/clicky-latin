@@ -1,7 +1,7 @@
 {
   "rewrites": [
     { "source": "/help", "destination": "/src/help.html" },
-    { "source": "/", "destination": "/src/index.html" },
+    { "source": "/", "destination": "/src/app/index.html" },
     { "source": "/(.*)", "destination": "/src/404.html" }
   ]
 }
