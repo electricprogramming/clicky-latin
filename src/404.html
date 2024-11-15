@@ -16,9 +16,10 @@
     }
 
     #404-Image {
-      width: 100vw;  /* Use 100% of the viewport width */
-      height: 100vh; /* Use 100% of the viewport height */
-      object-fit: contain; /* Ensures the entire image fits inside the viewport */
+      max-width: 100%;    /* Ensure the image doesn't exceed the viewport width */
+      max-height: 100%;   /* Ensure the image doesn't exceed the viewport height */
+      width: auto;        /* Maintain aspect ratio */
+      height: auto;       /* Maintain aspect ratio */
     }
   </style>
 </head>
