@@ -14,9 +14,13 @@
       align-items: center;
       background-color: #ffffff;
     }
+
     #404-Image {
-      width: 100vmin;
-      height: 100vmin;
+      width: 100vmin;  /* Scale based on the smaller dimension of the viewport */
+      height: auto;    /* Maintain the aspect ratio */
+      min-width: 200px; /* Ensure the SVG has a minimum width */
+      min-height: 200px; /* Ensure the SVG has a minimum height */
+      border: 2px solid red;  /* Temporary border to visualize the element */
     }
   </style>
 </head>
