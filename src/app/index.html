@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scratch Extension Gallery - electricprogramming</title>
+  <style>
+    :root {
+      --size: 100;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+      height: 100vh;
+    }
+    #navigation-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding-top: 2vh;
+    }
+    .link {
+      text-decoration: none;           /* Remove underline */
+      font-family: sans-serif;         /* Use sans-serif font */
+      color: white;                    /* Set text color to white */
+      font-size: 20px;                 /* Make text larger */
+      transition: transform 0.3s ease; /* Smooth transition for scaling */
+    }
+    .link:hover {
+      transform: scale(1.2);           /* Scale the link on hover */
+    }
+    #search-bar-container {
+      padding-right: 15vh;
+    }
+    #search-bar {
+      padding-left: 5vh;
+      padding-right: 5vh; /* makes text/placeholder not hit the far edges of the box */
+      width: 40vw;
+      height: 12.5vh;
+      font-size: calc((100vh / 700) * 40);
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 5vh;
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #557;
+    }
+    #search-bar:focus {
+      border-color: #5c9f9f;
+      box-shadow: 0 0 8px rgba(92, 159, 159, 0.6);
+    }
+    #search-bar::placeholder {
+      color: #fff;
+      font-style: italic;
+      font-size: calc((100vh / 700) * 40);
+    }
+    #settings-button {
+      position: relative;
+      width: 14vh;
+      height: 14vh;
+    }
+    #settings-button-visible {
+      position: relative;
+      transition: transform 0.3s ease;
+      transform-origin: center;
+      transform: scale(0.9);
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div id="navigation-bar">
+    <a class="link" href="https://clickylatin.vercel.app/create">Create</a>
+    <a class="link" href="https://clickylatin.vercel.app/">Home</a>
+  </div>
+</body>
+</html>
