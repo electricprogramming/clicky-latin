@@ -27,7 +27,7 @@
       text-decoration: none;           /* Remove underline */
       font-family: sans-serif;
       color: white;
-      font-size: 20vmin;
+      font-size: 15vmin;
       transform: scale(0.9);
       transition: transform 0.3s ease;
     }
@@ -59,18 +59,10 @@
       font-style: italic;
       font-size: calc((100vh / 700) * 40);
     }
-    #settings-button {
-      position: relative;
-      width: 14vh;
-      height: 14vh;
-    }
-    #settings-button-visible {
-      position: relative;
-      transition: transform 0.3s ease;
-      transform-origin: center;
-      transform: scale(0.9);
-      cursor: pointer;
-      z-index: 10;
+    .heading {
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 25vh;
     }
   </style>
   <script src="/src/app/seperator-elements.js"></script>
@@ -80,6 +72,9 @@
     <a class="link" href="https://clickylatin.vercel.app/create">Create</a>
     <h-sep id="button-sep" gap="20vw"></h-sep>
     <a class="link" href="https://clickylatin.vercel.app/play">Play</a>
+  </div>
+  <div id="about-section">
+    <h1 class="heading">Clicky Latin</h1>
   </div>
 </body>
 </html>
