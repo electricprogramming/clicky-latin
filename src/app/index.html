@@ -32,11 +32,11 @@
       font-family: sans-serif;
       color: white;
       font-size: 15vmin;
-      transform: scale(0.9);
+      transform: scale(1.0);
       transition: transform 0.3s ease;
     }
     .link:hover {
-      transform: scale(1.0);
+      transform: scale(1.1);
     }
     #search-bar-container {
       padding-right: 15vh;
@@ -63,7 +63,11 @@
       font-style: italic;
       font-size: calc((100vh / 700) * 40);
     }
-    #about-section{
+    #about-section {
+      padding-top: 5vh;
+      padding-bottom: 5vh;
+      padding-left: 5vw;
+      padding-right: 5vw;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -88,7 +92,6 @@
     <h-sep id="button-sep" gap="20vw"></h-sep>
     <a class="link" href="https://clickylatin.vercel.app/play">Play</a>
   </div>
-  <v-sep gap="7.5vh"></v-sep>
   <div id="about-section">
     <div class="heading">Clicky Latin</div>
     <div class="paragraph">Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.</div>
