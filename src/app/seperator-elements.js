@@ -22,6 +22,9 @@ class VerticalSep extends HTMLElement {
     this.style.height = `${gap}`;
     this.style.width = '100%';
   }
+  // Prevent innerHTML/innerText from rendering.
+  get innerHTML() { return ''; }
+  set innerHTML(value) {}
 }
 customElements.define('v-sep', VerticalSep);
 class HorizontalSep extends HTMLElement {
@@ -47,5 +50,8 @@ class HorizontalSep extends HTMLElement {
     this.style.width = `${gap}`;
     this.style.height = '100%';
   }
+  // Prevent innerHTML/innerText from rendering.
+  get innerHTML() { return ''; }
+  set innerHTML(value) {}
 }
 customElements.define('h-sep', HorizontalSep);
