@@ -1,9 +1,9 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/src/app/index.html" },
-    { "source": "/create", "destination": "/src/app/create.html" },
+    { "source": "/", "destination": "/src/home.html" },
+    { "source": "/create", "destination": "/src/app/create/index.html" },
     { "source": "/help", "destination": "/src/help.html" },
-    { "source": "/play(.*)", "destination": "/src/app/play.html" },
+    { "source": "/play(.*)", "destination": "/src/app/play/index.html" },
     { "source": "/(.*)", "destination": "/src/404.html" }
   ]
 }
