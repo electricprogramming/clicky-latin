@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="Clicky Latin" content="Clicky Latin is a software designed specifically with the goal of helping students to learn Latin via drag-and-drop technology and responsive audio feedback.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicky Latin</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script src="/src/seperator-elements.js"></script>
+  <script type="module">
+    import darkenColor from '../darken-color.js';
+    document.querySelectorAll('.button').forEach((button)=> {
+      const color = button.getAttribute('color');
+      button.style['background-color'] = color;
+      button.addEventListener('mousedown', function() {
+        button.style.backgroundColor = darkenColor(color);
+      });
+      button.addEventListener('mouseup', function() {
+        button.style.backgroundColor = color;
+      });
+      button.addEventListener('mouseleave', function() {
+        button.style.backgroundColor = color;
+      });
+    });
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      display: block;
+      height: 100vh;
+    }
+    .button {
+      position: relative;
+      top: 2vh;
+      left: 2vh;
+      display: block;
+      height: 10vh;
+      font-size: 5vh;
+      max-width: 100vw;
+      padding: 0 2vw;
+      border-radius: 1.5vh;
+      border: 2px solid black;
+      cursor: pointer;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <button class="button" color="#0cf"> Create Pair </button>
+    <v-sep gap="2vh"></v-sep>
+  <button class="button" color="#0e6"> Save </button>
+</body>
+</html>
