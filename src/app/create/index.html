@@ -7,22 +7,6 @@
   <title>Clicky Latin</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script src="/src/seperator-elements.js"></script>
-  <script type="module">
-    import darkenColor from '../darken-color.js';
-    document.querySelectorAll('.button').forEach((button)=> {
-      const color = button.getAttribute('color');
-      button.style['background-color'] = color;
-      button.addEventListener('mousedown', function() {
-        button.style.backgroundColor = darkenColor(color);
-      });
-      button.addEventListener('mouseup', function() {
-        button.style.backgroundColor = color;
-      });
-      button.addEventListener('mouseleave', function() {
-        button.style.backgroundColor = color;
-      });
-    });
-  </script>
   <style>
     body {
       margin: 0;
@@ -55,5 +39,21 @@
   <button class="button" color="#0cf"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
   <button class="button" color="#0e6"> Save </button>
+  <script type="module">
+    import darkenColor from '../darken-color.js';
+    document.querySelectorAll('.button').forEach((button)=> {
+      const color = button.getAttribute('color');
+      button.style['background-color'] = color;
+      button.addEventListener('mousedown', function() {
+        button.style.backgroundColor = darkenColor(color);
+      });
+      button.addEventListener('mouseup', function() {
+        button.style.backgroundColor = color;
+      });
+      button.addEventListener('mouseleave', function() {
+        button.style.backgroundColor = color;
+      });
+    });
+  </script>
 </body>
 </html>
