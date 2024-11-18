@@ -55,14 +55,37 @@
       z-index: 10000;
     }
     #save-name-input {
+      position: absolute;
+      top: 10%;
+      left: 10%;
       padding-left: 2.5%;
       padding-right: 2.5%;
       width: 75%;
       height: 20%;
       font-size: 80%;
       border-color: #ccc;
-      border-radius: 1vh 1vh;
+      border-radius: 2vh 2vh;
       background-color: #333;
+    }
+    #save-cancel-button {
+      position: absolute;
+      top: 60%;
+      left: 10%;
+      width: 35%;
+      height: 20%;
+      background-color: #f00;
+      border-radius: 1.5vh 1.5vh;
+      border-color: #ccc;
+    }
+    #save-confirm-button {
+      position: absolute;
+      top: 60%;
+      right: 10%;
+      width: 35%;
+      height: 20%;
+      background-color: #0b0;
+      border-radius: 1.5vh 1.5vh;
+      border-color: #ccc;
     }
   </style>
 </head>
@@ -73,8 +96,8 @@
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Name"/>
-      <button class="modal-button" id="save-cancel-button"> Cancel </button>
-      <button class="modal-button" id="save-confirm-button"> Confirm </button>
+      <button id="save-cancel-button"> Cancel </button>
+      <button id="save-confirm-button"> Confirm </button>
     </div>
   </div>
   <script type="module">
