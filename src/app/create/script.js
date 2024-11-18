@@ -4,3 +4,6 @@ const saveModal = document.getElementById('save-modal');
 saveButton.addEventListener('click', () => {
   saveModal.style.display = 'flex';
 });
+saveModal.addEventListener('click', () => {
+  saveModal.style.display = 'none';
+});
