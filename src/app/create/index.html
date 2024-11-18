@@ -33,13 +33,42 @@
     .button:hover {
       transform: scale(1.1);
     }
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .modal {
+      background: #222;
+      padding: 4vh 4vw;
+      border-radius: 1vh;
+      width: 50vw;
+      height: 50vh;
+      text-align: center;
+      z-index: 10000;
+    }
   </style>
 </head>
 <body>
-  <button class="button" color="#0cf"> Create Pair </button>
+  <button id="create-pair-btn" class="button" color="#0cf"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
-  <button class="button" color="#0e6"> Save </button>
+  <button id="save-btn" class="button" color="#0e6"> Save </button>
+  <div class="modal-backdrop" id="save-modal">
+    <div class="modal">
+      <input id="save-name-input" type="text" placeholder="Name"/>
+      <button class="modal-button" id="save-cancel-button"> Cancel </button>
+      <button class="modal-button" id="save-confirm-button"> Confirm </button>
+    </div>
+  </div>
   <script type="module">
+    // Dynamic button styling via JS
     import darkenColor from '/src/app/darken-color.js';
     document.querySelectorAll('.button').forEach((button)=> {
       const color = button.getAttribute('color');
@@ -55,5 +84,6 @@
       });
     });
   </script>
+  <script src="/src/app/create/script.js"></script>
 </body>
 </html>
