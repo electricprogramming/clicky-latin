@@ -1,10 +1,11 @@
-const createPairButton = document.getElementById('create-pair-btn');
-const saveButton = document.getElementById('save-btn');
+import api from '/src/app/api.js';
+const createPairBtn = document.getElementById('create-pair-btn');
+const saveBtn = document.getElementById('save-btn');
 const saveModal = document.getElementById('save-modal');
 const saveNameInput = document.getElementById('save-name-input');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
-saveButton.addEventListener('click', () => {
+saveBtn.addEventListener('click', () => {
   saveModal.style.display = 'flex';
 });
 saveCancelBtn.addEventListener('click', (e) => {
@@ -12,5 +13,9 @@ saveCancelBtn.addEventListener('click', (e) => {
 });
 saveConfirmBtn.addEventListener('click', () => {
   const name = saveNameInput.value;
-  console.log(name);
+  if (name.length === 0) {
+    alert('The name cannot be empty.'); return;
+  }
+  alert('posting, please wait.');
+  saveModal.style.display = 'none';
 });
