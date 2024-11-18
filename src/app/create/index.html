@@ -51,7 +51,7 @@
       padding: 4vh 4vw;
       border-radius: 2vh;
       width: 30vmin;
-      height: 20vmin;
+      height: 30vmin;
       text-align: center;
       z-index: 10000;
     }
@@ -72,7 +72,7 @@
     }
     #save-cancel-btn {
       position: absolute;
-      top: 60%;
+      bottom: 10%;
       left: 10%;
       width: 35%;
       height: 30%;
@@ -91,7 +91,7 @@
     }
     #save-confirm-btn {
       position: absolute;
-      top: 60%;
+      bottom: 10%;
       right: 10%;
       width: 35%;
       height: 30%;
@@ -108,6 +108,36 @@
     #save-confirm-btn:hover {
       transform: scale(1.1);
     }
+    #create-pair-english-input {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      padding-left: 2.5%;
+      padding-right: 2.5%;
+      width: 75%;
+      height: 20%;
+      color: #fff;
+      font-style: normal;
+      font-size: 5vh;
+      border: #ccc solid;
+      border-radius: 1vh;
+      background-color: #333;
+    }
+    #create-pair-latin-input {
+      position: absolute;
+      top: 40%;
+      left: 10%;
+      padding-left: 2.5%;
+      padding-right: 2.5%;
+      width: 75%;
+      height: 20%;
+      color: #fff;
+      font-style: normal;
+      font-size: 5vh;
+      border: #ccc solid;
+      border-radius: 1vh;
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
@@ -119,6 +149,12 @@
       <input id="save-name-input" type="text" placeholder="Name"/>
       <button id="save-cancel-btn"> Cancel </button>
       <button id="save-confirm-btn"> Confirm </button>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="create-pair-modal">
+    <div class="modal">
+      <input id="create-pair-english-input" type="text" placeholder="English Word"/>
+      <input id="create-pair-latin-input" type="text" placeholder="Latin Word"/>
     </div>
   </div>
   <script type="module">

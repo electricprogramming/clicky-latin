@@ -1,10 +1,14 @@
 import api from '/src/app/api.js';
 const createPairBtn = document.getElementById('create-pair-btn');
+const createPairModal = document.getElementById('create-pair-modal');
 const saveBtn = document.getElementById('save-btn');
 const saveModal = document.getElementById('save-modal');
 const saveNameInput = document.getElementById('save-name-input');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
+createPairBtn.addEventListener('click', () => {
+  createPairModal.style.display = 'flex';
+});
 saveBtn.addEventListener('click', () => {
   saveModal.style.display = 'flex';
 });
