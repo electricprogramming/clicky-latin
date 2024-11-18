@@ -5,7 +5,8 @@ saveButton.addEventListener('click', () => {
   saveModal.style.display = 'flex';
 });
 saveModal.addEventListener('click', (e) => {
-  if (e.target === 'save-modal') {
+  console.log(e.target);
+  if (e.target === saveModal) {
     saveModal.style.display = 'none';
   }
 });
