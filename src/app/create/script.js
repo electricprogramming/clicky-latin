@@ -7,8 +7,8 @@ const saveConfirmBtn = document.getElementById('save-confirm-btn');
 saveButton.addEventListener('click', () => {
   saveModal.style.display = 'flex';
 });
-saveModal.addEventListener('click', (e) => {
-  if (e.target === saveModal || e.target === saveCancelBtn) saveModal.style.display = 'none';
+saveCancelBtn.addEventListener('click', (e) => {
+  saveModal.style.display = 'none';
 });
 saveConfirmBtn.addEventListener('click', () => {
   const name = saveNameInput.value;
