@@ -8,6 +8,16 @@
   <meta name="google-site-verification" content="c2VvJHD-7UVQpVpVi_Y9x3GAge_3c9JJXfz9sC2BPcY" />
   <title>Clicky Latin</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script>
+    import getLastCommitMessage from '/src/get-recent-commit-msg';
+    getLastCommitMessage()
+      .then(msg => {
+        console.log(msg);
+      })
+      .catch(err => {
+        console.error('Error fetching most recent commit name:', err)
+      });
+  </script>
   <style>
     body {
       margin: 0;

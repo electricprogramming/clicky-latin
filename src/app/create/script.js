@@ -1,5 +1,13 @@
 import api from '/src/app/api.js';
-import messages from '/src/app/messages.js'
+import messages from '/src/app/messages.js';
+import getLastCommitMessage from '/src/get-recent-commit-msg';
+getLastCommitMessage()
+  .then(msg => {
+    console.log(msg);
+  })
+  .catch(err => {
+    console.error('Error fetching most recent commit name:', err)
+  });
 const createPairBtn = document.getElementById('create-pair-btn');
 const createPairModal = document.getElementById('create-pair-modal');
 const createPairEnglishInput = document.getElementById('create-pair-english-input');
