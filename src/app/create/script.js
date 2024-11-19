@@ -1,4 +1,5 @@
 import api from '/src/app/api.js';
+import messages from '/src/app/messages.js'
 const createPairBtn = document.getElementById('create-pair-btn');
 const createPairModal = document.getElementById('create-pair-modal');
 const createPairEnglishInput = document.getElementById('create-pair-english-input');
@@ -10,9 +11,14 @@ const saveModal = document.getElementById('save-modal');
 const saveNameInput = document.getElementById('save-name-input');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
-var englishWords = [];
-var latinWords = [];
-var allWords = [];
+let englishWords = [];
+let latinWords = [];
+let allWords = [];
+messages.on('new-pair', (englishWord, latinWord) => {
+  allWords.push([englishWord, latinWord]);
+  englishWords.push(englishWord);
+  latinWords.push(latinWord);
+});
 createPairBtn.addEventListener('click', () => {
   createPairModal.style.display = 'flex';
 });
@@ -31,9 +37,8 @@ createPairConfirmBtn.addEventListener('click', () => {
   } else if (latinWord.length > 20) {
     alert('The Latin word is too long.');
   } else {
-    allWords.push([englishWord, latinWord]);
-    englishWords.push(englishWord);
-    latinWords.push(latinWord);
+    createPairModal.style.display = 'none';
+    messages.broadcast('new-pair', englishWord, latinWord);
   }
 });
 saveBtn.addEventListener('click', () => {
