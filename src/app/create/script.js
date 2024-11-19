@@ -3,7 +3,7 @@ import messages from '/src/app/messages.js';
 import getLastCommitMessage from '/src/get-recent-commit-msg.js';
 getLastCommitMessage()
   .then(msg => {
-    console.log(msg);
+    console.log('Most recent commit name:', msg);
   })
   .catch(err => {
     console.error('Error fetching most recent commit name:', err)
