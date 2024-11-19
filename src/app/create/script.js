@@ -1,6 +1,6 @@
 import api from '/src/app/api.js';
 import messages from '/src/app/messages.js';
-import getLastCommitMessage from '/src/get-recent-commit-msg';
+import getLastCommitMessage from '/src/get-recent-commit-msg.js';
 getLastCommitMessage()
   .then(msg => {
     console.log(msg);
