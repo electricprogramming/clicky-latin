@@ -10,9 +10,9 @@ const saveModal = document.getElementById('save-modal');
 const saveNameInput = document.getElementById('save-name-input');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
-let englishWords = [];
-let latinWords = [];
-let allWords = [];
+var englishWords = [];
+var latinWords = [];
+var allWords = [];
 createPairBtn.addEventListener('click', () => {
   createPairModal.style.display = 'flex';
 });
