@@ -138,6 +138,32 @@
       border-radius: 1vh;
       background-color: #333;
     }
+    #create-pair-cancel-btn {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      width: 35%;
+      height: 20%;
+      background-color: #f00;
+      border-radius: 1.5vh;
+      border: #000 solid;
+      font-size: 1.5vw;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
+    #create-pair-confirm-btn {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      width: 35%;
+      height: 20%;
+      background-color: #0b0;
+      border-radius: 1.5vh;
+      border: #000 solid;
+      font-size: 1.5vw;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
   </style>
 </head>
 <body>
@@ -155,6 +181,8 @@
     <div class="modal">
       <input id="create-pair-english-input" type="text" placeholder="English Word"/>
       <input id="create-pair-latin-input" type="text" placeholder="Latin Word"/>
+      <button id="create-pair-cancel-btn"> Cancel </button>
+      <button id="create-pair-confirm-btn"> Confirm </button>
     </div>
   </div>
   <script type="module">
