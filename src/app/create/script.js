@@ -31,7 +31,7 @@ createPairCancelBtn.addEventListener('click', () => {
   createPairEnglishInput.value = '';
   createPairLatinInput.value = '';
 });
-createPairConfirmBtn.addEventListener('click', () => {
+messages.on('new-pair-submit', () => {
   const englishWord = createPairEnglishInput.value;
   const latinWord = createPairLatinInput.value;
   if (englishWord.length === 0 || latinWord.length === 0) {
@@ -49,17 +49,29 @@ createPairConfirmBtn.addEventListener('click', () => {
     createPairLatinInput.value = '';
   }
 });
+createPairConfirmBtn.addEventListener('click', () => {
+  messages.broadcast('new-pair-submit');
+});
+createPairLatinInput.addEventListener('keydown', (e) => {
+  if (e.code === 'Enter') messages.broadcast('new-pair-submit');
+});
 saveBtn.addEventListener('click', () => {
   saveModal.style.display = 'flex';
 });
 saveCancelBtn.addEventListener('click', () => {
   saveModal.style.display = 'none';
 });
-saveConfirmBtn.addEventListener('click', () => {
+messages.on('save-confirm', () => {
   const name = saveNameInput.value;
   if (name.length === 0) {
     alert('The name cannot be empty.'); return;
   }
   alert('posting, please wait.');
   saveModal.style.display = 'none';
+});
+saveConfirmBtn.addEventListener('click', () => {
+  messages.broadcast('save-confirm');
+});
+saveNameInput.addEventListener('keydown', (e) => {
+  if (e.code === 'Enter') messages.broadcast('save-confirm');
 });
