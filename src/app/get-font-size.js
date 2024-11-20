@@ -1,3 +1,4 @@
+import getLetterWidth from './get-letter-width.js';
 export default function getFontSize(txt) {
   const maxSize = 170;
   let size = maxSize;
