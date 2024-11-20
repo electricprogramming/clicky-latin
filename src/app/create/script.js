@@ -66,4 +66,6 @@ saveConfirmBtn.addEventListener('click', () => {
   }
   alert('posting, please wait.');
   saveModal.style.display = 'none';
+  createPairEnglishInput.value = '';
+  createPairLatinInput.value = '';
 });
