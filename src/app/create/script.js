@@ -36,6 +36,8 @@ createPairBtn.addEventListener('click', () => {
 });
 createPairCancelBtn.addEventListener('click', () => {
   createPairModal.style.display = 'none';
+  createPairEnglishInput.value = '';
+  createPairLatinInput.value = '';
 });
 createPairConfirmBtn.addEventListener('click', () => {
   const englishWord = createPairEnglishInput.value;
@@ -51,6 +53,8 @@ createPairConfirmBtn.addEventListener('click', () => {
   } else {
     createPairModal.style.display = 'none';
     messages.broadcast('new-pair', englishWord, latinWord);
+    createPairEnglishInput.value = '';
+    createPairLatinInput.value = '';
   }
 });
 saveBtn.addEventListener('click', () => {
@@ -66,6 +70,4 @@ saveConfirmBtn.addEventListener('click', () => {
   }
   alert('posting, please wait.');
   saveModal.style.display = 'none';
-  createPairEnglishInput.value = '';
-  createPairLatinInput.value = '';
 });
