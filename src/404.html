@@ -6,13 +6,13 @@
   <title>404 Error - Not Found</title>
   <link rel="icon" href="/assets/favicon-404.svg" type="image/svg+xml">
   <script type="module">
-    import getLastCommitMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeplotmentMessage()
+    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
+    getLastDeploymentMessage()
       .then(msg => {
-        console.log('Most recent commit name:', msg);
+        console.log('Most recent deployment message:', msg);
       })
       .catch(err => {
-        console.error('Error fetching most recent commit name:', err)
+        console.error('Error fetching most recent deployment message:', err)
       });
   </script>
   <style>
