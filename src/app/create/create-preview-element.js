@@ -15,5 +15,6 @@ export default function createPreviewElement(englishWord, latinWord) {
   const latinText = svgEl.querySelector('.text-latin');
   latinText.textContent = latinWord;
   latinText.setAttribute('font-size', getFontSize(latinWord));
+  svgEl.classList.add('preview-element');
   previewContainer.appendChild(svgEl);
 };
