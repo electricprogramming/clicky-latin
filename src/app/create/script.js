@@ -1,6 +1,7 @@
 import api from '/src/app/api.js';
 import messages from '/src/app/messages.js';
 import getLastCommitMessage from '/src/get-recent-commit-msg.js';
+import createPreviewElement from './create-preview-element.js';
 getLastCommitMessage()
   .then(msg => {
     console.log('Most recent commit name:', msg);
@@ -26,6 +27,9 @@ messages.on('new-pair', (englishWord, latinWord) => {
   allWords.push([englishWord, latinWord]);
   englishWords.push(englishWord);
   latinWords.push(latinWord);
+});
+messages.on('new-pair', (englishWord, latinWord) => {
+  createPreviewElement(englishWord, latinWord);
 });
 createPairBtn.addEventListener('click', () => {
   createPairModal.style.display = 'flex';
