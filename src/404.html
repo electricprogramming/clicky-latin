@@ -6,8 +6,8 @@
   <title>404 Error - Not Found</title>
   <link rel="icon" href="/assets/favicon-404.svg" type="image/svg+xml">
   <script type="module">
-    import getLastCommitMessage from '/src/get-recent-commit-msg.js';
-    getLastCommitMessage()
+    import getLastCommitMessage from '/src/get-recent-deployment-msg.js';
+    getLastDeplotmentMessage()
       .then(msg => {
         console.log('Most recent commit name:', msg);
       })

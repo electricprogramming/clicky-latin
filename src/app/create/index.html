@@ -7,6 +7,16 @@
   <title>Clicky Latin</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script src="/src/seperator-elements.js"></script>
+  <script type="module">
+    import getLastCommitMessage from '/src/get-recent-deployment-msg.js';
+    getLastDeplotmentMessage()
+      .then(msg => {
+        console.log('Most recent commit name:', msg);
+      })
+      .catch(err => {
+        console.error('Error fetching most recent commit name:', err)
+      });
+  </script>
   <style>
     body {
       margin: 0;
