@@ -7,5 +7,4 @@ function getLetterWidth(fontSize) {
   // Return the width of the letter "M" (which is a good representation of the average width in monospace)
   return context.measureText('M').width;;
 }
-
 export default getLetterWidth;
