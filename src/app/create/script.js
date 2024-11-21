@@ -29,6 +29,7 @@ messages.on('new-pair', (englishWord, latinWord) => {
 });
 createPairBtn.addEventListener('click', () => {
   createPairModal.style.display = 'flex';
+  createPairEnglishInput.focus();
 });
 createPairCancelBtn.addEventListener('click', () => {
   createPairModal.style.display = 'none';
@@ -62,6 +63,7 @@ createPairLatinInput.addEventListener('keydown', (e) => {
 saveBtn.addEventListener('click', () => {
   if (allWords.length >= 2) {
     saveModal.style.display = 'flex';
+    saveNameInput.focus();
   } else {
     alert('Minimum 2 pairs required.');
   }
