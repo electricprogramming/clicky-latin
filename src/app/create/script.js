@@ -78,5 +78,5 @@ saveNameInput.addEventListener('keydown', (e) => {
 messages.on('remove-pair', (englishWord, latinWord) => {
   englishWords = englishWords.filter(item => item !== englishWord);
   latinWords = latinWords.filter(item => item !== latinWord);
-  allWords = allWords.filter(item => item !== englishWord && item !== latinWord);
+  allWords = allWords.filter(item => !(item[0] === englishWord && item[1] === latinWord));
 });
