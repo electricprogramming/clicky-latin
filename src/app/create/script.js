@@ -12,6 +12,7 @@ const saveModal = document.getElementById('save-modal');
 const saveNameInput = document.getElementById('save-name-input');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
+const cloudSavingModal = document.getElementById('cloud-saving-modal');
 let englishWords = [];
 let latinWords = [];
 let allWords = [];
@@ -66,9 +67,14 @@ messages.on('save-confirm', () => {
   if (name.length === 0) {
     alert('The game name cannot be empty.'); return;
   }
-  saveNameInput.style.display = 'none';
-  saveConfirmBtn.style.display = 'none';
-  saveCancelBtn.style.display = 'none';
+  saveModal.style.display = 'none';
+  cloudSavingModal.style.display = 'flex';
+  if (0) { // toggle switch for whether or not it should save to the cloud
+      api.POST({
+      name,
+      items: allWords
+    }).then(gameCode => {});
+  }
 });
 saveConfirmBtn.addEventListener('click', () => {
   messages.broadcast('save-confirm');

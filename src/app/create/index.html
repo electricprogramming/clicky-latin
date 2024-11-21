@@ -61,62 +61,12 @@
       padding: 4vh 4vw;
       border-radius: 2vh;
       width: 30vmin;
-      height: 30vmin;
+      height: 20vmin;
       text-align: center;
       z-index: 10000;
     }
-    #save-name-input {
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      padding-left: 2.5%;
-      padding-right: 2.5%;
-      width: 75%;
-      height: 20%;
-      color: #fff;
-      font-style: normal;
-      font-size: 5vh;
-      border: #ccc solid;
-      border-radius: 1vh;
-      background-color: #333;
-    }
-    #save-cancel-btn {
-      position: absolute;
-      bottom: 10%;
-      left: 10%;
-      width: 35%;
-      height: 20%;
-      background-color: #f00;
-      border-radius: 1.5vh;
-      border: #000 solid;
-      font-size: 1.5vw;
-      transform: scale(1.0);
-      transition: transform 0.3s;
-    }
-    #save-cancel-btn:active {
-      background-color: #d00;
-    }
-    #save-cancel-btn:hover {
-      transform: scale(1.1);
-    }
-    #save-confirm-btn {
-      position: absolute;
-      bottom: 10%;
-      right: 10%;
-      width: 35%;
-      height: 20%;
-      background-color: #0b0;
-      border-radius: 1.5vh;
-      border: #000 solid;
-      font-size: 1.5vw;
-      transform: scale(1.0);
-      transition: transform 0.3s;
-    }
-    #save-confirm-btn:active {
-      background-color: #090;
-    }
-    #save-confirm-btn:hover {
-      transform: scale(1.1);
+    #create-pair-modal .modal {
+      height: 30vmin;
     }
     #create-pair-english-input {
       position: absolute;
@@ -186,6 +136,59 @@
     #create-pair-confirm-btn:hover {
       transform: scale(1.1);
     }
+    #save-name-input {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      padding-left: 2.5%;
+      padding-right: 2.5%;
+      width: 75%;
+      height: 20%;
+      color: #fff;
+      font-style: normal;
+      font-size: 5vh;
+      border: #ccc solid;
+      border-radius: 1vh;
+      background-color: #333;
+    }
+    #save-cancel-btn {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      width: 35%;
+      height: 20%;
+      background-color: #f00;
+      border-radius: 1.5vh;
+      border: #000 solid;
+      font-size: 1.5vw;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
+    #save-cancel-btn:active {
+      background-color: #d00;
+    }
+    #save-cancel-btn:hover {
+      transform: scale(1.1);
+    }
+    #save-confirm-btn {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      width: 35%;
+      height: 20%;
+      background-color: #0b0;
+      border-radius: 1.5vh;
+      border: #000 solid;
+      font-size: 1.5vw;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
+    #save-confirm-btn:active {
+      background-color: #090;
+    }
+    #save-confirm-btn:hover {
+      transform: scale(1.1);
+    }
     #preview-container {
       position: absolute;
       width: 94vw;
@@ -225,6 +228,14 @@
     <v-sep gap="2vh"></v-sep>
   <button id="save-btn" class="button" color="#0e6"> Save </button>
   <div id="preview-container"></div>
+  <div class="modal-backdrop" id="create-pair-modal">
+    <div class="modal">
+      <input id="create-pair-english-input" type="text" placeholder="English Word"/>
+      <input id="create-pair-latin-input" type="text" placeholder="Latin Word"/>
+      <button id="create-pair-cancel-btn"> Cancel </button>
+      <button id="create-pair-confirm-btn"> Confirm </button>
+    </div>
+  </div>
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
@@ -232,12 +243,9 @@
       <button id="save-confirm-btn"> Confirm </button>
     </div>
   </div>
-  <div class="modal-backdrop" id="create-pair-modal">
+  <div class="modal-backdrop" id="cloud-saving-modal">
     <div class="modal">
-      <input id="create-pair-english-input" type="text" placeholder="English Word"/>
-      <input id="create-pair-latin-input" type="text" placeholder="Latin Word"/>
-      <button id="create-pair-cancel-btn"> Cancel </button>
-      <button id="create-pair-confirm-btn"> Confirm </button>
+      <p id="saving-text">Saving to the cloud, please wait...</p>
     </div>
   </div>
   <ul id="context-menu">
