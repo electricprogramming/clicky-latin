@@ -87,7 +87,7 @@ messages.on('save-confirm', () => {
       cloudSavingCopyURLbtn.style.display = 'block';
       cloudSavingDonebtn.style.display = 'block';
       cloudSavingCopyURLbtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(`https://clickylatin.vercel.app/play`);
+        navigator.clipboard.writeText(`https://clickylatin.vercel.app/play/${gameCode}`);
       });
       cloudSavingDonebtn.addEventListener('click', () => {
         window.location.href = 'https://clickylatin.vercel.app';
