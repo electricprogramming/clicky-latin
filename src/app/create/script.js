@@ -14,6 +14,8 @@ const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
 const cloudSavingModal = document.getElementById('cloud-saving-modal');
 const cloudSavingText = document.getElementById('cloud-saving-text');
+const cloudSavingCopyURLbtn = document.getElementById('cloud-save-copyurl-btn');
+const cloudSavingDonebtn = document.getElementById('cloud-save-done-btn');
 let englishWords = [];
 let latinWords = [];
 let allWords = [];
@@ -80,7 +82,8 @@ messages.on('save-confirm', () => {
       items: allWords
     }).then(gameCode => {
       cloudSavingText.textContent = `Success! Your Game Code is ${gameCode}`;
-
+      cloudSavingCopyURLbtn.style.display = '';
+      cloudSavingDonebtn.style.display = '';
     }).catch(e => {
       console.error(e);
       cloudSavingText.textContent = 'Error - please reload the page.'
