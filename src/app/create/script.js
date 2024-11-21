@@ -86,6 +86,9 @@ messages.on('save-confirm', () => {
       cloudSavingText.textContent = `Success! Your Game Code is ${gameCode}`;
       cloudSavingCopyURLbtn.style.display = 'block';
       cloudSavingDonebtn.style.display = 'block';
+      cloudSavingCopyURLbtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(`https://clickylatin.vercel.app/play`);
+      });
     }).catch(e => {
       console.error(e);
       cloudSavingText.textContent = 'Error - please reload the page.'

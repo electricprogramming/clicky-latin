@@ -8,6 +8,10 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <p>entrypoint</p>
+  <p>specific -- loading...</p>
+  <script>
+    const p = document.querySelector('p');
+    p.textContent = `specific for ${(window.location.href.match(new RegExp(`${'clickylatin.vercel.app/create/'}(.*)`)) || [])[1]?.trim()}`;
+  </script>
 </body>
 </html>
