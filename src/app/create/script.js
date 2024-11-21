@@ -37,7 +37,7 @@ messages.on('new-pair-submit', () => {
   if (englishWord.length === 0 || latinWord.length === 0) {
     alert('Neither word can be empty.');
   } else if (englishWords.includes(englishWord) || latinWords.includes(latinWord)) {
-    alert('One of the words is already in this game.');
+    alert('At least one of the words is already in this game.');
   } else if (englishWord.length > 20) {
     alert('The English word is too long.');
   } else if (latinWord.length > 20) {
