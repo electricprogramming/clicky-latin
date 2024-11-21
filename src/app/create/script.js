@@ -82,8 +82,8 @@ messages.on('save-confirm', () => {
       items: allWords
     }).then(gameCode => {
       cloudSavingText.textContent = `Success! Your Game Code is ${gameCode}`;
-      cloudSavingCopyURLbtn.style.display = '';
-      cloudSavingDonebtn.style.display = '';
+      cloudSavingCopyURLbtn.style.display = 'flex';
+      cloudSavingDonebtn.style.display = 'flex';
     }).catch(e => {
       console.error(e);
       cloudSavingText.textContent = 'Error - please reload the page.'
