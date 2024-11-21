@@ -64,10 +64,11 @@ saveCancelBtn.addEventListener('click', () => {
 messages.on('save-confirm', () => {
   const name = saveNameInput.value;
   if (name.length === 0) {
-    alert('The name cannot be empty.'); return;
+    alert('The game name cannot be empty.'); return;
   }
-  alert('posting, please wait.');
-  saveModal.style.display = 'none';
+  saveNameInput.style.display = 'none';
+  saveConfirmBtn.style.display = 'none';
+  saveCancelBtn.style.display = 'none';
 });
 saveConfirmBtn.addEventListener('click', () => {
   messages.broadcast('save-confirm');
