@@ -30,7 +30,7 @@ export default function createPreviewElement(englishWord, latinWord) {
       messages.broadcast('remove-pair', englishWord, latinWord);
     }, {once: true});
     document.addEventListener('click', () => {
-      contextMenu.remove();
+      contextMenu.style.display = 'none';
     }, {once: true});
   });
 };
