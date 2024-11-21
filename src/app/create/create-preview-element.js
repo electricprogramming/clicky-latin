@@ -22,7 +22,6 @@ export default function createPreviewElement(englishWord, latinWord) {
   previewContainer.appendChild(svgEl);
   svgEl.addEventListener('contextmenu' /* right-click */, (e) => {
     e.preventDefault();
-    e.stopPropagation();
     contextMenu.style.top = `${e.pageY}px`;
     contextMenu.style.left = `${e.pageX}px`;
     contextMenu.style.display = 'block';
