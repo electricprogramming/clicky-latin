@@ -75,3 +75,8 @@ saveConfirmBtn.addEventListener('click', () => {
 saveNameInput.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') messages.broadcast('save-confirm');
 });
+messages.on('remove-pair', (englishWord, latinWord) => {
+  englishWords = englishWords.filter(item => item !== englishWord);
+  latinWords = latinWords.filter(item => item !== latinWord);
+  allWords = allWords.filter(item => item !== englishWord && item !== latinWord);
+});

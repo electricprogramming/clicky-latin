@@ -195,10 +195,28 @@
       margin: 3vh;
     }
     .preview-element {
-      width: 15vmax;
+      width: 7vh;
       height: auto;
       margin: 1vh;
       user-select: none;
+    }
+    #context-menu {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      z-index: 10000;
+    }
+    #context-menu li {
+      list-style: none;
+      padding: 8px;
+      cursor: pointer;
+    }
+    #context-menu li:hover {
+      background-color: #555;
     }
   </style>
 </head>
@@ -206,6 +224,7 @@
   <button id="create-pair-btn" class="button" color="#0cf"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
   <button id="save-btn" class="button" color="#0e6"> Save </button>
+  <div id="preview-container"></div>
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
@@ -221,7 +240,10 @@
       <button id="create-pair-confirm-btn"> Confirm </button>
     </div>
   </div>
-  <div id="preview-container"></div>
+  <ul id="context-menu">
+    <li id="context-menu-remove">Remove</li>
+    <li id="context-menu-cancel">Cancel</li>
+  </ul>
   <script type="module">
     // Dynamic button styling
     import darkenColor from '/src/app/darken-color.js';
