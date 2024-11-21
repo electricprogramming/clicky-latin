@@ -89,6 +89,9 @@ messages.on('save-confirm', () => {
       cloudSavingCopyURLbtn.addEventListener('click', () => {
         navigator.clipboard.writeText(`https://clickylatin.vercel.app/play`);
       });
+      cloudSavingDonebtn.addEventListener('click', () => {
+        window.location.href = 'https://clickylatin.vercel.app';
+      });
     }).catch(e => {
       console.error(e);
       cloudSavingText.textContent = 'Error - please reload the page.'
