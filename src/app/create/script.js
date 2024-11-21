@@ -58,7 +58,11 @@ createPairLatinInput.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') messages.broadcast('new-pair-submit');
 });
 saveBtn.addEventListener('click', () => {
-  saveModal.style.display = 'flex';
+  if (allWords.length >= 2) {
+    saveModal.style.display = 'flex';
+  } else {
+    alert('Minimum 2 pairs required.');
+  }
 });
 saveCancelBtn.addEventListener('click', () => {
   saveModal.style.display = 'none';
@@ -70,7 +74,7 @@ messages.on('save-confirm', () => {
   }
   saveModal.style.display = 'none';
   cloudSavingModal.style.display = 'flex';
-  if (01) { // toggle switch for whether or not it should save to the cloud
+  if ('1') { // toggle switch for whether or not it should save to the cloud
       api.POST({
       name,
       items: allWords
