@@ -20,7 +20,7 @@ const api = {
       })
         .then(res => res.json())
         .then(data => {
-          resolve(data);
+          resolve(data.gameCode);
         })
         .catch(err => {
           console.error(err);
