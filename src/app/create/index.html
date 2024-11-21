@@ -193,6 +193,44 @@
       font-size: 3vmin;
       color: #fff;
     }
+    #cloud-save-copyurl-btn {
+      position: absolute;
+      bottom: 10%;
+      left: 10%;
+      width: 40%;
+      height: 30%;
+      background-color: #0cf;
+      border-radius: 1.5vh;
+      border: #000 solid;
+      font-size: 1.5vw;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
+    #cloud-save-copyurl-btn:active {
+      background-color: #00aee1;
+    }
+    #cloud-save-copyurl-btn:hover {
+      transform: scale(1.1);
+    }
+    #cloud-save-done-btn {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      width: 30%;
+      height: 30%;
+      background-color: #0e6;
+      border-radius: 1.5vh;
+      border: #000 solid;
+      font-size: 1.5vw;
+      transform: scale(1.0);
+      transition: transform 0.3s;
+    }
+    #cloud-save-done-btn:active {
+      background-color: #00d048;
+    }
+    #cloud-save-done-btn:hover {
+      transform: scale(1.1);
+    }
     #preview-container {
       position: absolute;
       width: 94vw;
@@ -250,6 +288,8 @@
   <div class="modal-backdrop" id="cloud-saving-modal">
     <div class="modal">
       <p id="cloud-saving-text">Saving to the cloud, please wait...</p>
+      <button id="cloud-save-copyurl-btn"> Copy URL </button>
+      <button id="cloud-save-done-btn"> Done </button>
     </div>
   </div>
   <ul id="context-menu">
