@@ -13,6 +13,7 @@ const saveNameInput = document.getElementById('save-name-input');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
 const cloudSavingModal = document.getElementById('cloud-saving-modal');
+const cloudSavingText = document.getElementById('cloud-saving-text');
 let englishWords = [];
 let latinWords = [];
 let allWords = [];
@@ -69,11 +70,17 @@ messages.on('save-confirm', () => {
   }
   saveModal.style.display = 'none';
   cloudSavingModal.style.display = 'flex';
-  if (0) { // toggle switch for whether or not it should save to the cloud
+  if (01) { // toggle switch for whether or not it should save to the cloud
       api.POST({
       name,
       items: allWords
-    }).then(gameCode => {});
+    }).then(gameCode => {
+      cloudSavingText.textContent = `Success! Your Game Code is ${gameCode}`;
+
+    }).catch(e => {
+      console.error(e);
+      cloudSavingText.textContent = 'Error - please reload the page.'
+    });
   }
 });
 saveConfirmBtn.addEventListener('click', () => {
