@@ -12,11 +12,11 @@ const api = {
         });
     });
   },
-  POST: async (data) => {
+  POST: async (toPost) => {
     return new Promise((resolve, reject) => {
       fetch('https://clickylatin-api.glitch.me', {
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(toPost)
       })
         .then(res => res.json())
         .then(data => {
