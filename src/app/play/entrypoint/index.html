@@ -2,22 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="Clicky Latin" content="Clicky Latin is a software designed specifically with the goal of helping students to learn Latin via drag-and-drop technology and responsive audio feedback.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clicky Latin</title>
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <script type="module">
-    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeploymentMessage()
-      .then(msg => {
-        console.log('Most recent deployment message:', msg);
-      })
-      .catch(err => {
-        console.error('Error fetching most recent deployment message:', err)
-      });
-  </script>
+  <title>Game Code Input</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .container {
+      text-align: center;
+      padding: 3vmin;
+      border-radius: 1vmin;
+      background-color: #1e1e1e;
+      box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.5);
+      width: 50vmin;
+    }
+    h1 {
+      color: #fff;
+      font-size: 3.5vmin;
+      margin-bottom: 2vh;
+    }
+    input[type="text"] {
+      width: 90%;
+      padding: 4% 5%;
+      margin-bottom: 2.75vh;
+      border: 1px solid #333;
+      border-radius: 0.75vh;
+      background-color: #333;
+      color: #f5f5f5;
+      font-size: 2.5vh;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #4CAF50;
+    }
+    button {
+      width: 100%;
+      padding: 1.25vh;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 2.5vh;
+      cursor: pointer;
+      border-radius: 0.75vh;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <p>entrypoint</p>
+  <div class="container">
+    <h1>Enter Game Code</h1>
+    <input type="text" id="game-code-input" placeholder="Enter code..." maxlength="8">
+    <button id="submit-btn">Submit</button>
+  </div>
+  <script>
+    const input = document.getElementById('game-code-input');
+    const submitBtn = document.getElementById('submit-btn');
+    input.addEventListener('input', function() {
+      // Remove any non-digit characters (e.g., letters, symbols, etc.)
+      this.value = this.value.replace(/[^0-9]/g, '');
+      // Trim to 8 chars
+      this.value = this.value.slice(0, 8);
+    });
+    submitBtn.addEventListener('click', function () {
+      if (input.value.length >= 8) {
+        window.location.href = `https://clickylatin.vercel.app/play/${input.value}`
+      }
+    });
+    input.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        submitBtn.click(); // Trigger the button click on Enter key
+      }
+    });
+  </script>
 </body>
 </html>
