@@ -8,4 +8,4 @@ const gameData = await new Promise((resolve, reject) => {
       reject(err);
     });
 });
-document.title = `Play ${gameData.name} on Clicky Latin`;
+document.title = `Clicky Latin - Play ${gameData.name}`;
