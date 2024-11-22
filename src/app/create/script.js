@@ -1,5 +1,5 @@
-import api from '/src/app/api.js';
-import messages from '/src/app/messages.js';
+import api from '../api.js';
+import messages from '../messages.js';
 import createPreviewElement from './create-preview-element.js';
 const createPairBtn = document.getElementById('create-pair-btn');
 const createPairModal = document.getElementById('create-pair-modal');

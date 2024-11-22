@@ -1,5 +1,5 @@
-import getFontSize from '/src/app/get-font-size.js';
-import messages from '/src/app/messages.js';
+import getFontSize from '../get-font-size.js';
+import messages from '../messages.js';
 const previewContainer = document.getElementById('preview-container');
 const contextMenu = document.getElementById('context-menu');
 const contextMenuRemoveOption = document.getElementById('context-menu-remove');
