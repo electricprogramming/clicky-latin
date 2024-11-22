@@ -4,8 +4,8 @@
     { "source": "/", "destination": "/src/home.html" },
     { "source": "/create", "destination": "/src/app/create/index.html" },
     { "source": "/help", "destination": "/src/help.html" },
-    { "source": "/play", "destination": "/src/app/play/index.html" },
-    { "source": "/play/(.+)", "destination": "/src/app/play/specific.html" },
+    { "source": "/play", "destination": "/src/app/play/entrypoint/index.html" },
+    { "source": "/play/(.+)", "destination": "/src/app/play/specific/index.html" },
     { "source": "/(.*)", "destination": "/src/404.html" }
   ]
 }

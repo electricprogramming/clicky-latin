@@ -16,12 +16,11 @@
         console.error('Error fetching most recent deployment message:', err)
       });
   </script>
+  <style>
+
+  </style>
 </head>
 <body>
-  <p>specific -- loading...</p>
-  <script>
-    const p = document.querySelector('p');
-    p.textContent = `specific for ${(window.location.href.match(new RegExp(`${'clickylatin.vercel.app/play/'}(.*)`)) || [])[1]?.trim()}`;
-  </script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
