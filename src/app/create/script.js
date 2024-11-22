@@ -107,14 +107,3 @@ messages.on('remove-pair', (englishWord, latinWord) => {
   latinWords = latinWords.filter(item => item !== latinWord);
   allWords = allWords.filter(item => !(item[0] === englishWord && item[1] === latinWord));
 });
-const homeSVG = document.getElementById('back-home-svg');
-const homeBtn = document.getElementById('back-home-btn');
-homeBtn.addEventListener('mouseenter', () => {
-  homeSVG.style.transform = 'scale(1.0)';
-});
-homeBtn.addEventListener('mouseleave', () => {
-  homeSVG.style.transform = 'scale(0.9)';
-});
-homeBtn.addEventListener('click', () => {
-  window.location.href = 'https://clickylatin.vercel.app';
-});

@@ -337,6 +337,19 @@
       <text fill="#222" font-family="sans-serif" font-size="80" text-anchor="middle" dominant-baseline="middle" x="275" y="85">Back to Home</text>
     </g>
   </svg>
+  <script type="module"> 
+    const homeSVG = document.getElementById('back-home-svg');
+    const homeBtn = document.getElementById('back-home-btn');
+    homeBtn.addEventListener('mouseenter', () => {
+      homeSVG.style.transform = 'scale(1.0)';
+    });
+    homeBtn.addEventListener('mouseleave', () => {
+      homeSVG.style.transform = 'scale(0.9)';
+    });
+    homeBtn.addEventListener('click', () => {
+      window.location.href = 'https://clickylatin.vercel.app';
+    });
+  </script>
   <script type="module">
     // Dynamic button styling
     import darkenColor from '/src/app/darken-color.js';
