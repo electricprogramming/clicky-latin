@@ -265,6 +265,17 @@
     #context-menu li:hover {
       background-color: #555;
     }
+    #back-home-svg {
+      width: 40vh;
+      height: auto;
+      position: absolute;
+      bottom: 1vh;
+      right: 1vh;
+      transition: transform 0.3s ease;
+    }
+    #back-home-btn {
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -298,6 +309,7 @@
     <li id="context-menu-remove">Remove</li>
     <li id="context-menu-cancel">Cancel</li>
   </ul>
+  <a></a>
   <script type="module">
     // Dynamic button styling
     import darkenColor from '/src/app/darken-color.js';
