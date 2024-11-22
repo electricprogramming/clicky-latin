@@ -16,8 +16,6 @@ const cloudSavingModal = document.getElementById('cloud-saving-modal');
 const cloudSavingText = document.getElementById('cloud-saving-text');
 const cloudSavingCopyURLbtn = document.getElementById('cloud-save-copyurl-btn');
 const cloudSavingDonebtn = document.getElementById('cloud-save-done-btn');
-const homeSVG = document.getElementById('back-home-svg');
-const homeBtn = document.getElementById('back-home-btn');
 let englishWords = [];
 let latinWords = [];
 let allWords = [];
@@ -109,6 +107,8 @@ messages.on('remove-pair', (englishWord, latinWord) => {
   latinWords = latinWords.filter(item => item !== latinWord);
   allWords = allWords.filter(item => !(item[0] === englishWord && item[1] === latinWord));
 });
+const homeSVG = document.getElementById('back-home-svg');
+const homeBtn = document.getElementById('back-home-btn');
 homeBtn.addEventListener('mouseenter', () => {
   homeSVG.style.transform = 'scale(1.1)';
 });
