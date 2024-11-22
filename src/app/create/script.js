@@ -25,8 +25,6 @@ messages.on('new-pair', (englishWord, latinWord) => {
   allWords.push([englishWord, latinWord]);
   englishWords.push(englishWord);
   latinWords.push(latinWord);
-});
-messages.on('new-pair', (englishWord, latinWord) => {
   createPreviewElement(englishWord, latinWord);
 });
 createPairBtn.addEventListener('click', () => {
@@ -39,8 +37,8 @@ createPairCancelBtn.addEventListener('click', () => {
   createPairLatinInput.value = '';
 });
 messages.on('new-pair-submit', () => {
-  const englishWord = createPairEnglishInput.value;
-  const latinWord = createPairLatinInput.value;
+  const englishWord = createPairEnglishInput.value.trim();
+  const latinWord = createPairLatinInput.value.trim();
   if (englishWord.length === 0 || latinWord.length === 0) {
     alert('Neither word can be empty.');
   } else if (englishWords.includes(englishWord) || latinWords.includes(latinWord)) {
@@ -74,7 +72,7 @@ saveCancelBtn.addEventListener('click', () => {
   saveModal.style.display = 'none';
 });
 messages.on('save-confirm', () => {
-  const name = saveNameInput.value;
+  const name = saveNameInput.value.trim();
   if (name.length === 0) {
     alert('The game name cannot be empty.'); return;
   }
