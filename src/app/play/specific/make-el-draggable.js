@@ -2,7 +2,6 @@
  * @param {HTMLElement} el
  */
 export default function makeElementDraggable(el) {
-  el.style.position = 'absolute';
   let isDragging = false;
   let offsetX, offsetY;
   // For desktop (mouse events)
@@ -14,6 +13,7 @@ export default function makeElementDraggable(el) {
   });
   // For mobile (touch events)
   el.addEventListener("touchstart", (e) => {
+    e.preventDefault();
     isDragging = true;
     const touch = e.touches[0];
     offsetX = touch.clientX - el.getBoundingClientRect().left;
