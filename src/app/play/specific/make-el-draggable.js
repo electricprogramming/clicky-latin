@@ -32,6 +32,7 @@ export default function makeElementDraggable(el) {
       let newLeft = clientX - offsetX;
       let newTop = clientY - offsetY;
       // fencing
+      const margin = 10;
       if (newLeft < margin) {
         newLeft = margin;
       }
