@@ -19,8 +19,9 @@ export default function createGameElement(language, word) {
   text.textContent = word;
   text.setAttribute('font-size', getFontSize(word));
   el.classList.add('game-element');
-  el.style.top = Math.round(Math.random() * (window.innerHeight - el.offsetHeight)) + 'px';
-  el.style.left = Math.round(Math.random() * (window.innerWidth - el.offsetWidth)) + 'px';
+  const rect = el.getBoundingClientRect();
+  el.style.top = Math.round(Math.random() * (window.innerHeight - rect.height)) + 'px';
+  el.style.left = Math.round(Math.random() * (window.innerWidth - rect.width)) + 'px';
   makeElementDraggable(el);
   document.getElementById('game-container').appendChild(el);
 }
