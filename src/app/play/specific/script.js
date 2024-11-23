@@ -21,5 +21,5 @@ Array.shuffle(englishWords).forEach(englishWord => {
   createGameElement('English', englishWord);
 });
 Array.shuffle(latinWords).forEach(latinWord => {
-  createGameElement('English', latinWord);
+  createGameElement('Latin', latinWord);
 });
