@@ -22,5 +22,5 @@ export default function createGameElement(language, word) {
   el.style.top = Math.round(Math.random() * (window.innerHeight - el.offsetHeight)) + 'px';
   el.style.left = Math.round(Math.random() * (window.innerWidth - el.offsetWidth)) + 'px';
   makeElementDraggable(el);
-  document.getElementById('game-containerw').appendChild(el);
+  document.getElementById('game-container').appendChild(el);
 }
