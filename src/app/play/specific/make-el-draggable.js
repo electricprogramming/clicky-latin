@@ -1,7 +1,7 @@
 /**
  * @param {HTMLElement} el
  */
-function makeElementDraggable(el) {
+export default function makeElementDraggable(el) {
   el.style.position = 'absolute';
   let isDragging = false;
   let offsetX, offsetY;
@@ -32,17 +32,17 @@ function makeElementDraggable(el) {
       let newLeft = clientX - offsetX;
       let newTop = clientY - offsetY;
       // fencing
-      if (newLeft < 0) {
-        newLeft = 0;
+      if (newLeft < margin) {
+        newLeft = margin;
       }
-      if (newTop < 0) {
-        newTop = 0;
+      if (newTop < margin) {
+        newTop = margin;
       }
-      if (newLeft + elementWidth > viewportWidth) {
-        newLeft = viewportWidth - elementWidth;
+      if (newLeft + elementWidth > viewportWidth - margin) {
+        newLeft = viewportWidth - elementWidth - margin;
       }
-      if (newTop + elementHeight > viewportHeight) {
-        newTop = viewportHeight - elementHeight;
+      if (newTop + elementHeight > viewportHeight - margin) {
+        newTop = viewportHeight - elementHeight - margin;
       }
       el.style.left = newLeft + "px";
       el.style.top = newTop + "px";
@@ -55,5 +55,4 @@ function makeElementDraggable(el) {
   };
   document.addEventListener("mouseup", stopDragging);
   document.addEventListener("touchend", stopDragging);
-}
-export default makeElementDraggable;
+};
