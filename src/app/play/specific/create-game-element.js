@@ -1,4 +1,4 @@
-import getFontSize from '../get-font-size.js';
+import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
 <path fill="#0d3" d="M0,0 H600 V225 H450 L400,150 H200 L150,225 H0 Z"/>
