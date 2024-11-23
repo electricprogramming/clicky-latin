@@ -31,6 +31,13 @@
       user-select: none;
       cursor: pointer;
     }
+    #game-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
     .game-element {
       position: absolute;
       width: 25vmin;
@@ -45,6 +52,7 @@
   </style>
 </head>
 <body>
+  <div id="game-container"></div>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <g id="back-home-btn" transform="translate(2.5,2.5)">
       <path 
