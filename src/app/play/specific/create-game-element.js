@@ -1,13 +1,11 @@
 import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
-const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
-<path fill="#0d3" d="M0,0 H600 V225 H450 L400,150 H200 L150,225 H0 Z"/>
-<text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="75"></text>
-</svg>`,
-latinBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
-<path fill="#09f" d="M0,225 H600 V75 H450 L400,0 H200 L150,75 H0 Z"/>
-<text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="150"></text>
-</svg>`;
+const [englishBaseSvg, latinBaseSvg] = await new Promise(async (resolve, reject) => {
+  const english = fetch('/assets/box-green.svg').then(res => res.text());
+  const latin = fetch('/assets/box-blue.svg').then(res => res.text());
+  await Promise.all(english, latin);
+  resolve(english, latin);
+});
 /**
  * @param {('English' | 'Latin')} language
  * @param {String} word
