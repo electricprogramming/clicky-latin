@@ -31,10 +31,19 @@
       user-select: none;
       cursor: pointer;
     }
+    .game-element {
+      width: 25vmin;
+      height: auto;
+      margin: 1vh;
+      user-select: none;
+      cursor: grab;
+    }
+    .game-element:active {
+      cursor: grabbing;
+    }
   </style>
 </head>
 <body>
-  <div id="game-container"></div>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <g id="back-home-btn" transform="translate(2.5,2.5)">
       <path 

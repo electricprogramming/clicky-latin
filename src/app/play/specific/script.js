@@ -1,6 +1,8 @@
+import '../../globalMods.js';
 import gameCode from './get-game-code.js';
 import api from '../../api.js';
-const gameData = await new Promise((resolve, reject) => {
+import createGameElement from './create-game-element.js';
+const {gameName, gameItems} = await new Promise((resolve, reject) => {
   api.GET(gameCode)
     .then(gameData => 
       resolve({
@@ -14,6 +16,10 @@ const gameData = await new Promise((resolve, reject) => {
     });
 });
 document.title = `Clicky Latin - Play ${gameName}`;
-gameItems.forEach(([englishWord, latinWord]) => {
-  
+const englishWords = gameItems.map(([englishWord]) => englishWord), latinWords = gameItems.map(([, latinWord]) => latinWord);
+Array.shuffle(englishWords).forEach(englishWord => {
+  createGameElement('English', englishWord);
+});
+Array.shuffle(latinWords).forEach(latinWord => {
+  createGameElement('English', latinWord);
 });

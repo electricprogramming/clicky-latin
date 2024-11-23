@@ -1,3 +1,8 @@
+/**
+ * @param {String} hex 
+ * @param {Number} amount 
+ * @returns {String}
+ */
 export default function darkenColor(hex, amount = 30) {
   hex = hex.replace('#', '');
   // If the hex is 3 characters, expand it to 6 characters (e.g., "#abc" => "#aabbcc")
