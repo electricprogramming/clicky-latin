@@ -14,7 +14,6 @@ function makeElementDraggable(el) {
   });
   // For mobile (touch events)
   el.addEventListener("touchstart", (e) => {
-    e.preventDefault();
     isDragging = true;
     const touch = e.touches[0];
     offsetX = touch.clientX - el.getBoundingClientRect().left;
