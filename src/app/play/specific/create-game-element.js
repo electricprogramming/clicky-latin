@@ -19,8 +19,8 @@ export default function createGameElement(language, word) {
   text.textContent = word;
   text.setAttribute('font-size', getFontSize(word));
   el.classList.add('game-element');
-  el.style.top = Math.round(Math.random()* window.innerHeight * el.offsetHeight);
-  el.style.left = Math.round(Math.random()* window.innerWidth * el.offsetWidth);
+  el.style.top = Math.round(Math.random() * (window.innerHeight - el.offsetHeight)) + 'px';
+  el.style.left = Math.round(Math.random() * (window.innerWidth - el.offsetWidth)) + 'px';
   makeElementDraggable(el);
   document.body.appendChild(el);
 }
