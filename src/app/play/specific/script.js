@@ -16,10 +16,18 @@ const {gameName, gameItems} = await new Promise((resolve, reject) => {
     });
 });
 document.title = `Clicky Latin - Play \`${gameName}\``;
-const englishWords = gameItems.map(([englishWord]) => englishWord), latinWords = gameItems.map(([, latinWord]) => latinWord);
-Array.shuffle(englishWords).forEach(englishWord => {
-  createGameElement('English', englishWord);
-});
-Array.shuffle(latinWords).forEach(latinWord => {
-  createGameElement('Latin', latinWord);
+const allWords = gameItems.map(pair => {
+  return [
+    {
+      language: 'English',
+      value: pair[0]
+    },
+    {
+      language: 'Latin',
+      value: pair[1]
+    }
+  ]
+}).flat(Infinity);
+Array.shuffle(allWords).forEach(({language, value}) => {
+  createGameElement(language, value);
 });
