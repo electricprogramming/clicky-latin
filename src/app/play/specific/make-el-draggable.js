@@ -62,6 +62,7 @@ export default function makeElementDraggable(el) {
     const elementHeight = el.getBoundingClientRect().height;
     let left = el.style.left.split('px')[0] || 0;
     let top = el.style.top.split('px')[0] || 0;
+    console.log('left:',left, 'top:', top)
     if (left < 0) {
       left = 0;
     }
