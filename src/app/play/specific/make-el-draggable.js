@@ -26,7 +26,6 @@ export default function makeElementDraggable(el) {
       const viewportHeight = window.innerHeight;
       const elementWidth = el.getBoundingClientRect().width;
       const elementHeight = el.getBoundingClientRect().height;
-      console.log(`vw: ${viewportWidth}, vh: ${viewportHeight}, ew: ${elementWidth}, eh: ${elementHeight}`)
       // Determine the current position based on mouse or touch event
       let clientX = e.clientX || (e.touches && e.touches[0].clientX);
       let clientY = e.clientY || (e.touches && e.touches[0].clientY);
@@ -56,4 +55,26 @@ export default function makeElementDraggable(el) {
   };
   document.addEventListener("mouseup", stopDragging);
   document.addEventListener("touchend", stopDragging);
+  window.addEventListener('resize', (e) => {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const elementWidth = el.getBoundingClientRect().width;
+    const elementHeight = el.getBoundingClientRect().height;
+    let left = el.style.left || 0;
+    let top = el.style.top || 0;
+    if (left < 0) {
+      left = 0;
+    }
+    if (top < 0) {
+      top = 0;
+    }
+    if (left + elementWidth > viewportWidth) {
+      left = viewportWidth - elementWidth;
+    }
+    if (top + elementHeight > viewportHeight) {
+      top = viewportHeight - elementHeight;
+    }
+    el.style.left = newLeft + "px";
+    el.style.top = newTop + "px";
+  });
 };
