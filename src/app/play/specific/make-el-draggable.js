@@ -26,6 +26,7 @@ export default function makeElementDraggable(el) {
       const viewportHeight = window.innerHeight;
       const elementWidth = el.offsetWidth;
       const elementHeight = el.offsetHeight;
+      console.log(`vw: ${viewportWidth}, vh: ${viewportHeight}, ew: ${elementWidth}, eh: ${elementHeight}`)
       // Determine the current position based on mouse or touch event
       let clientX = e.clientX || (e.touches && e.touches[0].clientX);
       let clientY = e.clientY || (e.touches && e.touches[0].clientY);
