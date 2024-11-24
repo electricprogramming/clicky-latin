@@ -74,7 +74,7 @@ export default function makeElementDraggable(el) {
     if (top + elementHeight > viewportHeight) {
       top = viewportHeight - elementHeight;
     }
-    el.style.left = newLeft + "px";
-    el.style.top = newTop + "px";
+    el.style.left = left + "px";
+    el.style.top = top + "px";
   });
 };
