@@ -18,3 +18,8 @@ Array.prototype.map = function(callback) {
     return returnedItems;
   }).flat(1);
 }
+Object.prototype.forEach = function(callback) {
+  Object.entries(this).forEach(([key, value]) => {
+    callback(key, value);
+  });
+}
