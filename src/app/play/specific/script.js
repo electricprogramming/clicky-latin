@@ -16,7 +16,7 @@ const {gameName, gameItems} = await new Promise((resolve, reject) => {
     });
 });
 document.title = `Clicky Latin - Play \`${gameName}\``;
-const allWords = gameItems.map(RETURN, pair => {
+const allWords = gameItems.map((RETURN, pair) => {
   RETURN({
     language: 'English',
     value: pair[0]
