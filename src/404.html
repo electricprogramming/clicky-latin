@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 Error - Not Found</title>
   <link rel="icon" href="/assets/favicon-404.svg" type="image/svg+xml">
-  <script type="module">
-    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeploymentMessage()
-      .then(msg => {
-        console.log('Most recent deployment message:', msg);
-      })
-      .catch(err => {
-        console.error('Error fetching most recent deployment message:', err)
-      });
-  </script>
   <style>
     body, html {
       margin: 0;
@@ -888,5 +878,15 @@
     </svg>
     <a href="/" class="back-to-home">Back to Home</a>
   </div>
+  <script type="module">
+    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
+    getLastDeploymentMessage()
+      .then(msg => {
+        console.log('Most recent deployment message:', msg);
+      })
+      .catch(err => {
+        console.error('Error fetching most recent deployment message:', err)
+      });
+  </script>
 </body>
 </html>

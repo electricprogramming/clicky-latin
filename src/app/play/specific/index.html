@@ -6,16 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clicky Latin</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <script type="module">
-    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeploymentMessage()
-      .then(msg => {
-        console.log('Most recent deployment message:', msg);
-      })
-      .catch(err => {
-        console.error('Error fetching most recent deployment message:', err)
-      });
-  </script>
   <style>
     html, body {
       overflow: hidden;
@@ -88,5 +78,15 @@
     });
   </script>
   <script type="module" src="/src/app/play/specific/script.js"></script>
+  <script type="module">
+    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
+    getLastDeploymentMessage()
+      .then(msg => {
+        console.log('Most recent deployment message:', msg);
+      })
+      .catch(err => {
+        console.error('Error fetching most recent deployment message:', err)
+      });
+  </script>
 </body>
 </html>

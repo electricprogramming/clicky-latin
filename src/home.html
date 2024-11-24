@@ -8,16 +8,6 @@
   <meta name="google-site-verification" content="c2VvJHD-7UVQpVpVi_Y9x3GAge_3c9JJXfz9sC2BPcY" />
   <title>Clicky Latin</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <script type="module">
-    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeploymentMessage()
-      .then(msg => {
-        console.log('Most recent deployment message:', msg);
-      })
-      .catch(err => {
-        console.error('Error fetching most recent deployment message:', err)
-      });
-  </script>
   <style>
     body {
       margin: 0;
@@ -118,5 +108,15 @@
     <div class="heading">Clicky Latin</div>
     <p>Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.</p>
   </div>
+  <script type="module">
+    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
+    getLastDeploymentMessage()
+      .then(msg => {
+        console.log('Most recent deployment message:', msg);
+      })
+      .catch(err => {
+        console.error('Error fetching most recent deployment message:', err)
+      });
+  </script>
 </body>
 </html>
