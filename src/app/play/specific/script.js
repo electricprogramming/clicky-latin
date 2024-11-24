@@ -27,7 +27,7 @@ const allWords = gameItems.map(pair => {
       value: pair[1]
     }
   ]
-}).flat(Infinity);
+});
 Array.shuffle(allWords).forEach(({language, value}) => {
   createGameElement(language, value);
 });

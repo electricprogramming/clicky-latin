@@ -6,3 +6,15 @@ Array.shuffle = function(array) {
   }
   return arr;
 };
+const ogArrayMap = Array.prototype.map;
+Array.prototype.map = function(callback) {
+  const map = ogArrayMap.bind(this);
+  return map((item, idx, arr) => {
+    let returnedItems = [];
+    const RETURN = function(...args) {
+      returnedItems.push(...args);
+    }
+    callback(RETURN, item, idx, arr);
+    return returnedItems;
+  }).flat(1);
+}
