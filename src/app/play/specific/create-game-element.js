@@ -1,20 +1,16 @@
 import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
-const [englishBaseSvg, latinBaseSvg] = await new Promise(async (resolve, reject) => {
-  const englishFetch = fetch('/assets/box-green.svg');
-  const latinFetch = fetch('/assets/box-blue.svg');
-  Promise.all([englishFetch, latinFetch])
-    .then(([englishRes, latinRes]) => {
-      return Promise.all([englishRes.text(), latinRes.text()]);
-    })
-    .then(([englishSvg, latinSvg]) => {
-      resolve([englishSvg, latinSvg]);
-    })
-    .catch((err) => {
-      console.error(err);
-      reject(err);
-    });
-});
+const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
+  <g id="content">
+    <path fill="#0d3" d="M0,0 H600 V225 H450 L400,150 H200 L150,225 H0 Z"/>
+    <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="75"></text>
+  </g>
+</svg>`, latinBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
+  <g id="content">
+    <path fill="#09f" d="M0,225 H600 V75 H450 L400,0 H200 L150,75 H0 Z"/>
+    <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="150"></text>
+  </g>
+</svg>`;
 /**
  * @param {('English' | 'Latin')} language
  * @param {String} word
