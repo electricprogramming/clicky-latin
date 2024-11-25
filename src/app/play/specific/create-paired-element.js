@@ -1,7 +1,7 @@
 import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
 const gameContainer = document.getElementById('game-container');
-const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375" viewBox="0 0 600 375">
+const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375">
   <g id="content">
     <path fill="#0d3" d="M4,4 H596 V225 H450 L400,150 H200 L150,225 H4 Z" stroke="black" stroke-width="8"/>
     <path fill="#09f" d="M4,371 H596 V225 H450 L400,150 H200 L150,225 H4 Z" stroke="black" stroke-width="8"/>
