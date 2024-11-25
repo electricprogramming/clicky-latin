@@ -57,9 +57,11 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   document.addEventListener("mousemove", moveHandler);
   document.addEventListener("touchmove", moveHandler);
   const stopDragging = () => {
-    isDragging = false;
-    if (endDragFunc && typeof endDragFunc === 'function') {
-      endDragFunc();
+    if (isDragging) {
+      isDragging = false;
+      if (endDragFunc && typeof endDragFunc === 'function') {
+        endDragFunc();
+      }
     }
   };
   document.addEventListener("mouseup", stopDragging);
