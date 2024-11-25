@@ -22,4 +22,21 @@ export default function createPreviewElement(englishWord, latinWord, left, top) 
   gameContainer.appendChild(el);
   el.style.left = left; el.style.top = top;
   makeElementDraggable(el);
+  // In case the match goes off the edge
+  let left = parseFloat(el.style.left) || 0;
+  let top = parseFloat(el.style.top) || 0;
+  if (left < 0) {
+    left = 0;
+  }
+  if (top < 0) {
+    top = 0;
+  }
+  if (left + elementWidth > viewportWidth) {
+    left = viewportWidth - elementWidth;
+  }
+  if (top + elementHeight > viewportHeight) {
+    top = viewportHeight - elementHeight;
+  }
+  el.style.left = left + "px";
+  el.style.top = top + "px";
 };
