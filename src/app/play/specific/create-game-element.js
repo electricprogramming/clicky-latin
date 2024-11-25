@@ -4,6 +4,7 @@ import pythagoras from './pythagoras.js';
 import isInMatchDist from './is-in-match-dist.js';
 import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
 import createPairedElement from './create-paired-element.js';
+import { clickSound, incorrectSound } from './sound-effects.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
     <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
@@ -72,6 +73,7 @@ export default function createGameElement(language, matchId, word) {
           const latinWord = myMatch.getAttribute('word');
           me.remove(); myMatch.remove();
           createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - elRect.height) + 'px');
+          clickSound.play();
         } else {
           alert('NOPE!')
         }
@@ -116,6 +118,7 @@ export default function createGameElement(language, matchId, word) {
           const englishWord = myMatch.getAttribute('word');
           me.remove(); myMatch.remove();
           createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top);
+          clickSound.play();
         } else {
           alert('NOPE!');
         }
