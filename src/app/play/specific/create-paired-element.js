@@ -1,4 +1,4 @@
-import getFontSize from '../get-font-size.js';
+import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
 const gameContainer = document.getElementById('game-container');
 const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375" viewBox="0 0 600 375">
