@@ -75,7 +75,29 @@ export default function createGameElement(language, matchId, word) {
           createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - elRect.height) + 'px');
           clickSound.play();
         } else {
-          alert('NOPE!')
+          incorrectSound.play();
+          const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
+          el.style.top = parseFloat(el.style.top) - (40 / 700 * vmin) + 'px';
+          {
+            const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+            const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
+            let left = parseFloat(el.style.left) || 0;
+            let top = parseFloat(el.style.top) || 0;
+            if (left < 0) {
+              left = 0;
+            }
+            if (top < 0) {
+              top = 0;
+            }
+            if (left + elementWidth > viewportWidth) {
+              left = viewportWidth - elementWidth;
+            }
+            if (top + elementHeight > viewportHeight) {
+              top = viewportHeight - elementHeight;
+            }
+            el.style.left = left + "px";
+            el.style.top = top + "px";
+          }
         }
       }
     });
@@ -120,7 +142,29 @@ export default function createGameElement(language, matchId, word) {
           createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top);
           clickSound.play();
         } else {
-          alert('NOPE!');
+          incorrectSound.play();
+          const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
+          el.style.top = parseFloat(el.style.top) + (40 / 700 * vmin) + 'px';
+          {
+            const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+            const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
+            let left = parseFloat(el.style.left) || 0;
+            let top = parseFloat(el.style.top) || 0;
+            if (left < 0) {
+              left = 0;
+            }
+            if (top < 0) {
+              top = 0;
+            }
+            if (left + elementWidth > viewportWidth) {
+              left = viewportWidth - elementWidth;
+            }
+            if (top + elementHeight > viewportHeight) {
+              top = viewportHeight - elementHeight;
+            }
+            el.style.left = left + "px";
+            el.style.top = top + "px";
+          }
         }
       }
     });
