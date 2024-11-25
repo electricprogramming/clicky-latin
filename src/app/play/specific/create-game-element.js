@@ -77,8 +77,7 @@ export default function createGameElement(language, matchId, word) {
             y: otherAdjustedY2
           });
           return dist1 - dist2;
-        })
-        [0];
+        })[0];
       console.log(closestItem);
     });
   }
