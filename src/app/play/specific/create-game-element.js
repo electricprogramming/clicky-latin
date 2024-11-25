@@ -52,6 +52,12 @@ export default function createGameElement(language, matchId, word) {
             x: otherX2,
             y: otherAdjustedY2
           });
+          console.log(
+            otherX1, otherY1,
+            otherX2, otherY2,
+            otherAdjustedY1, otherAdjustedY2,
+            dist1, dist2
+          )
           return dist1 - dist2;
         })
         [0];
