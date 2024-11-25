@@ -879,15 +879,6 @@
     </svg>
     <a href="/" id="back-to-home">Back to Home</a>
   </div>
-  <script type="module">
-    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeploymentMessage()
-      .then(msg => {
-        console.log('Most recent deployment message:', msg);
-      })
-      .catch(err => {
-        console.error('Error fetching most recent deployment message:', err)
-      });
-  </script>
+  <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-export default async function getLastDeploymentMessage() {
+async function getLastDeploymentMessage() {
   return new Promise((resolve, reject) => {
     fetch(`https://clickylatin-api.glitch.me/current-deployment-msg?timestamp=${Date.now()}`)
       .then(res => res.json())
@@ -6,3 +6,10 @@ export default async function getLastDeploymentMessage() {
       .catch(err => reject(err));
   });
 };
+getLastDeploymentMessage()
+  .then(msg => {
+    console.log('Most recent deployment message:', msg);
+  })
+  .catch(err => {
+    console.error('Error fetching most recent deployment message:', err)
+  });
