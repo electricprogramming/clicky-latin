@@ -26,7 +26,7 @@
       height: 100%;
       display: block;
     }
-    .back-to-home {
+    #back-to-home {
       position: absolute;
       top: 90%;
       left: 50%;
@@ -40,7 +40,7 @@
       border-radius: 1vmin;
       text-align: center;
     }
-    .back-to-home:hover {
+    #back-to-home:hover {
       background-color: rgba(0, 0, 0, 0.9);
     }
   </style>
@@ -876,7 +876,7 @@
       <text xmlns="http://www.w3.org/2000/svg" font-size="500" fill="red" text-anchor="middle" x="1024" y="1425">404</text>
       <text xmlns="http://www.w3.org/2000/svg" font-size="200" text-anchor="middle" x="1024" y="1650">Page not found</text>
     </svg>
-    <a href="/" class="back-to-home">Back to Home</a>
+    <a href="/" id="back-to-home">Back to Home</a>
   </div>
   <script type="module">
     import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
