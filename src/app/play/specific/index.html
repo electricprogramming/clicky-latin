@@ -52,6 +52,16 @@
     .game-element[lang="Latin"] {
       clip-path: polygon(0% 100%, 100% 100%, 100% 31%, 76% 31%, 68% 0%, 32% 0%, 24% 31%, 0% 31%);
     }
+    .paired-element {
+      position: fixed;
+      height: 24vmin;
+      width: auto;
+      user-select: none;
+      cursor: grab;
+    }
+    .paired-element:active {
+      cursor: grabbing;
+    }
   </style>
 </head>
 <body>
@@ -83,15 +93,5 @@
     });
   </script>
   <script type="module" src="/src/app/play/specific/script.js"></script>
-  <script type="module">
-    import getLastDeploymentMessage from '/src/get-recent-deployment-msg.js';
-    getLastDeploymentMessage()
-      .then(msg => {
-        console.log('Most recent deployment message:', msg);
-      })
-      .catch(err => {
-        console.error('Error fetching most recent deployment message:', err)
-      });
-  </script>
 </body>
 </html>

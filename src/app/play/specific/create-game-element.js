@@ -3,6 +3,7 @@ import makeElementDraggable from './make-el-draggable.js';
 import pythagoras from './pythagoras.js';
 import isInMatchDist from './is-in-match-dist.js';
 import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
+import createPairedElement from './create-paired-element.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
     <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
@@ -27,6 +28,7 @@ export default function createGameElement(language, matchId, word) {
   el.classList.add('game-element');
   el.setAttribute('lang', language);
   el.setAttribute('matchId', matchId);
+  el.setAttribute('word', word);
   document.getElementById('game-container').appendChild(el);
   const elRect = el.getBoundingClientRect();
   el.style.top = Math.round(Math.random() * (window.innerHeight - elRect.height)) + 'px';
@@ -64,7 +66,12 @@ export default function createGameElement(language, matchId, word) {
         const myMatchId = el.getAttribute('matchId');
         const closestMatchId = closestElementPos.el.getAttribute('matchId');
         if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
-          alert('SNAP!');
+          const me = el;
+          const myMatch = closestElementPos.el;
+          const latinWord = me.getAttribute('word');
+          const englishWord = myMatch.getAttribute('word');
+          me.remove(); myMatch.remove();
+          createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top - elRect.height);
         } else {
           alert('NOPE!')
         }
@@ -103,9 +110,14 @@ export default function createGameElement(language, matchId, word) {
         const myMatchId = el.getAttribute('matchId');
         const closestMatchId = closestElementPos.el.getAttribute('matchId');
         if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
-          alert('SNAP!');
+          const me = el;
+          const myMatch = closestElementPos.el;
+          const latinWord = me.getAttribute('word');
+          const englishWord = myMatch.getAttribute('word');
+          me.remove(); myMatch.remove();
+          createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top);
         } else {
-          alert('NOPE!')
+          alert('NOPE!');
         }
       }
     });

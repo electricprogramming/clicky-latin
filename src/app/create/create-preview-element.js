@@ -13,22 +13,22 @@ const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375
 </svg>`;
 export default function createPreviewElement(englishWord, latinWord) {
   const parser = new DOMParser();
-  const svgEl = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
-  const englishText = svgEl.querySelector('.text-english');
+  const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
+  const englishText = el.querySelector('.text-english');
   englishText.textContent = englishWord;
   englishText.setAttribute('font-size', getFontSize(englishWord));
-  const latinText = svgEl.querySelector('.text-latin');
+  const latinText = el.querySelector('.text-latin');
   latinText.textContent = latinWord;
   latinText.setAttribute('font-size', getFontSize(latinWord));
-  svgEl.classList.add('preview-element');
-  previewContainer.appendChild(svgEl);
-  svgEl.addEventListener('contextmenu' /* right-click */, (e) => {
+  el.classList.add('preview-element');
+  previewContainer.appendChild(el);
+  el.addEventListener('contextmenu' /* right-click */, (e) => {
     e.preventDefault();
     contextMenu.style.top = `${e.pageY}px`;
     contextMenu.style.left = `${e.pageX}px`;
     contextMenu.style.display = 'block';
     contextMenuRemoveOption.addEventListener('click', () => {
-      svgEl.remove();
+      el.remove();
       messages.broadcast('remove-pair', englishWord, latinWord);
     }, {once: true});
     document.addEventListener('click', () => {
