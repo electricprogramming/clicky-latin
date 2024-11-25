@@ -1,7 +1,7 @@
 /**
  * @param {HTMLElement} el
  */
-export default function makeElementDraggable(el) {
+export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   let isDragging = false;
   let offsetX, offsetY;
   // For desktop (mouse events)
@@ -10,6 +10,7 @@ export default function makeElementDraggable(el) {
     isDragging = true;
     offsetX = e.clientX - el.getBoundingClientRect().left;
     offsetY = e.clientY - el.getBoundingClientRect().top;
+    startDragFunc();
   });
   // For mobile (touch events)
   el.addEventListener("touchstart", (e) => {
@@ -18,6 +19,7 @@ export default function makeElementDraggable(el) {
     const touch = e.touches[0];
     offsetX = touch.clientX - el.getBoundingClientRect().left;
     offsetY = touch.clientY - el.getBoundingClientRect().top;
+    startDragFunc();
   });
   // Common move handler for both mouse and touch
   const moveHandler = (e) => {
@@ -52,6 +54,7 @@ export default function makeElementDraggable(el) {
   document.addEventListener("touchmove", moveHandler);
   const stopDragging = () => {
     isDragging = false;
+    endDragFunc();
   };
   document.addEventListener("mouseup", stopDragging);
   document.addEventListener("touchend", stopDragging);
