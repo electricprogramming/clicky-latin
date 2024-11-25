@@ -54,12 +54,6 @@ export default function createGameElement(language, matchId, word) {
             Math.abs(myPos.x - otherX2),
             Math.abs(myPos.y - otherAdjustedY2)
           );
-          console.log(
-            otherX1, otherY1,
-            otherX2, otherY2,
-            otherAdjustedY1, otherAdjustedY2,
-            dist1, dist2
-          )
           return dist1 - dist2;
         })
         [0];
@@ -90,12 +84,6 @@ export default function createGameElement(language, matchId, word) {
             Math.abs(myPos.x - otherX2),
             Math.abs(myPos.y - otherAdjustedY2)
           );
-          console.log(
-            otherX1, otherY1,
-            otherX2, otherY2,
-            otherAdjustedY1, otherAdjustedY2,
-            dist1, dist2
-          )
           return dist1 - dist2;
         })
         [0];
