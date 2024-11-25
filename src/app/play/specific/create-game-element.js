@@ -35,11 +35,11 @@ export default function createGameElement(language, matchId, word) {
         x: el.style.left || 0,
         y: el.style.top || 0
       };
-      const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
-        .map((RETURN, otherEl) => {
-          RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top), el: otherEl});
-        })
-        .sort((otherPos1, otherPos2) => {
+      const allItems = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`));
+      const allPositions = allItems.map((RETURN, otherEl) => {
+        RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top), el: otherEl});
+      });
+      const closestItem = allPositions.sort((otherPos1, otherPos2) => {
           const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
           const [otherAdjustedY1, otherAdjustedY2] = [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
           const dist1 = pythagoras(myPos, {
