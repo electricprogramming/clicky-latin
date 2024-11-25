@@ -45,7 +45,7 @@ export default function createGameElement(language, matchId, word) {
         })
         .sort((otherPos1, otherPos2) => {
           const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-          const [otherAdjustedY1, otherAdjustedY2] = [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+          const [otherAdjustedY1, otherAdjustedY2] = [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)];
           const dist1 = pythagoras(
             Math.abs(myPos.x - otherX1),
             Math.abs(myPos.y - otherAdjustedY1)
@@ -68,24 +68,34 @@ export default function createGameElement(language, matchId, word) {
   } else {
     makeElementDraggable(el, null, () => {
       const myPos = {
-        x: el.style.left || 0,
-        y: el.style.top || 0
+        x: parseFloat(el.style.left) || 0,
+        y: parseFloat(el.style.top) || 0
       };
       const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
         .map((RETURN, otherEl) => {
-          RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top), el: otherEl});
+          RETURN({
+            x: parseFloat(otherEl.style.left) || 0,
+            y: parseFloat(otherEl.style.top) || 0,
+            el: otherEl
+          });
         })
         .sort((otherPos1, otherPos2) => {
           const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-          const [otherAdjustedY1, otherAdjustedY2] = [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)];
-          const dist1 = pythagoras(myPos, {
-            x: otherX1,
-            y: otherAdjustedY1
-          }),
-          dist2 = pythagoras(myPos, {
-            x: otherX2,
-            y: otherAdjustedY2
-          });
+          const [otherAdjustedY1, otherAdjustedY2] = [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+          const dist1 = pythagoras(
+            Math.abs(myPos.x - otherX1),
+            Math.abs(myPos.y - otherAdjustedY1)
+          ),
+          dist2 = pythagoras(
+            Math.abs(myPos.x - otherX2),
+            Math.abs(myPos.y - otherAdjustedY2)
+          );
+          console.log(
+            otherX1, otherY1,
+            otherX2, otherY2,
+            otherAdjustedY1, otherAdjustedY2,
+            dist1, dist2
+          )
           return dist1 - dist2;
         })
         [0];
