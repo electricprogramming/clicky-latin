@@ -35,7 +35,7 @@ export default function createGameElement(language, matchId, word) {
         x: el.style.left || 0,
         y: el.style.top || 0
       };
-      const allItems = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
+      const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
         .map((RETURN, otherEl) => {
           RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top), el: otherEl});
         })
