@@ -74,7 +74,8 @@ export default function createGameElement(language, matchId, word) {
     makeElementDraggable(el, null, () => {
       const myPos = {
         x: parseFloat(el.style.left) || 0,
-        y: parseFloat(el.style.top) || 0
+        y: parseFloat(el.style.top) || 0,
+        el
       };
       const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
         .map((RETURN, otherEl) => {

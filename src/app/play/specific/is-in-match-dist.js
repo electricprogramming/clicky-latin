@@ -7,7 +7,7 @@ import pythagoras from './pythagoras.js';
  * @returns {Boolean}
  */
 export default function isInMatchDist(English, Latin) {
-  const boxHeight = Latin.el.getBoundingClientRect().height;
+  const boxHeight = English.el.getBoundingClientRect().height;
   Latin.y = Latin.y - boxHeight * 2/3;
   const xDif = Math.abs(English.x - Latin.x);
   const yDif = Math.abs(English.y - Latin.y);
