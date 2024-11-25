@@ -2,6 +2,7 @@ import '../../globalMods.js';
 import gameCode from './get-game-code.js';
 import api from '../../api.js';
 import createGameElement from './create-game-element.js';
+const loadingSpinner = document.getElementById('loading-spinner');
 const {gameName, gameItems} = await new Promise((resolve, reject) => {
   api.GET(gameCode)
     .then(gameData => 
@@ -32,6 +33,7 @@ if (gameName) {
   Array.shuffle(allWords).forEach(({language, matchId, word}) => {
     createGameElement(language, matchId, word);
   });
+  loadingSpinner.style.display = 'none';
 } else {
   const gameNotFoundHtml = `
 <!DOCTYPE html>

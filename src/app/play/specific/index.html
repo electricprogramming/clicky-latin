@@ -15,6 +15,23 @@
       top: 0;
       left: 0;
     }
+    #loading-spinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+    }
+    /* Spin animation */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
     #back-home-svg {
       width: 20vmin;
       height: auto;
@@ -67,6 +84,7 @@
   </style>
 </head>
 <body>
+  <div id="loading-spinner"></div>
   <div id="game-container"></div>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="https://clickylatin.vercel.app">
