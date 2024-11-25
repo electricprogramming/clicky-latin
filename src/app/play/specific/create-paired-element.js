@@ -24,6 +24,8 @@ export default function createPreviewElement(englishWord, latinWord, left, top) 
   makeElementDraggable(el);
   // In case the match goes off the edge
   {
+    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+    const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
     let left = parseFloat(el.style.left) || 0;
     let top = parseFloat(el.style.top) || 0;
     if (left < 0) {
