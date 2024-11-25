@@ -56,7 +56,7 @@ export default function createGameElement(language, matchId, word) {
       console.log(closestItem);
     });
   } else {
-    makeElementDraggable(el, () => {
+    makeElementDraggable(el, null, () => {
       const myPos = {
         x: el.style.left || 0,
         y: el.style.top || 0
