@@ -35,9 +35,10 @@ export default function createGameElement(language, matchId, word) {
     makeElementDraggable(el, null, () => {
       const myPos = {
         x: parseFloat(el.style.left) || 0,
-        y: parseFloat(el.style.top) || 0
+        y: parseFloat(el.style.top) || 0,
+        el
       };
-      const closestElement = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
+      const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
         .map((RETURN, otherEl) => {
           RETURN({
             x: parseFloat(otherEl.style.left) || 0,
@@ -59,9 +60,9 @@ export default function createGameElement(language, matchId, word) {
           return dist1 - dist2;
         })
         [0];
-      if (isInMatchDist(myPos, closestElement)) {
+      if (isInMatchDist(myPos, closestElementPos)) {
         const myMatchId = el.getAttribute('matchId');
-        const closestMatchId = closestElement.getAttribute('matchId');
+        const closestMatchId = closestElementPos.el.getAttribute('matchId');
         if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
           alert('SNAP!');
         } else {
@@ -75,7 +76,7 @@ export default function createGameElement(language, matchId, word) {
         x: parseFloat(el.style.left) || 0,
         y: parseFloat(el.style.top) || 0
       };
-      const closestElement = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
+      const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
         .map((RETURN, otherEl) => {
           RETURN({
             x: parseFloat(otherEl.style.left) || 0,
@@ -97,9 +98,9 @@ export default function createGameElement(language, matchId, word) {
           return dist1 - dist2;
         })
         [0];
-      if (isInMatchDist(myPos, closestElement)) {
+      if (isInMatchDist(closestElementPos, myPos)) {
         const myMatchId = el.getAttribute('matchId');
-        const closestMatchId = closestElement.getAttribute('matchId');
+        const closestMatchId = closestElementPos.el.getAttribute('matchId');
         if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
           alert('SNAP!');
         } else {
