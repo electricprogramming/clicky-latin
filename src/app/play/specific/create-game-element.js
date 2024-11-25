@@ -29,7 +29,7 @@ export default function createGameElement(language, matchId, word) {
   const elRect = el.getBoundingClientRect();
   el.style.top = Math.round(Math.random() * (window.innerHeight - elRect.height)) + 'px';
   el.style.left = Math.round(Math.random() * (window.innerWidth - elRect.width)) + 'px';
-  if (language == 'English') {
+  if (language === 'English') {
     makeElementDraggable(el, null, () => {
       const myPos = {
         x: el.style.left || 0,
@@ -37,7 +37,7 @@ export default function createGameElement(language, matchId, word) {
       };
       const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
         .map((RETURN, otherEl) => {
-          RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top), el: otherEl});
+          RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top) || 0, el: otherEl});
         })
         .sort((otherPos1, otherPos2) => {
           const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
