@@ -30,7 +30,7 @@ export default function createGameElement(language, matchId, word) {
   el.style.top = Math.round(Math.random() * (window.innerHeight - elRect.height)) + 'px';
   el.style.left = Math.round(Math.random() * (window.innerWidth - elRect.width)) + 'px';
   if (language == 'English') {
-    makeElementDraggable(el, () => {
+    makeElementDraggable(el, null, () => {
       const myPos = {
         x: el.style.left || 0,
         y: el.style.top || 0
