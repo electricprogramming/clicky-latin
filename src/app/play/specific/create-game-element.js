@@ -68,10 +68,10 @@ export default function createGameElement(language, matchId, word) {
         if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
           const me = el;
           const myMatch = closestElementPos.el;
-          const latinWord = me.getAttribute('word');
-          const englishWord = myMatch.getAttribute('word');
+          const englishWord = me.getAttribute('word');
+          const latinWord = myMatch.getAttribute('word');
           me.remove(); myMatch.remove();
-          createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top - elRect.height);
+          createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - elRect.height)+'px');
         } else {
           alert('NOPE!')
         }
