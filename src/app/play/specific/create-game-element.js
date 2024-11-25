@@ -63,7 +63,7 @@ export default function createGameElement(language, matchId, word) {
       };
       const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
         .map((RETURN, otherEl) => {
-          RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top)});
+          RETURN({x: parseFloat(otherEl.style.left) || 0, y: parseFloat(otherEl.style.top), el: otherEl});
         })
         .sort((otherPos1, otherPos2) => {
           const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
@@ -77,7 +77,8 @@ export default function createGameElement(language, matchId, word) {
             y: otherAdjustedY2
           });
           return dist1 - dist2;
-        })[0];
+        })
+        [0];
       console.log(closestItem);
     });
   }
