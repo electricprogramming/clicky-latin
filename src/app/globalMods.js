@@ -23,3 +23,9 @@ Object.prototype.forEach = function(callback) {
     callback(key, value);
   });
 }
+Array.prototype.includesAll = function(...items) {
+  items.forEach((item) => {
+    if (!this.includes(item)) return false;
+  });
+  return true;
+}

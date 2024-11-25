@@ -1,6 +1,8 @@
 import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
 import pythagoras from './pythagoras.js';
+import isInMatchDist from './is-in-match-dist.js';
+import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
     <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
@@ -35,7 +37,7 @@ export default function createGameElement(language, matchId, word) {
         x: parseFloat(el.style.left) || 0,
         y: parseFloat(el.style.top) || 0
       };
-      const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
+      const closestElement = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
         .map((RETURN, otherEl) => {
           RETURN({
             x: parseFloat(otherEl.style.left) || 0,
@@ -57,7 +59,15 @@ export default function createGameElement(language, matchId, word) {
           return dist1 - dist2;
         })
         [0];
-      console.log(closestItem.el);
+      if (isInMatchDist(myPos, closestElement)) {
+        const myMatchId = el.getAttribute('matchId');
+        const closestMatchId = closestElement.getAttribute('matchId');
+        if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
+          alert('SNAP!');
+        } else {
+          alert('NOPE!')
+        }
+      }
     });
   } else {
     makeElementDraggable(el, null, () => {
@@ -65,7 +75,7 @@ export default function createGameElement(language, matchId, word) {
         x: parseFloat(el.style.left) || 0,
         y: parseFloat(el.style.top) || 0
       };
-      const closestItem = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
+      const closestElement = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
         .map((RETURN, otherEl) => {
           RETURN({
             x: parseFloat(otherEl.style.left) || 0,
@@ -87,7 +97,15 @@ export default function createGameElement(language, matchId, word) {
           return dist1 - dist2;
         })
         [0];
-      console.log(closestItem.el);
+      if (isInMatchDist(myPos, closestElement)) {
+        const myMatchId = el.getAttribute('matchId');
+        const closestMatchId = closestElement.getAttribute('matchId');
+        if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
+          alert('SNAP!');
+        } else {
+          alert('NOPE!')
+        }
+      }
     });
   }
 }
