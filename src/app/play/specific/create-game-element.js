@@ -76,7 +76,7 @@ export default function createGameElement(language, matchId, word) {
           createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px');
           clickSound.play();
           if (isGameCompleted()) {
-            alert('congratulations!');
+            alert('congratulations! you finished!');
           }
         } else {
           incorrectSound.play();
@@ -146,7 +146,7 @@ export default function createGameElement(language, matchId, word) {
           createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top);
           clickSound.play();
           if (isGameCompleted()) {
-            alert('congratulations!');
+            alert('congratulations! you finished!');
           }
         } else {
           incorrectSound.play();
