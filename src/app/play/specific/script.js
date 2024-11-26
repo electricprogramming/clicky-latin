@@ -4,7 +4,7 @@ import api from '../../api.js';
 import createGameElement from './create-game-element.js';
 import loadGameNotFoundPage from './load-game-not-found-page.js';
 const loadingSpinner = document.getElementById('loading-spinner');
-const {gameName, gameItems} = await new Promise((resolve, reject) => {
+const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
     .then(gameData => 
       resolve({
@@ -18,6 +18,7 @@ const {gameName, gameItems} = await new Promise((resolve, reject) => {
     });
 });
 if (gameName) {
+  window.gameName = gameName;
   document.title = `Clicky Latin - Play \`${gameName}\``;
   const allWords = gameItems.map((RETURN, pair, idx) => {
     RETURN({
