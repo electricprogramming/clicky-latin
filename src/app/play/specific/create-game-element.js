@@ -4,6 +4,7 @@ import pythagoras from './pythagoras.js';
 import isInMatchDist from './is-in-match-dist.js';
 import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
 import createPairedElement from './create-paired-element.js';
+import isGameCompleted from './is-game-complete.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
@@ -74,6 +75,9 @@ export default function createGameElement(language, matchId, word) {
           me.remove(); myMatch.remove();
           createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px');
           clickSound.play();
+          if (isGameCompleted()) {
+            alert('congratulations!');
+          }
         } else {
           incorrectSound.play();
           const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
@@ -141,6 +145,9 @@ export default function createGameElement(language, matchId, word) {
           me.remove(); myMatch.remove();
           createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top);
           clickSound.play();
+          if (isGameCompleted()) {
+            alert('congratulations!');
+          }
         } else {
           incorrectSound.play();
           const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
