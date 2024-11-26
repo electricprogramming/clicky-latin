@@ -77,7 +77,7 @@ export default function createGameElement(language, matchId, word) {
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
-            alert(`congratulations! you completed ${JSON.stringify(gameName)}!`)
+            alert(`Congratulations! You completed ${JSON.stringify(gameName)}!`)
           }, { once: true });
         }
       } else {
