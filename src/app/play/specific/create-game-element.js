@@ -22,8 +22,9 @@ const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" heig
  * @param {String} word
  */
 export default function createGameElement(language, matchId, word) {
+  const isEnglish = (language === 'English');
   const parser = new DOMParser();
-  const el = parser.parseFromString(language === 'English'? englishBaseSvg : latinBaseSvg, "image/svg+xml").documentElement;
+  const el = parser.parseFromString(isEnglish? englishBaseSvg : latinBaseSvg, "image/svg+xml").documentElement;
   const text = el.querySelector('.text');
   text.textContent = word;
   text.setAttribute('font-size', getFontSize(word));
@@ -41,7 +42,7 @@ export default function createGameElement(language, matchId, word) {
       y: parseFloat(el.style.top) || 0,
       el
     };
-    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${language === 'English'? 'Latin' : 'English'}"]`))
+    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}"]`))
       .map((RETURN, otherEl) => {
         RETURN({
           x: parseFloat(otherEl.style.left) || 0,
@@ -51,7 +52,7 @@ export default function createGameElement(language, matchId, word) {
       })
       .sort((otherPos1, otherPos2) => {
         const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-        const [otherAdjustedY1, otherAdjustedY2] = language === 'English'? [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+        const [otherAdjustedY1, otherAdjustedY2] = isEnglish? [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
         const dist1 = pythagoras(
           Math.abs(myPos.x - otherX1),
           Math.abs(myPos.y - otherAdjustedY1)
@@ -63,16 +64,16 @@ export default function createGameElement(language, matchId, word) {
         return dist1 - dist2;
       })
       [0];
-    if (language === 'English'? isInMatchDist(myPos, closestElementPos) : isInMatchDist(closestElementPos, myPos)) {
+    if (isEnglish? isInMatchDist(myPos, closestElementPos) : isInMatchDist(closestElementPos, myPos)) {
       const myMatchId = el.getAttribute('matchId');
       const closestMatchId = closestElementPos.el.getAttribute('matchId');
       if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
         const me = el;
         const myMatch = closestElementPos.el;
-        const englishWord = language === 'English'? me.getAttribute('word'): myMatch.getAttribute('word');
-        const latinWord = language === 'English'? myMatch.getAttribute('word'): me.getAttribute('word');
+        const englishWord = isEnglish? me.getAttribute('word'): myMatch.getAttribute('word');
+        const latinWord = isEnglish? myMatch.getAttribute('word'): me.getAttribute('word');
         me.remove(); myMatch.remove();
-        createPairedElement(englishWord, latinWord, myMatch.style.left, language === 'English'? ((parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px') : myMatch.style.top);
+        createPairedElement(englishWord, latinWord, myMatch.style.left, isEnglish? ((parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px') : myMatch.style.top);
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
@@ -82,7 +83,7 @@ export default function createGameElement(language, matchId, word) {
       } else {
         incorrectSound.play();
         const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
-        el.style.top = (language === 'English'? parseFloat(el.style.top) - (40 / 700 * vmin) : parseFloat(el.style.top) + (40 / 700 * vmin)) + 'px';
+        el.style.top = (isEnglish? parseFloat(el.style.top) - (40 / 700 * vmin) : parseFloat(el.style.top) + (40 / 700 * vmin)) + 'px';
         {
           const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
           const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
