@@ -72,7 +72,7 @@ export default function createGameElement(language, matchId, word) {
           const englishWord = me.getAttribute('word');
           const latinWord = myMatch.getAttribute('word');
           me.remove(); myMatch.remove();
-          createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - elRect.height) + 'px');
+          createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px');
           clickSound.play();
         } else {
           incorrectSound.play();
