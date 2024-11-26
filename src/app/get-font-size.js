@@ -4,10 +4,10 @@ import getLetterWidth from './get-letter-width.js';
  * @returns {Number}
  */
 export default function getFontSize(txt) {
-  const maxSize = 145;
+  const maxSize = 140;
   let size = maxSize;
-  while (getLetterWidth(size) * txt.length >= 600) {
-    size -= 2.5;
+  while (getLetterWidth(size) * txt.length >= 575) {
+    size -= 1;
   }
   return size;
 }
