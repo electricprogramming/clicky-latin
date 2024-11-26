@@ -35,149 +35,75 @@ export default function createGameElement(language, matchId, word) {
   const elRect = el.getBoundingClientRect();
   el.style.top = Math.round(Math.random() * (window.innerHeight - elRect.height)) + 'px';
   el.style.left = Math.round(Math.random() * (window.innerWidth - elRect.width)) + 'px';
-  if (language === 'English') {
-    makeElementDraggable(el, null, () => {
-      const myPos = {
-        x: parseFloat(el.style.left) || 0,
-        y: parseFloat(el.style.top) || 0,
-        el
-      };
-      const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="Latin"]`))
-        .map((RETURN, otherEl) => {
-          RETURN({
-            x: parseFloat(otherEl.style.left) || 0,
-            y: parseFloat(otherEl.style.top) || 0,
-            el: otherEl
-          });
-        })
-        .sort((otherPos1, otherPos2) => {
-          const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-          const [otherAdjustedY1, otherAdjustedY2] = [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)];
-          const dist1 = pythagoras(
-            Math.abs(myPos.x - otherX1),
-            Math.abs(myPos.y - otherAdjustedY1)
-          ),
-          dist2 = pythagoras(
-            Math.abs(myPos.x - otherX2),
-            Math.abs(myPos.y - otherAdjustedY2)
-          );
-          return dist1 - dist2;
-        })
-        [0];
-      if (isInMatchDist(myPos, closestElementPos)) {
-        const myMatchId = el.getAttribute('matchId');
-        const closestMatchId = closestElementPos.el.getAttribute('matchId');
-        if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
-          const me = el;
-          const myMatch = closestElementPos.el;
-          const englishWord = me.getAttribute('word');
-          const latinWord = myMatch.getAttribute('word');
-          me.remove(); myMatch.remove();
-          createPairedElement(englishWord, latinWord, myMatch.style.left, (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px');
-          clickSound.play();
-          if (isGameCompleted()) {
-            clickSound.addEventListener('ended', () => {
-              alert(`congratulations! you completed ${JSON.stringify(gameName)}!`)
-            }, { once: true });
+  makeElementDraggable(el, null, () => {
+    const myPos = {
+      x: parseFloat(el.style.left) || 0,
+      y: parseFloat(el.style.top) || 0,
+      el
+    };
+    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${language === 'English'? 'Latin' : 'English'}"]`))
+      .map((RETURN, otherEl) => {
+        RETURN({
+          x: parseFloat(otherEl.style.left) || 0,
+          y: parseFloat(otherEl.style.top) || 0,
+          el: otherEl
+        });
+      })
+      .sort((otherPos1, otherPos2) => {
+        const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
+        const [otherAdjustedY1, otherAdjustedY2] = language === 'English'? [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+        const dist1 = pythagoras(
+          Math.abs(myPos.x - otherX1),
+          Math.abs(myPos.y - otherAdjustedY1)
+        ),
+        dist2 = pythagoras(
+          Math.abs(myPos.x - otherX2),
+          Math.abs(myPos.y - otherAdjustedY2)
+        );
+        return dist1 - dist2;
+      })
+      [0];
+    if (isInMatchDist(myPos, closestElementPos)) {
+      const myMatchId = el.getAttribute('matchId');
+      const closestMatchId = closestElementPos.el.getAttribute('matchId');
+      if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
+        const me = el;
+        const myMatch = closestElementPos.el;
+        const englishWord = language === 'English'? me.getAttribute('word'): myMatch.getAttribute('word');
+        const latinWord = language === 'English'? myMatch.getAttribute('word'): me.getAttribute('word');
+        me.remove(); myMatch.remove();
+        createPairedElement(englishWord, latinWord, myMatch.style.left, language === 'English'? ((parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px') : myMatch.style.top);
+        clickSound.play();
+        if (isGameCompleted()) {
+          clickSound.addEventListener('ended', () => {
+            alert(`congratulations! you completed ${JSON.stringify(gameName)}!`)
+          }, { once: true });
+        }
+      } else {
+        incorrectSound.play();
+        const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
+        el.style.top = (language === 'English'? parseFloat(el.style.top) - (40 / 700 * vmin) : parseFloat(el.style.top) + (40 / 700 * vmin)) + 'px';
+        {
+          const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+          const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
+          let left = parseFloat(el.style.left) || 0;
+          let top = parseFloat(el.style.top) || 0;
+          if (left < 0) {
+            left = 0;
           }
-        } else {
-          incorrectSound.play();
-          const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
-          el.style.top = parseFloat(el.style.top) - (40 / 700 * vmin) + 'px';
-          {
-            const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-            const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-            let left = parseFloat(el.style.left) || 0;
-            let top = parseFloat(el.style.top) || 0;
-            if (left < 0) {
-              left = 0;
-            }
-            if (top < 0) {
-              top = 0;
-            }
-            if (left + elementWidth > viewportWidth) {
-              left = viewportWidth - elementWidth;
-            }
-            if (top + elementHeight > viewportHeight) {
-              top = viewportHeight - elementHeight;
-            }
-            el.style.left = left + "px";
-            el.style.top = top + "px";
+          if (top < 0) {
+            top = 0;
           }
+          if (left + elementWidth > viewportWidth) {
+            left = viewportWidth - elementWidth;
+          }
+          if (top + elementHeight > viewportHeight) {
+            top = viewportHeight - elementHeight;
+          }
+          el.style.left = left + "px";
+          el.style.top = top + "px";
         }
       }
-    });
-  } else {
-    makeElementDraggable(el, null, () => {
-      const myPos = {
-        x: parseFloat(el.style.left) || 0,
-        y: parseFloat(el.style.top) || 0,
-        el
-      };
-      const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="English"]`))
-        .map((RETURN, otherEl) => {
-          RETURN({
-            x: parseFloat(otherEl.style.left) || 0,
-            y: parseFloat(otherEl.style.top) || 0,
-            el: otherEl
-          });
-        })
-        .sort((otherPos1, otherPos2) => {
-          const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-          const [otherAdjustedY1, otherAdjustedY2] = [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
-          const dist1 = pythagoras(
-            Math.abs(myPos.x - otherX1),
-            Math.abs(myPos.y - otherAdjustedY1)
-          ),
-          dist2 = pythagoras(
-            Math.abs(myPos.x - otherX2),
-            Math.abs(myPos.y - otherAdjustedY2)
-          );
-          return dist1 - dist2;
-        })
-        [0];
-      if (isInMatchDist(closestElementPos, myPos)) {
-        const myMatchId = el.getAttribute('matchId');
-        const closestMatchId = closestElementPos.el.getAttribute('matchId');
-        if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
-          const me = el;
-          const myMatch = closestElementPos.el;
-          const latinWord = me.getAttribute('word');
-          const englishWord = myMatch.getAttribute('word');
-          me.remove(); myMatch.remove();
-          createPairedElement(englishWord, latinWord, myMatch.style.left, myMatch.style.top);
-          clickSound.play();
-          if (isGameCompleted()) {
-            clickSound.addEventListener('ended', () => {
-              alert(`congratulations! you completed ${JSON.stringify(gameName)}!`)
-            }, { once: true });
-          }
-        } else {
-          incorrectSound.play();
-          const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
-          el.style.top = parseFloat(el.style.top) + (40 / 700 * vmin) + 'px';
-          {
-            const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-            const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-            let left = parseFloat(el.style.left) || 0;
-            let top = parseFloat(el.style.top) || 0;
-            if (left < 0) {
-              left = 0;
-            }
-            if (top < 0) {
-              top = 0;
-            }
-            if (left + elementWidth > viewportWidth) {
-              left = viewportWidth - elementWidth;
-            }
-            if (top + elementHeight > viewportHeight) {
-              top = viewportHeight - elementHeight;
-            }
-            el.style.left = left + "px";
-            el.style.top = top + "px";
-          }
-        }
-      }
-    });
-  }
+    }
+  });
 }
