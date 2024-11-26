@@ -63,7 +63,7 @@ export default function createGameElement(language, matchId, word) {
         return dist1 - dist2;
       })
       [0];
-    if (isInMatchDist(myPos, closestElementPos)) {
+    if (language === 'English'? isInMatchDist(myPos, closestElementPos) : isInMatchDist(closestElementPos, myPos)) {
       const myMatchId = el.getAttribute('matchId');
       const closestMatchId = closestElementPos.el.getAttribute('matchId');
       if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
