@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="Clicky Latin" content="Clicky Latin is a software designed specifically with the goal of helping students to learn Latin via drag-and-drop technology and responsive audio feedback.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Clicky Latin</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    #navigation-bar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    a.navigate {
+      margin: 0 2vw;
+      text-decoration: none;
+      font-size: 7.5vmin;
+      font-family: 'Times New Roman', Times, serif;
+      color: white;
+    }
+    a.navigate:hover {
+      text-decoration: underline white;
+    }
+    a.navigate:active {
+      text-decoration: underline #ccc;
+      color: #ccc;
+    }
+  </style>
+  <script src="/src/seperator-elements.js"></script>
+</head>
+<body>
+  <div id="navigation-bar">
+    <a class="navigate" href="#creating-a-game"> Creating a Game </a>
+    <a class="navigate" href="#playing-a-game"> Playing a Game </a>
+  </div>
+  <h1 id="creating-a-game"> Creating a Game </h1>
+  <h1 id="playing-a-game"> Playing a Game </h1>
+  <script type="module" src="/src/get-recent-deployment-msg.js"></script>
+</body>
+</html>

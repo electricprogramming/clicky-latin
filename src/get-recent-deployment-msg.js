@@ -8,8 +8,8 @@ async function getLastDeploymentMessage() {
 };
 getLastDeploymentMessage()
   .then(msg => {
-    console.log('Most recent deployment message:', msg);
+    console.log('Current deployment message:', msg);
   })
   .catch(err => {
-    console.error('Error fetching most recent deployment message:', err)
+    console.error('Error fetching current deployment message:', err)
   });
