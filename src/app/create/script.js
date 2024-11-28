@@ -86,8 +86,8 @@ messages.on('save-confirm', () => {
       cloudSavingDonebtn.style.display = 'block';
       cloudSavingCopyURLbtn.addEventListener('click', () => {
         navigator.clipboard.writeText(`https://clickylatin.vercel.app/play/${gameCode}`);
-        const cloudSavingURLcopied = document.createElement('div');
-        cloudSavingURLcopied.innerHTML = `
+        const element = document.createElement('div');
+        element.innerHTML = `
           <svg width="605" height="155" viewbox="0 0 605 155" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(2.5, 2.5)">
               <rect width="600" height="150" fill="#777" stroke="white" stroke-width="5" rx="40" ry="40"/>
@@ -95,7 +95,8 @@ messages.on('save-confirm', () => {
             </g>
           </svg>
         `;
-        document.body.appendChild(cloudSavingURLcopied);
+        const cloudSavingURLcopied = element.querySelector('svg');
+        cloudSavingURLcopied.classList.add('cloud-save-url-copied');
         cloudSavingURLcopied.classList.add('cloud-save-url-copied');
         cloudSavingURLcopied.style.top = '40%';
         cloudSavingURLcopied.style.transition = 'none';
