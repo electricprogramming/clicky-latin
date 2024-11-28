@@ -97,7 +97,7 @@ messages.on('save-confirm', () => {
         `;
         const cloudSavingURLcopied = element.querySelector('svg');
         cloudSavingURLcopied.classList.add('cloud-save-url-copied');
-        cloudSavingURLcopied.classList.add('cloud-save-url-copied');
+        document.body.appendChild(element);
         cloudSavingURLcopied.style.top = '40%';
         cloudSavingURLcopied.style.transition = 'none';
         cloudSavingURLcopied.style.opacity = '1';
