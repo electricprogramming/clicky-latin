@@ -216,6 +216,14 @@
     #cloud-save-copyurl-btn:hover {
       transform: scale(1.1);
     }
+    .cloud-save-url-copied {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      pointer-events: none;
+    }
     #cloud-save-done-btn {
       cursor: pointer;
       display: none;
@@ -333,6 +341,12 @@
         <text fill="#222" font-family="sans-serif" font-size="80" text-anchor="middle" dominant-baseline="middle" x="275" y="85">Back to Home</text>
       </g>
     </a>
+  </svg>
+  <svg id="cloud-save-url-copied" width="605" height="155" viewbox="0 0 605 155" xmlns="http://www.w3.org/2000/svg">
+    <g id="back-home-btn" transform="translate(2.5,2.5)">
+      <rect width="600" height="150" fill="#777" stroke="white" stroke-width="5" rx="40" ry="40"/>
+      <text fill="#000" font-family="serif" font-size="75" text-anchor="middle" dominant-baseline="middle" x="300" y="85">Game Url Copied!</text>
+    </g>
   </svg>
   <script type="module"> 
     const homeSVG = document.getElementById('back-home-svg');

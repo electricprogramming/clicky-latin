@@ -86,6 +86,25 @@ messages.on('save-confirm', () => {
       cloudSavingDonebtn.style.display = 'block';
       cloudSavingCopyURLbtn.addEventListener('click', () => {
         navigator.clipboard.writeText(`https://clickylatin.vercel.app/play/${gameCode}`);
+        cloudSavingURLcopied.innerHTML = `
+          <svg width="605" height="155" viewbox="0 0 605 155" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="150" fill="#777" stroke="white" stroke-width="5" rx="40" ry="40"/>
+            <text fill="#000" font-family="serif" font-size="75" text-anchor="middle" dominant-baseline="middle" x="300" y="85">Game Url Copied!</text>
+          </svg>
+        `;
+        document.body.appendChild(cloudSavingURLcopied);
+        cloudSavingURLcopied.classList.add('cloud-save-url-copied');
+        cloudSavingURLcopied.style.top = '40%';
+        cloudSavingURLcopied.style.transition = 'none';
+        cloudSavingURLcopied.style.opacity = '1';
+        setTimeout(() => {
+          cloudSavingURLcopied.style.transition = 'opacity 1s linear, top 1.25s linear';
+          cloudSavingURLcopied.style.opacity = '0';
+          cloudSavingURLcopied.style.top = '0';
+          setTimeout(() => {
+            cloudSavingURLcopied.remove()
+          }, 1500);
+        }, 0);
       });
       cloudSavingDonebtn.addEventListener('click', () => {
         window.location.href = 'https://clickylatin.vercel.app';
