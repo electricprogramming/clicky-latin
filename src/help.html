@@ -64,11 +64,22 @@
     }
     img.inline {
       position: relative;
-      right: 5%;
       width: 45%;
       height: auto;
       box-sizing: border-box;
       border: 0.5vmin solid #fff;
+    }
+    img.inline[side="left"] {
+      float: left;
+      margin-right: 3vmin;
+      margin-top: 1.5vmin;
+      margin-bottom: 1.5vmin;
+    }
+    img.inline[side="right"] {
+      float: right;
+      margin-left: 3vmin;
+      margin-top: 1.5vmin;
+      margin-bottom: 1.5vmin;
     }
     #back-home-svg {
       width: 20vmin;
@@ -98,7 +109,7 @@
     <p>
       To create a pair, click on 'Create Pair'.
     </p>
-    <img class="inline" src="/assets/help-guide/img_02.png"/>
+    <img class="inline" side="right" src="/assets/help-guide/img_02.png"/>
     <h1 id="playing-a-game"> Playing a Game </h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
