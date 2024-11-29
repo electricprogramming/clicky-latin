@@ -1,0 +1,13 @@
+<svg width="562" height="186" viewbox="0 0 562 186" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="560" height="184" fill="#1f1f1f" stroke="#3d3d3d" stroke-width="2" rx="12" ry="12"/>
+  <rect width="80" height="50" x="460" y="115" fill="#a7c0ea" rx="25" ry="25"/>
+  <rect width="75" height="45" x="462.5" y="117.5" rx="25" ry="25" fill="none" stroke="#1f1f1f" stroke-width="2"/>
+  <text x="500" y="141.5" font-size="16" font-family="sans-serif" text-anchor="middle" dominant-baseline="middle" fill="#163a6a" font-weight="500">OK</text>
+  <text fill="white" x="28" y="34" text-anchor="left" dominant-baseline="hanging" font-size="18" font-family="sans-serif" font-weight="500">
+    clickylatin.vercel.app says
+  </text>
+  <text fill="white" font-family="sans-serif" x="28" y="72" text-anchor="left" dominant-baseline="hanging" font-size="15">
+    Congratulations! You completed &quot;Light&quot;!
+  </text>
+  <path d="M0,0 L25,26 H12 L17,35 L14,37 L8,27 L0,35 Z" fill="white" stroke="black" stroke-width="2" transform="translate(510,155) scale(0.4,0.4)"/>
+</svg>
