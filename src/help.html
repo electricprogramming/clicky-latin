@@ -39,6 +39,10 @@
       color: #ccc;
     }
     #guide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       box-sizing: border-box;
       margin: 0 5vw;
       width: 90vw;
@@ -53,10 +57,18 @@
       font-size: 5vmin;
     }
     img.full-width {
-      width: 100%;
+      width: 85%;
       height: auto;
       box-sizing: border-box;
       border: 1vmin solid #fff; /* Inner black border */
+    }
+    img.inline {
+      position: relative;
+      right: 5%;
+      width: 45%;
+      height: auto;
+      box-sizing: border-box;
+      border: 0.5vmin solid #fff;
     }
     #back-home-svg {
       width: 20vmin;
@@ -84,8 +96,9 @@
     <h1 id="creating-a-game"> Creating a Game </h1>
     <img class="full-width" src="/assets/help-guide/img_01.png"/>
     <p>
-      To create a pair, click on 'Create Pair'. Then enter the English and Latin words, and click 'Confirm'.
+      To create a pair, click on 'Create Pair'.
     </p>
+    <img class="inline" src="/assets/help-guide/img_02.png"/>
     <h1 id="playing-a-game"> Playing a Game </h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
