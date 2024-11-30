@@ -81,7 +81,7 @@ saveBtn.addEventListener('click', () => {
   messages.broadcast('save-open');
 });
 document.addEventListener('keydown', (e) => {
-  if ((e.target === document) || (e.target.classList.contains('preview-element')) || (e.target === 'preview-container')) {
+  if ((e.target === document.body) || (e.target.classList.contains('preview-element')) || (e.target === document.getElementById('preview-container'))) {
     if (e.code === 'KeyS' && e.ctrlKey) {
       e.preventDefault();
       messages.broadcast('save-open');
