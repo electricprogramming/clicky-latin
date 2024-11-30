@@ -1,5 +1,5 @@
 (function() {
-  if (customElements.get('v-sep')) {
+  if (!customElements.get('v-sep')) {
     class VerticalSep extends HTMLElement {
       constructor() {
         super();
@@ -30,7 +30,7 @@
     }
     customElements.define('v-sep', VerticalSep);
   }
-  if (customElements.get('h-sep')) {
+  if (!customElements.get('h-sep')) {
     class HorizontalSep extends HTMLElement {
       constructor() {
         super();
