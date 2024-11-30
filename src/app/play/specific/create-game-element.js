@@ -79,7 +79,7 @@ export default function createGameElement(language, matchId, word) {
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
-            alert(`Congratulations! You completed ${JSON.stringify(gameName)} in ${timer.time} seconds with ${mistakeCount} mistakes!`)
+            alert(`Congratulations! You completed ${JSON.stringify(gameName)} in ${timer.time} seconds with ${mistakeCount} ${mistakeCount === 1? 'mistake' : 'mistakes'}!`)
           }, { once: true });
         }
       } else {
