@@ -11,6 +11,10 @@ const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375
     <text class="text-latin" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="300"></text>
   </g>
 </svg>`;
+/**
+ * @param {String} englishWord 
+ * @param {String} latinWord 
+ */
 export default function createPreviewElement(englishWord, latinWord) {
   const parser = new DOMParser();
   const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;

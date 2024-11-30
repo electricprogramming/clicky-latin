@@ -25,16 +25,26 @@ messages.on('new-pair', (englishWord, latinWord) => {
   latinWords.push(latinWord);
   createPreviewElement(englishWord, latinWord);
 });
-createPairBtn.addEventListener('click', () => {
+messages.on('new-pair-open', () => {
   createPairModal.style.display = 'flex';
   createPairEnglishInput.focus();
+});
+createPairBtn.addEventListener('click', () => {
+  messages.broadcast('new-pair-open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.target === document || e.target.classList.contains('preview-element') || e.target === 'preview-container') {
+    if (e.code === 'KeyN' && e.ctrlKey) {
+      messages.broadcast('new-pair-open');
+    }
+  }
 });
 createPairCancelBtn.addEventListener('click', () => {
   createPairModal.style.display = 'none';
   createPairEnglishInput.value = '';
   createPairLatinInput.value = '';
 });
-messages.on('new-pair-submit', () => {
+messages.on('new-pair-submitted', () => {
   const englishWord = createPairEnglishInput.value.trim();
   const latinWord = createPairLatinInput.value.trim();
   if (englishWord.length === 0 || latinWord.length === 0) {
@@ -53,17 +63,27 @@ messages.on('new-pair-submit', () => {
   }
 });
 createPairConfirmBtn.addEventListener('click', () => {
-  messages.broadcast('new-pair-submit');
+  messages.broadcast('new-pair-submitted');
 });
 createPairLatinInput.addEventListener('keydown', (e) => {
-  if (e.code === 'Enter') messages.broadcast('new-pair-submit');
+  if (e.code === 'Enter') messages.broadcast('new-pair-submitted');
 });
-saveBtn.addEventListener('click', () => {
+messages.on('save-open', () => {
   if (allWords.length >= 2) {
     saveModal.style.display = 'flex';
     saveNameInput.focus();
   } else {
     alert('Minimum 2 pairs required.');
+  }
+});
+saveBtn.addEventListener('click', () => {
+  messages.broadcast('save-open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.target === document || e.target.classList.contains('preview-element') || e.target === 'preview-container') {
+    if (e.code === 'KeyS' && e.ctrlKey) {
+      messages.broadcast('save-open');
+    }
   }
 });
 saveCancelBtn.addEventListener('click', () => {
