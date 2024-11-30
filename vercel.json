@@ -1,5 +1,5 @@
 {
-  "trailingSlash": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/", "destination": "/src/home.html" },
     { "source": "/create", "destination": "/src/app/create/index.html" },
