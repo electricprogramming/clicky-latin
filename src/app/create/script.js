@@ -35,6 +35,7 @@ createPairBtn.addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   if (e.target === document || e.target.classList.contains('preview-element') || e.target === 'preview-container') {
     if (e.code === 'KeyN' && e.ctrlKey) {
+      e.preventDefault();
       messages.broadcast('new-pair-open');
     }
   }
@@ -82,6 +83,7 @@ saveBtn.addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
   if (e.target === document || e.target.classList.contains('preview-element') || e.target === 'preview-container') {
     if (e.code === 'KeyS' && e.ctrlKey) {
+      e.preventDefault();
       messages.broadcast('save-open');
     }
   }
