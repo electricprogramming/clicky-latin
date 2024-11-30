@@ -16,6 +16,9 @@ const cloudSavingModal = document.getElementById('cloud-saving-modal');
 const cloudSavingText = document.getElementById('cloud-saving-text');
 const cloudSavingCopyURLbtn = document.getElementById('cloud-save-copyurl-btn');
 const cloudSavingDonebtn = document.getElementById('cloud-save-done-btn');
+window.addEventListener("beforeunload", (e) => {
+  e.preventDefault();
+});
 let englishWords = [];
 let latinWords = [];
 let allWords = [];

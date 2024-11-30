@@ -4,6 +4,9 @@ import api from '../../api.js';
 import createGameElement from './create-game-element.js';
 import loadGameNotFoundPage from './load-game-not-found-page.js';
 const loadingSpinner = document.getElementById('loading-spinner');
+window.addEventListener("beforeunload", (e) => {
+  e.preventDefault();
+});
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
     .then(gameData => 
