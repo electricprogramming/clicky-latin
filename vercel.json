@@ -9,8 +9,7 @@
           "key": "gameCode"
         }
       ],
-      "destination": "/play/:gameCode",
-      "permanent": true
+      "destination": "/play/:gameCode"
     },
     { "source": "/", "destination": "/src/home.html" },
     { "source": "/create", "destination": "/src/app/create/index.html" },
