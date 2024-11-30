@@ -1,7 +1,17 @@
 {
   "trailingSlash": false,
   "redirects": [
-    { "source": "/play?gameCode(.*)", "destination": "/play/:slug", "permanent": true }
+    {
+      "source": "/play",
+      "has": [
+        {
+          "type": "query",
+          "key": "gameCode"
+        }
+      ],
+      "destination": "/play/:gameCode",
+      "permanent": true
+    }
   ],
   "rewrites": [
     { "source": "/", "destination": "/src/home.html" },
