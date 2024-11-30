@@ -34,7 +34,7 @@ createPairBtn.addEventListener('click', () => {
 });
 document.addEventListener('keydown', (e) => {
   if ((e.target === document.body) || (e.target.classList.contains('preview-element')) || (e.target === document.getElementById('preview-container'))) {
-    if (e.code === 'KeyN' && e.ctrlKey) {
+    if (e.code === 'KeyN' && e.altKey) {
       e.preventDefault();
       messages.broadcast('new-pair-open');
     }
@@ -82,7 +82,7 @@ saveBtn.addEventListener('click', () => {
 });
 document.addEventListener('keydown', (e) => {
   if ((e.target === document.body) || (e.target.classList.contains('preview-element')) || (e.target === document.getElementById('preview-container'))) {
-    if (e.code === 'KeyS' && e.ctrlKey) {
+    if (e.code === 'KeyS' && e.altKey) {
       e.preventDefault();
       messages.broadcast('save-open');
     }
