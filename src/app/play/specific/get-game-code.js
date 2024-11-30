@@ -1,2 +1,2 @@
-const gameCode = (window.location.href.match(new RegExp(`${'clickylatin.vercel.app/play/'}(.*)`)) || [])[1]?.trim();
+const gameCode = new URL(window.location.href).pathname.replace('/play/', '');
 export default gameCode;
