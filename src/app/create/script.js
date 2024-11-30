@@ -33,7 +33,7 @@ createPairBtn.addEventListener('click', () => {
   messages.broadcast('new-pair-open');
 });
 document.addEventListener('keydown', (e) => {
-  if ((e.target === document) || (e.target.classList.contains('preview-element')) || (e.target === 'preview-container')) {
+  if ((e.target === document.body) || (e.target.classList.contains('preview-element')) || (e.target === document.getElementById('preview-container'))) {
     if (e.code === 'KeyN' && e.ctrlKey) {
       e.preventDefault();
       messages.broadcast('new-pair-open');
