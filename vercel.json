@@ -1,7 +1,7 @@
 {
   "trailingSlash": false,
   "redirects": [
-    { "source": "/play?gameCode=(.+)", "destination": "/play/:slug", "permanent": true }
+    { "source": "/play?gameCode(.*)", "destination": "/play/:slug", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/src/home.html" },
