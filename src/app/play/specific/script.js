@@ -3,6 +3,7 @@ import gameCode from './get-game-code.js';
 import api from '../../api.js';
 import createGameElement from './create-game-element.js';
 import loadGameNotFoundPage from './load-game-not-found-page.js';
+import timer from './timer.js';
 const loadingSpinner = document.getElementById('loading-spinner');
 window.addEventListener("beforeunload", (e) => {
   e.preventDefault();
@@ -39,6 +40,7 @@ if (gameName) {
     createGameElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
+  timer.reset();
 } else {
   loadGameNotFoundPage();
 }

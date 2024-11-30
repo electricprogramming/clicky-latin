@@ -5,6 +5,7 @@ import isInMatchDist from './is-in-match-dist.js';
 import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
 import createPairedElement from './create-paired-element.js';
 import isGameCompleted from './is-game-complete.js';
+import timer from './timer.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
@@ -17,6 +18,7 @@ const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" heig
     <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="150"></text>
   </g>
 </svg>`;
+let mistakeCount = 0;
 /**
  * @param {('English' | 'Latin')} language
  * @param {String} word
@@ -77,11 +79,12 @@ export default function createGameElement(language, matchId, word) {
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
-            alert(`Congratulations! You completed ${JSON.stringify(gameName)}!`)
+            alert(`Congratulations! You completed ${JSON.stringify(gameName)} in ${timer} seconds with ${mistakeCount} mistakes!`)
           }, { once: true });
         }
       } else {
         incorrectSound.play();
+        mistakeCount ++;
         const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
         el.style.top = (isEnglish? parseFloat(el.style.top) - (40 / 700 * vmin) : parseFloat(el.style.top) + (40 / 700 * vmin)) + 'px';
         {
