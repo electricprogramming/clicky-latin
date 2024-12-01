@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "puppeteer-core": "^10.1.0",
-    "chrome-aws-lambda": "^10.1.0"
+    "webshot": "^0.4.0"
   },
   "engines": {
     "node": "22.x"
