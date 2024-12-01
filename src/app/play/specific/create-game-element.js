@@ -45,12 +45,12 @@ export default function createGameElement(language, matchId, word) {
       el
     };
     const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}"]`))
-      .map((RETURN, otherEl) => {
-        RETURN({
+      .map((otherEl) => {
+        return {
           x: parseFloat(otherEl.style.left) || 0,
           y: parseFloat(otherEl.style.top) || 0,
           el: otherEl
-        });
+        };
       })
       .sort((otherPos1, otherPos2) => {
         const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;

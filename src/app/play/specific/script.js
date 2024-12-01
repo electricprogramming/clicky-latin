@@ -24,7 +24,7 @@ const { gameName, gameItems } = await new Promise((resolve, reject) => {
 if (gameName) {
   window.gameName = gameName;
   document.title = `Clicky Latin - Play \`${gameName}\``;
-  const allWords = gameItems.map((RETURN, pair, idx) => {
+  const allWords = gameItems.multiMap((RETURN, pair, idx) => {
     RETURN({
       language: 'English',
       matchId: 'E' + idx.toString(36),
