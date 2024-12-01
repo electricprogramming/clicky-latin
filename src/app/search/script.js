@@ -1,4 +1,4 @@
 const searchBar = document.getElementById('search-bar');
-if (sessionStorage.getItem('shouldFocusSearchbarInstantly')) {
+if (document.referrer === 'https://clickylatin.vercel.app') {
   searchBar.focus();
 }
