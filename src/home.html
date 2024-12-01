@@ -109,6 +109,11 @@
     <div class="heading">Clicky Latin</div>
     <p>Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.</p>
   </div>
+  <script>
+    document.querySelector('.link[href="/search"]').addEventListener('click', () => {
+      sessionStorage.set('shouldFocusSearchbarInstantly', 'true');
+    });
+  </script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
 </html>
