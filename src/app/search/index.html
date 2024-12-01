@@ -61,6 +61,16 @@
     #search-submit:active {
       filter: brightness(80%);
     }
+    #results-container {
+      max-width: 90vw;
+      padding-left: 4vw;
+      padding-right: 4vw;
+    }
+    .result-element {
+      width: 28vw;
+      height: auto;
+      margin: 4vw;
+    }
   </style>
   <script src="/src/seperator-elements.js"></script>
 </head>
@@ -75,6 +85,7 @@
       </g>
     </svg>
   </div>
+  <div id="results-container"></div>
   <script type="module" src="/src/app/search/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
