@@ -17,42 +17,17 @@
       flex-direction: column;
       height: 100vh;
     }
-    hr {
-      display: block;
-      border: 0;
-      height: 4px; /* Line thickness */
-      min-height: 4px;
-      background-color: #ccc; /* Line color */
-      width: 100vw;
-      margin: 20px auto; /* Center the line with margin on top and bottom */
-    }
-    #navigation-bar {
+    #top-bar {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      padding-top: 2vh;
-    }
-    a.link {
-      margin-left: 7.5vw;
-      margin-right: 7.5vw;
-      user-select: none;
-      text-decoration: none;           /* Remove underline */
-      font-family: 'Times New Roman', Times, serif;
-      color: white;
-      font-size: 15vmin;
-      transform: scale(1.0);
-      transition: transform 0.3s ease;
-    }
-    a.link:hover {
-      transform: scale(1.1);
-    }
-    #search-bar-container {
-      padding-right: 15vh;
+      margin: 2vh;
     }
     #search-bar {
       padding-left: 5vh;
       padding-right: 5vh; /* makes text/placeholder not hit the far edges of the box */
+      margin: 2vh 5vw;
       width: 40vw;
       height: 12.5vh;
       font-size: calc((100vh / 700) * 40);
@@ -72,41 +47,30 @@
       font-style: italic;
       font-size: calc((100vh / 700) * 40);
     }
-    #about-section {
-      padding-top: 2vh;
-      padding-bottom: 0vh;
-      padding-left: 5vw;
-      padding-right: 5vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    #search-submit {
+      width: 12.5vh;
+      height: auto;
+      margin: 2vmin;
+      clip-path: circle(50%);
+      transform: scale(1.0);
+      transition: transform 0.3s ease;
     }
-    .heading {
-      color: #fff;
-      font-family:'Times New Roman', Times, serif;
-      font-size: 20vmin;
-    }
-    p {
-      font-family:'Times New Roman', Times, serif;
-      font-size: 3.5vmax;
-      color: #fff;
-      text-indent: 5vw; 
-      text-align: justify;
+    #search-submit:hover {
+      transform: scale(1.1);
     }
   </style>
   <script src="/src/seperator-elements.js"></script>
 </head>
 <body>
-  <div id="navigation-bar">
-    <a class="link" href="/create" > Create </a>
-    <a class="link" href="/play"   >  Play  </a>
-    <a class="link" href="/search" > Search </a>
-  </div>
-  <hr/>
-  <div id="about-section">
-    <div class="heading">Clicky Latin</div>
-    <p>Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.</p>
+  <div id="top-bar">
+    <input id="search-bar" placeholder="Search..."/>
+    <svg id="search-submit" xmlns="http://www.w3.org/2000/svg" width="12.5vh" height="12.5vh" viewBox="0 0 100 100" fill="none">
+      <circle r="48" cx="50" cy="50" fill="#08f" stroke="#000" stroke-width="4"/>
+      <g stroke-width="8">
+        <circle r="20" cx="40" cy="40" fill="none" stroke="#006"/>
+        <line x1="54.14" y1="54.14" x2="80" y2="80" stroke="#006"/>
+      </g>
+    </svg>
   </div>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
