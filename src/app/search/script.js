@@ -1,4 +1,4 @@
-import showSearchResults from './show-search-results';
+import showSearchResults from './show-search-results.js';
 const searchBar = document.getElementById('search-bar');
 const searchSubmit = document.getElementById('search-submit');
 if (document.referrer === 'https://clickylatin.vercel.app/') {
