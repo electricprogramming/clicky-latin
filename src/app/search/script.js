@@ -4,7 +4,7 @@ const searchSubmit = document.getElementById('search-submit');
 if (document.referrer === 'https://clickylatin.vercel.app/') {
   searchBar.focus();
 }
-searchSubmit.addEventListener('click', function submitSearch () {
+function submitSearch () {
   searchBar.blur();
   const query = searchBar.value;
   fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
@@ -15,7 +15,8 @@ searchSubmit.addEventListener('click', function submitSearch () {
       alert('An error has occured while searching. Reloading the page...');
       window.location.reload(true);
     });
-});
+}
+searchSubmit.addEventListener('click', submitSearch);
 searchBar.addEventListener('keydown', e => {
   if (e.code === 'Enter') {
     submitSearch();
