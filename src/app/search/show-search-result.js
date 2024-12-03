@@ -12,7 +12,7 @@ export default function showSearchResult(gameId, gameName) {
   iframe.src = gameUrl;
   link.appendChild(iframe);
   const svgStr = `
-    <svg width="80vw" height="80vh">
+    <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
       <rect width="100%" height="100%" fill="lightblue" stroke="black" stroke-width="5%"/>
       <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Courier New">abc</text>
     </svg>
@@ -24,7 +24,6 @@ export default function showSearchResult(gameId, gameName) {
     width: svgEl.getBoundingClientRect().width,
     height: svgEl.getBoundingClientRect().height
   }
-  svgEl.style.userSelect = 'none';
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
   text.setAttribute('font-size', getFontSize(gameName, svgElSize.height, svgElSize.width));
