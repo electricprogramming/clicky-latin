@@ -22,16 +22,12 @@ export default function showSearchResult(gameId, gameName) {
   link.appendChild(svgEl);
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
-  const svgElSize = {
-    width: svgEl.getBoundingClientRect().width,
-    height: svgEl.getBoundingClientRect().height
-  }
-  text.setAttribute('font-size', getFontSize(gameName, svgElSize.height, svgElSize.width));
-  window.addEventListener('resize', () => {
+  function resizeText () {
     const svgElSize = {
       width: svgEl.getBoundingClientRect().width,
       height: svgEl.getBoundingClientRect().height
     }
-    text.setAttribute('font-size', getFontSize(gameName, svgElSize.height, svgElSize.width));
-  });
+    text.setAttribute('font-size', getFontSize(gameName, svgElSize.height - (svgElSize.width / 50), svgElSize.width - (svgElSize.width / 50)));
+  }
+  window.addEventListener('resize', resizeText);
 }
