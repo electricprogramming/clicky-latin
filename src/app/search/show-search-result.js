@@ -23,11 +23,13 @@ export default function showSearchResult(gameId, gameName) {
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
   function resizeText () {
-    const svgElSize = {
-      width: svgEl.getBoundingClientRect().width,
-      height: svgEl.getBoundingClientRect().height
+    if (svgEl) {
+      const svgElSize = {
+        width: svgEl.getBoundingClientRect().width,
+        height: svgEl.getBoundingClientRect().height
+      }
+      text.setAttribute('font-size', getFontSize(gameName, svgElSize.height - (svgElSize.width / 50), svgElSize.width - (svgElSize.width / 50)));
     }
-    text.setAttribute('font-size', getFontSize(gameName, svgElSize.height - (svgElSize.width / 50), svgElSize.width - (svgElSize.width / 50)));
   }
   resizeText();
   window.addEventListener('resize', resizeText);
