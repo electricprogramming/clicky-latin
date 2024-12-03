@@ -13,18 +13,25 @@ export default function showSearchResult(gameId, gameName) {
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
-      <rect width="100%" height="100%" fill="lightblue" stroke="black" stroke-width="5%"/>
+      <rect width="100%" height="100%" fill="#0c6" stroke="white" stroke-width="2%"/>
       <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Courier New">abc</text>
     </svg>
   `;
   const parser = new DOMParser();
   const svgEl = parser.parseFromString(svgStr, 'image/svg+xml').documentElement;
   link.appendChild(svgEl);
+  const text = svgEl.querySelector('text');
+  text.textContent = gameName;
   const svgElSize = {
     width: svgEl.getBoundingClientRect().width,
     height: svgEl.getBoundingClientRect().height
   }
-  const text = svgEl.querySelector('text');
-  text.textContent = gameName;
   text.setAttribute('font-size', getFontSize(gameName, svgElSize.height, svgElSize.width));
+  window.addEventListener('resize', () => {
+    const svgElSize = {
+      width: svgEl.getBoundingClientRect().width,
+      height: svgEl.getBoundingClientRect().height
+    }
+    text.setAttribute('font-size', getFontSize(gameName, svgElSize.height, svgElSize.width));
+  });
 }
