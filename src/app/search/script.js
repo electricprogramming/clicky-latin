@@ -4,13 +4,8 @@ const searchSubmit = document.getElementById('search-submit');
 if (document.referrer === 'https://clickylatin.vercel.app/') {
   searchBar.focus();
 }
-searchBar.addEventListener('keydown', e => {
-  if (e.code === 'Enter') {
-    searchSubmit.click();
-    searchBar.blur();
-  }
-});
-searchSubmit.addEventListener('click', () => {
+searchSubmit.addEventListener('click', function submitSearch () {
+  searchBar.blur();
   const query = searchBar.value;
   fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
     .then(response => response.json())
@@ -20,4 +15,9 @@ searchSubmit.addEventListener('click', () => {
       alert('An error has occured while searching. Reloading the page...');
       window.location.reload(true);
     });
+});
+searchBar.addEventListener('keydown', e => {
+  if (e.code === 'Enter') {
+    submitSearch();
+  }
 });
