@@ -29,5 +29,6 @@ export default function showSearchResult(gameId, gameName) {
     }
     text.setAttribute('font-size', getFontSize(gameName, svgElSize.height - (svgElSize.width / 50), svgElSize.width - (svgElSize.width / 50)));
   }
+  resizeText();
   window.addEventListener('resize', resizeText);
 }
