@@ -19,12 +19,12 @@ export default function showSearchResult(gameId, gameName) {
   `;
   const parser = new DOMParser();
   const svgEl = parser.parseFromString(svgStr, 'image/svg+xml').documentElement;
-  svgEl.style.userSelect = 'none';
   link.appendChild(svgEl);
   const svgElSize = {
     width: svgEl.getBoundingClientRect().width,
     height: svgEl.getBoundingClientRect().height
   }
+  svgEl.style.userSelect = 'none';
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
   text.setAttribute('font-size', getFontSize(gameName, svgElSize.height, svgElSize.width));
