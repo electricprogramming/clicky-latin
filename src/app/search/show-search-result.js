@@ -11,6 +11,9 @@ export default function showSearchResult(gameId, gameName) {
   const iframe = document.createElement('iframe');
   iframe.src = gameUrl;
   link.appendChild(iframe);
+  setTimeout(() => {
+    iframe.contentWindow.stop();
+  }, 2000);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
       <rect width="100%" height="100%" fill="#0c6" stroke="white" stroke-width="2%"/>
