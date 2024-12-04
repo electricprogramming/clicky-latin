@@ -10,6 +10,12 @@ export default function showSearchResult(gameId, gameName) {
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
   iframe.src = gameUrl;
+  const interval = setInterval(() => {
+    if (iframe.contentWindow.isGameLoaded) {
+      iframe.sandbox = '';
+      clearInterval(interval);
+    }
+  }, 100)
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">

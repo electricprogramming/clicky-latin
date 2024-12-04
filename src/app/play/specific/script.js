@@ -41,6 +41,7 @@ if (gameName) {
   });
   loadingSpinner.style.display = 'none';
   timer.reset();
+  window.isGameLoaded = true;
 } else {
   loadGameNotFoundPage();
 }
