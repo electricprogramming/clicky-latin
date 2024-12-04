@@ -11,7 +11,11 @@ export default function showSearchResult(gameId, gameName) {
   const iframe = document.createElement('iframe');
   iframe.src = gameUrl;
   link.appendChild(iframe);
-  iframe.contentWindow?.document?.body?.style?.pointerEvents = 'none';
+  try {
+    iframe.contentWindow.document.body.style.pointerEvents = 'none';
+  } catch (e) {
+    console.error(e)
+  }
   iframe.contentWindow.postMessage('freeze', '*');
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
