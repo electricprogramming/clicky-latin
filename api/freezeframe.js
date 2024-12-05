@@ -1,76 +1,31 @@
-import puppeteer from 'puppeteer-core';
-import chromium from 'chrome-aws-lambda';
+const puppeteer = require('puppeteer-core');
+const chromium = require('chrome-aws-lambda');
 
 export default async function handler(req, res) {
-  // Launch Puppeteer with Chromium in AWS Lambda environment
-  const browser = await puppeteer.launch({
-    args: chromium.args,
-    executablePath: await chromium.executablePath,
-    headless: true
-  });
+  let browser = null;
+  try {
+    // Launch Puppeteer using the executablePath from chrome-aws-lambda
+    browser = await puppeteer.launch({
+      executablePath: await chromium.executablePath, // Path to the compatible Chromium binary from chrome-aws-lambda
+      args: chromium.args, // Arguments required for running Chromium in serverless environments
+      headless: chromium.headless, // Ensure Chromium runs in headless mode
+      defaultViewport: chromium.defaultViewport, // Set a default viewport
+    });
 
-  const page = await browser.newPage();
+    // Create a new page and set its content
+    const page = await browser.newPage();
+    await page.setContent('<html><body><h1>Freezeframe Screenshot</h1></body></html>'); // Example HTML content
+    const screenshot = await page.screenshot(); // Take a screenshot
 
-  // Create an artificial HTML document with CSS and JS
-  const content = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          margin: 0;
-          background-color: #f0f0f0;
-        }
-        .container {
-          text-align: center;
-          background: white;
-          border-radius: 10px;
-          padding: 20px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-          color: #333;
-        }
-        .dynamic {
-          color: #007BFF;
-        }
-      </style>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const dynamicText = document.querySelector('.dynamic');
-          dynamicText.textContent = 'Hello, Vercel Screenshot!';
-        });
-      </script>
-    </head>
-    <body>
-      <div class="container">
-        <h1>My Dynamic Document</h1>
-        <p class="dynamic">Loading...</p>
-      </div>
-    </body>
-    </html>
-  `;
+    res.setHeader('Content-Type', 'image/png');
+    res.status(200).send(screenshot); // Send the screenshot as a response
 
-  // Set the page content
-  await page.setContent(content);
-
-  // Wait for the page to load and the JS to run
-  await page.waitForSelector('.dynamic');
-
-  // Capture a screenshot of the page
-  const screenshotBuffer = await page.screenshot();
-
-  // Close the browser instance
-  await browser.close();
-
-  // Set the response headers and return the screenshot as an image
-  res.setHeader('Content-Type', 'image/png');
-  res.status(200).send(screenshotBuffer);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to generate screenshot');
+  } finally {
+    if (browser) {
+      await browser.close(); // Ensure the browser is closed to free up resources
+    }
+  }
 }
