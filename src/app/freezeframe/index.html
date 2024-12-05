@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="Clicky Latin" content="Clicky Latin is a software designed specifically with the goal of helping students to learn Latin via drag-and-drop technology and responsive audio feedback.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicky Latin</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    html, body {
+      background-color: #333;
+      overflow: hidden;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+    }
+    #loading-spinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+    }
+    /* Spin animation */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(-20deg); }
+      25% { transform: translate(-50%, -50%) rotate(55deg); }
+      50% { transform: translate(-50%, -50%) rotate(160deg);}
+      75% { transform: translate(-50%, -50%) rotate(265deg);}
+      100% { transform: translate(-50%, -50%) rotate(340deg); }
+    }
+    #game-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .game-element {
+      position: fixed;
+      height: 12vmin;
+      width: auto;
+      user-select: none;
+      cursor: grab;
+      z-index: 20;
+    }
+    .game-element[lang="English"] {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 74% 100%, 66% 69%, 34% 69%, 26% 100%, 0% 100%);
+    }
+    .game-element[lang="Latin"] {
+      clip-path: polygon(0% 100%, 100% 100%, 100% 31%, 76% 31%, 68% 0%, 32% 0%, 24% 31%, 0% 31%);
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-spinner"></div>
+  <div id="game-container"></div>
+  <script type="module" src="/src/app/play/freezeframe/script.js"></script>
+  <script type="module" src="/src/get-recent-deployment-msg.js"></script>
+</body>
+</html>

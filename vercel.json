@@ -11,11 +11,24 @@
       ],
       "destination": "/play/:gameCode"
     },
+    {
+      "source": "/freezeframe",
+      "has": [
+        {
+          "type": "query",
+          "key": "gameCode"
+        }
+      ],
+      "destination": "/freezeframe/:gameCode"
+    },
     { "source": "/", "destination": "/src/home.html" },
     { "source": "/create", "destination": "/src/app/create/index.html" },
     { "source": "/play", "destination": "/src/app/play/entrypoint/index.html" },
     { "source": "/play/(.+)", "destination": "/src/app/play/specific/index.html" },
     { "source": "/search", "destination": "/src/app/search/index.html" },
     { "source": "/(.*)", "destination": "/src/404.html" }
+  ],
+  "routes": [
+    { "src": "/freezeframe/(.+)", "dest": "/src/app/freezeframe/index.js" }
   ]
 }

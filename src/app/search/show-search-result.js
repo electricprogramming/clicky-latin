@@ -1,21 +1,14 @@
 import getFontSize from '../get-font-size.js';
 const container = document.getElementById('results-container');
 export default function showSearchResult(gameId, gameName) {
-  const gameUrl = `https://clickylatin.vercel.app/play/${gameId}`;
   const elementContainer = document.createElement('div');
   const link = document.createElement('a');
   elementContainer.appendChild(link);
   elementContainer.classList.add('result-element');
-  link.setAttribute('href', gameUrl);
+  link.setAttribute('href', `https://clickylatin.vercel.app/play/${gameId}`);
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
-  iframe.src = gameUrl;
-  const interval = setInterval(() => {
-    if (iframe.contentWindow.isGameLoaded) {
-      iframe.sandbox = '';
-      clearInterval(interval);
-    }
-  }, 100);
+  iframe.src = `https://clickylatin.vercel.app/freezeframe/${gameId}`;
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">

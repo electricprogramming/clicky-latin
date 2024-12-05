@@ -1,0 +1,16 @@
+{
+  "name": "freezeframe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "puppeteer-core": "^19.0.0",
+    "chrome-aws-lambda": "^10.0.0"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
