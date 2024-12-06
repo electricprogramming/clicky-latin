@@ -1,5 +1,7 @@
 /**
- * @param {HTMLElement} el
+ * @param {HTMLElement} el 
+ * @param {function?} startDragFunc
+ * @param {function?} endDragFunc
  */
 export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   let isDragging = false;

@@ -1,3 +1,7 @@
+/**
+ * @param {Array<any>} array 
+ * @returns {Array}
+ */
 Array.shuffle = function(array) {
   let arr = [...array];
   for (let i = 0; i < 4; i++) {
@@ -6,6 +10,10 @@ Array.shuffle = function(array) {
   }
   return arr;
 };
+/**
+ * @param {Array<any>} array 
+ * @returns {Array}
+ */
 Array.prototype.multiMap = function(callback) {
   return this.map((item, idx, arr) => {
     let returnedItems = [];
@@ -16,11 +24,18 @@ Array.prototype.multiMap = function(callback) {
     return returnedItems;
   }).flat(1);
 }
+/**
+ * @param {function} callback 
+ */
 Object.prototype.forEach = function(callback) {
   Object.entries(this).forEach(([key, value]) => {
     callback(key, value);
   });
 }
+/**
+ * @param  {...any} items 
+ * @returns {boolean}
+ */
 Array.prototype.includesAll = function(...items) {
   items.forEach((item) => {
     if (!this.includes(item)) return false;

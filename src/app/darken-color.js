@@ -1,7 +1,7 @@
 /**
- * @param {String} hex 
- * @param {Number} amount 
- * @returns {String}
+ * @param {string} hex 
+ * @param {number} amount 
+ * @returns {string}
  */
 export default function darkenColor(hex, amount = 30) {
   hex = hex.replace('#', '');

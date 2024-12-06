@@ -9,7 +9,13 @@ const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375">
     <text class="text-latin" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="300"></text>
   </g>
 </svg>`;
-export default function createPreviewElement(englishWord, latinWord, left, top) {
+/**
+ * @param {string} englishWord 
+ * @param {string} latinWord 
+ * @param {number} left 
+ * @param {number} top 
+ */
+export default function createPairedElement(englishWord, latinWord, left, top) {
   const parser = new DOMParser();
   const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
   const englishText = el.querySelector('.text-english');

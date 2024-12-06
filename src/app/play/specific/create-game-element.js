@@ -21,7 +21,7 @@ const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" heig
 let mistakeCount = 0;
 /**
  * @param {('English' | 'Latin')} language
- * @param {String} word
+ * @param {string} word
  */
 export default function createGameElement(language, matchId, word) {
   const isEnglish = (language === 'English');

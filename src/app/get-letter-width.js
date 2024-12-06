@@ -1,6 +1,6 @@
 /**
- * @param {Number} fontSize 
- * @returns {Number}
+ * @param {number} fontSize 
+ * @returns {number}
  */
 export default function getLetterWidth(fontSize) {
   // Create a temporary canvas to measure text width

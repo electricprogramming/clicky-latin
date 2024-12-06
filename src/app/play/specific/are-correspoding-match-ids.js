@@ -1,8 +1,7 @@
 /**
- * 
- * @param {String} matchId1 
- * @param {String} matchId2 
- * @returns {Boolean}
+ * @param {string} matchId1 
+ * @param {string} matchId2 
+ * @returns {boolean}
  */
 export default function areCorrespondingMatchIds(matchId1, matchId2) {
   const lang1 = matchId1.substring(0,1), lang2 = matchId2.substring(0,1),

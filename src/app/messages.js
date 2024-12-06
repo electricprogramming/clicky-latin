@@ -6,6 +6,11 @@ class messageSystem {
   get handlers() {
     return this.#handlers.map(({ messageName, handler }) => ({ messageName, handler }));
   }
+  /**
+   * @param {string} messageName 
+   * @param {function} handler 
+   * @returns {boolean}
+   */
   on(messageName, handler) {
     if (messageName == null) return false;
     if (typeof handler !== 'function') return false;
@@ -13,6 +18,11 @@ class messageSystem {
     this.#handlers.push({ messageName, handler })
     return true;
   }
+  /**
+   * @param {string} message 
+   * @param  {...any} args 
+   * @returns {boolean}
+   */
   broadcast(message, ...args) {
     if (typeof message !== 'string') return false;
     let flag = false;

@@ -1,9 +1,9 @@
 import getLetterWidth from './get-letter-width.js';
 /**
  * 
- * @param {String} txt 
- * @param {Number} maxSize?
- * @param {Number} widthToFit?
+ * @param {string} txt 
+ * @param {number} maxSize?
+ * @param {number} widthToFit?
  * @returns 
  */
 export default function getFontSize(txt, maxSize = 140, widthToFit = 575) {

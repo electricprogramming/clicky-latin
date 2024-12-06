@@ -1,5 +1,9 @@
 import getFontSize from '../get-font-size.js';
 const container = document.getElementById('results-container');
+/**
+ * @param {number} gameId 
+ * @param {string} gameName 
+ */
 export default function showSearchResult(gameId, gameName) {
   const elementContainer = document.createElement('div');
   const link = document.createElement('a');

@@ -1,10 +1,9 @@
 import errorSize from './error-size.js';
 import pythagoras from './pythagoras.js';
 /**
- * 
- * @param {{x: Number y: Number}} a 
- * @param {{x: Number y: Number}} b 
- * @returns {Boolean}
+ * @param {{x: number, y: number}} English
+ * @param {{x: number, y: number}} Latin
+ * @returns {boolean}
  */
 export default function isInMatchDist(English, Latin) {
   const boxHeight = English.el.getBoundingClientRect().height;

@@ -12,8 +12,8 @@ const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375
   </g>
 </svg>`;
 /**
- * @param {String} englishWord 
- * @param {String} latinWord 
+ * @param {string} englishWord 
+ * @param {string} latinWord 
  */
 export default function createPreviewElement(englishWord, latinWord) {
   const parser = new DOMParser();
