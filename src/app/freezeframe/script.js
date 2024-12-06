@@ -43,6 +43,7 @@ if (gameName) {
       const img = document.createElement('img');
       img.src = pngUrl;
       img.id = 'freezeframe';
+      document.body.appendChild(img);
     });
 } else {
   loadGameNotFoundPage();
