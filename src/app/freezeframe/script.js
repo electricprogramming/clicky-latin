@@ -1,13 +1,9 @@
-import '../../globalMods.js';
+import '../globalMods.js';
 import gameCode from './get-game-code.js';
-import api from '../../api.js';
-import createGameElement from './create-game-element.js';
-import loadGameNotFoundPage from './load-game-not-found-page.js';
-import timer from './timer.js';
+import api from '../api.js';
+import createElement from './create-element.js';
+import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
 const loadingSpinner = document.getElementById('loading-spinner');
-window.addEventListener("beforeunload", (e) => {
-  e.preventDefault();
-});
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
     .then(gameData => 
@@ -37,10 +33,17 @@ if (gameName) {
     });
   });
   Array.shuffle(allWords).forEach(({language, matchId, word}) => {
-    createGameElement(language, matchId, word);
+    createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  timer.reset();
+  html2canvas(document.body)
+    .then(canvas => canvas.toDataURL())
+    .then(pngUrl => {
+      document.getElementById('game-container').remove();
+      const img = document.createElement('img');
+      img.src = pngUrl;
+      img.id = 'freezeframe';
+    });
 } else {
   loadGameNotFoundPage();
 }
