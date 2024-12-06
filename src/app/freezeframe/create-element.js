@@ -1,5 +1,4 @@
-import getFontSize from '../../get-font-size.js';
-import { clickSound, incorrectSound } from './sound-effects.js';
+import getFontSize from '../get-font-size.js'
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
     <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
