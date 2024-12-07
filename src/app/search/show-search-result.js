@@ -7,7 +7,7 @@ const container = document.getElementById('results-container');
 export default function showSearchResult(gameId, gameName) {
   const elementContainer = document.createElement('div');
   function generateRandomUID() {
-    const randomBuffer = new Uint8Array(8);
+    const randomBuffer = new Uint8Array(20);
     window.crypto.getRandomValues(randomBuffer);
     return Array.from(randomBuffer, byte => byte.toString(16).padStart(2, '0')).join('');
   }

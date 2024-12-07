@@ -16,6 +16,17 @@ const api = {
         });
     });
   },
+  SEARCH: async (query) => {
+    return new Promise((resolve, reject) => {
+      fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
+    });
+  },
   /**
    * @param {{name: number, items: Array}} toPost 
    * @returns {Promise<number>}

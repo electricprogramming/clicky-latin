@@ -1,3 +1,4 @@
+import api from '../api.js';
 import showSearchResults from './show-search-results.js';
 const searchBar = document.getElementById('search-bar');
 const searchSubmit = document.getElementById('search-submit');
@@ -7,8 +8,7 @@ if (document.referrer === 'https://clickylatin.vercel.app/') {
 function submitSearch () {
   searchBar.blur();
   const query = searchBar.value;
-  fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
-    .then(response => response.json())
+  api.SEARCH(query)
     .then(results => showSearchResults(results))
     .catch(err => {
       console.error(err);
