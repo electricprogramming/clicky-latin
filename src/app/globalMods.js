@@ -49,5 +49,10 @@ Element.prototype.remove = function() {
         cancelable: false
     });
     this.dispatchEvent(removeEvent);
+    if (this.children.length > 0) {
+      Array.from(this.children).forEach(child => {
+          child.dispatchEvent(removeEvent);
+      });
+    }
     originalRemove.call(this);
 };

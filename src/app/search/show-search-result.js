@@ -6,6 +6,13 @@ const container = document.getElementById('results-container');
  */
 export default function showSearchResult(gameId, gameName) {
   const elementContainer = document.createElement('div');
+  function generateRandomUID() {
+    const randomBuffer = new Uint8Array(8);
+    window.crypto.getRandomValues(randomBuffer);
+    return Array.from(randomBuffer, byte => byte.toString(16).padStart(2, '0')).join('');
+  }
+  const elId = generateRandomUID();
+  elementContainer.id = elId;
   const link = document.createElement('a');
   elementContainer.appendChild(link);
   elementContainer.classList.add('result-element');
@@ -26,7 +33,7 @@ export default function showSearchResult(gameId, gameName) {
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
   function resizeText() {
-    if (svgEl && text) {
+    if (document.getElementById(String(elId))) {
       const svgElSize = {
         width: svgEl.getBoundingClientRect().width,
         height: svgEl.getBoundingClientRect().height
@@ -36,7 +43,4 @@ export default function showSearchResult(gameId, gameName) {
   }
   resizeText();
   window.addEventListener('resize', resizeText);
-  elementContainer.addEventListener('remove', () => {
-    window.removeEventListener('resize', resizeText);
-  });
 }
