@@ -58,7 +58,7 @@
     .game-element[lang="Latin"] {
       clip-path: polygon(0% 100%, 100% 100%, 100% 31%, 76% 31%, 68% 0%, 32% 0%, 24% 31%, 0% 31%);
     }
-    img #freezeframe {
+    img #freezeframe-image {
       max-width: 100vw;
       max-height: 100vw;
       width: auto;
@@ -69,7 +69,7 @@
 <body>
   <div id="loading-spinner"></div>
   <div id="game-container"></div>
-  <script src="/src/app/freezeframe/html2canvas.js"></script>
+  <script src="/src/app/freezeframe/dom-to-image.js"></script>
   <script type="module" src="/src/app/freezeframe/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>

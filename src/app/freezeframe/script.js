@@ -3,6 +3,7 @@ import gameCode from './get-game-code.js';
 import api from '../api.js';
 import createElement from './create-element.js';
 import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
+const gameContainer = document.getElementById('game-container');
 const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
@@ -36,15 +37,15 @@ if (gameName) {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  html2canvas(document.getElementById('game-container'))
-    .then(canvas => canvas.toDataURL())
-    .then(pngUrl => {
-      document.getElementById('game-container').remove();
+  domtoimage.toPng(gameContainer)
+    .then(pngUri => {
       const img = document.createElement('img');
-      img.src = pngUrl;
-      img.id = 'freezeframe';
-      document.body.appendChild(img);
-    });
+      img.src = pngUri;
+      img.alt = 'Image not found';
+      img.id = 'freezeframe-image';
+      gameContainer.remove();
+      document.body.appendChild('')
+    })
 } else {
   loadGameNotFoundPage();
 }
