@@ -44,6 +44,11 @@
       width: 100%;
       height: 100%;
     }
+    #game-container #backdrop {
+      width: 100%;
+      height: 100%;
+      background-color: #333;
+    }
     .game-element {
       position: fixed;
       height: 12vmin;
@@ -63,12 +68,18 @@
       max-height: 100vw;
       width: auto;
       height: auto;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
 <body>
   <div id="loading-spinner"></div>
-  <div id="game-container"></div>
+  <div id="game-container">
+    <div id="backdrop"></div>
+  </div>
   <script src="/src/app/freezeframe/dom-to-image.js"></script>
   <script type="module" src="/src/app/freezeframe/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
