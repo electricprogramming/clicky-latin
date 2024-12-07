@@ -45,6 +45,7 @@ if (gameName) {
       img.id = 'freezeframe-image';
       gameContainer.remove();
       document.body.appendChild(img);
+      img.style.transform = 'translate(-5px, -5px)'; // Account for image offset
     });
 } else {
   loadGameNotFoundPage();
