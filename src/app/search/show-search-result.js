@@ -25,8 +25,8 @@ export default function showSearchResult(gameId, gameName) {
   link.appendChild(svgEl);
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
-  function resizeText () {
-    if (svgEl) {
+  function resizeText() {
+    if (svgEl && text) {
       const svgElSize = {
         width: svgEl.getBoundingClientRect().width,
         height: svgEl.getBoundingClientRect().height
@@ -36,4 +36,7 @@ export default function showSearchResult(gameId, gameName) {
   }
   resizeText();
   window.addEventListener('resize', resizeText);
+  elementContainer.addEventListener('remove', () => {
+    window.removeEventListener('resize', resizeText);
+  });
 }
