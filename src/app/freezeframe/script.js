@@ -36,7 +36,7 @@ if (gameName) {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  html2canvas(document.body)
+  html2canvas(document.getElementById('game-container'))
     .then(canvas => canvas.toDataURL())
     .then(pngUrl => {
       document.getElementById('game-container').remove();
