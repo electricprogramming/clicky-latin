@@ -3,7 +3,7 @@ const api = {
    * @param {number} id 
    * @returns {Promise<{ name: string, items: Array<string> }>}
    */
-  GET: async (id) => {
+  GET: async function(id) {
     return new Promise((resolve, reject) => {
       fetch(`https://clickylatin-api.glitch.me?id=${String(id)}`)
         .then(res => res.json())
@@ -16,7 +16,11 @@ const api = {
         });
     });
   },
-  SEARCH: async (query) => {
+  /**
+   * @param {string} query 
+   * @returns {Promise<Array<{id: number, name: string, items: Array<string>}>>}
+   */
+  SEARCH: async function(query) {
     return new Promise((resolve, reject) => {
       fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
         .then(res => res.json())
@@ -28,10 +32,10 @@ const api = {
     });
   },
   /**
-   * @param {{name: number, items: Array}} toPost 
+   * @param {({name: string, items: Array})} toPost 
    * @returns {Promise<number>}
    */
-  POST: async (toPost) => {
+  POST: async function(toPost) {
     return new Promise((resolve, reject) => {
       fetch('https://clickylatin-api.glitch.me', {
         method: 'POST',
@@ -51,7 +55,7 @@ const api = {
    * @param {number} id 
    * @returns {Promise}
    */
-  DELETE: async (id) => {
+  DELETE: async function(id) {
     return new Promise((resolve, reject) => {
       fetch('https://clickylatin-api.glitch.me', {
         method: 'DELETE',
@@ -70,7 +74,7 @@ const api = {
   /**
    * @returns {Promise<Array<{ name: string, items: Array<string> }> >}
    */
-  ALL: async () => {
+  ALL: async function() {
     return new Promise((resolve, reject) => {
     fetch('https://clickylatin-api.glitch.me/all')
       .then(res => res.json())
