@@ -44,7 +44,7 @@ if (gameName) {
       img.alt = 'Image not found';
       img.id = 'freezeframe-image';
       gameContainer.remove();
-      document.body.appendChild('')
+      document.body.appendChild(img);
     })
 } else {
   loadGameNotFoundPage();
