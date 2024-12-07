@@ -37,10 +37,7 @@ if (gameName) {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  domtoimage.toPng(gameContainer, {
-    width: gameContainer.getBoundingClientRect().width * 5,
-    height: gameContainer.getBoundingClientRect().width * 5
-  })
+  domtoimage.toPng(gameContainer)
     .then(pngUri => {
       const img = document.createElement('img');
       img.src = pngUri;
