@@ -38,8 +38,8 @@ if (gameName) {
   });
   loadingSpinner.style.display = 'none';
   domtoimage.toPng(gameContainer, {
-    width: gameContainer.getBoundingClientRect().width * 20,
-    height: gameContainer.getBoundingClientRect().width * 20
+    width: gameContainer.getBoundingClientRect().width * 5,
+    height: gameContainer.getBoundingClientRect().width * 5
   })
     .then(pngUri => {
       const img = document.createElement('img');
