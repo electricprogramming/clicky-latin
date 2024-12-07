@@ -37,10 +37,10 @@ if (gameName) {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  domtoimage.toPng(gameContainer)
-    .then(pngUri => {
+  domtoimage.toJpeg(gameContainer)
+    .then(jpgUri => {
       const img = document.createElement('img');
-      img.src = pngUri;
+      img.src = jpgUri;
       img.alt = 'Image not found';
       img.id = 'freezeframe-image';
       gameContainer.remove();
