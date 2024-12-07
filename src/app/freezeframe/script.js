@@ -40,7 +40,7 @@ if (gameName) {
   domtoimage.toPng(gameContainer, {
     width: gameContainer.getBoundingClientRect().width * 2,
     height: gameContainer.getBoundingClientRect().width * 2
-  });
+  })
     .then(pngUri => {
       const img = document.createElement('img');
       img.src = pngUri;
