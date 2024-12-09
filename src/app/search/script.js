@@ -19,8 +19,8 @@ function submitSearch () {
 const query = new URLSearchParams(window.location.search).get('q');
 if (query) {
   searchBar.value = query;
-  submitSearch()
 }
+submitSearch();
 searchSubmit.addEventListener('click', submitSearch);
 searchBar.addEventListener('keydown', e => {
   if (e.code === 'Enter') {
