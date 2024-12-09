@@ -5,6 +5,7 @@ import isInMatchDist from './is-in-match-dist.js';
 import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
 import createPairedElement from './create-paired-element.js';
 import isGameCompleted from './is-game-complete.js';
+import msToMinAndSec from '../../ms-to-min-ans-sec.js';
 import timer from './timer.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
@@ -79,7 +80,13 @@ export default function createGameElement(language, matchId, word) {
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
-            alert(`Congratulations! You completed ${JSON.stringify(gameName)} in ${timer.time} seconds with ${mistakeCount} ${mistakeCount === 1? 'mistake' : 'mistakes'}!`)
+            alert(`Congratulations! You completed ${JSON.stringify(gameName)} ${(function() { // iife to get the time taken
+              const res = msToMinAndSec(timer.time);
+              if (res.minutes > 0) 
+                return `in ${res.minutes} minutes and ${res.seconds} seconds`;
+              else 
+                return `in ${res.seconds} seconds`;
+            })()} with ${mistakeCount} ${mistakeCount === 1? 'mistake' : 'mistakes'}!`)
           }, { once: true });
         }
       } else {

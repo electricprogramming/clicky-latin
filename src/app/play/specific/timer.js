@@ -7,7 +7,7 @@ const timer = new (class {
     this.#time = Date.now();
   }
   get time() {
-    return (Date.now() - this.#time) / 1000;
+    return (Date.now() - this.#time);
   }
 });
 export default timer;
