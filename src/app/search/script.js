@@ -2,14 +2,19 @@ import api from '../api.js';
 import showSearchResults from './show-search-results.js';
 const searchBar = document.getElementById('search-bar');
 const searchSubmit = document.getElementById('search-submit');
+const loadingSpinner = document.getElementById('loading-spinner');
 if (document.referrer === 'https://clickylatin.vercel.app/') {
   searchBar.focus();
 }
 function submitSearch () {
   searchBar.blur();
   const query = searchBar.value;
+  loadingSpinner.style.display = 'block';
   api.SEARCH(query)
-    .then(results => showSearchResults(results))
+    .then(results => {
+      showSearchResults(results);
+      loadingSpinner.style.display = 'none';
+    })
     .catch(err => {
       console.error(err);
       alert('An error has occured while searching. Reloading the page...');
