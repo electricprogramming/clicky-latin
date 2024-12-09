@@ -5,7 +5,7 @@ import isInMatchDist from './is-in-match-dist.js';
 import areCorrespondingMatchIds from './are-correspoding-match-ids.js';
 import createPairedElement from './create-paired-element.js';
 import isGameCompleted from './is-game-complete.js';
-import msToMinAndSec from '../../ms-to-min-ans-sec.js';
+import msToMinAndSec from '../../ms-to-min-and-sec.js';
 import timer from './timer.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
