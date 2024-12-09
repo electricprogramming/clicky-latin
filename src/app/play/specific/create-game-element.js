@@ -82,10 +82,10 @@ export default function createGameElement(language, matchId, word) {
           clickSound.addEventListener('ended', () => {
             alert(`Congratulations! You completed ${JSON.stringify(gameName)} ${(function() { // iife to get the time taken
               const res = msToMinAndSec(timer.time);
-              if (res.minutes > 0) 
-                return `in ${res.minutes} minutes and ${res.seconds} seconds`;
+              if (res.minutes > 0)
+                return `in ${res.minutes} ${res.minutes === 1? 'minute' : 'minutes'} and ${res.seconds} ${res.seconds === 1? 'second' : 'seconds'}`;
               else 
-                return `in ${res.seconds} seconds`;
+                return `in ${res.seconds} ${res.seconds === 1? 'second' : 'seconds'}`;
             })()} with ${mistakeCount} ${mistakeCount === 1? 'mistake' : 'mistakes'}!`)
           }, { once: true });
         }
