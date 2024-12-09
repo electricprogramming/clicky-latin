@@ -12,8 +12,8 @@ function submitSearch () {
   loadingSpinner.style.display = 'block';
   api.SEARCH(query)
     .then(results => {
-      showSearchResults(results);
       loadingSpinner.style.display = 'none';
+      showSearchResults(results);
     })
     .catch(err => {
       console.error(err);
