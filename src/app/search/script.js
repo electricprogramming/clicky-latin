@@ -9,6 +9,7 @@ if (document.referrer === 'https://clickylatin.vercel.app/') {
 function submitSearch () {
   searchBar.blur();
   const query = searchBar.value;
+  document.querySelectorAll('.result-element').forEach(el => el.remove());
   loadingSpinner.style.display = 'block';
   api.SEARCH(query)
     .then(results => {
