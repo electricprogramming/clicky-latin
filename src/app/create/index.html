@@ -34,32 +34,6 @@
     .button:hover {
       transform: scale(1.1);
     }
-    #unlisted-toggle {
-      position: relative;
-      background-color: #ccc;
-      width: 6vmin;
-      height: 3.5vmin;
-      border-radius: 1.75vmin;
-      cursor: pointer;
-      transition: background-color 0.4s;
-    }
-    #unlisted-toggle:before {
-      content: "";
-      position: absolute;
-      height: 3vmin;
-      width: 3vmin;
-      border-radius: 1.5vmin;
-      left: 0.25vmin;
-      top: 0.25vmin;
-      background-color: white;
-      transition: transform 0.4s;
-    }
-    #unlisted-toggle.on {
-      background-color: #4CAF50;
-    }
-    #unlisted-toggle.on:before {
-      transform: translateX(2.5vmin);
-    }
     .modal-backdrop {
       position: fixed;
       top: 0;
@@ -160,11 +134,12 @@
     }
     #save-name-input {
       position: absolute;
+      box-sizing: border-box;
       top: 10%;
       left: 10%;
       padding-left: 2.5%;
       padding-right: 2.5%;
-      width: 75%;
+      width: 80%;
       height: 30%;
       color: #fff;
       font-style: normal;
@@ -173,14 +148,43 @@
       border-radius: 1vh;
       background-color: #333;
     }
+    #unlisted-toggle {
+      position: absolute;
+      top: 48%;
+      left: 10%;
+      background-color: #ccc;
+      width: 6vmin;
+      height: 3.5vmin;
+      border-radius: 1.75vmin;
+      cursor: pointer;
+      transition: background-color 0.4s;
+    }
+    #unlisted-toggle:before {
+      content: "";
+      position: absolute;
+      height: 3vmin;
+      width: 3vmin;
+      border-radius: 1.5vmin;
+      left: 0.25vmin;
+      top: 0.25vmin;
+      background-color: white;
+      transition: transform 0.4s;
+    }
+    #unlisted-toggle.on {
+      background-color: #4CAF50;
+    }
+    #unlisted-toggle.on:before {
+      transform: translateX(2.5vmin);
+    }
     #save-cancel-btn {
+      box-sizing: border-box;
       cursor: pointer;
       user-select: none;
       position: absolute;
       bottom: 10%;
       left: 10%;
       width: 35%;
-      height: 20%;
+      height: 25%;
       background-color: #f00;
       border-radius: 1.5vh;
       border: #000 solid;
@@ -195,13 +199,14 @@
       transform: scale(1.1);
     }
     #save-confirm-btn {
+      box-sizing: border-box;
       cursor: pointer;
       user-select: none;
       position: absolute;
       bottom: 10%;
       right: 10%;
       width: 35%;
-      height: 20%;
+      height: 25%;
       background-color: #0b0;
       border-radius: 1.5vh;
       border: #000 solid;
