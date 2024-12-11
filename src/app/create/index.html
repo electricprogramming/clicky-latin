@@ -7,7 +7,6 @@
   <title>Clicky Latin - Create</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script src="/src/seperator-elements.js"></script>
-  <script src="/src/toggle-switches.js"></script>
   <style>
     body {
       margin: 0;
@@ -34,6 +33,32 @@
     }
     .button:hover {
       transform: scale(1.1);
+    }
+    #unlisted-toggle {
+      position: relative;
+      background-color: #ccc;
+      width: 15%;
+      height: 8%;
+      border-radius: 4%;
+      cursor: pointer;
+      transition: background-color 0.4s;
+    }
+    #unlisted-toggle:before {
+      content: "";
+      position: absolute;
+      height: 80%;
+      width: 80%;
+      border-radius: 40%;
+      left: 10%;
+      top: 10%;
+      background-color: white;
+      transition: transform 0.4s;
+    }
+    #unlisted-toggle.on {
+      background-color: #4CAF50;
+    }
+    #unlisted-toggle.on:before {
+      transform: translateX(80%);
     }
     .modal-backdrop {
       position: fixed;
@@ -315,7 +340,7 @@
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
-      <div class="toggle-switch"></div>
+      <div id="unlisted-toggle"></div>
       <button id="save-cancel-btn"> Cancel </button>
       <button id="save-confirm-btn"> Confirm </button>
     </div>
@@ -372,6 +397,17 @@
       button.addEventListener('mouseleave', function() {
         button.style.backgroundColor = color;
       });
+    });
+  </script>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('toggle-switch')) {
+        const toggleSwitch = e.target;
+        toggleSwitch.classList.toggle('on');
+        const toggleEvent = new CustomEvent('toggle');
+        toggleEvent.toggleState = toggleSwitch.classList.contains('on');
+        toggleSwitch.dispatchEvent(toggleEvent);
+      }
     });
   </script>
   <script type="module" src="/src/app/create/script.js"></script>
