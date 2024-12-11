@@ -7,6 +7,7 @@
   <title>Clicky Latin - Create</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script src="/src/seperator-elements.js"></script>
+  <script src="/src/toggle-switches.js"></script>
   <style>
     body {
       margin: 0;
@@ -155,7 +156,7 @@
       bottom: 10%;
       left: 10%;
       width: 35%;
-      height: 30%;
+      height: 20%;
       background-color: #f00;
       border-radius: 1.5vh;
       border: #000 solid;
@@ -176,7 +177,7 @@
       bottom: 10%;
       right: 10%;
       width: 35%;
-      height: 30%;
+      height: 20%;
       background-color: #0b0;
       border-radius: 1.5vh;
       border: #000 solid;
@@ -314,6 +315,7 @@
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
+      <div class="toggle-switch"></div>
       <button id="save-cancel-btn"> Cancel </button>
       <button id="save-confirm-btn"> Confirm </button>
     </div>
