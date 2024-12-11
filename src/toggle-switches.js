@@ -7,11 +7,6 @@ document.addEventListener('click', function(e) {
     toggleSwitch.dispatchEvent(toggleEvent);
   }
 });
-setTimeout(() => {
-  const newSwitch = document.createElement('div');
-  newSwitch.classList.add('toggle-switch');
-  document.body.appendChild(newSwitch);
-}, 2000);
 const stylesheet = document.createElement('style');
 stylesheet.textContent = `
 .toggle-switch {
