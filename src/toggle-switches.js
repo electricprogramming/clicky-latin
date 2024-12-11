@@ -11,21 +11,19 @@ const stylesheet = document.createElement('style');
 stylesheet.textContent = `
 .toggle-switch {
   position: relative;
-  width: 9vmin;
-  height: 5vmin;
   background-color: #ccc;
-  border-radius: 50px;
+  border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.4s;
 }
 .toggle-switch:before {
   content: "";
   position: absolute;
-  height: 4vmin;
-  width: 4vmin;
-  border-radius: 50px;
-  left: 0.5vmin;
-  top: 0.5vmin;
+  height: 80%;
+  width: 80%;
+  border-radius: 40%;
+  left: 10%;
+  top: 10%;
   background-color: white;
   transition: transform 0.4s;
 }
@@ -33,7 +31,7 @@ stylesheet.textContent = `
   background-color: #4CAF50;
 }
 .toggle-switch.on:before {
-  transform: translateX(4vmin);
+  transform: translateX(80%);
 }
 `
 document.head.appendChild(stylesheet);
