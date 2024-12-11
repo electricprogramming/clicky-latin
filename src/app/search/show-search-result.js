@@ -16,10 +16,10 @@ export default function showSearchResult(gameId, gameName) {
   const link = document.createElement('a');
   elementContainer.appendChild(link);
   elementContainer.classList.add('result-element');
-  link.setAttribute('href', `https://clickylatin.vercel.app/play/${gameId}`);
+  link.href = `/play/${gameId}`;
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
-  iframe.src = `https://clickylatin.vercel.app/freezeframe/${gameId}`;
+  iframe.src = `/freezeframe/${gameId}`;
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">

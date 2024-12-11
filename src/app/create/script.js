@@ -10,6 +10,9 @@ const createPairConfirmBtn = document.getElementById('create-pair-confirm-btn');
 const saveBtn = document.getElementById('save-btn');
 const saveModal = document.getElementById('save-modal');
 const saveNameInput = document.getElementById('save-name-input');
+const saveUnlistedToggle = document.getElementById('unlisted-toggle');
+const saveUnlistedText = document.getElementById('unlisted-text');
+const saveUnlistedTooltip = document.getElementById('unlisted-tooltip');
 const saveCancelBtn = document.getElementById('save-cancel-btn');
 const saveConfirmBtn = document.getElementById('save-confirm-btn');
 const cloudSavingModal = document.getElementById('cloud-saving-modal');
@@ -80,6 +83,14 @@ messages.on('save-open', () => {
     alert('Minimum 2 pairs required.');
   }
 });
+saveUnlistedText.addEventListener('mousemove', function(e) {
+  saveUnlistedTooltip.style.display = 'block';
+  saveUnlistedTooltip.style.left = `${e.pageX + 5}px`;
+  saveUnlistedTooltip.style.top = `${e.pageY + 5}px`;
+});
+saveUnlistedText.addEventListener('mouseleave', function() {
+  saveUnlistedTooltip.style.display = 'none';
+});
 saveBtn.addEventListener('click', () => {
   messages.broadcast('save-open');
 });
@@ -102,7 +113,11 @@ messages.on('save-confirm', () => {
   saveModal.style.display = 'none';
   cloudSavingModal.style.display = 'flex';
   if ('1') { // toggle switch for whether or not it should save to the cloud
-      api.POST({
+    api.POST(saveUnlistedToggle.value? {
+      name,
+      items: allWords,
+      unlisted: true
+    } : {
       name,
       items: allWords
     }).then(gameCode => {
@@ -115,7 +130,7 @@ messages.on('save-confirm', () => {
         element.innerHTML = `
           <svg width="605" height="155" viewbox="0 0 605 155" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(2.5, 2.5)">
-              <rect width="600" height="150" fill="#777" stroke="white" stroke-width="5" rx="40" ry="40"/>
+              <rect width="600" height="150" fill="#777d" stroke="white" stroke-width="5" rx="40" ry="40"/>
               <text fill="#000" font-family="serif" font-size="75" text-anchor="middle" dominant-baseline="middle" x="300" y="85">Game Url Copied!</text>
             </g>
           </svg>

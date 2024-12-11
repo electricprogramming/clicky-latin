@@ -49,7 +49,6 @@
     .modal {
       position: relative;
       background: #454545;
-      padding: 1vmin;
       border-radius: 2vh;
       width: 39vmin;
       height: 26vmin;
@@ -135,27 +134,81 @@
     }
     #save-name-input {
       position: absolute;
+      box-sizing: border-box;
       top: 10%;
       left: 10%;
       padding-left: 2.5%;
       padding-right: 2.5%;
-      width: 75%;
+      width: 80%;
       height: 30%;
       color: #fff;
       font-style: normal;
-      font-size: 5vh;
+      font-size: 5vmin;
       border: #ccc solid;
       border-radius: 1vh;
       background-color: #333;
     }
+    #unlisted-toggle {
+      position: absolute;
+      top: 46.5%;
+      left: 10%;
+      background-color: #ccc;
+      width: 6vmin;
+      height: 3.5vmin;
+      border-radius: 1.75vmin;
+      cursor: pointer;
+      transition: background-color 0.4s;
+    }
+    #unlisted-toggle:before {
+      content: "";
+      position: absolute;
+      height: 3vmin;
+      width: 3vmin;
+      border-radius: 1.5vmin;
+      left: 0.25vmin;
+      top: 0.25vmin;
+      background-color: white;
+      transition: transform 0.4s;
+    }
+    #unlisted-toggle.on {
+      background-color: #4CAF50;
+    }
+    #unlisted-toggle.on:before {
+      transform: translateX(2.5vmin);
+    }
+    #unlisted-text {
+      vertical-align: middle;
+      text-align: center;
+      font-size: 2.8vmin;
+      user-select: none;
+      position: absolute;
+      top: 48%;
+      left: 30%;
+    }
+    #unlisted-text svg {
+      user-select: none;
+    }
+    #unlisted-tooltip {
+      position: fixed;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 14px;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+    }
     #save-cancel-btn {
+      box-sizing: border-box;
       cursor: pointer;
       user-select: none;
       position: absolute;
       bottom: 10%;
       left: 10%;
       width: 35%;
-      height: 30%;
+      height: 25%;
       background-color: #f00;
       border-radius: 1.5vh;
       border: #000 solid;
@@ -170,13 +223,14 @@
       transform: scale(1.1);
     }
     #save-confirm-btn {
+      box-sizing: border-box;
       cursor: pointer;
       user-select: none;
       position: absolute;
       bottom: 10%;
       right: 10%;
       width: 35%;
-      height: 30%;
+      height: 25%;
       background-color: #0b0;
       border-radius: 1.5vh;
       border: #000 solid;
@@ -314,6 +368,18 @@
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
+      <div id="unlisted-toggle"></div>
+      <span style="top: 48%; font-size: 2.8vmin;" id="unlisted-text">
+        Unlisted
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="2vmin" height="2vmin">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="#000" stroke-width="6"></circle>
+          <text x="50" y="57.5" font-family="Arial, sans-serif" font-size="70" fill="#000" text-anchor="middle" dominant-baseline="middle">i</text>
+        </svg>
+      </span>
+      <div id="unlisted-tooltip" style="display: none; left: 533px; top: 361px;">
+        Unlisted games will not be shown on the Search page, but <br>
+        will only be accessible by the game code or game URL.
+      </div>
       <button id="save-cancel-btn"> Cancel </button>
       <button id="save-confirm-btn"> Confirm </button>
     </div>
@@ -330,7 +396,7 @@
     <li id="context-menu-cancel">Cancel</li>
   </ul>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
-    <a href="https://clickylatin.vercel.app">
+    <a href="/">
       <g id="back-home-btn" transform="translate(2.5,2.5)">
         <path 
           d="M 475,0 
@@ -360,7 +426,7 @@
     import darkenColor from '/src/app/darken-color.js';
     document.querySelectorAll('.button').forEach((button)=> {
       const color = button.getAttribute('color');
-      button.style['background-color'] = color;
+      button.style.backgroundColor = color;
       button.addEventListener('mousedown', function() {
         button.style.backgroundColor = darkenColor(color);
       });
@@ -370,6 +436,18 @@
       button.addEventListener('mouseleave', function() {
         button.style.backgroundColor = color;
       });
+    });
+  </script>
+  <script>
+    document.addEventListener('click', function(e) {
+      if (e.target === document.getElementById('unlisted-toggle')) {
+        const toggleSwitch = e.target;
+        toggleSwitch.classList.toggle('on');
+        const toggleEvent = new CustomEvent('toggle');
+        toggleEvent.toggleState = toggleSwitch.classList.contains('on');
+        toggleSwitch.value = toggleSwitch.classList.contains('on');
+        toggleSwitch.dispatchEvent(toggleEvent);
+      }
     });
   </script>
   <script type="module" src="/src/app/create/script.js"></script>

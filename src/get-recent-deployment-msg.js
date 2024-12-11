@@ -1,4 +1,4 @@
-if (window.self === window.top) {
+if (window.self === window.top) { // prevent iframes from logging in the search page
   (async function() {
     return new Promise((resolve, reject) => {
       fetch(`https://clickylatin-api.glitch.me/current-deployment-msg?timestamp=${Date.now()}`)
