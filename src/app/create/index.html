@@ -400,7 +400,7 @@
   </script>
   <script>
     document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('toggle-switch')) {
+      if (e.target === document.getElementById('unlisted-toggle')) {
         const toggleSwitch = e.target;
         toggleSwitch.classList.toggle('on');
         const toggleEvent = new CustomEvent('toggle');
