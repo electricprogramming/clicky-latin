@@ -143,14 +143,14 @@
       height: 30%;
       color: #fff;
       font-style: normal;
-      font-size: 5vh;
+      font-size: 5vmin;
       border: #ccc solid;
       border-radius: 1vh;
       background-color: #333;
     }
     #unlisted-toggle {
       position: absolute;
-      top: 48%;
+      top: 46.5%;
       left: 10%;
       background-color: #ccc;
       width: 6vmin;
@@ -175,6 +175,14 @@
     }
     #unlisted-toggle.on:before {
       transform: translateX(2.5vmin);
+    }
+    #unlisted-text span {
+      vertical-align: middle;
+      text-align: center;
+      font-size: 2vmin;
+      position: absolute;
+      top: 44%;
+      left: 30%;
     }
     #save-cancel-btn {
       box-sizing: border-box;
@@ -345,6 +353,7 @@
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
       <div id="unlisted-toggle"></div>
+      <p id="unlisted-text"><span>Unlisted ⓘ</span></p>
       <button id="save-cancel-btn"> Cancel </button>
       <button id="save-confirm-btn"> Confirm </button>
     </div>
