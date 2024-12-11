@@ -115,7 +115,7 @@ messages.on('save-confirm', () => {
         element.innerHTML = `
           <svg width="605" height="155" viewbox="0 0 605 155" xmlns="http://www.w3.org/2000/svg">
             <g transform="translate(2.5, 2.5)">
-              <rect width="600" height="150" fill="#777" stroke="white" stroke-width="5" rx="40" ry="40"/>
+              <rect width="600" height="150" fill="#777d" stroke="white" stroke-width="5" rx="40" ry="40"/>
               <text fill="#000" font-family="serif" font-size="75" text-anchor="middle" dominant-baseline="middle" x="300" y="85">Game Url Copied!</text>
             </g>
           </svg>

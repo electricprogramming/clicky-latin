@@ -179,10 +179,14 @@
     #unlisted-text span {
       vertical-align: middle;
       text-align: center;
-      font-size: 2vmin;
+      font-size: 2.8vmin;
+      user-select: none;
       position: absolute;
-      top: 44%;
+      top: 48%;
       left: 30%;
+    }
+    #unlisted-text span svg {
+      user-select: none;
     }
     #save-cancel-btn {
       box-sizing: border-box;
@@ -353,7 +357,15 @@
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
       <div id="unlisted-toggle"></div>
-      <p id="unlisted-text"><span>Unlisted ⓘ</span></p>
+      <p id="unlisted-text">
+        <span style="top: 48%; font-size: 2.8vmin;">
+          Unlisted
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="2vmin" height="auto">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="#000" stroke-width="4"></circle>
+            <text x="50" y="57.5" font-family="Arial, sans-serif" font-size="70" fill="#000" text-anchor="middle" dominant-baseline="middle">i</text>
+          </svg>
+        </span>
+      </p>
       <button id="save-cancel-btn"> Cancel </button>
       <button id="save-confirm-btn"> Confirm </button>
     </div>
@@ -419,6 +431,7 @@
         toggleSwitch.classList.toggle('on');
         const toggleEvent = new CustomEvent('toggle');
         toggleEvent.toggleState = toggleSwitch.classList.contains('on');
+        toggleSwitch.value = toggleSwitch.classList.contains('on');
         toggleSwitch.dispatchEvent(toggleEvent);
       }
     });
