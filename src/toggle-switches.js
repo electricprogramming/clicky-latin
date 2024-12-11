@@ -1,4 +1,4 @@
-document.body.addEventListener('click', function(e) {
+document.addEventListener('click', function(e) {
   if (e.target.classList.contains('toggle-switch')) {
     const toggleSwitch = e.target;
     toggleSwitch.classList.toggle('on');
