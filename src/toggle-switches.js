@@ -12,10 +12,6 @@ setTimeout(() => {
   newSwitch.classList.add('toggle-switch');
   document.body.appendChild(newSwitch);
 }, 2000);
-document.querySelector('.toggle-switch').addEventListener('toggle', function(e) {
-  const switchState = e.toggleState ? 'on' : 'off'; console.log(e)
-  console.log(`Toggle switch is ${switchState}`);
-});
 const stylesheet = document.createElement('style');
 stylesheet.textContent = `
 .toggle-switch {
