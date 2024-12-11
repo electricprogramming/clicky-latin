@@ -37,20 +37,20 @@
     #unlisted-toggle {
       position: relative;
       background-color: #ccc;
-      width: 15%;
-      height: 8%;
-      border-radius: 4%;
+      width: 6vmin;
+      height: 3.5vmin;
+      border-radius: 1.75vmin;
       cursor: pointer;
       transition: background-color 0.4s;
     }
     #unlisted-toggle:before {
       content: "";
       position: absolute;
-      height: 80%;
-      width: 80%;
-      border-radius: 40%;
-      left: 10%;
-      top: 10%;
+      height: 3vmin;
+      width: 3vmin;
+      border-radius: 1.5vmin;
+      left: 0.25vmin;
+      top: 0.25vmin;
       background-color: white;
       transition: transform 0.4s;
     }
@@ -58,7 +58,7 @@
       background-color: #4CAF50;
     }
     #unlisted-toggle.on:before {
-      transform: translateX(80%);
+      transform: translateX(5.5vmin);
     }
     .modal-backdrop {
       position: fixed;
@@ -75,7 +75,6 @@
     .modal {
       position: relative;
       background: #454545;
-      padding: 1vmin;
       border-radius: 2vh;
       width: 39vmin;
       height: 26vmin;
