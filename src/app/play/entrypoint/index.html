@@ -122,7 +122,7 @@
     });
     submitBtn.addEventListener('click', function () {
       if (input.value.length >= 8) {
-        window.location.href = `https://clickylatin.vercel.app/play/${input.value}`
+        window.location.href = `/play/${input.value}`
       }
     });
     input.addEventListener('keydown', function(event) {
