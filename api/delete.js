@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     body: req.query.id
   })
     .then(async function(response) {
-      res.status(response.status).send(await response.text())
+      res.status(response.status).json(await response.json())
     })
     .catch(error => {
       console.error(error);
