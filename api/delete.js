@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   fetch('https://clickylatin-api.glitch.me', {
     method: 'DELETE',
     headers: {
-      Auth: process.env.API_KEY
+      Auth: process.env.CLICKYLATIN_API_KEY
     },
     body: req.query.id
   })
