@@ -37,16 +37,18 @@ if (gameName) {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  domtoimage.toJpeg(gameContainer)
-    .then(jpgUri => {
-      const img = document.createElement('img');
-      img.src = jpgUri;
-      img.alt = 'Image not found';
-      img.id = 'freezeframe-image';
-      gameContainer.remove();
-      document.body.appendChild(img);
-      document.body.style.transform = 'translate(-8px, -8px)'; // Account for image offset
-    });
+  if (false) {
+    domtoimage.toJpeg(gameContainer)
+      .then(jpgUri => {
+        const img = document.createElement('img');
+        img.src = jpgUri;
+        img.alt = 'Image not found';
+        img.id = 'freezeframe-image';
+        gameContainer.remove();
+        document.body.appendChild(img);
+        document.body.style.transform = 'translate(-8px, -8px)'; // Account for image offset
+      });
+  }
 } else {
   loadGameNotFoundPage();
 }

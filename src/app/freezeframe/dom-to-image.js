@@ -1,4 +1,4 @@
-// dom-to-image is licensed under the MIT license, as follows:
+// dom-to-image is created by a third party and is licensed under the MIT license, as follows:
 /*
   The MIT License (MIT)
 
