@@ -3,7 +3,6 @@ import gameCode from './get-game-code.js';
 import api from '../api.js';
 import createElement from './create-element.js';
 import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
-const gameContainer = document.getElementById('game-container');
 const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
@@ -37,18 +36,6 @@ if (gameName) {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  if (false) {
-    domtoimage.toJpeg(gameContainer)
-      .then(jpgUri => {
-        const img = document.createElement('img');
-        img.src = jpgUri;
-        img.alt = 'Image not found';
-        img.id = 'freezeframe-image';
-        gameContainer.remove();
-        document.body.appendChild(img);
-        document.body.style.transform = 'translate(-8px, -8px)'; // Account for image offset
-      });
-  }
 } else {
   loadGameNotFoundPage();
 }
