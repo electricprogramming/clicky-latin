@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Game</title>
+</head>
+<body>
+  <h1>Delete Game</h1>
+  <form id="deleteForm">
+    <label for="gameId">Game ID:</label>
+    <input type="text" id="gameId" name="gameId" required>
+    <button type="submit">DELETE</button>
+  </form>
+  <script>
+    document.getElementById('deleteForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const gameId = document.getElementById('gameId').value;
+      fetch(`/delete?id=${gameId}`)
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>

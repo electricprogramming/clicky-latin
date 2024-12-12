@@ -1,6 +1,7 @@
 {
   "trailingSlash": false,
   "rewrites": [
+    {"source": "/", "destination": "/index.html"},
     {"source": "/delete", "destination": "/api/delete.js"}
   ]
 }
