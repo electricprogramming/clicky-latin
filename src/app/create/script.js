@@ -26,14 +26,14 @@ let englishWords = [];
 let latinWords = [];
 let allWords = [];
 messages.on('new-pair', (englishWord, latinWord) => {
-  allWords.push([englishWord, latinWord]);
+  allWords.push([latinWord, englishWord]);
   englishWords.push(englishWord);
   latinWords.push(latinWord);
   createPreviewElement(englishWord, latinWord);
 });
 messages.on('new-pair-open', () => {
   createPairModal.style.display = 'flex';
-  createPairEnglishInput.focus();
+  createPairLatinInput.focus();
 });
 createPairBtn.addEventListener('click', () => {
   messages.broadcast('new-pair-open');
@@ -72,7 +72,7 @@ messages.on('new-pair-submitted', () => {
 createPairConfirmBtn.addEventListener('click', () => {
   messages.broadcast('new-pair-submitted');
 });
-createPairLatinInput.addEventListener('keydown', (e) => {
+createPairEnglishInput.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') messages.broadcast('new-pair-submitted');
 });
 messages.on('save-open', () => {
