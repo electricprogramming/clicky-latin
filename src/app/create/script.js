@@ -72,7 +72,7 @@ messages.on('new-pair-submitted', () => {
 createPairConfirmBtn.addEventListener('click', () => {
   messages.broadcast('new-pair-submitted');
 });
-createPairLatinInput.addEventListener('keydown', (e) => {
+createPairEnglishInput.addEventListener('keydown', (e) => {
   if (e.code === 'Enter') messages.broadcast('new-pair-submitted');
 });
 messages.on('save-open', () => {
