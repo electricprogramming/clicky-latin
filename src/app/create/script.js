@@ -26,7 +26,7 @@ let englishWords = [];
 let latinWords = [];
 let allWords = [];
 messages.on('new-pair', (englishWord, latinWord) => {
-  allWords.push([englishWord, latinWord]);
+  allWords.push([latinWord, englishWord]);
   englishWords.push(englishWord);
   latinWords.push(latinWord);
   createPreviewElement(englishWord, latinWord);
