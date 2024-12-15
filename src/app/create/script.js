@@ -33,7 +33,7 @@ messages.on('new-pair', (englishWord, latinWord) => {
 });
 messages.on('new-pair-open', () => {
   createPairModal.style.display = 'flex';
-  createPairEnglishInput.focus();
+  createPairLatinInput.focus();
 });
 createPairBtn.addEventListener('click', () => {
   messages.broadcast('new-pair-open');
