@@ -17,6 +17,7 @@ function submitSearch () {
       showSearchResults(results);
     })
     .catch(err => {
+      if (err.message === 'Already searching.') return;
       console.error(err);
       alert('An error has occured while searching. Reloading the page...');
       window.location.reload(true);
