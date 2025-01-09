@@ -1,3 +1,4 @@
+let isSearching = false;
 const api = {
   /**
    * @param {number} id 
@@ -21,15 +22,23 @@ const api = {
    * @returns {Promise<Array<{id: number, name: string, items: Array<string>}>>}
    */
   SEARCH: async function(query) {
-    return new Promise((resolve, reject) => {
-      fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
-        .then(res => res.json())
-        .then(data => resolve(data))
-        .catch(err => {
-          console.error(err);
-          reject(err);
-        });
-    });
+    if (!isSearching) {
+      return new Promise((resolve, reject) => {
+        isSearching = true;
+        fetch(`https://clickylatin-api.glitch.me/search?q=${encodeURIComponent(query)}`)
+          .then(res => res.json())
+          .then(data => resolve(data))
+          .catch(err => {
+            console.error(err);
+            reject(err);
+          })
+          .then(() => {
+            isSearching = false;
+          });
+      });
+    } else {
+      throw new Error('Already searching.');
+    }
   },
   /**
    * @param {({name: string, items: Array})} toPost 
