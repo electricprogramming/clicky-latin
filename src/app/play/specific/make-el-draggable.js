@@ -7,7 +7,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   let isDragging = false;
   let offsetX, offsetY;
   // For desktop (mouse events)
-  el.addEventListener("mousedown", (e) => {
+  el.addEventListener('mousedown', (e) => {
     e.preventDefault();
     isDragging = true;
     offsetX = e.clientX - el.getBoundingClientRect().left;
@@ -17,7 +17,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
     }
   });
   // For mobile (touch events)
-  el.addEventListener("touchstart", (e) => {
+  el.addEventListener('touchstart', (e) => {
     e.preventDefault();
     isDragging = true;
     const touch = e.touches[0];
@@ -52,12 +52,22 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       if (newTop + elementHeight > viewportHeight) {
         newTop = viewportHeight - elementHeight;
       }
-      el.style.left = newLeft + "px";
-      el.style.top = newTop + "px";
+      const newXPercent = newLeft / viewportWidth * 100;
+      const newYPercent = newTop / viewportHeight * 100;
+      if (newXPercent <= 50) {
+        el.style.left = `${newXPercent}vw`;
+      } else {
+        el.style.right = `${100 - newXPercent}vw`; 
+      }
+      if (newYPercent <= 50) {
+        el.style.top = `${newXPercent}vh`;
+      } else {
+        el.style.bottom = `${100 - newXPercent}vh`;
+      }
     }
   };
-  document.addEventListener("mousemove", moveHandler);
-  document.addEventListener("touchmove", moveHandler);
+  document.addEventListener('mousemove', moveHandler);
+  document.addEventListener('touchmove', moveHandler);
   const stopDragging = () => {
     if (isDragging) {
       isDragging = false;
@@ -66,28 +76,6 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       }
     }
   };
-  document.addEventListener("mouseup", stopDragging);
-  document.addEventListener("touchend", stopDragging);
-  window.addEventListener('resize', (e) => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const elementWidth = el.getBoundingClientRect().width;
-    const elementHeight = el.getBoundingClientRect().height;
-    let left = parseFloat(el.style.left) || 0;
-    let top = parseFloat(el.style.top) || 0;
-    if (left < 0) {
-      left = 0;
-    }
-    if (top < 0) {
-      top = 0;
-    }
-    if (left + elementWidth > viewportWidth) {
-      left = viewportWidth - elementWidth;
-    }
-    if (top + elementHeight > viewportHeight) {
-      top = viewportHeight - elementHeight;
-    }
-    el.style.left = left + "px";
-    el.style.top = top + "px";
-  });
+  document.addEventListener('mouseup', stopDragging);
+  document.addEventListener('touchend', stopDragging);
 };
