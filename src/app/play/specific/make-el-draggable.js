@@ -59,14 +59,14 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
         el.style.left = `${newXPercent}vw`;
       } else {
         el.style.left = '';
-        el.style.right = `${100 - newXPercent - (elementWidth / viewportWidth)}vw`; 
+        el.style.right = `${(100 - newXPercent) - (elementWidth / viewportWidth)}vw`; 
       }
       if (newYPercent <= 50) {
         el.style.bottom = '';
         el.style.top = `${newYPercent}vh`;
       } else {
         el.style.top = '';
-        el.style.bottom = `${100 - newYPercent - (elementHeight / viewportHeight)}vh`;
+        el.style.bottom = `${(100 - newYPercent) - (elementHeight / viewportHeight)}vh`;
       }
     }
   };
