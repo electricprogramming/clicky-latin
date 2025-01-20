@@ -63,10 +63,10 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       }
       if (newYPercent <= 50) {
         el.style.bottom = '';
-        el.style.top = `${newXPercent}vh`;
+        el.style.top = `${newYPercent}vh`;
       } else {
         el.style.top = '';
-        el.style.bottom = `${100 - newXPercent}vh`;
+        el.style.bottom = `${100 - newYPercent}vh`;
       }
     }
   };
