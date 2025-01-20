@@ -40,7 +40,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       let newLeft = clientX - offsetX;
       let newTop = clientY - offsetY;
       // fencing
-      if (newLeft < 0) {
+      /*if (newLeft < 0) {
         newLeft = 0;
       }
       if (newTop < 0) {
@@ -51,7 +51,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       }
       if (newTop + elementHeight > viewportHeight) {
         newTop = viewportHeight - elementHeight;
-      }
+      }*/
       const newXPercent = newLeft / viewportWidth * 100;
       const newYPercent = newTop / viewportHeight * 100;
       if (newXPercent <= 50) {
