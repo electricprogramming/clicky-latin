@@ -55,13 +55,17 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       const newXPercent = newLeft / viewportWidth * 100;
       const newYPercent = newTop / viewportHeight * 100;
       if (newXPercent <= 50) {
+        el.style.right = '';
         el.style.left = `${newXPercent}vw`;
       } else {
+        el.style.left = '';
         el.style.right = `${100 - newXPercent}vw`; 
       }
       if (newYPercent <= 50) {
+        el.style.bottom = '';
         el.style.top = `${newXPercent}vh`;
       } else {
+        el.style.top = '';
         el.style.bottom = `${100 - newXPercent}vh`;
       }
     }
