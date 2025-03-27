@@ -41,7 +41,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       let newLeft = clientX - offsetX;
       let newTop = clientY - offsetY;
       let newRight = window.innerWidth - newLeft - elementWidth;
-      let newBottom = window.innerWidth - newTop - elementHeight;
+      let newBottom = window.innerHeight - newTop - elementHeight;
       // fencing
       if (newLeft < 0) newLeft = 0;
       if (newTop < 0) newTop = 0;
