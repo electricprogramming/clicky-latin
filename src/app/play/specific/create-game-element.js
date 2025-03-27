@@ -69,15 +69,15 @@ export default function createGameElement(language, matchId, word) {
 
   makeElementDraggable(el, null, () => {
     const myPos = {
-      x: parseFloat(el.style.left) || 0,
-      y: parseFloat(el.style.top) || 0,
+      x: parseFloat(window.getComputedStyle(el).left) || 0,
+      y: parseFloat(window.getComputedStyle(el).top) || 0,
       el
     };
     const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}"]`))
       .map((otherEl) => {
         return {
-          x: parseFloat(otherEl.style.left) || 0,
-          y: parseFloat(otherEl.style.top) || 0,
+          x: parseFloat(window.getComputedStyle(otherEl).left) || 0,
+          y: parseFloat(window.getComputedStyle(otherEl).top) || 0,
           el: otherEl
         };
       })

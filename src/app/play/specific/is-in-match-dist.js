@@ -11,7 +11,7 @@ export default function isInMatchDist(English, Latin) {
   const xDif = Math.abs(English.x - Latin.x);
   const yDif = Math.abs(English.y - Latin.y);
   const hypotenuse = pythagoras(xDif, yDif);
-  const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
+  const vmin = Math.min(window.innerHeight, window.innerWidth);
   const maxDist = (errorSize / 700) * vmin;
   return hypotenuse <= maxDist;
 }

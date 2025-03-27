@@ -1,7 +1,7 @@
 /**
+ * Determines whether the user has completed the game
  * @returns {boolean}
  */
 export default function isGameCompleted() {
-  if (document.querySelector('.game-element')) return false;
-  else return true;
+  return !document.querySelector('.game-element');
 }
