@@ -21,7 +21,6 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
     e.preventDefault();
     isDragging = true;
     const touch = e.touches[0];
-    console.log(touch)
     offsetX = touch.clientX - el.getBoundingClientRect().left;
     offsetY = touch.clientY - el.getBoundingClientRect().top;
     if (startDragFunc && typeof startDragFunc === 'function') {
@@ -31,46 +30,53 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   // Common move handler for both mouse and touch
   const moveHandler = function(e) {
     if (isDragging) {
-      console.log(e);
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       const elementWidth = el.getBoundingClientRect().width;
       const elementHeight = el.getBoundingClientRect().height;
       // Determine the current position based on mouse or touch event
-      let clientX = e.clientX || (e.touches && e.touches[0].clientX);
-      let clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      let clientX = e.clientX || e.touches?.[0]?.clientX;
+      let clientY = e.clientY || e.touches?.[0]?.clientY;
       let newLeft = clientX - offsetX;
       let newTop = clientY - offsetY;
+      let newRight = window.innerWidth - newLeft - elementWidth;
+      let newBottom = window.innerWidth - newLeft - elementWidth;
       // fencing
-      if (newLeft < 0) {
-        newLeft = 0;
+      if (newLeft < 0) newLeft = 0;
+      if (newTop < 0) newTop = 0;
+      if (newRight < 0) newRight = 0;
+      if (newBottom < 0) newBottom = 0;
+
+      newLeft = newLeft / window.innerWidth * 100;
+      newRight = newRight / window.innerWidth * 100;
+      newTop = newTop / window.innerHeight * 100;
+      newBottom = newBottom / window.innerHeight * 100;
+
+      if (newLeft >= newRight) {
+        el.style.left = `${newLeft}vw`;
+      } else {
+        el.style.right = `${newRight}vw`;
       }
-      if (newTop < 0) {
-        newTop = 0;
+      if (newTop >= newBottom) {
+        el.style.top = `${newTop}vw`;
+      } else {
+        el.style.bottom = `${newBottom}vw`;
       }
-      if (newLeft + elementWidth > viewportWidth) {
-        newLeft = viewportWidth - elementWidth;
-      }
-      if (newTop + elementHeight > viewportHeight) {
-        newTop = viewportHeight - elementHeight;
-      }
-      el.style.left = newLeft + "px";
-      el.style.top = newTop + "px";
     }
   };
   document.addEventListener("mousemove", moveHandler);
   document.addEventListener("touchmove", moveHandler);
-  const stopDragging = () => {
+  const stopDragging = function() {
     if (isDragging) {
       isDragging = false;
       if (endDragFunc && typeof endDragFunc === 'function') {
         endDragFunc();
       }
     }
-  };
+  }
   document.addEventListener("mouseup", stopDragging);
   document.addEventListener("touchend", stopDragging);
-  window.addEventListener('resize', (e) => {
+  /*window.addEventListener('resize', () => {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const elementWidth = el.getBoundingClientRect().width;
@@ -91,5 +97,5 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
     }
     el.style.left = left + "px";
     el.style.top = top + "px";
-  });
+  });*/
 };
