@@ -52,14 +52,14 @@ export default function createGameElement(language, matchId, word) {
   newTop = newTop / window.innerHeight * 100;
   newBottom = newBottom / window.innerHeight * 100;
 
-  if (newLeft >= newRight) {
+  if (newLeft <= newRight) {
     el.style.right = '';
     el.style.left = `${newLeft}vw`;
   } else {
     el.style.left = '';
     el.style.right = `${newRight}vw`;
   }
-  if (newTop >= newBottom) {
+  if (newTop <= newBottom) {
     el.style.bottom = '';
     el.style.top = `${newTop}vh`;
   } else {

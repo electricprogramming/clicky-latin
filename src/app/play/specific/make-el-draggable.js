@@ -42,7 +42,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       let newTop = clientY - offsetY;
       let newRight = window.innerWidth - newLeft - elementWidth;
       let newBottom = window.innerHeight - newTop - elementHeight;
-      
+
       // fencing
       if (newLeft < 0) newLeft = 0;
       if (newTop < 0) newTop = 0;
@@ -54,14 +54,14 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       newTop = newTop / window.innerHeight * 100;
       newBottom = newBottom / window.innerHeight * 100;
 
-      if (newLeft >= newRight) {
+      if (newLeft <= newRight) {
         el.style.right = '';
         el.style.left = `${newLeft}vw`;
       } else {
         el.style.left = '';
         el.style.right = `${newRight}vw`;
       }
-      if (newTop >= newBottom) {
+      if (newTop <= newBottom) {
         el.style.bottom = '';
         el.style.top = `${newTop}vh`;
       } else {
