@@ -40,7 +40,7 @@ export default function createGameElement(language, matchId, word) {
   let newLeft = Math.round(Math.random() * (window.innerWidth - elRect.width));
   let newTop = Math.round(Math.random() * (window.innerHeight - elRect.height));
   let newRight = window.innerWidth - newLeft - elRect.width;
-  let newBottom = window.innerWidth - newTop - elRect.height;
+  let newBottom = window.innerHeight - newTop - elRect.height;
   // fencing
   if (newLeft < 0) newLeft = 0;
   if (newTop < 0) newTop = 0;
@@ -66,7 +66,7 @@ export default function createGameElement(language, matchId, word) {
     el.style.top = '';
     el.style.bottom = `${newBottom}vh`;
   }
-  
+
   makeElementDraggable(el, null, () => {
     const myPos = {
       x: parseFloat(el.style.left) || 0,
