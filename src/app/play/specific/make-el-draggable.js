@@ -28,8 +28,9 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
     }
   });
   // Common move handler for both mouse and touch
-  const moveHandler = (e) => {
+  const moveHandler = function(e) {
     if (isDragging) {
+      console.log(e);
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       const elementWidth = el.getBoundingClientRect().width;
