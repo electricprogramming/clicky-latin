@@ -37,8 +37,36 @@ export default function createGameElement(language, matchId, word) {
   el.setAttribute('word', word);
   document.getElementById('game-container').appendChild(el);
   const elRect = el.getBoundingClientRect();
-  el.style.top = Math.round(Math.random() * (window.innerHeight - elRect.height)) + 'px';
-  el.style.left = Math.round(Math.random() * (window.innerWidth - elRect.width)) + 'px';
+  let newLeft = Math.round(Math.random() * (window.innerWidth - elRect.width));
+  let newTop = Math.round(Math.random() * (window.innerHeight - elRect.height));
+  let newRight = window.innerWidth - newLeft - elRect.width;
+  let newBottom = window.innerWidth - newTop - elRect.height;
+  // fencing
+  if (newLeft < 0) newLeft = 0;
+  if (newTop < 0) newTop = 0;
+  if (newRight < 0) newRight = 0;
+  if (newBottom < 0) newBottom = 0;
+
+  newLeft = newLeft / window.innerWidth * 100;
+  newRight = newRight / window.innerWidth * 100;
+  newTop = newTop / window.innerHeight * 100;
+  newBottom = newBottom / window.innerHeight * 100;
+
+  if (newLeft >= newRight) {
+    el.style.right = '';
+    el.style.left = `${newLeft}vw`;
+  } else {
+    el.style.left = '';
+    el.style.right = `${newRight}vw`;
+  }
+  if (newTop >= newBottom) {
+    el.style.bottom = '';
+    el.style.top = `${newTop}vh`;
+  } else {
+    el.style.top = '';
+    el.style.bottom = `${newBottom}vh`;
+  }
+  
   makeElementDraggable(el, null, () => {
     const myPos = {
       x: parseFloat(el.style.left) || 0,
