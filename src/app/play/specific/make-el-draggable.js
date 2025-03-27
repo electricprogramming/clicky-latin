@@ -53,13 +53,17 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       newBottom = newBottom / window.innerHeight * 100;
 
       if (newLeft >= newRight) {
+        el.style.right = '';
         el.style.left = `${newLeft}vw`;
       } else {
+        el.style.left = '';
         el.style.right = `${newRight}vw`;
       }
       if (newTop >= newBottom) {
+        el.style.bottom = '';
         el.style.top = `${newTop}vw`;
       } else {
+        el.style.top = '';
         el.style.bottom = `${newBottom}vw`;
       }
     }
