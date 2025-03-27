@@ -61,10 +61,10 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       }
       if (newTop >= newBottom) {
         el.style.bottom = '';
-        el.style.top = `${newTop}vw`;
+        el.style.top = `${newTop}vh`;
       } else {
         el.style.top = '';
-        el.style.bottom = `${newBottom}vw`;
+        el.style.bottom = `${newBottom}vh`;
       }
     }
   };
