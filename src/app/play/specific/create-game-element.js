@@ -83,7 +83,9 @@ export default function createGameElement(language, matchId, word) {
       })
       .sort((otherPos1, otherPos2) => {
         const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-        const [otherAdjustedY1, otherAdjustedY2] = isEnglish? [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+        const [otherAdjustedY1, otherAdjustedY2] = isEnglish ?
+          [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : 
+          [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
         const dist1 = pythagoras(
           Math.abs(myPos.x - otherX1),
           Math.abs(myPos.y - otherAdjustedY1)
@@ -101,10 +103,19 @@ export default function createGameElement(language, matchId, word) {
       if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
         const me = el;
         const myMatch = closestElementPos.el;
-        const englishWord = isEnglish? me.getAttribute('word'): myMatch.getAttribute('word');
-        const latinWord = isEnglish? myMatch.getAttribute('word'): me.getAttribute('word');
+        const englishBlock = isEnglish ? me : myMatch;
+        const latinBlock = isEnglish ? myMatch : me;
+        const englishWord = englishBlock.getAttribute('word');
+        const latinWord = latinBlock.getAttribute('word');
+        const englishStyle = getComputedStyle(englishBlock);
+        const latinStyle = getComputedStyle(latinBlock);
+        const fromTop = parseFloat(englishStyle.top);
+        const fromBottom = parseFloat(latinStyle.bottom);
+        const fromLeft = parseFloat(englishStyle.left);
+        const fromRight = parseFloat(latinStyle.right);
+        console.log(fromTop, fromBottom, fromLeft, fromRight);
+        createPairedElement(englishWord, latinWord, 0, 0);
         me.remove(); myMatch.remove();
-        createPairedElement(englishWord, latinWord, myMatch.style.left, isEnglish? ((parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px') : myMatch.style.top);
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
