@@ -84,15 +84,15 @@ export default function createGameElement(language, matchId, word) {
       .sort((otherPos1, otherPos2) => {
         const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
         const [otherAdjustedY1, otherAdjustedY2] = isEnglish ?
-          [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : 
-          [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+          [otherY1 - (elRect.height * 2 / 3), otherY2 - (elRect.height * 2 / 3)] : 
+          [otherY1 + (elRect.height * 2 / 3), otherY2 + (elRect.height * 2 / 3)];
         const dist1 = pythagoras(
-          Math.abs(myPos.x - otherX1),
-          Math.abs(myPos.y - otherAdjustedY1)
+          myPos.x - otherX1,
+          myPos.y - otherAdjustedY1
         ),
         dist2 = pythagoras(
-          Math.abs(myPos.x - otherX2),
-          Math.abs(myPos.y - otherAdjustedY2)
+          myPos.x - otherX2,
+          myPos.y - otherAdjustedY2
         );
         return dist1 - dist2;
       })
@@ -114,11 +114,14 @@ export default function createGameElement(language, matchId, word) {
 
         if (isEnglish) {
           fromBottom = parseFloat(latinStyle.bottom) / window.innerHeight * 100;
+          fromLeft = parseFloat(latinStyle.left) / window.innerWidth * 100;
           fromRight = parseFloat(latinStyle.right) / window.innerWidth * 100;
-          
+          fromTop = parseFloat(latinStyle.top) - (elRect.height * 2 / 3);
         } else {
           fromTop = parseFloat(englishStyle.top) / window.innerHeight * 100;
           fromLeft = parseFloat(englishStyle.left) / window.innerWidth * 100;
+          fromRight = parseFloat(englishStyle.right) / window.innerWidth * 100;
+          fromBottom = parseFloat(englishStyle.bottom) - (elRect.height * 2 / 3);
         }
 
         createPairedElement(englishWord, latinWord, {
