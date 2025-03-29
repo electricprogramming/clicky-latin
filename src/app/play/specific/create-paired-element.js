@@ -29,27 +29,6 @@ export default function createPairedElement(englishWord, latinWord, position) {
   if (position.bottom) el.style.bottom = `${position.bottom}vh`;
   if (position.left) el.style.left = `${position.left}vh`;
   if (position.right) el.style.right = `${position.right}vh`;
-  
+
   makeElementDraggable(el);
-  // In case the match goes off the edge
-  {
-    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-    const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-    let left = parseFloat(el.style.left) || 0;
-    let top = parseFloat(el.style.top) || 0;
-    if (left < 0) {
-      left = 0;
-    }
-    if (top < 0) {
-      top = 0;
-    }
-    if (left + elementWidth > viewportWidth) {
-      left = viewportWidth - elementWidth;
-    }
-    if (top + elementHeight > viewportHeight) {
-      top = viewportHeight - elementHeight;
-    }
-    el.style.left = left + "px";
-    el.style.top = top + "px";
-  }
 }

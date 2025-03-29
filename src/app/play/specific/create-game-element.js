@@ -123,6 +123,13 @@ export default function createGameElement(language, matchId, word) {
           fromRight = parseFloat(englishStyle.right) / window.innerWidth * 100;
           fromBottom = parseFloat(englishStyle.bottom) - (elRect.height * 2 / 3) / window.innerHeight * 100;
         }
+        
+        // fencing
+        if (fromTop < 0) fromTop = 0;
+        if (fromBottom < 0) fromBottom = 0;
+        if (fromLeft < 0) fromLeft = 0;
+        if (fromRight < 0) fromRight = 0;
+
         const isTop = (fromTop <= fromBottom), isLeft = (fromLeft <= fromRight);
 
         createPairedElement(englishWord, latinWord, {
