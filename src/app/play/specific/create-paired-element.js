@@ -27,8 +27,8 @@ export default function createPairedElement(englishWord, latinWord, position) {
   gameContainer.appendChild(el);
   if (position.top) el.style.top = `${position.top}vh`;
   if (position.bottom) el.style.bottom = `${position.bottom}vh`;
-  if (position.left) el.style.left = `${position.left}vh`;
-  if (position.right) el.style.right = `${position.right}vh`;
+  if (position.left) el.style.left = `${position.left}vw`;
+  if (position.right) el.style.right = `${position.right}vw`;
 
   makeElementDraggable(el);
 }
