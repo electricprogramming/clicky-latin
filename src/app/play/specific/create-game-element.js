@@ -134,7 +134,7 @@ export default function createGameElement(language, matchId, word) {
 
         createPairedElement(englishWord, latinWord, {
           [isTop ? 'top' : 'bottom']: isTop ? fromTop : fromBottom,
-          [isLeft ? 'left' : 'right']: isTop ? fromLeft : fromRight,
+          [isLeft ? 'left' : 'right']: isLeft ? fromLeft : fromRight,
         });
         me.remove(); myMatch.remove();
         clickSound.play();

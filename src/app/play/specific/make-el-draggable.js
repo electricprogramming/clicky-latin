@@ -82,26 +82,4 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   }
   document.addEventListener("mouseup", stopDragging);
   document.addEventListener("touchend", stopDragging);
-  /*window.addEventListener('resize', () => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    const elementWidth = el.getBoundingClientRect().width;
-    const elementHeight = el.getBoundingClientRect().height;
-    let left = parseFloat(el.style.left) || 0;
-    let top = parseFloat(el.style.top) || 0;
-    if (left < 0) {
-      left = 0;
-    }
-    if (top < 0) {
-      top = 0;
-    }
-    if (left + elementWidth > viewportWidth) {
-      left = viewportWidth - elementWidth;
-    }
-    if (top + elementHeight > viewportHeight) {
-      top = viewportHeight - elementHeight;
-    }
-    el.style.left = left + "px";
-    el.style.top = top + "px";
-  });*/
 };
