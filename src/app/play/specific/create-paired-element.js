@@ -25,7 +25,11 @@ export default function createPairedElement(englishWord, latinWord, position) {
   latinText.setAttribute('font-size', getFontSize(latinWord));
   el.classList.add('paired-element');
   gameContainer.appendChild(el);
-  el.style.left = left; el.style.top = top;
+  if (position.top) el.style.top = `${position.top}vh`;
+  if (position.bottom) el.style.bottom = `${position.bottom}vh`;
+  if (position.left) el.style.left = `${position.left}vh`;
+  if (position.right) el.style.right = `${position.right}vh`;
+  
   makeElementDraggable(el);
   // In case the match goes off the edge
   {
