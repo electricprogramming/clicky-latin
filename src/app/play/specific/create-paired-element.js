@@ -11,11 +11,10 @@ const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375">
 </svg>`;
 /**
  * @param {string} englishWord 
- * @param {string} latinWord 
- * @param {number} left 
- * @param {number} top 
+ * @param {string} latinWord
+ * @param {object} position
  */
-export default function createPairedElement(englishWord, latinWord, left, top) {
+export default function createPairedElement(englishWord, latinWord, position) {
   const parser = new DOMParser();
   const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
   const englishText = el.querySelector('.text-english');
@@ -49,4 +48,4 @@ export default function createPairedElement(englishWord, latinWord, left, top) {
     el.style.left = left + "px";
     el.style.top = top + "px";
   }
-};
+}

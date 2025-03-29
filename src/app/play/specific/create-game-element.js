@@ -105,16 +105,26 @@ export default function createGameElement(language, matchId, word) {
         const myMatch = closestElementPos.el;
         const englishBlock = isEnglish ? me : myMatch;
         const latinBlock = isEnglish ? myMatch : me;
-        const englishWord = englishBlock.getAttribute('word');
-        const latinWord = latinBlock.getAttribute('word');
         const englishStyle = getComputedStyle(englishBlock);
         const latinStyle = getComputedStyle(latinBlock);
-        const fromTop = parseFloat(englishStyle.top);
-        const fromBottom = parseFloat(latinStyle.bottom);
-        const fromLeft = parseFloat(englishStyle.left);
-        const fromRight = parseFloat(latinStyle.right);
-        console.log(fromTop, fromBottom, fromLeft, fromRight);
-        createPairedElement(englishWord, latinWord, 0, 0);
+        const englishWord = englishBlock.getAttribute('word');
+        const latinWord = latinBlock.getAttribute('word');
+
+        let fromTop, fromBottom, fromLeft, fromRight;
+
+        if (isEnglish) {
+          fromBottom = parseFloat(latinStyle.bottom) / window.innerHeight * 100;
+          fromRight = parseFloat(latinStyle.right) / window.innerWidth * 100;
+          
+        } else {
+          fromTop = parseFloat(englishStyle.top) / window.innerHeight * 100;
+          fromLeft = parseFloat(englishStyle.left) / window.innerWidth * 100;
+        }
+
+        createPairedElement(englishWord, latinWord, {
+          [isTop ? 'top' : 'bottom']: isTop ? fromTop : fromBottom,
+          [isLeft ? 'left' : 'right']: isTop ? fromLeft : fromRight,
+        });
         me.remove(); myMatch.remove();
         clickSound.play();
         if (isGameCompleted()) {

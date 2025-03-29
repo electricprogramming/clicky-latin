@@ -44,15 +44,15 @@ Array.prototype.includesAll = function(...items) {
 }
 const originalRemove = Element.prototype.remove;
 Element.prototype.remove = function() {
-    const removeEvent = new CustomEvent('remove', {
-        bubbles: false,
-        cancelable: false
+  const removeEvent = new CustomEvent('remove', {
+    bubbles: false,
+    cancelable: false
+  });
+  this.dispatchEvent(removeEvent);
+  if (this.children.length > 0) {
+    Array.from(this.children).forEach(child => {
+      child.dispatchEvent(removeEvent);
     });
-    this.dispatchEvent(removeEvent);
-    if (this.children.length > 0) {
-      Array.from(this.children).forEach(child => {
-          child.dispatchEvent(removeEvent);
-      });
-    }
-    originalRemove.call(this);
+  }
+  originalRemove.call(this);
 };
