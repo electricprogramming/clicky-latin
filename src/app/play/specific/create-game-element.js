@@ -137,6 +137,10 @@ export default function createGameElement(language, matchId, word) {
           [isLeft ? 'left' : 'right']: isLeft ? fromLeft : fromRight,
         });
         me.remove(); myMatch.remove();
+        if (!clickSound.paused) {
+          clickSound.pause();
+          clickSound.currentTime = 0;
+        }
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
@@ -150,8 +154,10 @@ export default function createGameElement(language, matchId, word) {
           }, { once: true });
         }
       } else {
-        incorrectSound.pause();
-        incorrectSound.currentTime = 0;
+        if (!incorrectSound.paused) {
+          incorrectSound.pause();
+          incorrectSound.currentTime = 0;
+        }
         incorrectSound.play();
         mistakeCount ++;
         const vmin = Math.min(window.innerWidth, window.innerHeight);
