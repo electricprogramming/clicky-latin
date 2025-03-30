@@ -37,32 +37,62 @@ export default function createGameElement(language, matchId, word) {
   el.setAttribute('word', word);
   document.getElementById('game-container').appendChild(el);
   const elRect = el.getBoundingClientRect();
-  el.style.top = Math.round(Math.random() * (window.innerHeight - elRect.height)) + 'px';
-  el.style.left = Math.round(Math.random() * (window.innerWidth - elRect.width)) + 'px';
+  let newLeft = Math.round(Math.random() * (window.innerWidth - elRect.width));
+  let newTop = Math.round(Math.random() * (window.innerHeight - elRect.height));
+  let newRight = window.innerWidth - newLeft - elRect.width;
+  let newBottom = window.innerHeight - newTop - elRect.height;
+  // fencing
+  if (newLeft < 0) newLeft = 0;
+  if (newTop < 0) newTop = 0;
+  if (newRight < 0) newRight = 0;
+  if (newBottom < 0) newBottom = 0;
+
+  newLeft = newLeft / window.innerWidth * 100;
+  newRight = newRight / window.innerWidth * 100;
+  newTop = newTop / window.innerHeight * 100;
+  newBottom = newBottom / window.innerHeight * 100;
+
+  if (newLeft <= newRight) {
+    el.style.right = '';
+    el.style.left = `${newLeft}vw`;
+  } else {
+    el.style.left = '';
+    el.style.right = `${newRight}vw`;
+  }
+  if (newTop <= newBottom) {
+    el.style.bottom = '';
+    el.style.top = `${newTop}vh`;
+  } else {
+    el.style.top = '';
+    el.style.bottom = `${newBottom}vh`;
+  }
+
   makeElementDraggable(el, null, () => {
     const myPos = {
-      x: parseFloat(el.style.left) || 0,
-      y: parseFloat(el.style.top) || 0,
+      x: parseFloat(window.getComputedStyle(el).left) || 0,
+      y: parseFloat(window.getComputedStyle(el).top) || 0,
       el
     };
     const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}"]`))
       .map((otherEl) => {
         return {
-          x: parseFloat(otherEl.style.left) || 0,
-          y: parseFloat(otherEl.style.top) || 0,
+          x: parseFloat(window.getComputedStyle(otherEl).left) || 0,
+          y: parseFloat(window.getComputedStyle(otherEl).top) || 0,
           el: otherEl
         };
       })
       .sort((otherPos1, otherPos2) => {
         const otherX1 = otherPos1.x, otherY1 = otherPos1.y, otherX2 = otherPos2.x, otherY2 = otherPos2.y;
-        const [otherAdjustedY1, otherAdjustedY2] = isEnglish? [otherY1 - (elRect.height * 2/3), otherY2 - (elRect.height * 2/3)] : [otherY1 + (elRect.height * 2/3), otherY2 + (elRect.height * 2/3)];
+        const [otherAdjustedY1, otherAdjustedY2] = isEnglish ?
+          [otherY1 - (elRect.height * 2 / 3), otherY2 - (elRect.height * 2 / 3)] : 
+          [otherY1 + (elRect.height * 2 / 3), otherY2 + (elRect.height * 2 / 3)];
         const dist1 = pythagoras(
-          Math.abs(myPos.x - otherX1),
-          Math.abs(myPos.y - otherAdjustedY1)
+          myPos.x - otherX1,
+          myPos.y - otherAdjustedY1
         ),
         dist2 = pythagoras(
-          Math.abs(myPos.x - otherX2),
-          Math.abs(myPos.y - otherAdjustedY2)
+          myPos.x - otherX2,
+          myPos.y - otherAdjustedY2
         );
         return dist1 - dist2;
       })
@@ -73,10 +103,44 @@ export default function createGameElement(language, matchId, word) {
       if (areCorrespondingMatchIds(myMatchId, closestMatchId)) {
         const me = el;
         const myMatch = closestElementPos.el;
-        const englishWord = isEnglish? me.getAttribute('word'): myMatch.getAttribute('word');
-        const latinWord = isEnglish? myMatch.getAttribute('word'): me.getAttribute('word');
+        const englishBlock = isEnglish ? me : myMatch;
+        const latinBlock = isEnglish ? myMatch : me;
+        const englishStyle = getComputedStyle(englishBlock);
+        const latinStyle = getComputedStyle(latinBlock);
+        const englishWord = englishBlock.getAttribute('word');
+        const latinWord = latinBlock.getAttribute('word');
+
+        let fromTop, fromBottom, fromLeft, fromRight;
+
+        if (isEnglish) {
+          fromBottom = parseFloat(latinStyle.bottom) / window.innerHeight * 100;
+          fromLeft = parseFloat(latinStyle.left) / window.innerWidth * 100;
+          fromRight = parseFloat(latinStyle.right) / window.innerWidth * 100;
+          fromTop = parseFloat(latinStyle.top) - (elRect.height * 2 / 3) / window.innerHeight * 100;
+        } else {
+          fromTop = parseFloat(englishStyle.top) / window.innerHeight * 100;
+          fromLeft = parseFloat(englishStyle.left) / window.innerWidth * 100;
+          fromRight = parseFloat(englishStyle.right) / window.innerWidth * 100;
+          fromBottom = parseFloat(englishStyle.bottom) - (elRect.height * 2 / 3) / window.innerHeight * 100;
+        }
+        
+        // fencing
+        if (fromTop < 0) fromTop = 0;
+        if (fromBottom < 0) fromBottom = 0;
+        if (fromLeft < 0) fromLeft = 0;
+        if (fromRight < 0) fromRight = 0;
+
+        const isTop = (fromTop <= fromBottom), isLeft = (fromLeft <= fromRight);
+
+        createPairedElement(englishWord, latinWord, {
+          [isTop ? 'top' : 'bottom']: isTop ? fromTop : fromBottom,
+          [isLeft ? 'left' : 'right']: isLeft ? fromLeft : fromRight,
+        });
         me.remove(); myMatch.remove();
-        createPairedElement(englishWord, latinWord, myMatch.style.left, isEnglish? ((parseFloat(myMatch.style.top) - (elRect.height * 2/3)) + 'px') : myMatch.style.top);
+        if (!clickSound.paused) {
+          clickSound.pause();
+          clickSound.currentTime = 0;
+        }
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
@@ -90,29 +154,29 @@ export default function createGameElement(language, matchId, word) {
           }, { once: true });
         }
       } else {
+        if (!incorrectSound.paused) {
+          incorrectSound.pause();
+          incorrectSound.currentTime = 0;
+        }
         incorrectSound.play();
         mistakeCount ++;
-        const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
-        el.style.top = (isEnglish? parseFloat(el.style.top) - (40 / 700 * vmin) : parseFloat(el.style.top) + (40 / 700 * vmin)) + 'px';
-        {
-          const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-          const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-          let left = parseFloat(el.style.left) || 0;
-          let top = parseFloat(el.style.top) || 0;
-          if (left < 0) {
-            left = 0;
-          }
-          if (top < 0) {
-            top = 0;
-          }
-          if (left + elementWidth > viewportWidth) {
-            left = viewportWidth - elementWidth;
-          }
-          if (top + elementHeight > viewportHeight) {
-            top = viewportHeight - elementHeight;
-          }
-          el.style.left = left + "px";
-          el.style.top = top + "px";
+        const vmin = Math.min(window.innerWidth, window.innerHeight);
+        const currentTop = parseFloat(getComputedStyle(el).top);
+        const adjustment = 40 / 700 * vmin;
+        let newTop = isEnglish ? currentTop - adjustment : currentTop + adjustment;
+        let newBottom = window.innerHeight - newTop - elRect.height;
+
+        if (newTop < 0) newTop = 0;
+        if (newBottom < 0) newBottom = 0;
+        newTop = newTop / window.innerHeight * 100;
+        newBottom = newBottom / window.innerHeight * 100;
+
+        if (newTop <= newBottom) {
+          el.style.bottom = '';
+          el.style.top = `${newTop}vh`;
+        } else {
+          el.style.top = '';
+          el.style.bottom = `${newBottom}vh`
         }
       }
     }

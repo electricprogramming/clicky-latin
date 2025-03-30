@@ -11,11 +11,10 @@ const baseSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 375">
 </svg>`;
 /**
  * @param {string} englishWord 
- * @param {string} latinWord 
- * @param {number} left 
- * @param {number} top 
+ * @param {string} latinWord
+ * @param {object} position
  */
-export default function createPairedElement(englishWord, latinWord, left, top) {
+export default function createPairedElement(englishWord, latinWord, position) {
   const parser = new DOMParser();
   const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
   const englishText = el.querySelector('.text-english');
@@ -26,27 +25,10 @@ export default function createPairedElement(englishWord, latinWord, left, top) {
   latinText.setAttribute('font-size', getFontSize(latinWord));
   el.classList.add('paired-element');
   gameContainer.appendChild(el);
-  el.style.left = left; el.style.top = top;
+  if (position.top) el.style.top = `${position.top}vh`;
+  if (position.bottom) el.style.bottom = `${position.bottom}vh`;
+  if (position.left) el.style.left = `${position.left}vw`;
+  if (position.right) el.style.right = `${position.right}vw`;
+
   makeElementDraggable(el);
-  // In case the match goes off the edge
-  {
-    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-    const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-    let left = parseFloat(el.style.left) || 0;
-    let top = parseFloat(el.style.top) || 0;
-    if (left < 0) {
-      left = 0;
-    }
-    if (top < 0) {
-      top = 0;
-    }
-    if (left + elementWidth > viewportWidth) {
-      left = viewportWidth - elementWidth;
-    }
-    if (top + elementHeight > viewportHeight) {
-      top = viewportHeight - elementHeight;
-    }
-    el.style.left = left + "px";
-    el.style.top = top + "px";
-  }
-};
+}
