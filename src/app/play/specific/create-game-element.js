@@ -152,27 +152,23 @@ export default function createGameElement(language, matchId, word) {
       } else {
         incorrectSound.play();
         mistakeCount ++;
-        const vmin = window.innerHeight < window.innerWidth ? window.innerHeight : window.innerWidth;
-        el.style.top = (isEnglish? parseFloat(el.style.top) - (40 / 700 * vmin) : parseFloat(el.style.top) + (40 / 700 * vmin)) + 'px';
-        {
-          const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-          const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-          let left = parseFloat(el.style.left) || 0;
-          let top = parseFloat(el.style.top) || 0;
-          if (left < 0) {
-            left = 0;
-          }
-          if (top < 0) {
-            top = 0;
-          }
-          if (left + elementWidth > viewportWidth) {
-            left = viewportWidth - elementWidth;
-          }
-          if (top + elementHeight > viewportHeight) {
-            top = viewportHeight - elementHeight;
-          }
-          el.style.left = left + "px";
-          el.style.top = top + "px";
+        const vmin = Math.min(window.innerWidth, window.innerHeight);
+        const currentTop = parseFloat(getComputedStyle(el).top);
+        const adjustment = 40 / 700 * vmin;
+        let newTop = isEnglish ? currentTop - adjustment : currentTop + adjustment;
+        let newBottom = window.innerHeight - newTop - elRect.height;
+
+        if (newTop < 0) newTop = 0;
+        if (newBottom < 0) newBottom = 0;
+        newTop = newTop / window.innerHeight * 100;
+        newBottom = newBottom / window.innerHeight * 100;
+
+        if (newTop <= newBottom) {
+          el.style.bottom = '';
+          el.style.top = `${newTop}vh`;
+        } else {
+          el.style.top = '';
+          el.style.bottom = `${newBottom}vh`
         }
       }
     }
