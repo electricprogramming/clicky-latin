@@ -150,6 +150,8 @@ export default function createGameElement(language, matchId, word) {
           }, { once: true });
         }
       } else {
+        incorrectSound.pause();
+        incorrectSound.currentTime = 0;
         incorrectSound.play();
         mistakeCount ++;
         const vmin = Math.min(window.innerWidth, window.innerHeight);
