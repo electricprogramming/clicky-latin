@@ -3,7 +3,7 @@
  */
 export default function fullscreen() {
   const doc = document.documentElement;
-  if (doc.requestFullscreen) {
+  if (doc.requestFullscreen && false) {
     doc.requestFullscreen();
   } else if (doc.mozRequestFullScreen) {
     doc.mozRequestFullScreen();
