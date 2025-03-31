@@ -31,7 +31,7 @@
     fetch('https://data-logger.glitch.me', {
       method: 'POST',
       body: `window.innerWidth: ${windowWidth},
-      window.innerHeight: windowHeight,
+      window.innerHeight: ${windowHeight},
       calculatedWidth: ${calculatedWidth},
       calculatedHeight: ${calculatedHeight}`
     });
