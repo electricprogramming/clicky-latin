@@ -2,10 +2,8 @@
  * Tries to fullscreen the window. If no fullscreen method is available, throws an error.
  */
 export default function fullscreen() {
-  const e = new MouseEvent('maybe this works');
-dispatchEvent(e)
   const doc = document.documentElement;
-  if (doc.requestFullscreen && false) {
+  if (doc.requestFullscreen) {
     doc.requestFullscreen();
   } else if (doc.mozRequestFullScreen) {
     doc.mozRequestFullScreen();
