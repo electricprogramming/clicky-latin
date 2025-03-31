@@ -1,7 +1,7 @@
 /**
  * Tries to fullscreen the window. If no fullscreen method is available, throws an error.
  */
-export default void function fullscreen() {
+export default function fullscreen() {
   const doc = document.documentElement;
   if (doc.requestFullscreen) {
     doc.requestFullscreen();
