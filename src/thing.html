@@ -3,33 +3,39 @@
 
 <head>
   <style>
-    * {
+    body {
+      overflow: hidden;
       padding: 0;
       margin: 0;
     }
+    
     div {
-      position: fixed;
-      margin: 2vmin;
+      position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-      border: 2vmin solid blueviolet;
-      box-shadow: 0 0 0 2vmin orange;
-      background: black;
-      box-sizing: border-box;
-      width: calc(100vw - 4vmin);
-      height: calc(100vh - 4vmin);
+      background: orange;
     }
   </style>
 </head>
 
 <body>
-<div></div>
-<script type="module">
-  import fullscreen from './app/fullscreen.js';
-  setTimeout(() => fullscreen(), 2000);
-</script>
+  <div></div>
+  <script>
+    const div = document.querySelector('div');
+    const windowWidth = window.innerWidth,
+      windowHeight = window.innerHeight,
+      calculatedWidth = getComputedStyle(div).width,
+      calculatedHeight = getComputedStyle(div).height;
+    fetch('https://data-logger.glitch.me', {
+      method: 'POST',
+      body: `window.innerWidth: ${windowWidth},
+      window.innerHeight: windowHeight,
+      calculatedWidth: ${calculatedWidth},
+      calculatedHeight: ${calculatedHeight}`
+    });
+  </script>
 </body>
 
 </html>
