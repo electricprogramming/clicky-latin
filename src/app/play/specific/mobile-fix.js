@@ -12,5 +12,5 @@ console.error = function(...data) {
   fetch('https://data-logger.glitch.me', {
     method: 'POST',
     body: 'ERROR' + JSON.stringify(data.map(data => data?.toString ? data.toString() : String(data)));
-  })
+  });
 }
