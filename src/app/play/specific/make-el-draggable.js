@@ -21,8 +21,8 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
     e.preventDefault();
     isDragging = true;
     const touch = e.touches[0];
-    offsetX = touch.clientX - el.getBoundingClientRect().left;
-    offsetY = touch.clientY - el.getBoundingClientRect().top;
+    offsetX = touch.pageX - el.getBoundingClientRect().left;
+    offsetY = touch.pageY - el.getBoundingClientRect().top;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
