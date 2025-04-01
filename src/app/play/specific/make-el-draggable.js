@@ -6,82 +6,67 @@
 export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   let isDragging = false;
   let offsetX, offsetY;
-
-  // Helper to get client coordinates
-  function getClientCoordinates(e) {
-    return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : { x: e.clientX, y: e.clientY };
-  }
-
   // For desktop (mouse events)
   el.addEventListener("mousedown", e => {
     e.preventDefault();
     isDragging = true;
-    const { x, y } = getClientCoordinates(e);
-    offsetX = x - el.getBoundingClientRect().left;
-    offsetY = y - el.getBoundingClientRect().top;
+    offsetX = e.clientX - el.getBoundingClientRect().left;
+    offsetY = e.clientY - el.getBoundingClientRect().top;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
   });
-
   // For mobile (touch events)
   el.addEventListener("touchstart", e => {
     e.preventDefault();
     isDragging = true;
-    const { x, y } = getClientCoordinates(e);
-    offsetX = x - el.getBoundingClientRect().left;
-    offsetY = y - el.getBoundingClientRect().top;
+    const touch = e.touches[0];
+    offsetX = touch.pageX - el.getBoundingClientRect().left;
+    offsetY = touch.pageY - el.getBoundingClientRect().top;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
   });
-
   // Common move handler for both mouse and touch
   const moveHandler = function(e) {
     if (isDragging) {
-      const elementWidth = el.getBoundingClientRect().width;
-      const elementHeight = el.getBoundingClientRect().height;
+      // Determine the current position based on mouse or touch event
+      let clientX = e.clientX || e.touches?.[0]?.pageX;
+      let clientY = e.clientY || e.touches?.[0]?.pageY;
+      let newLeft = clientX - offsetX;
+      let newTop = clientY - offsetY;
+      let newRight = window.innerWidth - newLeft - el.getBoundingClientRect().width;
+      let newBottom = window.innerHeight - newTop - el.getBoundingClientRect().height;
 
-      // Get coordinates (use client coordinates for both touch and mouse)
-      const { x, y } = getClientCoordinates(e);
+      // fencing
+      if (newLeft < 0) newLeft = 0;
+      if (newTop < 0) newTop = 0;
+      if (newRight < 0) newRight = 0;
+      if (newBottom < 0) newBottom = 0;
 
-      let newLeft = x - offsetX;
-      let newTop = y - offsetY;
+      newLeft = newLeft / window.innerWidth * 100;
+      newRight = newRight / window.innerWidth * 100;
+      newTop = newTop / window.innerHeight * 100;
+      newBottom = newBottom / window.innerHeight * 100;
 
-      // Calculate boundaries based on the viewport
-      const maxLeft = window.innerWidth - elementWidth;
-      const maxTop = window.innerHeight - elementHeight;
-
-      // Constrain within the viewport
-      newLeft = Math.max(0, Math.min(newLeft, maxLeft));
-      newTop = Math.max(0, Math.min(newTop, maxTop));
-
-      // Convert to viewport units
-      const newLeftVW = (newLeft / window.innerWidth) * 100;
-      const newTopVH = (newTop / window.innerHeight) * 100;
-
-      // Apply the left/right or top/bottom based on which side is closer
-      if (newLeftVW <= 50) {
-        el.style.left = `${newLeftVW}vw`;
+      if (newLeft <= newRight) {
         el.style.right = '';
+        el.style.left = `${newLeft}vw`;
       } else {
-        el.style.right = `${100 - newLeftVW}vw`;
         el.style.left = '';
+        el.style.right = `${newRight}vw`;
       }
-
-      if (newTopVH <= 50) {
-        el.style.top = `${newTopVH}vh`;
+      if (newTop <= newBottom) {
         el.style.bottom = '';
+        el.style.top = `${newTop}vh`;
       } else {
-        el.style.bottom = `${100 - newTopVH}vh`;
         el.style.top = '';
+        el.style.bottom = `${newBottom}vh`;
       }
     }
   };
-
   document.addEventListener("mousemove", moveHandler);
   document.addEventListener("touchmove", moveHandler);
-
   const stopDragging = function(e) {
     if (isDragging) {
       e.preventDefault();
@@ -90,8 +75,7 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
         endDragFunc();
       }
     }
-  };
-
+  }
   document.addEventListener("mouseup", stopDragging);
   document.addEventListener("touchend", stopDragging);
 };
