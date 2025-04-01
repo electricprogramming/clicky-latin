@@ -6,90 +6,40 @@
   <meta name="theme-color" content="#000000">
   <meta name="description" content="A simple PWA example">
   <title>PWA Example</title>
-  
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/src/manifest.json">
+
+  <!-- Service Worker Registration -->
+  <script>
+    window.addEventListener('load', () => {
+      // Check if service workers are supported in the browser
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/src/sw.js') // Adjust the path if needed
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.log('Service Worker registration failed:', error);
+          });
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Welcome to the PWA Example!</h1>
+  <p>This page demonstrates a simple Progressive Web App (PWA).</p>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
     }
-    
+
     h1 {
       color: #000;
     }
   </style>
-  
-  <!-- Web App Manifest -->
-  <link rel="manifest" href="#manifest">
-  
-  <!-- Include the manifest details as a JSON object directly in the HTML -->
-  <script id="manifest" type="application/json">
-    {
-      "name": "PWA Example",
-      "short_name": "PWA",
-      "start_url": "/",
-      "display": "standalone",
-      "background_color": "#ffffff",
-      "theme_color": "#000000",
-      "icons": [{
-          "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA... (base64 image data)",
-          "sizes": "192x192",
-          "type": "image/png"
-        },
-        {
-          "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA... (base64 image data)",
-          "sizes": "512x512",
-          "type": "image/png"
-        }
-      ]
-    }
-  </script>
-  
-  <!-- Service Worker Setup -->
-  <script>
-  </script>
-</head>
-<body>
-  <h1>Welcome to the PWA Example!</h1>
-  <p>This page demonstrates a simple Progressive Web App (PWA).</p>
-  
-  <!-- Service Worker (within the HTML file for demonstration) -->
-  <script>
-    window.onload = function () {
-      // Register service worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
-            console.log('Service Worker registered with scope:', registration.scope);
-          }).catch(error => {
-            console.log('Service Worker registration failed:', error);
-          });
-        });
-      }
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.addEventListener('install', function (event) {
-          event.waitUntil(
-            caches.open('my-cache').then(function (cache) {
-              return cache.addAll([
-                '/',
-                '/index.html',
-                '/styles.css',
-                '/app.js',
-              ]);
-            })
-          );
-        });
-        
-        navigator.serviceWorker.addEventListener('fetch', function (event) {
-          event.respondWith(
-            caches.match(event.request).then(function (response) {
-              return response || fetch(event.request);
-            })
-          );
-        });
-      }
-    }
-  </script>
 </body>
-
 </html>
