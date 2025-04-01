@@ -122,15 +122,6 @@
       homeSVG.style.transform = 'scale(0.9)';
     });
   </script>
-  <script>
-    if (prompt('OK to use body, Cancel to use documentElement')) {
-      window.innerHeight = document.body.clientHeight;
-      window.innerWidth = document.body.clientWidth;
-    } else {
-      window.innerHeight = document.documentElement.clientHeight;
-      window.innerWidth = document.documentElement.clientWidth;
-    }
-  </script>
   <script type="module" src="/src/app/play/specific/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
