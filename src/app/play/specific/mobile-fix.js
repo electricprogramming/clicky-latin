@@ -8,7 +8,6 @@ if (isMobile()) {
     gameContainer.style.pointerEvents = '';
   }, { once: true });
 }
-const $ = document.querySelector;
-const thing = `${parseFloat(getComputedStyle($('svg')).width)},
-${$('svg').getBoundingClientRect().width}`
+const thing = `${parseFloat(getComputedStyle(document.querySelector('svg')).width)},
+${document.querySelector('svg').getBoundingClientRect().width}`
 fetch('https://data-logger.glitch.me', {method: 'POST', body: thing})
