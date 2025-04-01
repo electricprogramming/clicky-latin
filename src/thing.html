@@ -1,90 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viewport Size Methods</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viewport Size Methods</title>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Methods to Get the Visible Viewport Size</h1>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th>Result</th>
-            </tr>
-        </thead>
-        <tbody id="viewportResults">
-            <!-- Results will be inserted here dynamically -->
-        </tbody>
-    </table>
+  <h1>Methods to Get the Visible Viewport Size</h1>
 
-    <script>
-        function getViewportInfo() {
-            // Create an object with various methods to get viewport size
-            const viewportInfo = {
-                // Inner width and height (viewport size)
-                "window.innerWidth": window.innerWidth,
-                "window.innerHeight": window.innerHeight,
-                
-                // DocumentElement's client width and height (HTML element's viewport size)
-                "document.documentElement.clientWidth": document.documentElement.clientWidth,
-                "document.documentElement.clientHeight": document.documentElement.clientHeight,
-                
-                // Body's client width and height
-                "document.body.clientWidth": document.body.clientWidth,
-                "document.body.clientHeight": document.body.clientHeight
-            };
+  <table>
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody id="viewportResults">
+      <!-- Results will be inserted here dynamically -->
+    </tbody>
+  </table>
 
-            return viewportInfo;
-        }
+  <script>
+    function getViewportInfo() {
+      // Create an object with various methods to get viewport size
+      const viewportInfo = {
+        // Inner width and height (viewport size)
+        "window.innerWidth": window.innerWidth,
+        "window.innerHeight": window.innerHeight,
 
-        function displayViewportInfo() {
-            const viewportInfo = getViewportInfo();
-            const resultsContainer = document.getElementById("viewportResults");
-            
-            // Clear previous results
-            resultsContainer.innerHTML = "";
+        // DocumentElement's client width and height (HTML element's viewport size)
+        "document.documentElement.clientWidth": document.documentElement.clientWidth,
+        "document.documentElement.clientHeight": document.documentElement.clientHeight,
 
-            // Populate the table with method names and their results
-            for (const [method, result] of Object.entries(viewportInfo)) {
-                const row = document.createElement("tr");
-                const methodCell = document.createElement("td");
-                const resultCell = document.createElement("td");
+        // Body's client width and height
+        "document.body.clientWidth": document.body.clientWidth,
+        "document.body.clientHeight": document.body.clientHeight
+      };
 
-                methodCell.textContent = method;
-                resultCell.textContent = result;
+      return viewportInfo;
+    }
 
-                row.appendChild(methodCell);
-                row.appendChild(resultCell);
-                resultsContainer.appendChild(row);
-            }
-        }
+    function displayViewportInfo() {
+      const viewportInfo = getViewportInfo();
+      const resultsContainer = document.getElementById("viewportResults");
 
-        // Display the viewport information when the page loads
-        window.onload = displayViewportInfo;
-    </script>
+      // Clear previous results
+      resultsContainer.innerHTML = "";
+
+      // Populate the table with method names and their results
+      for (const [method, result] of Object.entries(viewportInfo)) {
+        const row = document.createElement("tr");
+        const methodCell = document.createElement("td");
+        const resultCell = document.createElement("td");
+
+        methodCell.textContent = method;
+        resultCell.textContent = result;
+
+        row.appendChild(methodCell);
+        row.appendChild(resultCell);
+        resultsContainer.appendChild(row);
+      }
+    }
+
+    // Display the viewport information when the page loads
+    window.onload = displayViewportInfo;
+  </script>
 </body>
+
 </html>
