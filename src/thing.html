@@ -5,39 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <style>
-    body {
-      overflow: hidden;
+    * {
       padding: 0;
       margin: 0;
     }
-    
     div {
-      position: absolute;
+      position: fixed;
+      margin: 2vmin;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-      background: orange;
+      border: 2vmin solid blueviolet;
+      box-shadow: 0 0 0 2vmin orange;
+      background: black;
+      box-sizing: border-box;
+      width: calc(100vw - 4vmin);
+      height: calc(100vh - 4vmin);
     }
   </style>
 </head>
 
 <body>
-  <div></div>
-  <script>
-    const div = document.querySelector('div');
-    const windowWidth = window.innerWidth,
-      windowHeight = window.innerHeight,
-      calculatedWidth = getComputedStyle(div).width,
-      calculatedHeight = getComputedStyle(div).height;
-    fetch('https://data-logger.glitch.me', {
-      method: 'POST',
-      body: `window.innerWidth: ${windowWidth},
-      window.innerHeight: ${windowHeight},
-      calculatedWidth: ${calculatedWidth},
-      calculatedHeight: ${calculatedHeight}`
-    });
-  </script>
+<div></div>
+<script type="module">
+</script>
 </body>
 
 </html>
