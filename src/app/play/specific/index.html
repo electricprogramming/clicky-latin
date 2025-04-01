@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    if (prompt('OK to use body, Cancel to use documentElement')) {
+      window.innerHeight = document.body.clientHeight;
+      window.innerWidth = document.body.clientWidth;
+    } else {
+      window.innerHeight = document.documentElement.clientHeight;
+      window.innerWidth = document.documentElement.clientWidth;
+    }
+  </script>
   <meta charset="UTF-8">
   <meta name="Clicky Latin" content="Clicky Latin is a software designed specifically with the goal of helping students to learn Latin via drag-and-drop technology and responsive audio feedback.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
