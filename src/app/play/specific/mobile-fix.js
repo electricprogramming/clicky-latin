@@ -9,7 +9,7 @@ if (isMobile()) {
   }, { once: true });
 }
 setTimeout(() => {
-const thing = `${parseFloat(getComputedStyle(document.querySelector('svg')).width)},
-${document.querySelector('svg').getBoundingClientRect().width}`
+const thing = `${parseFloat(getComputedStyle(document.querySelector('svg')).height)},
+${document.querySelector('svg').getBoundingClientRect().height}`
 fetch('https://data-logger.glitch.me', {method: 'POST', body: thing})
 }, 2000);
