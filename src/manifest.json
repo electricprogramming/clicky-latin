@@ -1,9 +1,0 @@
-{
-  "short_name": "PWA Example",
-  "name": "Progressive Web App Example",
-  "description": "A simple PWA example to demonstrate functionality.",
-  "start_url": "/src/thing.html",
-  "display": "fullscreen",
-  "background_color": "#ffffff",
-  "theme_color": "#000000"
-}
