@@ -1,35 +1,95 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="A simple PWA example">
+  <title>PWA Example</title>
+  
   <style>
-    * {
-      padding: 0;
-      margin: 0;
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
     }
-    div {
-      position: fixed;
-      margin: 2vmin;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border: 2vmin solid blueviolet;
-      box-shadow: 0 0 0 2vmin orange;
-      background: black;
-      box-sizing: border-box;
-      width: calc(100vw - 4vmin);
-      height: calc(100vh - 4vmin);
+    
+    h1 {
+      color: #000;
     }
   </style>
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="#manifest">
+  
+  <!-- Include the manifest details as a JSON object directly in the HTML -->
+  <script id="manifest" type="application/json">
+    {
+      "name": "PWA Example",
+      "short_name": "PWA",
+      "start_url": "/",
+      "display": "standalone",
+      "background_color": "#ffffff",
+      "theme_color": "#000000",
+      "icons": [{
+          "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA... (base64 image data)",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA... (base64 image data)",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    }
+  </script>
+  
+  <!-- Service Worker Setup -->
+  <script>
+  </script>
 </head>
-
 <body>
-<div></div>
-<script type="module">
-</script>
+  <h1>Welcome to the PWA Example!</h1>
+  <p>This page demonstrates a simple Progressive Web App (PWA).</p>
+  
+  <!-- Service Worker (within the HTML file for demonstration) -->
+  <script>
+    window.onload = function () {
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          }).catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+        });
+      }
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.addEventListener('install', function (event) {
+          event.waitUntil(
+            caches.open('my-cache').then(function (cache) {
+              return cache.addAll([
+                '/',
+                '/index.html',
+                '/styles.css',
+                '/app.js',
+              ]);
+            })
+          );
+        });
+        
+        navigator.serviceWorker.addEventListener('fetch', function (event) {
+          event.respondWith(
+            caches.match(event.request).then(function (response) {
+              return response || fetch(event.request);
+            })
+          );
+        });
+      }
+    }
+  </script>
 </body>
 
 </html>
