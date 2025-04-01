@@ -7,12 +7,18 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   let isDragging = false;
   let offsetX, offsetY;
 
+  // Helper to get client coordinates
+  function getClientCoordinates(e) {
+    return e.touches ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : { x: e.clientX, y: e.clientY };
+  }
+
   // For desktop (mouse events)
   el.addEventListener("mousedown", e => {
     e.preventDefault();
     isDragging = true;
-    offsetX = e.clientX - el.getBoundingClientRect().left;
-    offsetY = e.clientY - el.getBoundingClientRect().top;
+    const { x, y } = getClientCoordinates(e);
+    offsetX = x - el.getBoundingClientRect().left;
+    offsetY = y - el.getBoundingClientRect().top;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
@@ -22,9 +28,9 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
   el.addEventListener("touchstart", e => {
     e.preventDefault();
     isDragging = true;
-    const touch = e.touches[0];
-    offsetX = touch.pageX - el.getBoundingClientRect().left;
-    offsetY = touch.pageY - el.getBoundingClientRect().top;
+    const { x, y } = getClientCoordinates(e);
+    offsetX = x - el.getBoundingClientRect().left;
+    offsetY = y - el.getBoundingClientRect().top;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
@@ -36,40 +42,38 @@ export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
       const elementWidth = el.getBoundingClientRect().width;
       const elementHeight = el.getBoundingClientRect().height;
 
-      let clientX = e.clientX || e.touches?.[0]?.pageX;
-      let clientY = e.clientY || e.touches?.[0]?.pageY;
+      // Get coordinates (use client coordinates for both touch and mouse)
+      const { x, y } = getClientCoordinates(e);
 
-      let newLeft = clientX - offsetX;
-      let newTop = clientY - offsetY;
+      let newLeft = x - offsetX;
+      let newTop = y - offsetY;
 
-      let newRight = window.innerWidth - newLeft - elementWidth;
-      let newBottom = window.innerHeight - newTop - elementHeight;
+      // Calculate boundaries based on the viewport
+      const maxLeft = window.innerWidth - elementWidth;
+      const maxTop = window.innerHeight - elementHeight;
 
-      // Apply fencing to ensure the element stays within the viewport
-      newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - elementWidth));
-      newTop = Math.max(0, Math.min(newTop, window.innerHeight - elementHeight));
-      
+      // Constrain within the viewport
+      newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+      newTop = Math.max(0, Math.min(newTop, maxTop));
+
       // Convert to viewport units
       const newLeftVW = (newLeft / window.innerWidth) * 100;
-      const newRightVW = (newRight / window.innerWidth) * 100;
       const newTopVH = (newTop / window.innerHeight) * 100;
-      const newBottomVH = (newBottom / window.innerHeight) * 100;
 
-      // Determine which side is closer for horizontal position
-      if (newLeftVW <= newRightVW) {
+      // Apply the left/right or top/bottom based on which side is closer
+      if (newLeftVW <= 50) {
         el.style.left = `${newLeftVW}vw`;
         el.style.right = '';
       } else {
-        el.style.right = `${newRightVW}vw`;
+        el.style.right = `${100 - newLeftVW}vw`;
         el.style.left = '';
       }
 
-      // Determine which side is closer for vertical position
-      if (newTopVH <= newBottomVH) {
+      if (newTopVH <= 50) {
         el.style.top = `${newTopVH}vh`;
         el.style.bottom = '';
       } else {
-        el.style.bottom = `${newBottomVH}vh`;
+        el.style.bottom = `${100 - newTopVH}vh`;
         el.style.top = '';
       }
     }
