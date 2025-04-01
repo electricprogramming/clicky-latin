@@ -8,8 +8,9 @@ if (isMobile()) {
     gameContainer.style.pointerEvents = '';
   }, { once: true });
 }
-setTimeout(() => {
-const thing = `${parseFloat(getComputedStyle(document.querySelector('svg')).height)},
-${document.querySelector('svg').getBoundingClientRect().height}`
-fetch('https://data-logger.glitch.me', {method: 'POST', body: thing})
-}, 2000);
+console.error = function(...data) {
+  fetch('https://data-logger.glitch.me', {
+    method: 'POST',
+    body: 'ERROR' + JSON.stringify(data.map(data => data?.toString ? data.toString() : String(data)));
+  })
+}
