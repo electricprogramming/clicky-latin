@@ -82,6 +82,7 @@ function _makeElDraggableDesktop(el, startDragFunc, endDragFunc) {
   document.addEventListener('mouseup', stopDragging);
   document.addEventListener('touchend', stopDragging);
 }
+
 /**
  * More compatible version that works for mobile.
  * @param {HTMLElement} el 
@@ -182,11 +183,6 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
  * @param {function?} startDragFunc
  * @param {function?} endDragFunc
  */
-function makeElementDraggable(el, startDragFunc, endDragFunc) {
-  if (isMobile()) {
-    _makeElDraggableMobile(el, startDragFunc, endDragFunc);
-  } else {
-    _makeElDraggableDesktop(el, startDragFunc, endDragFunc);
-  }
+export default function makeElementDraggable(el, startDragFunc, endDragFunc) {
+  (isMobile() ? _makeElDraggableMobile : _makeElDraggableDesktop)(el, startDragFunc, endDragFunc);
 }
-export default makeElementDraggable;
