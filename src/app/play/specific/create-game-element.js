@@ -9,15 +9,15 @@ import msToMinAndSec from '../../ms-to-min-and-sec.js';
 import timer from './timer.js';
 import isMobile from '../../is-mobile.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
-const englishBaseSvg = `<svg xmlns='http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225'>
-  <g id='content'>
-    <path fill='#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8'/>
-    <text class='text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="75'></text>
+const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
+  <g id="content">
+    <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
+    <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="75"></text>
   </g>
-</svg>`, latinBaseSvg = `<svg xmlns='http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225'>
-  <g id='content'>
-    <path fill='#09f" d="M4,221 H596 V75 H450 L400,4 H200 L150,75 H4 Z" stroke="black" stroke-width="8'/>
-    <text class='text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="150'></text>
+</svg>`, latinBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
+  <g id="content">
+    <path fill="#09f" d="M4,221 H596 V75 H450 L400,4 H200 L150,75 H4 Z" stroke="black" stroke-width="8"/>
+    <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="150"></text>
   </g>
 </svg>`;
 let mistakeCount = 0;
@@ -76,7 +76,7 @@ function _createGameElementDesktop(language, matchId, word) {
       y: parseFloat(window.getComputedStyle(el).top) || 0,
       el
     };
-    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang='${isEnglish? 'Latin' : 'English'}']`))
+    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}']`))
       .map((otherEl) => {
         return {
           x: parseFloat(window.getComputedStyle(otherEl).left) || 0,
@@ -213,7 +213,7 @@ function _createGameElementMobile(language, matchId, word) {
       y: parseFloat(el.style.top) || 0,
       el
     };
-    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang='${isEnglish? 'Latin' : 'English'}']`))
+    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}']`))
       .map((otherEl) => {
         return {
           x: parseFloat(otherEl.style.left) || 0,
@@ -244,7 +244,7 @@ function _createGameElementMobile(language, matchId, word) {
         const englishWord = isEnglish? me.getAttribute('word'): myMatch.getAttribute('word');
         const latinWord = isEnglish? myMatch.getAttribute('word'): me.getAttribute('word');
         me.remove(); myMatch.remove();
-        createPairedElement(englishWord, latinWord, parseFloat(myMatch.style.left), isEnglish? (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) : parseFloat(myMatch.style.top));
+        createPairedElement(englishWord, latinWord, parseFloat(myMatch.style.left, isEnglish? (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) : parseFloat(myMatch.style.top));
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
