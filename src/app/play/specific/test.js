@@ -1,27 +1,20 @@
-/** 
- * @overload
- * @param {string} value
- * @return {void}
- */
-
-/** 
- * @overload
- * @param {number} value
- * @param {number} [maximumFractionDigits]
- * @return {void}
- */
-
 /**
- * @param {string | number} value
- * @param {number} [maximumFractionDigits]
+ * Adds two numbers or concatenates two strings depending on the arguments.
+ * 
+ * @overload
+ * @param {number} a The first number.
+ * @param {number} b The second number.
+ * @returns {number} The sum of the two numbers.
+ * 
+ * @overload
+ * @param {string} a The first string.
+ * @param {string} b The second string.
+ * @returns {string} The concatenation of the two strings.
  */
-function printValue(value, maximumFractionDigits) {
-  if (typeof value === "number") {
-      const formatter = Intl.NumberFormat("en-US", {
-          maximumFractionDigits,
-      });
-      value = formatter.format(value);
+function add(a, b) {
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a + b;
+  } else if (typeof a === 'string' && typeof b === 'string') {
+    return a + b;
   }
-
-  console.log(value);
 }
