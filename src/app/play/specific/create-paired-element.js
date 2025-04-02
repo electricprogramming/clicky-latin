@@ -44,7 +44,7 @@ function _createPairedElementDesktop(englishWord, latinWord, position) {
  */
 function _createPairedElementMobile(englishWord, latinWord, left, top) {
   const parser = new DOMParser();
-  const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
+  const el = parser.parseFromString(baseSVG, 'image/svg+xml').documentElement;
   const englishText = el.querySelector('.text-english');
   englishText.textContent = englishWord;
   englishText.setAttribute('font-size', getFontSize(englishWord));
