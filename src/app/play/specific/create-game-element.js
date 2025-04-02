@@ -76,7 +76,7 @@ function _createGameElementDesktop(language, matchId, word) {
       y: parseFloat(window.getComputedStyle(el).top) || 0,
       el
     };
-    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}']`))
+    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}"]`))
       .map((otherEl) => {
         return {
           x: parseFloat(window.getComputedStyle(otherEl).left) || 0,
@@ -213,7 +213,7 @@ function _createGameElementMobile(language, matchId, word) {
       y: parseFloat(el.style.top) || 0,
       el
     };
-    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}']`))
+    const closestElementPos = Array.from(document.querySelectorAll(`.game-element[lang="${isEnglish? 'Latin' : 'English'}"]`))
       .map((otherEl) => {
         return {
           x: parseFloat(otherEl.style.left) || 0,
