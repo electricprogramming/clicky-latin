@@ -1,5 +1,5 @@
 /**
- * Determines whether the user has completed the game
+ * Determines whether the user has completed the game.
  * @returns {boolean}
  */
 export default function isGameCompleted() {

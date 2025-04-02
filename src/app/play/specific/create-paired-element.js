@@ -74,6 +74,20 @@ function _createPairedElementMobile(englishWord, latinWord, left, top) {
   el.style.top = `${top}px`;
 }
 
-export default function createPairedElement() {
-  return (isMobile() ? )
+/**
+ * Creates a paired element and appends to the page at a given position.
+ * 
+ * @overload
+ * @param {string} englishWord
+ * @param {string} latinWord
+ * @param {object} position
+ * 
+ * @overload
+ * @param {string} englishWord
+ * @param {string} latinWord
+ * @param {number} left
+ * @param {number} top
+ */
+export default function createPairedElement(englishWord, latinWord, ...position) {
+  (isMobile() ? _createPairedElementMobile : _createPairedElementDesktop)(englishWord, latinWord, ...position);
 }

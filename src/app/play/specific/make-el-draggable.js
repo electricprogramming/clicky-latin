@@ -173,8 +173,8 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
     if (top + elementHeight > viewportHeight) {
       top = viewportHeight - elementHeight;
     }
-    el.style.left = left + 'px';
-    el.style.top = top + 'px';
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
   });
 }
 /**
