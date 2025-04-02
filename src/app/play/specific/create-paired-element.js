@@ -53,11 +53,6 @@ function _createPairedElementMobile(englishWord, latinWord, left, top) {
   latinText.setAttribute('font-size', getFontSize(latinWord));
   el.classList.add('paired-element');
   gameContainer.appendChild(el);
-  el.style.left = left; el.style.top = top;
-  makeElementDraggable(el);
-  const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
-  let left = parseFloat(el.style.left) || 0;
-  let top = parseFloat(el.style.top) || 0;
   if (left < 0) {
     left = 0;
   }
@@ -72,6 +67,8 @@ function _createPairedElementMobile(englishWord, latinWord, left, top) {
   }
   el.style.left = `${left}px`;
   el.style.top = `${top}px`;
+  makeElementDraggable(el);
+  const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
 }
 
 /**
