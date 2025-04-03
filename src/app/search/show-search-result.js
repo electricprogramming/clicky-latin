@@ -26,7 +26,7 @@ export default function showSearchResult(gameId, gameName) {
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
   function resizeText() {
-    if (document.contains(elementContainer))) {
+    if (document.contains(elementContainer)) {
       const svgElSize = {
         width: svgEl.getBoundingClientRect().width,
         height: svgEl.getBoundingClientRect().height
