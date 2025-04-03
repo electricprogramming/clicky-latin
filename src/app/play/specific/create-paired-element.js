@@ -27,10 +27,10 @@ function _createPairedElementDesktop(englishWord, latinWord, position) {
   latinText.setAttribute('font-size', getFontSize(latinWord));
   el.classList.add('paired-element');
   gameContainer.appendChild(el);
-  if (position.top) el.style.top = `${position.top}vh`;
-  if (position.bottom) el.style.bottom = `${position.bottom}vh`;
-  if (position.left) el.style.left = `${position.left}vw`;
-  if (position.right) el.style.right = `${position.right}vw`;
+  if ('top' in position) el.style.top = `${position.top}vh`;
+  if ('bottom' in position) el.style.bottom = `${position.bottom}vh`;
+  if ('left' in position) el.style.left = `${position.left}vw`;
+  if ('right' in position) el.style.right = `${position.right}vw`;
 
   makeElementDraggable(el);
 }
