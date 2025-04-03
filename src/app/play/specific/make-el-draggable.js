@@ -158,7 +158,7 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   };
   document.addEventListener('mouseup', stopDragging);
   document.addEventListener('touchend', stopDragging);
-  window.addEventListener('resize', () => {
+  /*window.addEventListener('resize', () => {
     const oldIsPortrait = isPortrait;
     isPortrait = window.innerWidth <= window.innerHeight;
     if (oldIsPortrait !== isPortrait) {
@@ -184,7 +184,7 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
     }
     el.style.left = `${left}px`;
     el.style.top = `${top}px`;
-  });
+  });*/
 }
 /**
  * Makes an element draggable using either mouse or touch.
