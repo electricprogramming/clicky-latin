@@ -6,13 +6,6 @@ const container = document.getElementById('results-container');
  */
 export default function showSearchResult(gameId, gameName) {
   const elementContainer = document.createElement('div');
-  function generateRandomUID() {
-    const randomBuffer = new Uint8Array(20);
-    window.crypto.getRandomValues(randomBuffer);
-    return Array.from(randomBuffer, byte => byte.toString(16).padStart(2, '0')).join('');
-  }
-  const elId = generateRandomUID();
-  elementContainer.id = elId;
   const link = document.createElement('a');
   elementContainer.appendChild(link);
   elementContainer.classList.add('result-element');
@@ -33,7 +26,7 @@ export default function showSearchResult(gameId, gameName) {
   const text = svgEl.querySelector('text');
   text.textContent = gameName;
   function resizeText() {
-    if (document.getElementById(String(elId))) {
+    if (document.contains(elementContainer))) {
       const svgElSize = {
         width: svgEl.getBoundingClientRect().width,
         height: svgEl.getBoundingClientRect().height
