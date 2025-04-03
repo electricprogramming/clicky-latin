@@ -93,8 +93,8 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   let isDragging = false;
   let offsetX, offsetY;
 
-  let percentFromLeft = getComputedStyle(el).left / window.innerWidth * 100;
-  let percentFromTop = getComputedStyle(el).top / window.innerHeight * 100;
+  let percentFromLeft = parseFloat(getComputedStyle(el).left) / window.innerWidth * 100;
+  let percentFromTop = parseFloat(getComputedStyle(el).top) / window.innerHeight * 100;
   // For desktop (mouse events)
   el.addEventListener('mousedown', (e) => {
     e.preventDefault();
@@ -119,8 +119,6 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   // Common move handler for both mouse and touch
   const moveHandler = (e) => {
     if (isDragging) {
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
       const elementWidth = el.getBoundingClientRect().width;
       const elementHeight = el.getBoundingClientRect().height;
       // Determine the current position based on mouse or touch event
@@ -135,11 +133,11 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
       if (newTop < 0) {
         newTop = 0;
       }
-      if (newLeft + elementWidth > viewportWidth) {
-        newLeft = viewportWidth - elementWidth;
+      if (newLeft + elementWidth > window.innerWidth) {
+        newLeft = window.innerWidth - elementWidth;
       }
-      if (newTop + elementHeight > viewportHeight) {
-        newTop = viewportHeight - elementHeight;
+      if (newTop + elementHeight > window.innerHeight) {
+        newTop = window.innerHeight - elementHeight;
       }
       percentFromLeft = newLeft / window.innerWidth * 100;
       percentFromTop = newTop / window.innerHeight * 100;
@@ -160,8 +158,6 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   document.addEventListener('mouseup', stopDragging);
   document.addEventListener('touchend', stopDragging);
   window.addEventListener('resize', (e) => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
     const elementWidth = el.getBoundingClientRect().width;
     const elementHeight = el.getBoundingClientRect().height;
     let left = percentFromLeft / 100 * window.innerWidth;
@@ -172,11 +168,11 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
     if (top < 0) {
       top = 0;
     }
-    if (left + elementWidth > viewportWidth) {
-      left = viewportWidth - elementWidth;
+    if (left + elementWidth > window.innerWidth) {
+      left = window.innerWidth - elementWidth;
     }
-    if (top + elementHeight > viewportHeight) {
-      top = viewportHeight - elementHeight;
+    if (top + elementHeight > window.innerHeight) {
+      top = window.innerHeight - elementHeight;
     }
     el.style.left = `${left}px`;
     el.style.top = `${top}px`;
