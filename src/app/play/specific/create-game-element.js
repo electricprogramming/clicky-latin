@@ -119,12 +119,12 @@ function _createGameElementDesktop(language, matchId, word) {
           fromBottom = parseFloat(latinStyle.bottom) / window.innerHeight * 100;
           fromLeft = parseFloat(latinStyle.left) / window.innerWidth * 100;
           fromRight = parseFloat(latinStyle.right) / window.innerWidth * 100;
-          fromTop = parseFloat(latinStyle.top) - (elRect.height * 2 / 3) / window.innerHeight * 100;
+          fromTop = (parseFloat(latinStyle.top) - (elRect.height * 2 / 3)) / window.innerHeight * 100;
         } else {
           fromTop = parseFloat(englishStyle.top) / window.innerHeight * 100;
           fromLeft = parseFloat(englishStyle.left) / window.innerWidth * 100;
           fromRight = parseFloat(englishStyle.right) / window.innerWidth * 100;
-          fromBottom = parseFloat(englishStyle.bottom) - (elRect.height * 2 / 3) / window.innerHeight * 100;
+          fromBottom = (parseFloat(englishStyle.bottom) - (elRect.height * 2 / 3)) / window.innerHeight * 100;
         }
         
         console.log(fromTop, fromBottom, fromLeft, fromRight)
