@@ -244,7 +244,9 @@ function _createGameElementMobile(language, matchId, word) {
         const englishWord = isEnglish? me.getAttribute('word'): myMatch.getAttribute('word');
         const latinWord = isEnglish? myMatch.getAttribute('word'): me.getAttribute('word');
         me.remove(); myMatch.remove();
-        createPairedElement(englishWord, latinWord, parseFloat(myMatch.style.left, isEnglish? (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) : parseFloat(myMatch.style.top)));
+        createPairedElement(englishWord, latinWord, parseFloat(myMatch.style.left),
+          isEnglish ? (parseFloat(myMatch.style.top) - (elRect.height * 2/3)) : parseFloat(myMatch.style.top)
+        );
         clickSound.play();
         if (isGameCompleted()) {
           clickSound.addEventListener('ended', () => {
