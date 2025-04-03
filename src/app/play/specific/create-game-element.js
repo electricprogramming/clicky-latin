@@ -127,6 +127,7 @@ function _createGameElementDesktop(language, matchId, word) {
           fromBottom = parseFloat(englishStyle.bottom) - (elRect.height * 2 / 3) / window.innerHeight * 100;
         }
         
+        console.log(fromTop, fromBottom, fromLeft, fromRight)
         // fencing
         if (fromTop < 0) fromTop = 0;
         if (fromBottom < 0) fromBottom = 0;
