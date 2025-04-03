@@ -83,10 +83,6 @@ function _makeElDraggableDesktop(el, startDragFunc, endDragFunc) {
   document.addEventListener('touchend', stopDragging);
 }
 
-if (isMobile()) {
-  var isPortrait = window.innerWidth <= window.innerHeight;
-}
-
 /**
  * More compatible version that works for mobile.
  * @param {HTMLElement} el 
@@ -96,6 +92,9 @@ if (isMobile()) {
 function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   let isDragging = false;
   let offsetX, offsetY;
+
+  let percentFromLeft = getComputedStyle(el).left / window.innerWidth * 100;
+  let percentFromTop = getComputedStyle(el).top / window.innerHeight * 100;
   // For desktop (mouse events)
   el.addEventListener('mousedown', (e) => {
     e.preventDefault();
@@ -142,6 +141,8 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
       if (newTop + elementHeight > viewportHeight) {
         newTop = viewportHeight - elementHeight;
       }
+      percentFromLeft = left / window.innerWidth * 100;
+      percentFromTop = top / window.innerHeight * 100;
       el.style.left = newLeft + 'px';
       el.style.top = newTop + 'px';
     }
@@ -158,18 +159,13 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   };
   document.addEventListener('mouseup', stopDragging);
   document.addEventListener('touchend', stopDragging);
-  /*window.addEventListener('resize', () => {
-    const oldIsPortrait = isPortrait;
-    isPortrait = window.innerWidth <= window.innerHeight;
-    if (oldIsPortrait !== isPortrait) {
-      [el.style.left, el.style.top] = [el.style.top, el.style.left];
-    }
+  window.addEventListener('resize', (e) => {
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const elementWidth = el.getBoundingClientRect().width;
     const elementHeight = el.getBoundingClientRect().height;
-    let left = parseFloat(el.style.left) || 0;
-    let top = parseFloat(el.style.top) || 0;
+    let left = percentFromLeft / 100 * window.innerWidth;
+    let top = percentFromTop / 100 * window.innerHeight;
     if (left < 0) {
       left = 0;
     }
@@ -184,7 +180,7 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
     }
     el.style.left = `${left}px`;
     el.style.top = `${top}px`;
-  });*/
+  });
 }
 /**
  * Makes an element draggable using either mouse or touch.
