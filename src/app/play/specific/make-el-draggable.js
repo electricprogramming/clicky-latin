@@ -141,8 +141,8 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
       if (newTop + elementHeight > viewportHeight) {
         newTop = viewportHeight - elementHeight;
       }
-      percentFromLeft = left / window.innerWidth * 100;
-      percentFromTop = top / window.innerHeight * 100;
+      percentFromLeft = newLeft / window.innerWidth * 100;
+      percentFromTop = newTop / window.innerHeight * 100;
       el.style.left = newLeft + 'px';
       el.style.top = newTop + 'px';
     }
