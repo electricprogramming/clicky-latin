@@ -2,6 +2,8 @@
  * Determines whether the user's device is mobile, first trying to use navigator.userAgentData and using navigator.userAgent as a fallback.
  * @returns {boolean}
  */
+
+window.isMobile = confirm();
 export default function isMobile() {
   if (window.overrideMobile) return true;
   if (navigator.userAgentData) {
