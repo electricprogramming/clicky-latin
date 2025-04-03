@@ -3,7 +3,7 @@
  * @returns {boolean}
  */
 
-window.isMobile = confirm();
+window.overrideMobile = confirm();
 export default function isMobile() {
   if (window.overrideMobile) return true;
   if (navigator.userAgentData) {
