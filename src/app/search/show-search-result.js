@@ -11,14 +11,14 @@ export default function showSearchResult(gameId, gameName, gameItems) {
   elementContainer.classList.add('result-element');
   link.href = `/play/${gameId}`;
   container.appendChild(elementContainer);
-  const iframe = document.createElement('iframe');
-  iframe.src = `/freezeframe/${gameId}`;
   const channel = new BroadcastChannel(`GAME_ITEMS_CHANNEL_${gameId}`);
   channel.onmessage = function(e) {
     if (e.data === 'READY_FOR_GAME_ITEMS') {
       channel.postMessage({ id: gameId, name: gameName, items: gameItems });
     }
   }
+  const iframe = document.createElement('iframe');
+  iframe.src = `/freezeframe/${gameId}`;
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
