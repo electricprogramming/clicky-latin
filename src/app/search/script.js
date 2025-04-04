@@ -6,21 +6,21 @@ const loadingSpinner = document.getElementById('loading-spinner');
 if (document.referrer === 'https://clickylatin.vercel.app/') {
   searchBar.focus();
 }
-function submitSearch () {
+function submitSearch(options) {
   searchBar.blur();
   const query = searchBar.value;
   document.querySelectorAll('.result-element').forEach(el => el.remove());
   loadingSpinner.style.display = 'block';
-  api.SEARCH(query)
+  api.SEARCH(query, options)
     .then(results => {
       loadingSpinner.style.display = 'none';
       showSearchResults(results);
     })
     .catch(err => {
-      if (err.message === 'Already searching.') return;
       console.error(err);
-      alert('An error has occured while searching. Reloading the page...');
-      window.location.reload(true);
+      if (confirm('An error has occured while searching. Please refresh the page and try again.')) {
+        window.location.reload(true);
+      }
     });
 }
 const query = new URLSearchParams(window.location.search).get('q');
@@ -28,9 +28,14 @@ if (query) {
   searchBar.value = query;
 }
 submitSearch();
-searchSubmit.addEventListener('click', submitSearch);
+searchSubmit.addEventListener('click', () => {
+  submitSearch({ re_fetch: true });
+});
 searchBar.addEventListener('keydown', e => {
   if (e.code === 'Enter') {
-    submitSearch();
+    submitSearch({ re_fetch: true });
   }
+});
+searchBar.addEventListener('input', () => {
+  submitSearch();
 });
