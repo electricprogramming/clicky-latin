@@ -51,7 +51,7 @@ const api = {
         })
         .filter(game => !game.unlisted)
         .filter(({id, name, items, unlisted}) => {
-          const nameKeywords = name.toLowerCase().split(' ').filter(item => item !== '');
+          const nameKeywords = name.toLowerCase().split(/\s/).filter(item => /\S/.test(item));
           return queryKeywords.every(queryKeyword => 
             nameKeywords.some(nameKeyword => 
               nameKeyword.startsWith(queryKeyword) || queryKeyword.startsWith(nameKeyword)
