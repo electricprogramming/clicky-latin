@@ -15,7 +15,7 @@ const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" heig
  * @param {('English' | 'Latin')} language
  * @param {string} word
  */
-export default function createElement(language, matchId, word) {
+export default function createElement(language, matchId, word, index) {
   const isEnglish = (language === 'English');
   const parser = new DOMParser();
   const el = parser.parseFromString(isEnglish? englishBaseSvg : latinBaseSvg, "image/svg+xml").documentElement;
