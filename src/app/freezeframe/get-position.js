@@ -1,0 +1,22 @@
+export default function getPositionForBlock(word, isEnglish) {
+  word = word.trim();
+  
+  let seedValue1 = 0;
+  for (let i = 0; i < word.length; i += 2) {
+    seedValue1 += word.charCodeAt(i)
+  }
+  seedValue1 += isEnglish ? 0 : 1;
+  
+  const xPosition = (seedValue1 * 7 * (word.length * 3 / 4)) % 50;
+  
+  let seedValue2 = 0;
+  for (let i = 1; i < word.length; i += 2) {
+    seedValue2 += word.charCodeAt(i)
+  }
+  seedValue2 += isEnglish ? 1 : 0;
+  
+  const yPosition = (seedValue1 * (word.length * 2 / 3)) % 50;
+  const isLeft = seedValue1 % 2 === 0;
+  const isTop = seedValue2 % 2 === 0;
+  
+}
