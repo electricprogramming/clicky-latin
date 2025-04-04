@@ -4,7 +4,7 @@ const container = document.getElementById('results-container');
  * @param {number} gameId 
  * @param {string} gameName 
  */
-export default function showSearchResult(gameId, gameName) {
+export default function showSearchResult(gameId, gameName, gameItems) {
   const elementContainer = document.createElement('div');
   const link = document.createElement('a');
   elementContainer.appendChild(link);
@@ -13,6 +13,12 @@ export default function showSearchResult(gameId, gameName) {
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
   iframe.src = `/freezeframe/${gameId}`;
+  const channel = new BroadcastChannel('GAME_ITEMS_CHANNEL');
+  channel.onmessage = function(e) {
+    if (e.data === 'READY_FOR_GAME_ITEMS') {
+      channel.postMessage({ id: gameId, name: gameName, items: gameItems });
+    }
+  }
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">

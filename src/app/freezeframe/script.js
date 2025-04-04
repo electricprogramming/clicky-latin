@@ -5,18 +5,30 @@ import createElement from './create-element.js';
 import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
 import deterministicShuffle from './deterministic-shuffle.js';
 const loadingSpinner = document.getElementById('loading-spinner');
-const { gameName, gameItems } = await new Promise((resolve, reject) => {
-  api.GET(gameCode)
-    .then(gameData => 
-      resolve({
-        gameName: gameData.name,
-        gameItems: gameData.items
-      })
-    )
-    .catch(err => {
-      console.error(err);
-      reject(err);
-    });
+const { gameName, gameItems } = await new Promise((resolve) => {
+  let flag = false;
+  const channel = new BroadcastChannel('GAME_ITEMS_CHANNEL');
+  channel.onmessage = function(e) {
+    flag = true;
+    resolve(e.data);
+  }
+  channel.postMessage('READY_FOR_GAME_ITEMS');
+  setTimeout(() => {
+    if (!flag) {
+      console.log('Message not recieved, fetching data from API instead.')
+      api.GET(gameCode)
+        .then(gameData => 
+          resolve({
+            gameName: gameData.name,
+            gameItems: gameData.items
+          })
+        )
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });      
+    }
+  }, 200);
 });
 if (gameName) {
   window.gameName = gameName;
