@@ -33,7 +33,7 @@ if (gameName) {
       word: pair[1]
     });
   });
-  deterministicShuffle(allWords).forEach(({language, matchId, word}) => {
+  deterministicShuffle(allWords).forEach(({language, matchId, word}, index) => {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';

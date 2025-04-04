@@ -28,7 +28,7 @@ export default function createElement(language, matchId, word) {
   el.setAttribute('word', word);
   document.getElementById('game-container').appendChild(el);
 
-  const position = getPositionForBlock(word, isEnglish);
+  const position = getPositionForBlock(word, index, isEnglish);
   if ('top' in position) el.style.top = position.top;
   if ('bottom' in position) el.style.bottom = position.bottom;
   if ('left' in position) el.style.left = position.left;
