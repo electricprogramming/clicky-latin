@@ -1,12 +1,5 @@
 import api from '../api.js';
 import showSearchResults from './show-search-results.js';
-const ogChannel = BroadcastChannel;
-BroadcastChannel = class extends ogChannel {
-  constructor(name) {
-    console.log(name);
-    super(name);
-  }
-}
 const searchBar = document.getElementById('search-bar');
 const searchSubmit = document.getElementById('search-submit');
 const loadingSpinner = document.getElementById('loading-spinner');

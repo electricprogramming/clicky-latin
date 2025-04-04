@@ -4,13 +4,6 @@ import api from '../api.js';
 import createElement from './create-element.js';
 import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
 import deterministicShuffle from './deterministic-shuffle.js';
-const ogChannel = BroadcastChannel;
-BroadcastChannel = class extends ogChannel {
-  constructor(name) {
-    console.log(name);
-    super(name);
-  }
-}
 const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve) => {
   if (window.self === window.top) {
