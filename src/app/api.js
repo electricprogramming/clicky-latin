@@ -41,6 +41,7 @@ const api = {
    */
   SEARCH: async function(query, options) {
     return new Promise(async (resolve, reject) => {
+      const queryKeywords = query.toLowerCase().split(/\s/).filter(item => /\S/.test(item));
       if (options?.re_fetch || !cachedGames) {
         const games = await this.ALL();
         cachedGames = games;
