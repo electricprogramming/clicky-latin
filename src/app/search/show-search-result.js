@@ -12,7 +12,7 @@ export default function showSearchResult(gameId, gameName) {
   link.href = `/play/${gameId}`;
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
-  iframe.src = `/freezeframe/${gameId}`;z
+  iframe.src = `/freezeframe/${gameId}`;
   link.appendChild(iframe);
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
