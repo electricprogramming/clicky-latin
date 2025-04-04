@@ -21,8 +21,11 @@ const { gameName, gameItems } = await new Promise((resolve) => {
       });
   } else {
     const channel = new BroadcastChannel('GAME_ITEMS_CHANNEL');
-    channel.onmessage = function(e) {
-      resolve(e.data);
+    channel.onmessage = function({ data }) {
+      resolve({
+        gameName: data.name,
+        gameItems: data.items
+      });
     }
     channel.postMessage('READY_FOR_GAME_ITEMS');
   }
