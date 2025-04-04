@@ -20,7 +20,7 @@ const { gameName, gameItems } = await new Promise((resolve) => {
         reject(err);
       });
   } else {
-    const channel = new BroadcastChannel('GAME_ITEMS_CHANNEL');
+    const channel = new BroadcastChannel(`GAME_ITEMS_CHANNEL_${gameCode}`);
     channel.onmessage = function({ data }) {
       resolve({
         gameName: data.name,

@@ -13,7 +13,7 @@ export default function showSearchResult(gameId, gameName, gameItems) {
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
   iframe.src = `/freezeframe/${gameId}`;
-  const channel = new BroadcastChannel('GAME_ITEMS_CHANNEL');
+  const channel = new BroadcastChannel(`GAME_ITEMS_CHANNEL_${gameId}`);
   channel.onmessage = function(e) {
     if (e.data === 'READY_FOR_GAME_ITEMS') {
       channel.postMessage({ id: gameId, name: gameName, items: gameItems });
