@@ -4,7 +4,7 @@ const container = document.getElementById('results-container');
  * @param {number} gameId 
  * @param {string} gameName 
  */
-export default function showSearchResult(gameId, gameName, gameItems) {
+export default function showSearchResult(gameId, gameName) {
   const elementContainer = document.createElement('div');
   const link = document.createElement('a');
   elementContainer.appendChild(link);
@@ -12,10 +12,8 @@ export default function showSearchResult(gameId, gameName, gameItems) {
   link.href = `/play/${gameId}`;
   container.appendChild(elementContainer);
   const iframe = document.createElement('iframe');
-  iframe.src = `/freezeframe/${gameId}`;
+  iframe.src = `/freezeframe/${gameId}`;z
   link.appendChild(iframe);
-  const channel = new BroadcastChannel(`GAME_ITEMS_CHANNEL_${gameId}`);
-  channel.postMessage({ id: gameId, name: gameName, items: gameItems });
   const svgStr = `
     <svg xmlns="http://www.w3.org/2000/svg" width="80vw" height="80vh" style="user-select: none;">
       <rect width="100%" height="100%" fill="#0c6" stroke="white" stroke-width="2%"/>
