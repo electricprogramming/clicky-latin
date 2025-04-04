@@ -1,4 +1,5 @@
 import getFontSize from '../get-font-size.js'
+import getPositionForBlock from './get-position.js';
 const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
   <g id="content">
     <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
@@ -26,17 +27,10 @@ export default function createElement(language, matchId, word) {
   el.setAttribute('matchId', matchId);
   el.setAttribute('word', word);
   document.getElementById('game-container').appendChild(el);
-  const elRect = el.getBoundingClientRect();
-  const xPosition = Math.round(Math.random() * 100);
-  const yPosition = Math.round(Math.random() * 100);
-  if (xPosition <= 50) {
-    el.style.left = `${xPosition}vw`;
-  } else {
-    el.style.right = `${100 - xPosition}vw`;
-  }
-  if (yPosition <= 50) {
-    el.style.top = `${yPosition}vh`;
-  } else {
-    el.style.bottom = `${100 - yPosition}vh`;
-  }
+
+  const position = getPositionForBlock(word, isEnglish);
+  if ('top' in position) el.style.top = position.top;
+  if ('bottom' in position) el.style.bottom = position.bottom;
+  if ('left' in position) el.style.left = position.left;
+  if ('right' in position) el.style.right = position.right;
 }

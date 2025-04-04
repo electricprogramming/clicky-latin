@@ -1,3 +1,9 @@
+/**
+ * Creates a seemingly random, yet not random, position for a block based on its word and whether it is English or Latin.
+ * @param {string} word
+ * @param {boolean} isEnglish
+ * @returns {object}
+ */
 export default function getPositionForBlock(word, isEnglish) {
   word = word.trim();
   
@@ -15,8 +21,12 @@ export default function getPositionForBlock(word, isEnglish) {
   }
   seedValue2 += isEnglish ? 1 : 0;
   
-  const yPosition = (seedValue1 * (word.length * 2 / 3)) % 50;
+  const yPosition = (seedValue1 * 11 * (word.length * 2 / 3)) % 50;
   const isLeft = seedValue1 % 2 === 0;
   const isTop = seedValue2 % 2 === 0;
   
+  return {
+    [isLeft ? 'left' : 'right']: `${xPosition}vw`, 
+    [isTop ? 'top' : 'bottom']: `${yPosition}vh` 
+  };
 }
