@@ -7,7 +7,6 @@ if (document.referrer === 'https://clickylatin.vercel.app/') {
   searchBar.focus();
 }
 function submitSearch(options) {
-  searchBar.blur();
   const query = searchBar.value;
   document.querySelectorAll('.result-element').forEach(el => el.remove());
   loadingSpinner.style.display = 'block';
