@@ -3,6 +3,7 @@ import gameCode from './get-game-code.js';
 import api from '../api.js';
 import createElement from './create-element.js';
 import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
+import deterministicShuffle from './deterministic-shuffle.js';
 const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
@@ -32,7 +33,7 @@ if (gameName) {
       word: pair[1]
     });
   });
-  Array.shuffle(allWords).forEach(({language, matchId, word}) => {
+  deterministicShuffle(allWords).forEach(({language, matchId, word}) => {
     createElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
