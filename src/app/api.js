@@ -41,7 +41,7 @@ const api = {
    */
   SEARCH: async function(query, options) {
     return new Promise(async (resolve, reject) => {
-      if (options.re_fetch || !cachedGames) {
+      if (options?.re_fetch || !cachedGames) {
         const games = await this.ALL();
         cachedGames = games;
       }
