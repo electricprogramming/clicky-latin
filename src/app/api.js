@@ -51,7 +51,7 @@ const api = {
           return { id, name, items, unlisted };
         })
         .filter(game => !game.unlisted)
-        .filter(({id, name, items, unlisted}) => {
+        .filter(({ name }) => {
           const nameKeywords = name.toLowerCase().split(/\s/).filter(item => /\S/.test(item));
           return queryKeywords.every(queryKeyword => 
             nameKeywords.some(nameKeyword => 

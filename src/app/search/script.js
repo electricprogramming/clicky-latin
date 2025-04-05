@@ -13,15 +13,15 @@ const query = new URLSearchParams(window.location.search).get('q');
 if (query) {
   searchBar.value = query;
 }
-submitSearch();
+submitSearch(searchBar.value);
 searchSubmit.addEventListener('click', () => {
-  submitSearch({ re_fetch: true });
+  submitSearch(searchBar.value, { re_fetch: true });
 });
 searchBar.addEventListener('keydown', e => {
   if (e.code === 'Enter') {
-    submitSearch({ re_fetch: true });
+    submitSearch(searchBar.value, { re_fetch: true });
   }
 });
 searchBar.addEventListener('input', () => {
-  submitSearch();
+  submitSearch(searchBar.value);
 });
