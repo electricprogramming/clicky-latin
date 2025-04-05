@@ -6,4 +6,5 @@ export default function showSearchResults(results) {
   results.forEach(({ id, name, items }) => {
     showSearchResult(id, name, items);
   });
+  const resultElements = document.querySelectorAll('')
 }
