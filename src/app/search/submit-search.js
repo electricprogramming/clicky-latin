@@ -1,4 +1,5 @@
 import api from '../api.js';
+import showSearchResults from './show-search-results.js';
 export default function submitSearch(query, options) {
   const loadingSpinner = document.getElementById('loading-spinner');
   document.querySelectorAll('.result-element').forEach(el => el.style.display = 'none');
