@@ -6,17 +6,25 @@ import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
 import deterministicShuffle from './deterministic-shuffle.js';
 const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
-  api.GET(gameCode)
-    .then(gameData => 
-      resolve({
-        gameName: gameData.name,
-        gameItems: gameData.items
-      })
-    )
-    .catch(err => {
-      console.error(err);
-      reject(err);
-    });
+  const cachedGameData = window.top.cachedGames?.[gameCode];
+  if (cachedGameData && typeof cachedGameData === 'object') {
+    resolve({
+      gameName: cachedGameData.name,
+      gameItems: cachedGameData.items
+    })
+  } else {
+    api.GET(gameCode)
+      .then(gameData => 
+        resolve({
+          gameName: gameData.name,
+          gameItems: gameData.items
+        })
+      )
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
+  }
 });
 if (gameName) {
   window.gameName = gameName;

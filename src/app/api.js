@@ -1,5 +1,5 @@
 let isSearching = false;
-let cachedGames = null;
+window.cachedGames = null;
 
 const api = {
   /**
