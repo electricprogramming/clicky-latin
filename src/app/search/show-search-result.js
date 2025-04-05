@@ -4,16 +4,16 @@ const container = document.getElementById('results-container');
  * @param {number} gameId 
  * @param {string} gameName 
  */
-export default function showSearchResult(gameId, gameName) {
+export default function showSearchResult(gameId, gameName, resultIndex) {
   if (cachedIframes[gameId]) {
     cachedIframes[gameId].style.display = '';
+    cachedIframes[gameId].style.order = resultIndex;
   } else {
     const elementContainer = document.createElement('div');
     const link = document.createElement('a');
     elementContainer.appendChild(link);
     elementContainer.classList.add('result-element');
     link.href = `/play/${gameId}`;
-    container.appendChild(elementContainer);
     const iframe = document.createElement('iframe');
     iframe.src = `/freezeframe/${gameId}`;
     link.appendChild(iframe);
@@ -28,6 +28,8 @@ export default function showSearchResult(gameId, gameName) {
     link.appendChild(svgEl);
     const text = svgEl.querySelector('text');
     text.textContent = gameName;
+    container.appendChild(elementContainer);
+    elementContainer.style.order = resultIndex;
     function resizeText() {
       if (document.contains(elementContainer)) {
         const svgElSize = {
