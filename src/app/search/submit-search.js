@@ -1,4 +1,5 @@
 export default function submitSearch(query, options) {
+  const loadingSpinner = document.getElementById('loading-spinner');
   document.querySelectorAll('.result-element').forEach(el => el.style.display = 'none');
   loadingSpinner.style.display = 'block';
   api.SEARCH(query, options)
