@@ -39,6 +39,6 @@ export default function showSearchResult(gameId, gameName) {
     }
     resizeText();
     window.addEventListener('resize', resizeText);
-    cachedIframes.gameId = elementContainer;
+    cachedIframes[gameId] = elementContainer;
   }
 }
