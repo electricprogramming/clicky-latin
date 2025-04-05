@@ -1,3 +1,4 @@
+import '../globalMods.js';
 import api from '../api.js';
 import showSearchResults from './show-search-results.js';
 const searchBar = document.getElementById('search-bar');
