@@ -1,6 +1,7 @@
 import '../globalMods.js';
 import api from '../api.js';
 import showSearchResults from './show-search-results.js';
+window.cachedIframes = {};
 const searchBar = document.getElementById('search-bar');
 const searchSubmit = document.getElementById('search-submit');
 const loadingSpinner = document.getElementById('loading-spinner');
