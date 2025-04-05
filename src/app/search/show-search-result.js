@@ -1,5 +1,4 @@
 import getFontSize from '../get-font-size.js';
-const container = document.getElementById('results-container');
 /**
  * @param {number} gameId 
  * @param {string} gameName 
@@ -9,10 +8,10 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     cachedIframes[gameId].style.display = '';
     cachedIframes[gameId].style.order = resultIndex;
   } else {
-    const elementContainer = document.createElement('div');
+    const container = document.createElement('div');
     const link = document.createElement('a');
-    elementContainer.appendChild(link);
-    elementContainer.classList.add('result-element');
+    container.appendChild(link);
+    container.classList.add('result-element');
     link.href = `/play/${gameId}`;
     const iframe = document.createElement('iframe');
     iframe.src = `/freezeframe/${gameId}`;
@@ -28,10 +27,10 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     link.appendChild(svgEl);
     const text = svgEl.querySelector('text');
     text.textContent = gameName;
-    container.appendChild(elementContainer);
-    elementContainer.style.order = resultIndex;
+    document.getElementById('results-container').appendChild(container);
+    container.style.order = resultIndex;
     function resizeText() {
-      if (document.contains(elementContainer)) {
+      if (document.contains(container) && getComputedStyle(container).display !== 'none') {
         const svgElSize = {
           width: svgEl.getBoundingClientRect().width,
           height: svgEl.getBoundingClientRect().height
@@ -41,6 +40,6 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     }
     resizeText();
     window.addEventListener('resize', resizeText);
-    cachedIframes[gameId] = elementContainer;
+    cachedIframes[gameId] = container;
   }
 }
