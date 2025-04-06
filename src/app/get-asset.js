@@ -1,14 +1,14 @@
-export default function getAsset(fileName) {
+export default async function getAsset(fileName) {
   return new Promise((resolve, reject) => {
-  fetch(`/src/assets/${fileName}`)
-    .then(res => {
-      const text = res.text();
-      if (text.includes('\uFFFD')) {
-        return res.blob();
-      } else {
-        return text;
-      }
-    })
-    .then()
+    fetch(`/assets/${fileName}`)
+      .then(async res => {
+        const text = await res.text();
+        if (text.includes('\uFFFD')) {
+          resolve(res.blob());
+        } else {
+          resolve(text);
+        }
+      })
+      .catch(err => reject(err));
   });
 }
