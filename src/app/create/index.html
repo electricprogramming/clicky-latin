@@ -34,6 +34,9 @@
     .button:hover {
       transform: scale(1.1);
     }
+    .button:active {
+      filter: brightness(0.8);
+    }
     .modal-backdrop {
       position: fixed;
       top: 0;
@@ -355,9 +358,9 @@
   </style>
 </head>
 <body>
-  <button id="create-pair-btn" class="button" color="#0cf"> Create Pair </button>
+  <button id="create-pair-btn" class="button" style="background-color: #0cf;"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
-  <button id="save-btn" class="button" color="#0e6"> Save </button>
+  <button id="save-btn" class="button" style="background-color: #0e6;"> Save </button>
   <div id="preview-container"></div>
   <div class="modal-backdrop" id="create-pair-modal">
     <div class="modal">
@@ -421,23 +424,6 @@
     });
     homeBtn.addEventListener('mouseleave', () => {
       homeSVG.style.transform = 'scale(0.9)';
-    });
-  </script>
-  <script type="module">
-    // Dynamic button styling
-    import darkenColor from '/src/app/darken-color.js';
-    document.querySelectorAll('.button').forEach((button)=> {
-      const color = button.getAttribute('color');
-      button.style.backgroundColor = color;
-      button.addEventListener('mousedown', function() {
-        button.style.backgroundColor = darkenColor(color);
-      });
-      button.addEventListener('mouseup', function() {
-        button.style.backgroundColor = color;
-      });
-      button.addEventListener('mouseleave', function() {
-        button.style.backgroundColor = color;
-      });
     });
   </script>
   <script>
