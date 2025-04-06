@@ -3,19 +3,29 @@ import gameCode from './get-game-code.js';
 import api from '../api.js';
 import createElement from './create-element.js';
 import loadGameNotFoundPage from '../play/specific/load-game-not-found-page.js';
+import deterministicShuffle from './deterministic-shuffle.js';
 const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
-  api.GET(gameCode)
-    .then(gameData => 
-      resolve({
-        gameName: gameData.name,
-        gameItems: gameData.items
-      })
-    )
-    .catch(err => {
-      console.error(err);
-      reject(err);
-    });
+  const cachedGameData = window.top.cachedGames?.[gameCode];
+  if (cachedGameData && typeof cachedGameData === 'object') {
+    console.log(cachedGameData)
+    resolve({
+      gameName: cachedGameData.name,
+      gameItems: cachedGameData.items
+    })
+  } else {
+    api.GET(gameCode)
+      .then(gameData => 
+        resolve({
+          gameName: gameData.name,
+          gameItems: gameData.items
+        })
+      )
+      .catch(err => {
+        console.error(err);
+        reject(err);
+      });
+  }
 });
 if (gameName) {
   window.gameName = gameName;
@@ -32,8 +42,8 @@ if (gameName) {
       word: pair[1]
     });
   });
-  Array.shuffle(allWords).forEach(({language, matchId, word}) => {
-    createElement(language, matchId, word);
+  deterministicShuffle(allWords).forEach(({language, matchId, word}, index) => {
+    createElement(language, matchId, word, index);
   });
   loadingSpinner.style.display = 'none';
 } else {
