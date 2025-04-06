@@ -13,7 +13,7 @@ export default function getPositionForBlock(word, index, isEnglish) {
   }
   seedValue1 += isEnglish ? 0 : 1;
 
-  const xPosition = (seedValue1 * word.length * Math.sqrt(index) * 55 / 7) % 50;
+  const xPosition = (seedValue1 * word.length * Math.sqrt(index) * 59 / 7 * Math.PI) % 50;
 
   let seedValue2 = 0;
   for (let i = 1; i < word.length; i += 2) {
@@ -21,7 +21,7 @@ export default function getPositionForBlock(word, index, isEnglish) {
   }
   seedValue2 += isEnglish ? 1 : 0;
 
-  const yPosition = (seedValue2 * word.length * Math.sqrt(index) * 63 / 11) % 50;
+  const yPosition = (seedValue2 * word.length * Math.sqrt(index) * 67 / 11 * Math.E) % 50;
   const isLeft = seedValue1 % 2 === 0;
   const isTop = seedValue2 % 2 === 0;
 
