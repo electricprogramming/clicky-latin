@@ -83,7 +83,11 @@
     <h1>Enter Game Code</h1>
     <input type="text" id="game-code-input" placeholder="Enter code..." maxlength="8">
     <button id="submit-btn">Submit</button>
+    <h3>Or search:</p>
+    <input type="text" id="search-input" placeholder="Search...">
+    <button id="search-btn">Search</button>
   </div>
+
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="/">
       <g id="back-home-btn" transform="translate(2.5,2.5)">
@@ -100,6 +104,7 @@
       </g>
     </a>
   </svg>
+
   <script type="module"> 
     const homeSVG = document.getElementById('back-home-svg');
     const homeBtn = document.getElementById('back-home-btn');
@@ -110,6 +115,7 @@
       homeSVG.style.transform = 'scale(0.9)';
     });
   </script>
+
   <script type="module">
     const input = document.getElementById('game-code-input');
     input.value = '';
@@ -122,7 +128,7 @@
     });
     submitBtn.addEventListener('click', function () {
       if (input.value.length >= 8) {
-        window.location.href = `/play/${input.value}`
+        window.location.href = `/play/${input.value}`;
       }
     });
     input.addEventListener('keydown', function(event) {
@@ -130,7 +136,24 @@
         submitBtn.click();
       }
     });
+
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+
+    searchBtn.addEventListener('click', function() {
+      const query = searchInput.value.trim();
+      if (query) {
+        window.location.href = `/search?q=${encodeURIComponent(query)}`;
+      }
+    });
+
+    searchInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        searchBtn.click();
+      }
+    });
   </script>
+  
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
 </html>
