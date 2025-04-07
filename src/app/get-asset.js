@@ -1,23 +1,23 @@
 export default async function getAsset(fileName, type = 'text') {
-  return new Promise(async (resolve, reject) => {
-    const res = await fetch(`/assets/${fileName}`);
-    switch (type) {
-      case 'blob':
-        resolve(await res.blob());
-        break;
-      case 'data:uri':
+  const res = await fetch(`/assets/${fileName}`);
+  switch (type) {
+    case 'blob':
+      return await res.blob();
+    case 'data:uri':
+      const blob = await res.blob();
+      return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function () {
           resolve(this.result);
         }
-        reader.readAsDataURL(await res.blob());
-        break;
-      case 'json':
-        resolve(await res.json());
-        break;
-      default:
-        resolve(await res.text());
-        break;
-    }
-  });
+        reader.onerror = function(e) {
+          reject(e);
+        }
+        reader.readAsDataURL(blob);
+      });
+    case 'json':
+      return await res.json();
+    default:
+      return await res.text();
+  }
 }
