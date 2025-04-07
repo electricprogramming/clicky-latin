@@ -5,9 +5,6 @@ import createGameElement from './create-game-element.js';
 import loadGameNotFoundPage from './load-game-not-found-page.js';
 import timer from './timer.js';
 const loadingSpinner = document.getElementById('loading-spinner');
-window.addEventListener("beforeunload", (e) => {
-  e.preventDefault();
-});
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   api.GET(gameCode)
     .then(gameData => 
@@ -23,6 +20,9 @@ const { gameName, gameItems } = await new Promise((resolve, reject) => {
 });
 if (gameName) {
   window.gameName = gameName;
+  window.addEventListener('beforeunload', e => {
+    e.preventDefault();
+  });
   document.title = `Clicky Latin - Play \`${gameName}\``;
   const allWords = gameItems.multiMap((RETURN, pair, idx) => {
     RETURN({

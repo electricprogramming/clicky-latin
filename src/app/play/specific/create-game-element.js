@@ -1,3 +1,4 @@
+import getAsset from '../../get-asset.js';
 import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
 import pythagoras from './pythagoras.js';
@@ -9,17 +10,7 @@ import msToMinAndSec from '../../ms-to-min-and-sec.js';
 import timer from './timer.js';
 import isMobile from '../../is-mobile.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
-const englishBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
-  <g id="content">
-    <path fill="#0d3" d="M4,4 H596 V221 H450 L400,150 H200 L150,221 H4 Z" stroke="black" stroke-width="8"/>
-    <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="75"></text>
-  </g>
-</svg>`, latinBaseSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="225" viewBox="0 0 600 225">
-  <g id="content">
-    <path fill="#09f" d="M4,221 H596 V75 H450 L400,4 H200 L150,75 H4 Z" stroke="black" stroke-width="8"/>
-    <text class="text" fill="black" font-family="Courier New" text-anchor="middle" dominant-baseline="middle" x="300" y="150"></text>
-  </g>
-</svg>`;
+const englishBaseSvg = await getAsset('box-green.svg'), latinBaseSvg = await getAsset('box-blue.svg');
 let mistakeCount = 0;
 /**
  * More advanced version that works for desktop.
