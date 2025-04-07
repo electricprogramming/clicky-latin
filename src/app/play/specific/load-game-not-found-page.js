@@ -8,7 +8,8 @@ export default function loadGameNotFoundPage() {
     <title>Clicky Latin - Game Not Found</title>
     <link rel="icon" href="/assets/favicon-404.svg" type="image/svg+xml">
     <style>
-      body, html {
+      html, body {
+        overflow: hidden;
         user-select: none;
         margin: 0;
         padding: 0;
