@@ -1,4 +1,5 @@
 import api from '../api.js';
+import getAsset from '../get-asset.js';
 import messages from '../messages.js';
 import createPreviewElement from './create-preview-element.js';
 const createPairBtn = document.getElementById('create-pair-btn');
@@ -19,6 +20,7 @@ const cloudSavingModal = document.getElementById('cloud-saving-modal');
 const cloudSavingText = document.getElementById('cloud-saving-text');
 const cloudSavingCopyURLbtn = document.getElementById('cloud-save-copyurl-btn');
 const cloudSavingDonebtn = document.getElementById('cloud-save-done-btn');
+const gameCopiedSvg = await getAsset('game-copied.svg');
 window.addEventListener("beforeunload", (e) => {
   e.preventDefault();
 });
@@ -127,14 +129,7 @@ messages.on('save-confirm', () => {
       cloudSavingCopyURLbtn.addEventListener('click', () => {
         navigator.clipboard.writeText(`https://clickylatin.vercel.app/play/${gameCode}`);
         const element = document.createElement('div');
-        element.innerHTML = `
-          <svg width="605" height="155" viewbox="0 0 605 155" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(2.5, 2.5)">
-              <rect width="600" height="150" fill="#777d" stroke="white" stroke-width="5" rx="40" ry="40"/>
-              <text fill="#000" font-family="serif" font-size="75" text-anchor="middle" dominant-baseline="middle" x="300" y="85">Game Url Copied!</text>
-            </g>
-          </svg>
-        `;
+        element.innerHTML = gameCopiedSvg;
         const cloudSavingURLcopied = element.querySelector('svg');
         cloudSavingURLcopied.classList.add('cloud-save-url-copied');
         document.body.appendChild(element);

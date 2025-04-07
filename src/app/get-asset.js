@@ -1,3 +1,9 @@
+/**
+ * Fetches an asset from the Assets folder by filename and return type.
+ * @param {string} fileName 
+ * @param {'data:uri' | 'blob' | 'json' | 'text'} type
+ * @returns 
+ */
 export default async function getAsset(fileName, type = 'text') {
   const res = await fetch(`/assets/${fileName}`);
   switch (type) {
@@ -21,3 +27,4 @@ export default async function getAsset(fileName, type = 'text') {
       return await res.text();
   }
 }
+getAsset()
