@@ -9,7 +9,7 @@ export default function loadGameNotFoundPage() {
     <link rel="preload" as="image" href="/assets/404-game-rabbit.svg">
     <link rel="icon" href="/assets/favicon-404.svg" type="image/svg+xml">
     <style>
-      body, html {
+      html, body {
         user-select: none;
         margin: 0;
         padding: 0;
