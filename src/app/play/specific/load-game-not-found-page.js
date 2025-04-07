@@ -25,7 +25,7 @@ export default function loadGameNotFoundPage() {
         width: 100vmin;
         height: 100vmin;
       }
-      #404Image {
+      img {
         pointer-events: none;
         user-select: none;
         width: 100vmin;
@@ -70,7 +70,7 @@ export default function loadGameNotFoundPage() {
   </head>
   <body>
     <div class="container">
-      <img id="404Image" viewBox="0 0 2048 2048" src="/assets/404-game-rabbit.svg"></img>
+      <img viewBox="0 0 2048 2048" src="/assets/404-game-rabbit.svg"></img>
       <a href="/" id="back-to-home">Back to Home</a>
       <a href="/play" id="play-another">Play A Different Game</a>
     </div>
