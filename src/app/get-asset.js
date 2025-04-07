@@ -10,7 +10,7 @@ export default async function getAsset(fileName, type = 'text') {
         reader.onloadend = function() {
           resolve(this.result);
         }
-        reader.readAsDataURL(blob);
+        reader.readAsDataURL(await res.blob());
         break;
       case 'json':
         resolve(await res.json());
