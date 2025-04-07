@@ -6,6 +6,7 @@ export default function loadGameNotFoundPage() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clicky Latin - Game Not Found</title>
+    <link rel="preload" as="image" href="/assets/404-game-rabbit.svg">
     <link rel="icon" href="/assets/favicon-404.svg" type="image/svg+xml">
     <style>
       body, html {
@@ -25,6 +26,7 @@ export default function loadGameNotFoundPage() {
         height: 100vmin;
       }
       #404Image {
+        pointer-events: none;
         user-select: none;
         width: 100vmin;
         height: 100vmin;
