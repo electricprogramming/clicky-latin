@@ -142,6 +142,8 @@
       const query = searchInput.value.trim();
       if (query) {
         window.location.href = `/search?q=${encodeURIComponent(query)}`;
+      } else {
+        window.location.href = '/search';
       }
     });
     searchInput.addEventListener('keydown', function(event) {
