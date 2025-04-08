@@ -1,7 +1,7 @@
 import getAsset from '../get-asset.js';
 import getFontSize from '../get-font-size.js'
 import getPositionForBlock from './get-position.js';
-const englishBaseSvg = await getAsset('box-green.svg'), latinBaseSvg = await getAsset('box-blue.svg');
+const englishBaseSvg = await getAsset('box-upper.svg'), latinBaseSvg = await getAsset('box-lower.svg');
 /**
  * @param {('English' | 'Latin')} language
  * @param {string} word

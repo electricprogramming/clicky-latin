@@ -10,7 +10,7 @@ import msToMinAndSec from '../../ms-to-min-and-sec.js';
 import timer from './timer.js';
 import isMobile from '../../is-mobile.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
-const englishBaseSvg = await getAsset('box-green.svg'), latinBaseSvg = await getAsset('box-blue.svg');
+const englishBaseSvg = await getAsset('box-upper.svg'), latinBaseSvg = await getAsset('box-lower.svg');
 let mistakeCount = 0;
 /**
  * More advanced version that works for desktop.
