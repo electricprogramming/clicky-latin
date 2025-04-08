@@ -16,6 +16,10 @@
       top: 0;
       left: 0;
     }
+    :root {
+      --color-box-upper: #0d3;
+      --color-box-lower: #09f;
+    }
     #loading-spinner {
       position: fixed;
       top: 50%;
@@ -75,10 +79,10 @@
       clip-path: polygon(0% 100%, 100% 100%, 100% 31%, 76% 31%, 68% 0%, 32% 0%, 24% 31%, 0% 31%);
     }
     svg path.box-upper {
-      fill: #0d3;
+      fill: var(--color-box-upper);
     }
     svg path.box-lower {
-      fill: #09f;
+      fill: var(--color-box-lower);
     }
     .paired-element {
       position: fixed;
