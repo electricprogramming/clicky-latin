@@ -1,7 +1,21 @@
-import { isMay4th } from './special-days.js';
+import { isChristmas, isEaster, isJuly4th, isMay4th } from './special-days.js';
 
-if (isMay4th()) {
-  document.documentElement.style.setProperty('--color-background', '#000');
+function setCssVar(name, value) {
+  if (typeof name === 'string' && name.startsWith('--')) {
+    document.documentElement.style.setProperty(name, value);
+  }
+}
+
+if (isChristmas()) {
+
+} else if (isEaster()) {
+
+} else if (isJuly4th()) {
+  setCssVar('--color-background', '#fff');
+  setCssVar('--')
+} else if (isMay4th()) {
+  // Star Wars theme
+  setCssVar('--color-background', '#000');
   const upperGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -17,7 +31,7 @@ if (isMay4th()) {
     </defs>
   </svg>`;
   const upperGradientUri = `data:image/svg+xml,${encodeURIComponent(upperGradientDef)}`;
-  document.documentElement.style.setProperty('--color-box-upper', `url('${upperGradientUri}#gradient')`);
+  setCssVar('--color-box-upper', `url('${upperGradientUri}#gradient')`);
   const lowerGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -33,5 +47,5 @@ if (isMay4th()) {
     </defs>
   </svg>`;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
-  document.documentElement.style.setProperty('--color-box-lower', `url('${lowerGradientUri}#gradient')`);
+  setCssVar('--color-box-lower', `url('${lowerGradientUri}#gradient')`);
 }
