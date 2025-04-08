@@ -27,4 +27,3 @@ export default async function getAsset(fileName, type = 'text') {
       return await res.text();
   }
 }
-getAsset()
