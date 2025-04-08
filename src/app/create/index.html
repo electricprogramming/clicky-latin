@@ -322,6 +322,12 @@
       margin: 1vh;
       user-select: none;
     }
+    svg path.box-upper {
+      fill: #0d3;
+    }
+    svg path.box-lower {
+      fill: #09f;
+    }
     #context-menu {
       display: none;
       position: absolute;
@@ -358,9 +364,9 @@
   </style>
 </head>
 <body>
-  <button id="create-pair-btn" class="button" style="background-color: #0cf;"> Create Pair </button>
+  <button id="create-pair-btn" class="button" style="background-color: #09f;"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
-  <button id="save-btn" class="button" style="background-color: #0e6;"> Save </button>
+  <button id="save-btn" class="button" style="background-color: #0d3;"> Save </button>
   <div id="preview-container"></div>
   <div class="modal-backdrop" id="create-pair-modal">
     <div class="modal">
