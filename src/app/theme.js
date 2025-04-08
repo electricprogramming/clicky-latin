@@ -1,24 +1,19 @@
-function calculateEasterDate(year) {
-  const a = year % 19;
-  const b = Math.floor(year / 100);
-  const c = year % 100;
-  const d = Math.floor(b / 4);
-  const e = b % 4;
-  const f = Math.floor((b + 8) / 25);
-  const g = Math.floor((b - f + 1) / 3);
-  const h = (19 * a + b - d - g + 15) % 30;
-  const i = Math.floor(c / 4);
-  const k = c % 4;
-  const l = (32 + 2 * e + 2 * i - h - k) % 7;
-  const m = Math.floor((a + 11 * h + 22 * l) / 451);
-  const month = Math.floor((h + l - 7 * m + 114) / 31);
-  const day = ((h + l - 7 * m + 114) % 31) + 1;
-  return new Date(year, month - 1, day); // Month is 0-based
-}
+import { isMay4th } from './special-days.js';
 
-function isEaster() {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  const easterDate = calculateEasterDate(currentYear);
-  return today.toDateString() === easterDate.toDateString();
+if (isMay4th()) {
+  const gradientDef = `
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#0f0; stop-opacity:1" />
+        <stop offset="18%" style="stop-color:#9f9; stop-opacity:1" />
+        <stop offset="36%" style="stop-color:#fff; stop-opacity:1" />
+        <stop offset="64%" style="stop-color:#fff; stop-opacity:1" />
+        <stop offset="82%" style="stop-color:#9f9; stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#0f0; stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>`;
+  const url = `data:image/svg+xml,${encodeURIComponent(gradientDef)}`;
+  document.documentElement.style.setProperty('--color-box-upper', `url('${url}#gradient')`);
 }
