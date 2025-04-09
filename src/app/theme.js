@@ -7,7 +7,9 @@ function setCssVar(name, value) {
 }
 
 if (isChristmas()) {
-
+  setCssVar('color-background', '#003');
+  setCssVar('color-box-upper', '#d11');
+  setCssVar('color-box-lower', '#0a2');
 } else if (isEaster()) {
   setCssVar('color-background', '#2f5');
   setCssVar('color-box-upper', '#f9b');
