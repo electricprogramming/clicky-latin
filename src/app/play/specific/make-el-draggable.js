@@ -1,6 +1,6 @@
 import isMobile from '../../is-mobile.js';
 
-let topZIndex = 0;
+let topZIndex = 9999;
 /**
  * More advanced version that works for desktop.
  * @param {HTMLElement} el 
