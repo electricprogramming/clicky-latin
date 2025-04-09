@@ -42,6 +42,7 @@ Array.prototype.includesAll = function(...items) {
   });
   return true;
 }
+
 const originalRemove = Element.prototype.remove;
 Element.prototype.remove = function() {
   const removeEvent = new CustomEvent('remove', {

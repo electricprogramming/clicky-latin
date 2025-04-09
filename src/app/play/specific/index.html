@@ -8,7 +8,7 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <style>
     html, body {
-      background-color: var(--color-background);
+      background-color: var(--background);
       overflow: hidden;
       position: fixed;
       width: 100vw;
@@ -17,9 +17,9 @@
       left: 0;
     }
     :root {
-      --color-background: #333;
-      --color-box-upper: #0d3;
-      --color-box-lower: #09f;
+      --background: #333;
+      --foreground-1: #0d3;
+      --foreground-2: #09f;
     }
     #loading-spinner {
       position: fixed;
@@ -80,10 +80,10 @@
       clip-path: polygon(0% 100%, 100% 100%, 100% 31%, 76% 31%, 68% 0%, 32% 0%, 24% 31%, 0% 31%);
     }
     svg path.box-upper {
-      fill: var(--color-box-upper);
+      fill: var(--foreground-1);
     }
     svg path.box-lower {
-      fill: var(--color-box-lower);
+      fill: var(--foreground-2);
     }
     .paired-element {
       position: fixed;

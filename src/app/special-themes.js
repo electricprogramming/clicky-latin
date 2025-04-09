@@ -4,46 +4,46 @@ import {
   isJuly4th, isValentines, isMay4th } from './special-days.js';
 
 function setCssVar(name, value) {
-  if (typeof name === 'string') {
+  if (typeof name === 'string' && name.test(/^([a-zA-Z_])([a-zA-Z0-9_-]*)$/)) {
     document.documentElement.style.setProperty(`--${name}`, value);
   }
 }
 
 if (isChristmas()) {
-  setCssVar('color-background', '#003');
-  setCssVar('color-box-upper', '#d11');
-  setCssVar('color-box-lower', '#0a2');
+  setCssVar('background', '#003');
+  setCssVar('foreground-1', '#d11');
+  setCssVar('foreground-2', '#0a2');
 } else if (isEaster()) {
-  setCssVar('color-background', '#2f5');
-  setCssVar('color-box-upper', '#f9b');
-  setCssVar('color-box-lower', '#ff4');
+  setCssVar('background', '#2f5');
+  setCssVar('foreground-1', '#f9b');
+  setCssVar('foreground-2', '#ff4');
 } else if (isThanksgiving()) {
-  setCssVar('color-background', '#7a2');
-  setCssVar('color-box-upper', '#b23');
-  setCssVar('color-box-lower', '#fa0');
+  setCssVar('background', '#7a2');
+  setCssVar('foreground-1', '#b23');
+  setCssVar('foreground-2', '#fa0');
 } else if (isHalloween()) {
-  setCssVar('color-background', '#000');
-  setCssVar('color-box-upper', '#f80');
-  setCssVar('color-box-lower', '#ee1');
+  setCssVar('background', '#000');
+  setCssVar('foreground-1', '#f80');
+  setCssVar('foreground-2', '#ee1');
 } else if (isEarthDay()) {
-  setCssVar('color-background', '#29f');
-  setCssVar('color-box-upper', '#4b5');
-  setCssVar('color-box-lower', '#765');  
+  setCssVar('background', '#29f');
+  setCssVar('foreground-1', '#4b5');
+  setCssVar('foreground-2', '#765');  
 } else if (isAprilFools()) {
-  setCssVar('color-background', '#fff');
-  setCssVar('color-box-upper', '#0001');
-  setCssVar('color-box-lower', '#0001');
+  setCssVar('background', '#fff');
+  setCssVar('foreground-1', '#0001');
+  setCssVar('foreground-2', '#0001');
 } else if (isJuly4th()) {
-  setCssVar('color-background', '#fff');
-  setCssVar('color-box-upper', '#f00');
-  setCssVar('color-box-lower', '#00f');
+  setCssVar('background', '#fff');
+  setCssVar('foreground-1', '#f00');
+  setCssVar('foreground-2', '#00f');
 } else if (isValentines()) {
-  setCssVar('color-background', '#fee');
-  setCssVar('color-box-upper', '#f00');
-  setCssVar('color-box-lower', '#f8a');
+  setCssVar('background', '#fee');
+  setCssVar('foreground-1', '#f00');
+  setCssVar('foreground-2', '#f8a');
 } else if (isMay4th()) {
   // Star Wars theme
-  setCssVar('color-background', '#000');
+  setCssVar('background', '#000');
   const upperGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -60,7 +60,7 @@ if (isChristmas()) {
   </svg>
   `;
   const upperGradientUri = `data:image/svg+xml,${encodeURIComponent(upperGradientDef)}`;
-  setCssVar('color-box-upper', `url('${upperGradientUri}#gradient')`);
+  setCssVar('foreground-1', `url('${upperGradientUri}#gradient')`);
   const lowerGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -77,5 +77,5 @@ if (isChristmas()) {
   </svg>
   `;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
-  setCssVar('color-box-lower', `url('${lowerGradientUri}#gradient')`);
+  setCssVar('foreground-2', `url('${lowerGradientUri}#gradient')`);
 }

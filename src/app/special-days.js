@@ -1,4 +1,5 @@
 const today = new Date(prompt('Todays date'));
+
 function calcEasterDate(year) {
   const a = year % 19;
   const b = Math.floor(year / 100);
