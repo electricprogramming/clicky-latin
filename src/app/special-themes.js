@@ -1,4 +1,7 @@
-import { isChristmas, isEaster, isThanksgiving, isAprilFools, isJuly4th, isValentines, isMay4th } from './special-days.js';
+import {
+  isChristmas, isEaster, isThanksgiving,
+  isHalloween, isEarthDay, isAprilFools,
+  isJuly4th, isValentines, isMay4th } from './special-days.js';
 
 function setCssVar(name, value) {
   if (typeof name === 'string') {
@@ -18,6 +21,14 @@ if (isChristmas()) {
   setCssVar('color-background', '#7a2');
   setCssVar('color-box-upper', '#b23');
   setCssVar('color-box-lower', '#fa0');
+} else if (isHalloween()) {
+  setCssVar('color-background', '#000');
+  setCssVar('color-box-upper', '#f80');
+  setCssVar('color-box-lower', '#ee1');
+} else if (isEarthDay()) {
+  setCssVar('color-background', '#29f');
+  setCssVar('color-box-upper', '#4b5');
+  setCssVar('color-box-lower', '#765');  
 } else if (isAprilFools()) {
   setCssVar('color-background', '#fff');
   setCssVar('color-box-upper', '#0001');

@@ -39,6 +39,14 @@ export function isChristmas() {
   return today.getMonth() === 11 && today.getDate() === 25;
 }
 
+export function isHalloween() {
+  return today.getMonth() === 9 && today.getDate() === 31;
+}
+
+export function isEarthDay() {
+  return today.getMonth() === 3 && today.getDate() === 22;
+}
+
 export function isAprilFools() {
   return today.getMonth() === 3 && today.getDate() === 1;
 }
