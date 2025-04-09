@@ -13,7 +13,9 @@ if (isChristmas()) {
   setCssVar('color-box-upper', '#f9b');
   setCssVar('color-box-lower', '#ff4');
 } else if (isThanksgiving()) {
-  
+  setCssVar('color-background', '#7a2');
+  setCssVar('color-box-upper', '#b23');
+  setCssVar('color-box-lower', '#fa0');
 } else if (isJuly4th()) {
   setCssVar('color-background', '#fff');
   setCssVar('color-box-upper', '#f00');
