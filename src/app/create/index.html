@@ -42,6 +42,13 @@
     .button:active {
       filter: brightness(0.85);
     }
+    #create-pair-btn {
+      background-color: var(--foreground-2);
+    }
+    #save-btn {
+      background-color: var(--foreground-1);
+    }
+    
     .modal-backdrop {
       position: fixed;
       top: 0;
@@ -369,9 +376,9 @@
   </style>
 </head>
 <body>
-  <button id="create-pair-btn" class="button" style="background-color: #09f;"> Create Pair </button>
+  <button id="create-pair-btn" class="button"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
-  <button id="save-btn" class="button" style="background-color: #0d3;"> Save </button>
+  <button id="save-btn" class="button"> Save </button>
   <div id="preview-container"></div>
   <div class="modal-backdrop" id="create-pair-modal">
     <div class="modal">
