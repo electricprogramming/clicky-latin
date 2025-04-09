@@ -57,7 +57,8 @@ if (isChristmas()) {
         <stop offset="100%" style="stop-color:#bfb; stop-opacity:1" />
       </linearGradient>
     </defs>
-  </svg>`;
+  </svg>
+  `;
   const upperGradientUri = `data:image/svg+xml,${encodeURIComponent(upperGradientDef)}`;
   setCssVar('color-box-upper', `url('${upperGradientUri}#gradient')`);
   const lowerGradientDef = `
@@ -73,7 +74,8 @@ if (isChristmas()) {
         <stop offset="100%" style="stop-color:#00f; stop-opacity:1" />
       </linearGradient>
     </defs>
-  </svg>`;
+  </svg>
+  `;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
   setCssVar('color-box-lower', `url('${lowerGradientUri}#gradient')`);
 }
