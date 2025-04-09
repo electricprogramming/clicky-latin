@@ -39,14 +39,18 @@ export function isChristmas() {
   return today.getMonth() === 11 && today.getDate() === 25;
 }
 
+export function isAprilFools() {
+  return today.getMonth() === 3 && today.getDate() === 1;
+}
+
 export function isJuly4th() {
   return today.getMonth() === 6 && today.getDate() === 4;
 }
 
-export function isMay4th() {
-  return today.getMonth() === 4 && today.getDate() === 4;
-}
-
 export function isValentines() {
   return today.getMonth() === 1 && today.getDate() === 14;
+}
+
+export function isMay4th() {
+  return today.getMonth() === 4 && today.getDate() === 4;
 }

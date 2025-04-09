@@ -1,4 +1,4 @@
-import { isChristmas, isEaster, isJuly4th, isMay4th, isThanksgiving, isValentines } from './special-days.js';
+import { isChristmas, isEaster, isThanksgiving, isAprilFools, isJuly4th, isValentines, isMay4th } from './special-days.js';
 
 function setCssVar(name, value) {
   if (typeof name === 'string') {
@@ -18,10 +18,18 @@ if (isChristmas()) {
   setCssVar('color-background', '#7a2');
   setCssVar('color-box-upper', '#b23');
   setCssVar('color-box-lower', '#fa0');
+} else if (isAprilFools()) {
+  setCssVar('color-background', '#fff');
+  setCssVar('color-box-upper', '#0001');
+  setCssVar('color-box-lower', '#0001');
 } else if (isJuly4th()) {
   setCssVar('color-background', '#fff');
   setCssVar('color-box-upper', '#f00');
   setCssVar('color-box-lower', '#00f');
+} else if (isValentines()) {
+  setCssVar('color-background', '#fee');
+  setCssVar('color-box-upper', '#f00');
+  setCssVar('color-box-lower', '#f8a');
 } else if (isMay4th()) {
   // Star Wars theme
   setCssVar('color-background', '#000');
@@ -57,8 +65,4 @@ if (isChristmas()) {
   </svg>`;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
   setCssVar('color-box-lower', `url('${lowerGradientUri}#gradient')`);
-} else if (isValentines()) {
-  setCssVar('color-background', '#fee');
-  setCssVar('color-box-upper', '#f00');
-  setCssVar('color-box-lower', '#f8a');
 }
