@@ -1,4 +1,8 @@
-const today = new Date(prompt('Todays date'));
+const today = new Date();
+
+export function isApril9th() {
+  return today.getMonth() === 3 && today.getDate() === 9;
+}
 
 function calcEasterDate(year) {
   const a = year % 19;

@@ -1,7 +1,7 @@
 import {
   isChristmas, isEaster, isThanksgiving,
   isHalloween, isEarthDay, isAprilFools,
-  isJuly4th, isValentines, isMay4th } from './special-days.js';
+  isJuly4th, isValentines, isMay4th, isApril9th } from './special-days.js';
 
 function setCssVar(name, value) {
   if (typeof name === 'string' && /^([a-zA-Z_])([a-zA-Z0-9_-]*)$/.test(name)) {
@@ -9,6 +9,11 @@ function setCssVar(name, value) {
   }
 }
 
+if (isApril9th()) {
+  setCssVar('background', '#ff0');
+  setCssVar('foreground-1', '#f0f');
+  setCssVar('foreground-2', '#0ff');
+}
 if (isChristmas()) {
   setCssVar('background', '#003');
   setCssVar('foreground-1', '#d11');
