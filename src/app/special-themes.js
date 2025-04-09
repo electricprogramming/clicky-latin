@@ -4,7 +4,7 @@ import {
   isJuly4th, isValentines, isMay4th } from './special-days.js';
 
 function setCssVar(name, value) {
-  if (typeof name === 'string' && name.test(/^([a-zA-Z_])([a-zA-Z0-9_-]*)$/)) {
+  if (typeof name === 'string' && /^([a-zA-Z_])([a-zA-Z0-9_-]*)$/.test(name)) {
     document.documentElement.style.setProperty(`--${name}`, value);
   }
 }
