@@ -1,8 +1,8 @@
 import { isChristmas, isEaster, isJuly4th, isMay4th } from './special-days.js';
 
 function setCssVar(name, value) {
-  if (typeof name === 'string' && name.startsWith('--')) {
-    document.documentElement.style.setProperty(name, value);
+  if (typeof name === 'string') {
+    document.documentElement.style.setProperty(`--${name}`, value);
   }
 }
 
@@ -11,11 +11,12 @@ if (isChristmas()) {
 } else if (isEaster()) {
 
 } else if (isJuly4th()) {
-  setCssVar('--color-background', '#fff');
-  setCssVar('--')
+  setCssVar('color-background', '#fff');
+  setCssVar('color-box-upper', '#f00');
+  setCssVar('color-box-lower', '#00f');
 } else if (isMay4th()) {
   // Star Wars theme
-  setCssVar('--color-background', '#000');
+  setCssVar('color-background', '#000');
   const upperGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -31,7 +32,7 @@ if (isChristmas()) {
     </defs>
   </svg>`;
   const upperGradientUri = `data:image/svg+xml,${encodeURIComponent(upperGradientDef)}`;
-  setCssVar('--color-box-upper', `url('${upperGradientUri}#gradient')`);
+  setCssVar('color-box-upper', `url('${upperGradientUri}#gradient')`);
   const lowerGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -47,5 +48,5 @@ if (isChristmas()) {
     </defs>
   </svg>`;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
-  setCssVar('--color-box-lower', `url('${lowerGradientUri}#gradient')`);
+  setCssVar('color-box-lower', `url('${lowerGradientUri}#gradient')`);
 }

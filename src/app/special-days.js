@@ -1,5 +1,5 @@
 const today = new Date();
-function calculateEasterDate(year) {
+function calcEasterDate(year) {
   const a = year % 19;
   const b = Math.floor(year / 100);
   const c = year % 100;
@@ -19,8 +19,20 @@ function calculateEasterDate(year) {
 
 export function isEaster() {
   const currentYear = today.getFullYear();
-  const easterDate = calculateEasterDate(currentYear);
+  const easterDate = calcEasterDate(currentYear);
   return today.toDateString() === easterDate.toDateString();
+}
+
+function calcThanksgivingDate(year) {
+  const november1 = new Date(year, 10, 1); 
+  const firstThursday = november1.getDate() + (4 - november1.getDay() + 7) % 7;
+  return new Date(year, 10, firstThursday + 21);
+}
+
+export function isThanksgiving() {
+  const currentYear = today.getFullYear();
+  const thanksgivingDate = calcThanksgivingDate(currentYear);
+  return today.toDateString() === thanksgivingDate.toDateString();
 }
 
 export function isChristmas() {
