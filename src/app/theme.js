@@ -1,4 +1,4 @@
-import { isChristmas, isEaster, isJuly4th, isMay4th } from './special-days.js';
+import { isChristmas, isEaster, isJuly4th, isMay4th, isThanksgiving } from './special-days.js';
 
 function setCssVar(name, value) {
   if (typeof name === 'string') {
@@ -9,7 +9,11 @@ function setCssVar(name, value) {
 if (isChristmas()) {
 
 } else if (isEaster()) {
-
+  setCssVar('color-background', '#2f5');
+  setCssVar('color-box-upper', '#f9b');
+  setCssVar('color-box-lower', '#ff4');
+} else if (isThanksgiving()) {
+  
 } else if (isJuly4th()) {
   setCssVar('color-background', '#fff');
   setCssVar('color-box-upper', '#f00');

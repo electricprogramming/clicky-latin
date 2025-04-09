@@ -15,6 +15,7 @@ function _makeElDraggableDesktop(el, startDragFunc, endDragFunc) {
     isDragging = true;
     offsetX = e.clientX - el.getBoundingClientRect().left;
     offsetY = e.clientY - el.getBoundingClientRect().top;
+    el.style.zIndex = 99999;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
@@ -26,6 +27,7 @@ function _makeElDraggableDesktop(el, startDragFunc, endDragFunc) {
     const touch = e.touches[0];
     offsetX = touch.pageX - el.getBoundingClientRect().left;
     offsetY = touch.pageY - el.getBoundingClientRect().top;
+    el.style.zIndex = 99999;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
@@ -74,6 +76,7 @@ function _makeElDraggableDesktop(el, startDragFunc, endDragFunc) {
     if (isDragging) {
       e.preventDefault();
       isDragging = false;
+      el.style.zIndex = '';
       if (endDragFunc && typeof endDragFunc === 'function') {
         endDragFunc();
       }
@@ -101,6 +104,7 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
     isDragging = true;
     offsetX = e.clientX - el.getBoundingClientRect().left;
     offsetY = e.clientY - el.getBoundingClientRect().top;
+    el.style.zIndex = 99999;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
@@ -112,6 +116,7 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
     const touch = e.touches[0];
     offsetX = touch.clientX - el.getBoundingClientRect().left;
     offsetY = touch.clientY - el.getBoundingClientRect().top;
+    el.style.zIndex = 99999;
     if (startDragFunc && typeof startDragFunc === 'function') {
       startDragFunc();
     }
@@ -150,6 +155,7 @@ function _makeElDraggableMobile(el, startDragFunc, endDragFunc) {
   const stopDragging = () => {
     if (isDragging) {
       isDragging = false;
+      el.style.zIndex = '';
       if (endDragFunc && typeof endDragFunc === 'function') {
         endDragFunc();
       }
