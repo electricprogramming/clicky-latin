@@ -1,10 +1,8 @@
 import '../globalMods.js';
-import api from '../api.js';
 import submitSearch from './submit-search.js';
 window.cachedIframes = {};
 const searchBar = document.getElementById('search-bar');
 const searchSubmit = document.getElementById('search-submit');
-const loadingSpinner = document.getElementById('loading-spinner');
 if (document.referrer === 'https://clickylatin.vercel.app/') {
   searchBar.focus();
 }
