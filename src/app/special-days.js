@@ -46,3 +46,7 @@ export function isJuly4th() {
 export function isMay4th() {
   return today.getMonth() === 4 && today.getDate() === 4;
 }
+
+export function isValentines() {
+  return today.getMonth() === 1 && today.getDate() === 14;
+}

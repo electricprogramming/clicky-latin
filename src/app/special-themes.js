@@ -1,4 +1,4 @@
-import { isChristmas, isEaster, isJuly4th, isMay4th, isThanksgiving } from './special-days.js';
+import { isChristmas, isEaster, isJuly4th, isMay4th, isThanksgiving, isValentines } from './special-days.js';
 
 function setCssVar(name, value) {
   if (typeof name === 'string') {
@@ -57,4 +57,8 @@ if (isChristmas()) {
   </svg>`;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
   setCssVar('color-box-lower', `url('${lowerGradientUri}#gradient')`);
+} else if (isValentines()) {
+  setCssVar('color-background', '#fee');
+  setCssVar('color-box-upper', '#f00');
+  setCssVar('color-box-lower', '#f8a');
 }
