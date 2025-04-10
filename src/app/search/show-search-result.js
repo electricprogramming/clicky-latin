@@ -34,7 +34,7 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
         iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
       });
     }
-    
+
     container.style.order = resultIndex;
     function resizeText() {
       if (document.contains(container) && getComputedStyle(container).display !== 'none') {
