@@ -18,7 +18,7 @@ function setCssVar(name, value) {
 
 window.setCssVar = setCssVar;
 
-if (isDateX()) {
+if (isDateX() && false) {
   setCssVar('background', '#ff0');
   setCssVar('foreground-1', '#f0f');
   setCssVar('foreground-2', '#0ff');
