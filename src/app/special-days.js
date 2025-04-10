@@ -1,7 +1,7 @@
 const today = new Date();
 
-export function isApril9th() {
-  return today.getMonth() === 3 && today.getDate() === 9;
+export function isDateX() {
+  return today.getMonth() === 3 && today.getDate() === 10;
 }
 
 function calcEasterDate(year) {
