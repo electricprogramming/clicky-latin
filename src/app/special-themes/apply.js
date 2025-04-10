@@ -1,7 +1,7 @@
 import {
   isChristmas, isEaster, isThanksgiving,
   isHalloween, isAprilFools, isJuly4th,
-  isValentines, isMay4th, isDateX } from './special-days.js';
+  isValentines, isMay4th, isDateX } from './days.js';
 
 /**
  * Sets the value of a CSS variable to a given value.
