@@ -29,9 +29,11 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     text.textContent = gameName;
     document.getElementById('results-container').appendChild(container);
 
-    Array.from(document.documentElement.style).forEach(v => {
-      iframe.contentDocument.documentElement.style.setProperty(v, document.documentElement.style.getPropertyValue(v));
-    });
+    iframe.onload = function() {
+      Array.from(document.documentElement.style).forEach(v => {
+        iframe.contentDocument.documentElement.style.setProperty(v, document.documentElement.style.getPropertyValue(v));
+      });
+    }
 
     container.style.order = resultIndex;
     function resizeText() {
