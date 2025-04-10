@@ -26,30 +26,44 @@ if (isChristmas()) {
   setCssVar('background', '#2f5');
   setCssVar('foreground-1', '#f9b');
   setCssVar('foreground-2', '#ff4');
+  setCssVar('foreground-3', '#f9b');
+  setCssVar('foreground-4', '#ff4');
 } else if (isThanksgiving()) {
   setCssVar('background', '#7a2');
   setCssVar('foreground-1', '#b23');
   setCssVar('foreground-2', '#fa0');
+  setCssVar('foreground-3', '#b23');
+  setCssVar('foreground-4', '#fa0');
 } else if (isHalloween()) {
   setCssVar('background', '#000');
   setCssVar('foreground-1', '#f80');
   setCssVar('foreground-2', '#ee1');
+  setCssVar('foreground-3', '#f80');
+  setCssVar('foreground-4', '#ee1');
 } else if (isEarthDay()) {
   setCssVar('background', '#29f');
   setCssVar('foreground-1', '#4b5');
-  setCssVar('foreground-2', '#765');  
+  setCssVar('foreground-2', '#765');
+  setCssVar('foreground-3', '#4b5');
+  setCssVar('foreground-4', '#765');
 } else if (isAprilFools()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#0001');
   setCssVar('foreground-2', '#0001');
+  setCssVar('foreground-3', '#0001');
+  setCssVar('foreground-4', '#0001');
 } else if (isJuly4th()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#f00');
   setCssVar('foreground-2', '#00f');
+  setCssVar('foreground-3', '#f00');
+  setCssVar('foreground-4', '#00f');
 } else if (isValentines()) {
   setCssVar('background', '#fee');
   setCssVar('foreground-1', '#f00');
   setCssVar('foreground-2', '#f8a');
+  setCssVar('foreground-3', '#f00');
+  setCssVar('foreground-4', '#f8a');
 } else if (isMay4th()) {
   // Star Wars theme
   setCssVar('background', '#000');
