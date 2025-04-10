@@ -15,6 +15,9 @@ function setCssVar(name, value) {
     document.documentElement.style.setProperty(`--${name}`, value);
   }
 }
+
+window.setCssVar = setCssVar;
+
 if (isDateX()) {
   setCssVar('background', '#ff0');
   setCssVar('foreground-1', '#f0f');
