@@ -146,4 +146,7 @@ if (isChristmas()) {
     #99f 80%,
     #00f 100%
   )`);
+  setCssVar('main-text', '#f8e71b');
+  setCssVar('minor-text', '#f8e71b');
+  setCssVar('main-ui', '#f8e71b');
 }
