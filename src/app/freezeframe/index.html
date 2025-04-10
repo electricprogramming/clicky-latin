@@ -8,7 +8,6 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <style>
     html, body {
-      background-color: var(--background);
       overflow: hidden;
       display: block;
       position: fixed;
@@ -17,6 +16,11 @@
       top: 0;
       left: 0;
       pointer-events: none;
+    }
+    :root {
+      --background: #333;
+      --foreground-1: #0d3;
+      --foreground-2: #09f;
     }
     #loading-spinner {
       position: fixed;
