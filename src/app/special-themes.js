@@ -96,11 +96,11 @@ if (isChristmas()) {
   )`);
   setCssVar('foreground-4', `linear-gradient(
     to bottom,
-    #f00 0%,
-    #f99 20%,
+    #0f0 0%,
+    #9f9 20%,
     #fff 40%,
     #fff 60%,
-    #f99 80%,
-    #f00 100%
+    #9f9 80%,
+    #0f0 100%
   )`);
 }
