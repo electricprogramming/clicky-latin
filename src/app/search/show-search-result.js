@@ -31,7 +31,7 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
 
     iframe.onload = function() {
       Array.from(document.documentElement.style).forEach(v => {
-        iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
+        iframe.contentDocument.documentElement.style.setProperty(v, document.documentElement.style.getPropertyValue(v));
       });
     }
 
