@@ -27,11 +27,6 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     link.appendChild(svgEl);
     const text = svgEl.querySelector('text');
     text.textContent = gameName;
-
-    ['background', 'foreground-1', 'foreground-2'].forEach(v => {
-      iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
-    });
-
     document.getElementById('results-container').appendChild(container);
     container.style.order = resultIndex;
     function resizeText() {
@@ -46,5 +41,9 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     resizeText();
     window.addEventListener('resize', resizeText);
     cachedIframes[gameId] = container;
+
+    ['background', 'foreground-1', 'foreground-2'].forEach(v => {
+      iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
+    });
   }
 }
