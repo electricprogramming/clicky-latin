@@ -8,7 +8,6 @@ const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   const cachedGameData = window.top.cachedGames?.[gameCode];
   if (cachedGameData && typeof cachedGameData === 'object') {
-    console.log(cachedGameData)
     resolve({
       gameName: cachedGameData.name,
       gameItems: cachedGameData.items
