@@ -87,20 +87,20 @@ if (isChristmas()) {
   setCssVar('foreground-2', `url('${lowerGradientUri}#gradient')`);
   setCssVar('foreground-3', `linear-gradient(
     to bottom,
-    #00f 0%,
-    #99f 20%,
-    #fff 40%,
-    #fff 60%,
-    #99f 80%,
-    #00f 100%
-  )`);
-  setCssVar('foreground-4', `linear-gradient(
-    to bottom,
     #0f0 0%,
     #9f9 20%,
     #fff 40%,
     #fff 60%,
     #9f9 80%,
     #0f0 100%
+  )`);
+  setCssVar('foreground-4', `linear-gradient(
+    to bottom,
+    #00f 0%,
+    #99f 20%,
+    #fff 40%,
+    #fff 60%,
+    #99f 80%,
+    #00f 100%
   )`);
 }
