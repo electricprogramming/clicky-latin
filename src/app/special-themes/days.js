@@ -1,9 +1,16 @@
+let count = sessionStorage.getItem('counter');
+if (count === null) {
+  count = 0;
+} else {
+  count = parseInt(count) + 1;
+}
+sessionStorage.setItem('counter', count);
 const dates = [
   'dec 25', 'apr 20 2025', 'nov 28 2024',
   'oct 31', 'apr 1', 'jul 4',
   'feb 14', 'may 4'
 ]
-const today = new Date(dates[Math.floor(Math.random() * 8)]);
+const today = new Date(dates[count % 8]);
 
 export function isDateX() {
   return today.getMonth() === 3 && today.getDate() === 10;
