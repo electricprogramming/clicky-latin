@@ -29,8 +29,10 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     text.textContent = gameName;
     document.getElementById('results-container').appendChild(container);
 
+    ['background', 'foreground-1', 'foreground-2'].forEach(v => {
+      iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
+    });
     
-
     container.style.order = resultIndex;
     function resizeText() {
       if (document.contains(container) && getComputedStyle(container).display !== 'none') {
