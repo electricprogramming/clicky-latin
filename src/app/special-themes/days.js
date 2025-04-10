@@ -1,8 +1,3 @@
-const dates = [
-  'dec 25', 'apr 20 2025', 'nov 28 2024',
-  'oct 31', 'apr 1', 'jul 4',
-  'feb 14', 'may 4'
-]
 const today = new Date();
 
 export function isDateX() {
