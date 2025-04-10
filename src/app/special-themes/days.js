@@ -1,4 +1,9 @@
-const today = new Date('may 4');
+const dates = [
+  'dec 25', 'apr 20 2025', 'nov 28 2024',
+  'oct 31', 'apr 1', 'jul 4',
+  'feb 14', 'may 4'
+]
+const today = new Date(dates[Math.floor(Math.random() * 8)]);
 
 export function isDateX() {
   return today.getMonth() === 3 && today.getDate() === 10;
