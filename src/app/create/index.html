@@ -444,18 +444,7 @@
       homeSVG.style.transform = 'scale(0.9)';
     });
   </script>
-  <script>
-    document.addEventListener('click', function(e) {
-      if (e.target === document.getElementById('unlisted-toggle')) {
-        const toggleSwitch = e.target;
-        toggleSwitch.classList.toggle('on');
-        const toggleEvent = new CustomEvent('toggle');
-        toggleEvent.toggleState = toggleSwitch.classList.contains('on');
-        toggleSwitch.value = toggleSwitch.classList.contains('on');
-        toggleSwitch.dispatchEvent(toggleEvent);
-      }
-    });
-  </script>
+  <script src="/src/toggle-switches.js"></script>
   <script type="module" src="/src/app/special-themes.js"></script>
   <script type="module" src="/src/app/create/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
