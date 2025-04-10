@@ -1,7 +1,7 @@
 import {
   isChristmas, isEaster, isThanksgiving,
-  isHalloween, isEarthDay, isAprilFools,
-  isJuly4th, isValentines, isMay4th, isDateX } from './special-days.js';
+  isHalloween, isAprilFools, isJuly4th,
+  isValentines, isMay4th, isDateX } from './special-days.js';
 
 /**
  * Sets the value of a CSS variable to a given value.
@@ -35,32 +35,35 @@ if (isChristmas()) {
   setCssVar('foreground-3', '#d11');
   setCssVar('foreground-4', '#0a2');
   setCssVar('main-text', '#d11');
-  setCssVar('minor-text', '#082');
+  setCssVar('minor-text', '#0a3');
   setCssVar('main-ui', '#082');
 } else if (isEaster()) {
-  setCssVar('background', '#2f5');
+  setCssVar('background', '#1f4');
   setCssVar('foreground-1', '#f9b');
   setCssVar('foreground-2', '#ff4');
   setCssVar('foreground-3', '#f9b');
   setCssVar('foreground-4', '#ff4');
+  setCssVar('main-text', '#ff0');
+  setCssVar('minor-text', '#fff');
+  setCssVar('main-ui', '#f79');
 } else if (isThanksgiving()) {
   setCssVar('background', '#7a2');
   setCssVar('foreground-1', '#b23');
   setCssVar('foreground-2', '#fa0');
   setCssVar('foreground-3', '#b23');
   setCssVar('foreground-4', '#fa0');
+  setCssVar('main-text', '#c12');
+  setCssVar('minor-text', '#f60');
+  setCssVar('main-ui', '#fa0');
 } else if (isHalloween()) {
   setCssVar('background', '#000');
   setCssVar('foreground-1', '#f80');
   setCssVar('foreground-2', '#ee1');
   setCssVar('foreground-3', '#f80');
   setCssVar('foreground-4', '#ee1');
-} else if (isEarthDay()) {
-  setCssVar('background', '#29f');
-  setCssVar('foreground-1', '#4b5');
-  setCssVar('foreground-2', '#765');
-  setCssVar('foreground-3', '#4b5');
-  setCssVar('foreground-4', '#765');
+  setCssVar('main-text', '#e50');
+  setCssVar('minor-text', '#ee1');
+  setCssVar('main-ui', '#c0d');
 } else if (isAprilFools()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#0001');
