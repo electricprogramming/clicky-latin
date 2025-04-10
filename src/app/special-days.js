@@ -1,4 +1,4 @@
-const today = new Date();
+const today = new Date('may 4');
 
 export function isDateX() {
   return today.getMonth() === 3 && today.getDate() === 10;
