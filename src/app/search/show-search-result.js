@@ -30,7 +30,7 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     document.getElementById('results-container').appendChild(container);
 
     iframe.onload = function() {
-        ['background', 'foreground-1', 'foreground-2'].forEach(v => {
+      ['foreground-1', 'foreground-2'].forEach(v => {
         iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
       });
     }
