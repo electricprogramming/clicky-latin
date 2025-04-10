@@ -3,12 +3,18 @@ import {
   isHalloween, isEarthDay, isAprilFools,
   isJuly4th, isValentines, isMay4th, isDateX } from './special-days.js';
 
+/**
+ * Sets the value of a CSS variable to a given value.
+ * @param {string} name
+ * @pattern ^([a-zA-Z_])([a-zA-Z0-9_-]*)$
+ * 
+ * @param {string} value 
+ */
 function setCssVar(name, value) {
   if (typeof name === 'string' && /^([a-zA-Z_])([a-zA-Z0-9_-]*)$/.test(name)) {
     document.documentElement.style.setProperty(`--${name}`, value);
   }
 }
-
 if (isDateX()) {
   setCssVar('background', '#ff0');
   setCssVar('foreground-1', '#f0f');
@@ -16,12 +22,18 @@ if (isDateX()) {
   setCssVar('foreground-3', '#f0f');
   setCssVar('foreground-4', '#0ff');
   setCssVar('main-text', '#000');
+  setCssVar('minor-text', '#000');
   setCssVar('main-ui', '#333');
 }
 if (isChristmas()) {
   setCssVar('background', '#003');
   setCssVar('foreground-1', '#d11');
   setCssVar('foreground-2', '#0a2');
+  setCssVar('foreground-3', '#d11');
+  setCssVar('foreground-4', '#0a2');
+  setCssVar('main-text', '#d11');
+  setCssVar('minor-text', '#082');
+  setCssVar('main-ui', '#082');
 } else if (isEaster()) {
   setCssVar('background', '#2f5');
   setCssVar('foreground-1', '#f9b');
