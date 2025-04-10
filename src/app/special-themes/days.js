@@ -3,7 +3,7 @@ const dates = [
   'oct 31', 'apr 1', 'jul 4',
   'feb 14', 'may 4'
 ]
-const today = new Date(dates[Math.floor(Math.random() * 8)]);
+const today = new Date();
 
 export function isDateX() {
   return today.getMonth() === 3 && today.getDate() === 10;
