@@ -13,6 +13,8 @@ if (isDateX()) {
   setCssVar('background', '#ff0');
   setCssVar('foreground-1', '#f0f');
   setCssVar('foreground-2', '#0ff');
+  setCssVar('main-text', '#000');
+  setCssVar('main-ui', '#333');
 }
 if (isChristmas()) {
   setCssVar('background', '#003');
