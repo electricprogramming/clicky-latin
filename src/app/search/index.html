@@ -102,17 +102,19 @@
       max-height: 14vw;
       margin: 2vh 2vw;
       pointer-events: auto;
-    }
-    .result-element iframe {
-      user-select: none;
-      box-sizing: border-box;
-      width: 100%;
-      height: 75%;
-      border: 0.5vmin solid #fff;
-    }
-    .result-element svg {
-      width: 100%;
-      height: 25%;
+
+      iframe {
+        user-select: none;
+        box-sizing: border-box;
+        width: 100%;
+        height: 75%;
+        border: 0.5vmin solid #fff;
+        background-color: var(--background);
+      }
+      svg {
+        width: 100%;
+        height: 25%;
+      }
     }
     #back-home-svg {
       width: 20vmin;
