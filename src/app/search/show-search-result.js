@@ -28,6 +28,11 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     const text = svgEl.querySelector('text');
     text.textContent = gameName;
     document.getElementById('results-container').appendChild(container);
+
+    ['background', 'foreground-1', 'foreground-2'].forEach(v => {
+      iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
+    });
+    
     container.style.order = resultIndex;
     function resizeText() {
       if (document.contains(container) && getComputedStyle(container).display !== 'none') {
@@ -41,9 +46,5 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     resizeText();
     window.addEventListener('resize', resizeText);
     cachedIframes[gameId] = container;
-
-    ['background', 'foreground-1', 'foreground-2'].forEach(v => {
-      iframe.contentDocument.documentElement.style.setProperty(`--${v}`, document.documentElement.style.getPropertyValue(`--${v}`));
-    });
   }
 }
