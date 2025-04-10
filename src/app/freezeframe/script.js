@@ -11,7 +11,7 @@ const { gameName, gameItems } = await new Promise((resolve, reject) => {
     resolve({
       gameName: cachedGameData.name,
       gameItems: cachedGameData.items
-    })
+    });
   } else {
     api.GET(gameCode)
       .then(gameData => 
