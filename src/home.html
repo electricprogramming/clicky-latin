@@ -22,15 +22,17 @@
       --background: #333;
       --foreground-1: #0d3;
       --foreground-2: #09f;
+      --main-text: #fff;
+      --main-ui: #ccc;
     }
     hr {
       display: block;
       border: 0;
-      height: 4px; /* Line thickness */
+      height: 4px;
       min-height: 4px;
-      background-color: #ccc; /* Line color */
+      background-color: var(--main-ui);
       width: 100vw;
-      margin: 20px auto; /* Center the line with margin on top and bottom */
+      margin: 20px auto;
     }
     #navigation-bar {
       display: flex;
@@ -45,7 +47,7 @@
       user-select: none;
       text-decoration: none;           /* Remove underline */
       font-family: 'Times New Roman', Times, serif;
-      color: white;
+      color: var(--main-text);
       font-size: 10vmin;
       transform: scale(1.0);
       transition: transform 0.3s ease;
@@ -89,14 +91,14 @@
       flex-direction: column;
     }
     .heading {
-      color: #fff;
+      color: var(--main-text);
       font-family:'Times New Roman', Times, serif;
       font-size: 15vmin;
     }
     p {
       font-family:'Times New Roman', Times, serif;
       font-size: 3vmax;
-      color: #fff;
+      color: var(--main-text);
       text-indent: 5vw; 
       text-align: justify;
     }
