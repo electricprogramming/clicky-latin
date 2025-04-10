@@ -26,6 +26,7 @@
       --main-text: #fff;
       --minor-text: #fff;
       --main-ui: #ccc;
+      --ui-accent: #39d;
     }
     #container {
       text-align: center;
@@ -55,7 +56,7 @@
     }
     input:focus {
       outline: none;
-      border-color: #4CAF50;
+      border-color: var(--foreground-4);
     }
     input::placeholder {
       user-select: none;
@@ -63,7 +64,7 @@
     button {
       width: 100%;
       padding: 1.25vh;
-      background-color: #4CAF50;
+      background-color: var(--foreground-3);
       border: none;
       color: white;
       font-size: 2.5vh;
@@ -72,7 +73,7 @@
       user-select: none;
     }
     button:hover {
-      background-color: #45a049;
+      filter: brightness(0.8);
     }
     #back-home-svg {
       width: 20vmin;
@@ -162,7 +163,7 @@
       }
     });
   </script>
-  
+  <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
 </html>
