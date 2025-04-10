@@ -85,4 +85,22 @@ if (isChristmas()) {
   `;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
   setCssVar('foreground-2', `url('${lowerGradientUri}#gradient')`);
+  setCssVar('foreground-3', `linear-gradient(
+    to bottom,
+    #00f 0%,
+    #99f 20%,
+    #fff 40%,
+    #fff 60%,
+    #99f 80%,
+    #00f 100%
+  )`);
+  setCssVar('foreground-4', `linear-gradient(
+    to bottom,
+    #f00 0%,
+    #f99 20%,
+    #fff 40%,
+    #fff 60%,
+    #f99 80%,
+    #f00 100%
+  )`);
 }
