@@ -28,12 +28,9 @@ export default function showSearchResult(gameId, gameName, resultIndex) {
     const text = svgEl.querySelector('text');
     text.textContent = gameName;
     document.getElementById('results-container').appendChild(container);
-
-    iframe.onload = function() {
-      Array.from(document.documentElement.style).forEach(v => {
-        iframe.contentDocument.documentElement.style.setProperty(v, document.documentElement.style.getPropertyValue(v));
-      });
-    }
+    Array.from(document.documentElement.style).forEach(v => {
+      iframe.contentDocument.documentElement.style.setProperty(v, document.documentElement.style.getPropertyValue(v));
+    });
 
     container.style.order = resultIndex;
     function resizeText() {
