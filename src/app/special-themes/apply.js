@@ -29,7 +29,7 @@ if (isDateX() && false) {
   setCssVar('main-ui', '#333');
 }
 if (isChristmas()) {
-  setCssVar('background', '#003');
+  setCssVar('background', '#002');
   setCssVar('foreground-1', '#d11');
   setCssVar('foreground-2', '#0a2');
   setCssVar('foreground-3', '#d11');
