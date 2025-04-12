@@ -38,7 +38,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#0a3');
   setCssVar('main-ui', '#082');
 } else if (isEaster()) {
-  setCssVar('background', '#1f4');
+  setCssVar('background', '#0b3');
   setCssVar('foreground-1', '#f9b');
   setCssVar('foreground-2', '#ff4');
   setCssVar('foreground-3', '#f9b');
