@@ -81,8 +81,8 @@ if (isChristmas()) {
   setCssVar('foreground-4', '#00f');
   setCssVar('main-text', '#f00');
   setCssVar('minor-text', '#00f');
-  setCssVar('main-ui', '#00f');
-  setCssVar('ui-accent', '#f00');
+  setCssVar('main-ui', '#f00');
+  setCssVar('ui-accent', '#00f');
 } else if (isValentines()) {
   setCssVar('background', '#fdd');
   setCssVar('foreground-1', '#f00');
