@@ -1,12 +1,5 @@
-if (!localStorage.idx) {
-  localStorage.idx = 0;
-}
-localStorage.idx ++;
-const dates = [
-  'dec 25', 'apr 20 2025', 'nov 28 2024',
-  'oct 31', 'apr 1', 'july 4', 'feb 14', 'may 4'
-]
-const today = new Date(dates[localStorage.idx % 8]);
+const date = new URLSearchParams(window.location.search).get('date');
+const today = date ? new Date(date) : new Date;
 
 export function isDateX() {
   return today.getMonth() === 3 && today.getDate() === 10;

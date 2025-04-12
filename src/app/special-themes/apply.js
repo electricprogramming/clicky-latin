@@ -72,7 +72,8 @@ if (isChristmas()) {
   setCssVar('foreground-4', '#0001');
   setCssVar('main-text', '#000');
   setCssVar('minor-text', '#000');
-  setCssVar('main-ui', '#000');
+  setCssVar('main-ui', '#888');
+  setCssVar('ui-accent', '#fff');
 } else if (isJuly4th()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#f00');
