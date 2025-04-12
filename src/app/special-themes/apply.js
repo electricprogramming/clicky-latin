@@ -73,8 +73,8 @@ if (isChristmas()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#0001');
   setCssVar('foreground-2', '#0001');
-  setCssVar('foreground-3', '#0001');
-  setCssVar('foreground-4', '#0001');
+  setCssVar('foreground-3', '#eee');
+  setCssVar('foreground-4', '#eee');
   setCssVar('main-text', '#000');
   setCssVar('minor-text', '#000');
   setCssVar('bright-text', '#fff');
