@@ -43,17 +43,17 @@ if (isChristmas()) {
   setCssVar('foreground-2', '#ff4');
   setCssVar('foreground-3', '#f9b');
   setCssVar('foreground-4', '#ff4');
-  setCssVar('main-text', '#ff0');
+  setCssVar('main-text', '#ff2');
   setCssVar('minor-text', '#fff');
   setCssVar('main-ui', '#f79');
 } else if (isThanksgiving()) {
-  setCssVar('background', '#7a2');
+  setCssVar('background', '#8b1');
   setCssVar('foreground-1', '#b23');
   setCssVar('foreground-2', '#fa0');
   setCssVar('foreground-3', '#b23');
   setCssVar('foreground-4', '#fa0');
-  setCssVar('main-text', '#c12');
-  setCssVar('minor-text', '#f60');
+  setCssVar('main-text', '#c11');
+  setCssVar('minor-text', '#c20');
   setCssVar('main-ui', '#fa0');
 } else if (isHalloween()) {
   setCssVar('background', '#000');
@@ -88,7 +88,7 @@ if (isChristmas()) {
   setCssVar('foreground-2', '#f8a');
   setCssVar('foreground-3', '#f00');
   setCssVar('foreground-4', '#f8a');
-  setCssVar('main-text', '#f02');
+  setCssVar('main-text', '#f01');
   setCssVar('minor-text', '#f36');
   setCssVar('main-ui', '#f8a');
 } else if (isMay4th()) {
