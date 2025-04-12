@@ -48,10 +48,10 @@ if (isChristmas()) {
   setCssVar('main-ui', '#f79');
 } else if (isThanksgiving()) {
   setCssVar('background', '#8b1');
-  setCssVar('foreground-1', '#b23');
-  setCssVar('foreground-2', '#fa0');
-  setCssVar('foreground-3', '#b23');
-  setCssVar('foreground-4', '#fa0');
+  setCssVar('foreground-1', '#fa0');
+  setCssVar('foreground-2', '#b23');
+  setCssVar('foreground-3', '#fa0');
+  setCssVar('foreground-4', '#b23');
   setCssVar('main-text', '#c11');
   setCssVar('minor-text', '#c20');
   setCssVar('main-ui', '#fa0');
