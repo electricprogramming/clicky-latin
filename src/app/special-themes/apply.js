@@ -1,7 +1,7 @@
 import {
   isChristmas, isEaster, isThanksgiving,
   isHalloween, isAprilFools, isJuly4th,
-  isValentines, isMay4th, isDateX } from './days.js';
+  isValentines, isMay4th } from './days.js';
 
 /**
  * Sets the value of a CSS variable to a given value.
@@ -18,17 +18,6 @@ function setCssVar(name, value) {
 
 window.setCssVar = setCssVar;
 
-if (isDateX() && false) {
-  setCssVar('background', '#ff0');
-  setCssVar('foreground-1', '#f0f');
-  setCssVar('foreground-2', '#0ff');
-  setCssVar('foreground-3', '#f0f');
-  setCssVar('foreground-4', '#0ff');
-  setCssVar('main-text', '#000');
-  setCssVar('minor-text', '#000');
-  setCssVar('bright-text', '#000');
-  setCssVar('main-ui', '#333');
-}
 if (isChristmas()) {
   setCssVar('background', '#002');
   setCssVar('foreground-1', '#d11');
@@ -89,8 +78,8 @@ if (isChristmas()) {
   setCssVar('main-text', '#f00');
   setCssVar('minor-text', '#00f');
   setCssVar('bright-text', '#00f');
-  setCssVar('main-ui', '#f00');
-  setCssVar('ui-accent', '#00f');
+  setCssVar('main-ui', '#00f');
+  setCssVar('ui-accent', '#f00');
 } else if (isValentines()) {
   setCssVar('background', '#fdd');
   setCssVar('foreground-1', '#f00');
