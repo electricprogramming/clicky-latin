@@ -28,6 +28,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#0a3');
   setCssVar('bright-text', '#0a3');
   setCssVar('main-ui', '#082');
+  setCssVar('ui-accent', '#d11');
 } else if (isEaster()) {
   setCssVar('background', '#0b3');
   setCssVar('foreground-1', '#f9b');
@@ -38,6 +39,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#fff');
   setCssVar('bright-text', '#fff');
   setCssVar('main-ui', '#f79');
+  setCssVar('ui-accent', '#ff4');
 } else if (isThanksgiving()) {
   setCssVar('background', '#8b1');
   setCssVar('foreground-1', '#fa0');
@@ -48,6 +50,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#c20');
   setCssVar('bright-text', '#c20');
   setCssVar('main-ui', '#fa0');
+  setCssVar('ui-accent', '#b23');
 } else if (isHalloween()) {
   setCssVar('background', '#000');
   setCssVar('foreground-1', '#f80');
@@ -58,6 +61,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#ee1');
   setCssVar('bright-text', '#ee1');
   setCssVar('main-ui', '#c0d');
+  setCssVar('ui-accent', '#dd');
 } else if (isAprilFools()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#0001');
@@ -68,7 +72,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#000');
   setCssVar('bright-text', '#fff');
   setCssVar('main-ui', '#888');
-  setCssVar('ui-accent', '#fff');
+  setCssVar('ui-accent', '#000');
 } else if (isJuly4th()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#f00');
@@ -90,6 +94,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#f36');
   setCssVar('bright-text', '#f36');
   setCssVar('main-ui', '#f8a');
+  setCssVar('ui-accent', '#f02');
 } else if (isMay4th()) {
   // Star Wars theme
   setCssVar('background', '#000');
