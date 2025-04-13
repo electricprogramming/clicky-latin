@@ -61,7 +61,7 @@ if (isChristmas()) {
   setCssVar('minor-text', '#ee1');
   setCssVar('bright-text', '#ee1');
   setCssVar('main-ui', '#c0d');
-  setCssVar('ui-accent', '#dd2dd');
+  setCssVar('ui-accent', '#dd2');
 } else if (isAprilFools()) {
   setCssVar('background', '#fff');
   setCssVar('foreground-1', '#0001');
