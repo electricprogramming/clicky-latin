@@ -8,11 +8,10 @@ const loadingSpinner = document.getElementById('loading-spinner');
 const { gameName, gameItems } = await new Promise((resolve, reject) => {
   const cachedGameData = window.top.cachedGames?.[gameCode];
   if (cachedGameData && typeof cachedGameData === 'object') {
-    console.log(cachedGameData)
     resolve({
       gameName: cachedGameData.name,
       gameItems: cachedGameData.items
-    })
+    });
   } else {
     api.GET(gameCode)
       .then(gameData => 
@@ -29,7 +28,6 @@ const { gameName, gameItems } = await new Promise((resolve, reject) => {
 });
 if (gameName) {
   window.gameName = gameName;
-  document.title = `Clicky Latin - Play \`${gameName}\``;
   const allWords = gameItems.multiMap((RETURN, pair, idx) => {
     RETURN({
       language: 'English',

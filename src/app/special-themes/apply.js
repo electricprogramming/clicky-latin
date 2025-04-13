@@ -1,0 +1,158 @@
+import {
+  isChristmas, isEaster, isThanksgiving,
+  isHalloween, isAprilFools, isJuly4th,
+  isValentines, isMay4th } from './days.js';
+
+/**
+ * Sets the value of a CSS variable to a given value.
+ * @param {string} name
+ * @pattern ^([a-zA-Z_])([a-zA-Z0-9_-]*)$
+ * 
+ * @param {string} value 
+ */
+function setCssVar(name, value) {
+  if (typeof name === 'string' && /^([a-zA-Z_])([a-zA-Z0-9_-]*)$/.test(name)) {
+    document.documentElement.style.setProperty(`--${name}`, value);
+  }
+}
+
+window.setCssVar = setCssVar;
+
+if (isChristmas()) {
+  setCssVar('background', '#002');
+  setCssVar('foreground-1', '#d11');
+  setCssVar('foreground-2', '#0a2');
+  setCssVar('foreground-3', '#d11');
+  setCssVar('foreground-4', '#0a2');
+  setCssVar('main-text', '#d11');
+  setCssVar('minor-text', '#0a3');
+  setCssVar('bright-text', '#0a3');
+  setCssVar('main-ui', '#082');
+  setCssVar('ui-accent', '#d11');
+} else if (isEaster()) {
+  setCssVar('background', '#0b3');
+  setCssVar('foreground-1', '#f9b');
+  setCssVar('foreground-2', '#ff4');
+  setCssVar('foreground-3', '#f9b');
+  setCssVar('foreground-4', '#ff4');
+  setCssVar('main-text', '#ff2');
+  setCssVar('minor-text', '#fff');
+  setCssVar('bright-text', '#fff');
+  setCssVar('main-ui', '#f79');
+  setCssVar('ui-accent', '#ff4');
+} else if (isThanksgiving()) {
+  setCssVar('background', '#8b1');
+  setCssVar('foreground-1', '#fa0');
+  setCssVar('foreground-2', '#b23');
+  setCssVar('foreground-3', '#fa0');
+  setCssVar('foreground-4', '#b23');
+  setCssVar('main-text', '#c11');
+  setCssVar('minor-text', '#c20');
+  setCssVar('bright-text', '#c20');
+  setCssVar('main-ui', '#fa0');
+  setCssVar('ui-accent', '#b23');
+} else if (isHalloween()) {
+  setCssVar('background', '#000');
+  setCssVar('foreground-1', '#f80');
+  setCssVar('foreground-2', '#ee1');
+  setCssVar('foreground-3', '#f80');
+  setCssVar('foreground-4', '#ee1');
+  setCssVar('main-text', '#e50');
+  setCssVar('minor-text', '#ee1');
+  setCssVar('bright-text', '#ee1');
+  setCssVar('main-ui', '#c0d');
+  setCssVar('ui-accent', '#f80');
+} else if (isAprilFools()) {
+  setCssVar('background', '#fff');
+  setCssVar('foreground-1', '#0001');
+  setCssVar('foreground-2', '#0001');
+  setCssVar('foreground-3', '#eee');
+  setCssVar('foreground-4', '#eee');
+  setCssVar('main-text', '#000');
+  setCssVar('minor-text', '#000');
+  setCssVar('bright-text', '#fff');
+  setCssVar('main-ui', '#888');
+  setCssVar('ui-accent', '#000');
+} else if (isJuly4th()) {
+  setCssVar('background', '#fff');
+  setCssVar('foreground-1', '#f00');
+  setCssVar('foreground-2', '#00f');
+  setCssVar('foreground-3', '#f00');
+  setCssVar('foreground-4', '#00f');
+  setCssVar('main-text', '#f00');
+  setCssVar('minor-text', '#00f');
+  setCssVar('bright-text', '#00f');
+  setCssVar('main-ui', '#00f');
+  setCssVar('ui-accent', '#f00');
+} else if (isValentines()) {
+  setCssVar('background', '#fdd');
+  setCssVar('foreground-1', '#f00');
+  setCssVar('foreground-2', '#f8a');
+  setCssVar('foreground-3', '#f00');
+  setCssVar('foreground-4', '#f8a');
+  setCssVar('main-text', '#f01');
+  setCssVar('minor-text', '#f36');
+  setCssVar('bright-text', '#f36');
+  setCssVar('main-ui', '#f8a');
+  setCssVar('ui-accent', '#f02');
+} else if (isMay4th()) {
+  // Star Wars theme
+  setCssVar('background', '#000');
+  const upperGradientDef = `
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#0f0; stop-opacity:1" />
+        <stop offset="16.7%" style="stop-color:#9f9; stop-opacity:1" />
+        <stop offset="33.3%" style="stop-color:#fff; stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#fff; stop-opacity:1" />
+        <stop offset="66.7%" style="stop-color:#9f9; stop-opacity:1" />
+        <stop offset="83.3%" style="stop-color:#0f0; stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#bfb; stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>
+  `;
+  const upperGradientUri = `data:image/svg+xml,${encodeURIComponent(upperGradientDef)}`;
+  setCssVar('foreground-1', `url('${upperGradientUri}#gradient')`);
+  const lowerGradientDef = `
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#bbf; stop-opacity:1" />
+        <stop offset="16.7%" style="stop-color:#00f; stop-opacity:1" />
+        <stop offset="33.3%" style="stop-color:#99f; stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#fff; stop-opacity:1" />
+        <stop offset="66.7%" style="stop-color:#fff; stop-opacity:1" />
+        <stop offset="83.3%" style="stop-color:#99f; stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#00f; stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>
+  `;
+  const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
+  setCssVar('foreground-2', `url('${lowerGradientUri}#gradient')`);
+  setCssVar('foreground-3', `linear-gradient(
+    to bottom,
+    #0f0 0%,
+    #9f9 20%,
+    #fff 40%,
+    #fff 60%,
+    #9f9 80%,
+    #0f0 100%
+  )`);
+  setCssVar('foreground-4', `linear-gradient(
+    to bottom,
+    #00f 0%,
+    #99f 20%,
+    #fff 40%,
+    #fff 60%,
+    #99f 80%,
+    #00f 100%
+  )`);
+  setCssVar('main-text', '#f8e71b');
+  setCssVar('minor-text', '#f8e71b');
+  setCssVar('bright-text', '#f8e71b');
+  setCssVar('main-ui', '#f8e71b');
+  setCssVar('ui-accent', '#f00');
+}

@@ -2,7 +2,7 @@ import getAsset from '../../get-asset.js';
 import getFontSize from '../../get-font-size.js';
 import makeElementDraggable from './make-el-draggable.js';
 import isMobile from '../../is-mobile.js';
-const gameContainer = document.getElementById('game-container');
+const pairedContainer = document.getElementById('paired-blocks');
 const baseSVG = await getAsset('box-all.svg');
 /**
  * More advanced version that works for desktop.
@@ -20,7 +20,7 @@ function _createPairedElementDesktop(englishWord, latinWord, position) {
   latinText.textContent = latinWord;
   latinText.setAttribute('font-size', getFontSize(latinWord));
   el.classList.add('paired-element');
-  gameContainer.appendChild(el);
+  pairedContainer.appendChild(el);
 
   if ('top' in position) el.style.top = `${position.top}vh`;
   if ('bottom' in position) el.style.bottom = `${position.bottom}vh`;
@@ -47,7 +47,7 @@ function _createPairedElementMobile(englishWord, latinWord, left, top) {
   latinText.textContent = latinWord;
   latinText.setAttribute('font-size', getFontSize(latinWord));
   el.classList.add('paired-element');
-  gameContainer.appendChild(el);
+  pairedContainer.appendChild(el);
 
   const elementWidth = el.getBoundingClientRect().width, elementHeight = el.getBoundingClientRect().height;
   if (left < 0) {

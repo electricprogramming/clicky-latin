@@ -8,12 +8,24 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script src="/src/seperator-elements.js"></script>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background-color: #333;
+      background: var(--background);
       display: block;
       height: 100vh;
+    }
+    :root {
+      --background: #333;
+      --foreground-1: #0d3;
+      --foreground-2: #09f;
+      --foreground-3: #0d3;
+      --foreground-4: #09f;
+      --main-text: #fff;
+      --minor-text: #fff;
+      --bright-text: #fff;
+      --main-ui: #ccc;
+      --ui-accent: #39d;
     }
     .button {
       user-select: none;
@@ -37,6 +49,13 @@
     .button:active {
       filter: brightness(0.85);
     }
+    #create-pair-btn {
+      background: var(--foreground-4);
+    }
+    #save-btn {
+      background: var(--foreground-3);
+    }
+    
     .modal-backdrop {
       position: fixed;
       top: 0;
@@ -322,6 +341,12 @@
       margin: 1vh;
       user-select: none;
     }
+    svg path.box-upper {
+      fill: var(--foreground-1);
+    }
+    svg path.box-lower {
+      fill: var(--foreground-2);
+    }
     #context-menu {
       display: none;
       position: absolute;
@@ -358,9 +383,9 @@
   </style>
 </head>
 <body>
-  <button id="create-pair-btn" class="button" style="background-color: #0cf;"> Create Pair </button>
+  <button id="create-pair-btn" class="button"> Create Pair </button>
     <v-sep gap="2vh"></v-sep>
-  <button id="save-btn" class="button" style="background-color: #0e6;"> Save </button>
+  <button id="save-btn" class="button"> Save </button>
   <div id="preview-container"></div>
   <div class="modal-backdrop" id="create-pair-modal">
     <div class="modal">
@@ -373,7 +398,7 @@
   <div class="modal-backdrop" id="save-modal">
     <div class="modal">
       <input id="save-name-input" type="text" placeholder="Game name"/>
-      <div id="unlisted-toggle"></div>
+      <div id="unlisted-toggle" class="toggle-switch"></div>
       <span style="top: 48%; font-size: 2.8vmin;" id="unlisted-text">
         Unlisted
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="2vmin" height="2vmin">
@@ -426,18 +451,8 @@
       homeSVG.style.transform = 'scale(0.9)';
     });
   </script>
-  <script>
-    document.addEventListener('click', function(e) {
-      if (e.target === document.getElementById('unlisted-toggle')) {
-        const toggleSwitch = e.target;
-        toggleSwitch.classList.toggle('on');
-        const toggleEvent = new CustomEvent('toggle');
-        toggleEvent.toggleState = toggleSwitch.classList.contains('on');
-        toggleSwitch.value = toggleSwitch.classList.contains('on');
-        toggleSwitch.dispatchEvent(toggleEvent);
-      }
-    });
-  </script>
+  <script src="/src/toggle-switches.js"></script>
+  <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/app/create/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>

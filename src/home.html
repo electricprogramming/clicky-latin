@@ -9,23 +9,35 @@
   <title>Clicky Latin</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background-color: #333;
+      background-color: var(--background);
       display: flex;
       flex-direction: column;
       height: 100vh;
       overflow-x: hidden;
     }
+    :root {
+      --background: #333;
+      --foreground-1: #0d3;
+      --foreground-2: #09f;
+      --foreground-3: #0d3;
+      --foreground-4: #09f;
+      --main-text: #fff;
+      --minor-text: #fff;
+      --bright-text: #fff;
+      --main-ui: #ccc;
+      --ui-accent: #39d;
+    }
     hr {
       display: block;
       border: 0;
-      height: 4px; /* Line thickness */
+      height: 4px;
       min-height: 4px;
-      background-color: #ccc; /* Line color */
+      background-color: var(--main-ui);
       width: 100vw;
-      margin: 20px auto; /* Center the line with margin on top and bottom */
+      margin: 20px auto;
     }
     #navigation-bar {
       display: flex;
@@ -40,7 +52,7 @@
       user-select: none;
       text-decoration: none;           /* Remove underline */
       font-family: 'Times New Roman', Times, serif;
-      color: white;
+      color: var(--main-text);
       font-size: 10vmin;
       transform: scale(1.0);
       transition: transform 0.3s ease;
@@ -84,14 +96,14 @@
       flex-direction: column;
     }
     .heading {
-      color: #fff;
+      color: var(--main-text);
       font-family:'Times New Roman', Times, serif;
       font-size: 15vmin;
     }
     p {
       font-family:'Times New Roman', Times, serif;
       font-size: 3vmax;
-      color: #fff;
+      color: var(--minor-text);
       text-indent: 5vw; 
       text-align: justify;
     }
@@ -109,6 +121,7 @@
     <div class="heading">Clicky Latin</div>
     <p>Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.</p>
   </div>
+  <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ const baseSVG = await getAsset('box-all.svg');
  * @param {string} englishWord 
  * @param {string} latinWord 
  */
-export default function createPreviewElement(englishWord, latinWord) {
+export default function createPreviewElement(latinWord, englishWord) {
   const parser = new DOMParser();
   const el = parser.parseFromString(baseSVG, "image/svg+xml").documentElement;
   const englishText = el.querySelector('.text-english');

@@ -4,6 +4,7 @@ document.addEventListener('click', function(e) {
     toggleSwitch.classList.toggle('on');
     const toggleEvent = new CustomEvent('toggle');
     toggleEvent.toggleState = toggleSwitch.classList.contains('on');
+    toggleSwitch.value = toggleSwitch.classList.contains('on');
     toggleSwitch.dispatchEvent(toggleEvent);
   }
 });

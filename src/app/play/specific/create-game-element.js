@@ -10,7 +10,7 @@ import msToMinAndSec from '../../ms-to-min-and-sec.js';
 import timer from './timer.js';
 import isMobile from '../../is-mobile.js';
 import { clickSound, incorrectSound } from './sound-effects.js';
-const englishBaseSvg = await getAsset('box-green.svg'), latinBaseSvg = await getAsset('box-blue.svg');
+const englishBaseSvg = await getAsset('box-upper.svg'), latinBaseSvg = await getAsset('box-lower.svg');
 let mistakeCount = 0;
 /**
  * More advanced version that works for desktop.
@@ -29,7 +29,7 @@ function _createGameElementDesktop(language, matchId, word) {
   el.setAttribute('lang', language);
   el.setAttribute('matchId', matchId);
   el.setAttribute('word', word);
-  document.getElementById('game-container').appendChild(el);
+  document.getElementById('unpaired-blocks').appendChild(el);
   const elRect = el.getBoundingClientRect();
   let newLeft = Math.round(Math.random() * (window.innerWidth - elRect.width));
   let newTop = Math.round(Math.random() * (window.innerHeight - elRect.height));
@@ -194,7 +194,7 @@ function _createGameElementMobile(language, matchId, word) {
   el.setAttribute('lang', language);
   el.setAttribute('matchId', matchId);
   el.setAttribute('word', word);
-  document.getElementById('game-container').appendChild(el);
+  document.getElementById('unpaired-blocks').appendChild(el);
   const elRect = el.getBoundingClientRect();
   el.style.top = `${Math.round(Math.random() * (window.innerHeight - elRect.height))}px`;
   el.style.left = `${Math.round(Math.random() * (window.innerWidth - elRect.width))}px`;

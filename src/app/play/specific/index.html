@@ -8,21 +8,35 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <style>
     html, body {
-      background-color: #333;
+      background: var(--background);
       overflow: hidden;
       position: fixed;
+      padding: 0;
+      margin: 0;
       width: 100vw;
       height: 100vh;
       top: 0;
       left: 0;
+    }
+    :root {
+      --background: #333;
+      --foreground-1: #0d3;
+      --foreground-2: #09f;
+      --foreground-3: #0d3;
+      --foreground-4: #09f;
+      --main-text: #fff;
+      --minor-text: #fff;
+      --bright-text: #fff;
+      --main-ui: #ccc;
+      --ui-accent: #39d;
     }
     #loading-spinner {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border: 1.25vmin solid #f3f3f3;
-      border-top: 1.25vmin solid #3498db;
+      border: 1.25vmin solid var(--main-ui);
+      border-top: 1.25vmin solid var(--ui-accent);
       border-radius: 50%;
       width: 10vmin;
       height: 10vmin;
@@ -56,6 +70,27 @@
       left: 0;
       width: 100%;
       height: 100%;
+      #unpaired-blocks {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+      }
+      #paired-blocks {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .game-element, .paired-element {
+        pointer-events: all;
+      }
     }
     .game-element {
       position: fixed;
@@ -74,6 +109,12 @@
     .game-element[lang="Latin"] {
       clip-path: polygon(0% 100%, 100% 100%, 100% 31%, 76% 31%, 68% 0%, 32% 0%, 24% 31%, 0% 31%);
     }
+    svg path.box-upper {
+      fill: var(--foreground-1);
+    }
+    svg path.box-lower {
+      fill: var(--foreground-2);
+    }
     .paired-element {
       position: fixed;
       height: 20vmin;
@@ -89,7 +130,10 @@
 </head>
 <body>
   <div id="loading-spinner"></div>
-  <div id="game-container"></div>
+  <div id="game-container">
+    <div id="unpaired-blocks"></div>
+    <div id="paired-blocks"></div>
+  </div>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="/">
       <g id="back-home-btn" transform="translate(2.5,2.5)">
@@ -122,6 +166,7 @@
       homeSVG.style.transform = 'scale(0.9)';
     });
   </script>
+  <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/app/play/specific/script.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
