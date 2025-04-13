@@ -29,7 +29,7 @@ function _createGameElementDesktop(language, matchId, word) {
   el.setAttribute('lang', language);
   el.setAttribute('matchId', matchId);
   el.setAttribute('word', word);
-  document.getElementById('game-container').appendChild(el);
+  document.getElementById('unpaired-blocks').appendChild(el);
   const elRect = el.getBoundingClientRect();
   let newLeft = Math.round(Math.random() * (window.innerWidth - elRect.width));
   let newTop = Math.round(Math.random() * (window.innerHeight - elRect.height));
@@ -194,7 +194,7 @@ function _createGameElementMobile(language, matchId, word) {
   el.setAttribute('lang', language);
   el.setAttribute('matchId', matchId);
   el.setAttribute('word', word);
-  document.getElementById('game-container').appendChild(el);
+  document.getElementById('unpaired-blocks').appendChild(el);
   const elRect = el.getBoundingClientRect();
   el.style.top = `${Math.round(Math.random() * (window.innerHeight - elRect.height))}px`;
   el.style.left = `${Math.round(Math.random() * (window.innerWidth - elRect.width))}px`;

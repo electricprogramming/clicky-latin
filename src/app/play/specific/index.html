@@ -68,6 +68,12 @@
       left: 0;
       width: 100%;
       height: 100%;
+      #unpaired-blocks {
+        z-index: 1;
+      }
+      #paired-blocks {
+        z-index: 0;
+      }
     }
     .game-element {
       position: fixed;
@@ -107,7 +113,10 @@
 </head>
 <body>
   <div id="loading-spinner"></div>
-  <div id="game-container"></div>
+  <div id="game-container">
+    <div id="unpaired-blocks"></div>
+    <div id="paired-blocks"></div>
+  </div>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="/">
       <g id="back-home-btn" transform="translate(2.5,2.5)">
