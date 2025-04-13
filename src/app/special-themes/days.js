@@ -1,5 +1,4 @@
-const dateParam = new URLSearchParams(location.search).get('date');
-const today = dateParam ? new Date(dateParam) : new Date;
+const today = new Date;
 
 function calcEasterDate(year) {
   const a = year % 19;
