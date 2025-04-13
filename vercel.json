@@ -6,20 +6,20 @@
       "has": [
         {
           "type": "query",
-          "key": "gameCode"
+          "key": "gamecode"
         }
       ],
-      "destination": "/play/:gameCode"
+      "destination": "/play/:gamecode"
     },
     {
       "source": "/freezeframe",
       "has": [
         {
           "type": "query",
-          "key": "gameCode"
+          "key": "gamecode"
         }
       ],
-      "destination": "/freezeframe/:gameCode"
+      "destination": "/freezeframe/:gamecode"
     },
     { "source": "/", "destination": "/src/home.html" },
     { "source": "/create", "destination": "/src/app/create/index.html" },
