@@ -46,7 +46,7 @@
       flex-direction: row;
       padding-top: 2vh;
     }
-    a.link {
+    a.nav-link {
       margin-left: 2.5vw;
       margin-right: 2.5vw;
       user-select: none;
@@ -57,7 +57,7 @@
       transform: scale(1.0);
       transition: transform 0.3s ease;
     }
-    a.link:hover {
+    a.nav-link:hover {
       transform: scale(1.1);
     }
     #search-bar-container {
@@ -112,14 +112,17 @@
 </head>
 <body>
   <div id="navigation-bar">
-    <a class="link" href="/create" > Create </a>
-    <a class="link" href="/play"   >  Play  </a>
-    <a class="link" href="/search" > Search </a>
+    <a class="nav-link" href="/create" > Create </a>
+    <a class="nav-link" href="/play"   >  Play  </a>
+    <a class="nav-link" href="/search" > Search </a>
   </div>
   <hr/>
   <div id="about-section">
     <div class="heading">Clicky Latin</div>
-    <p>Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.</p>
+    <p>
+      Clicky Latin is specially designed to help students learn Latin using drag-and-drop technology and responsive audio feedback.
+      <a href="/suggest-a-feature">Suggest a new feature.</a>
+    </p>
   </div>
   <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
