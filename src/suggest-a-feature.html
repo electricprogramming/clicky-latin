@@ -30,6 +30,11 @@
       --main-ui: #ccc;
       --ui-accent: #39d;
     }
+    .heading {
+      color: var(--main-text);
+      font-family:'Times New Roman', Times, serif;
+      font-size: 15vmin;
+    }
     #back-home-svg {
       width: 20vmin;
       height: auto;
@@ -47,6 +52,7 @@
   </style>
 </head>
 <body>
+  <div class="heading">Suggest a new feature for Clicky Latin</div>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="/">
       <g id="back-home-btn" transform="translate(2.5,2.5)">
@@ -72,6 +78,9 @@
     homeBtn.addEventListener('mouseleave', () => {
       homeSVG.style.transform = 'scale(0.9)';
     });
+  </script>
+  <script>
+
   </script>
   <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>

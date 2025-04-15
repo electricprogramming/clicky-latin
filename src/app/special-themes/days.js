@@ -1,4 +1,7 @@
-const today = new Date;
+// Allow the date param only on dev branch
+const dateParam = new URLSearchParams(location.search).get('date');
+const dateWithDateParam = new Date(dateParam);
+const today = location.host.includes('dev') && dateParam && dateWithDateParam.toDateString() !== 'Invalid Date' ? dateWithDateParam : new Date;
 
 function calcEasterDate(year) {
   const a = year % 19;
