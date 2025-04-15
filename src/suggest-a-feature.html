@@ -30,87 +30,49 @@
       --main-ui: #ccc;
       --ui-accent: #39d;
     }
-    hr {
-      display: block;
-      border: 0;
-      height: 4px;
-      min-height: 4px;
-      background-color: var(--main-ui);
-      width: 100vw;
-      margin: 20px auto;
-    }
-    #navigation-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      padding-top: 2vh;
-    }
-    a.navigation-link {
-      margin-left: 2.5vw;
-      margin-right: 2.5vw;
-      user-select: none;
-      text-decoration: none;           /* Remove underline */
-      font-family: 'Times New Roman', Times, serif;
-      color: var(--main-text);
-      font-size: 10vmin;
-      transform: scale(1.0);
+    #back-home-svg {
+      width: 20vmin;
+      height: auto;
+      position: fixed;
+      bottom: 1vmin;
+      right: 1vmin;
+      transform: scale(0.9);
       transition: transform 0.3s ease;
+      z-index: 100000;
     }
-    a.navigation-link:hover {
-      transform: scale(1.1);
-    }
-    #search-bar-container {
-      padding-right: 15vh;
-    }
-    #search-bar {
-      padding-left: 5vh;
-      padding-right: 5vh; /* makes text/placeholder not hit the far edges of the box */
-      width: 40vw;
-      height: 12.5vh;
-      font-size: calc((100vh / 700) * 40);
-      color: #fff;
-      border: 2px solid #fff;
-      border-radius: 5vh;
-      outline: none;
-      transition: all 0.3s ease;
-      background-color: #557;
-    }
-    #search-bar:focus {
-      border-color: #5c9f9f;
-      box-shadow: 0 0 8px rgba(92, 159, 159, 0.6);
-    }
-    #search-bar::placeholder {
-      color: #fff;
-      font-style: italic;
-      font-size: calc((100vh / 700) * 40);
-    }
-    #about-section {
-      padding-top: 2vh;
-      padding-bottom: 0vh;
-      padding-left: 5vw;
-      padding-right: 5vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .heading {
-      color: var(--main-text);
-      font-family:'Times New Roman', Times, serif;
-      font-size: 15vmin;
-    }
-    p, p * {
-      font-family:'Times New Roman', Times, serif;
-      font-size: 3vmax;
-      color: var(--minor-text);
-      text-indent: 5vw; 
-      text-align: justify;
+    #back-home-btn {
+      user-select: none;
+      cursor: pointer;
     }
   </style>
-  <script src="/src/seperator-elements.js"></script>
 </head>
 <body>
+  <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
+    <a href="/">
+      <g id="back-home-btn" transform="translate(2.5,2.5)">
+        <path 
+          d="M 475,0 
+            A 75,75 0 1,1 475,150
+            H 75
+            A 75, 75 0 1,1 75,0
+            Z"
+          fill="#ddd9" 
+          stroke="#222" 
+          stroke-width="5" />
+        <text fill="#222" font-family="sans-serif" font-size="80" text-anchor="middle" dominant-baseline="middle" x="275" y="85">Back to Home</text>
+      </g>
+    </a>
+  </svg>
+  <script type="module"> 
+    const homeSVG = document.getElementById('back-home-svg');
+    const homeBtn = document.getElementById('back-home-btn');
+    homeBtn.addEventListener('mouseenter', () => {
+      homeSVG.style.transform = 'scale(1.0)';
+    });
+    homeBtn.addEventListener('mouseleave', () => {
+      homeSVG.style.transform = 'scale(0.9)';
+    });
+  </script>
   <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
 </body>
