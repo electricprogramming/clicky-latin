@@ -54,14 +54,17 @@
 </head>
 <body>
   <div class="heading">Suggest a new feature for Clicky Latin</div>
-  <form>
-    <input id="suggestion-title" placeholder="A live game similar to Quizlet Live">
-    <textarea id="suggestion-description"></textarea>
+  <form id="suggestion-form">
+    <input type="text" id="suggestion-title" placeholder="A live game mode like Quizlet Live" required>
+    <textarea id="suggestion-description"
+      placeholder="A live game mode, somewhat similar to Quizlet Live, where players race to complete a set the fastest."
+      required></textarea>
+    <button type="submit"></button>
   </form>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="/">
       <g id="back-home-btn" transform="translate(2.5,2.5)">
-        <path 
+        <path
           d="M 475,0 
             A 75,75 0 1,1 475,150
             H 75
