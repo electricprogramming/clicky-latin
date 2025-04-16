@@ -75,7 +75,10 @@ const api = {
     return new Promise((resolve, reject) => {
       fetch('https://clickylatin-api.glitch.me', {
         method: 'POST',
-        body: JSON.stringify(toPost)
+        body: JSON.stringify(toPost),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
         .then(res => res.json())
         .then(data => {
