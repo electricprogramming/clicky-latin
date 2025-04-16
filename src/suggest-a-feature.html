@@ -189,6 +189,7 @@ Time penalties or other punishments may be given for mistakes."
     });
 
     document.getElementById('suggestion-form').addEventListener('submit', function() {
+      document.getElementById('suggestion-submit').disabled = true;
       const { title, desc: body } = Object.fromEntries(new FormData(this));
       fetch('https://clickylatin-api.glitch.me/feature-suggestion', {
         method: 'POST',
