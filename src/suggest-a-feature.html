@@ -179,7 +179,7 @@ Time penalties or other punishments may be given for mistakes."
       const inputLength = input.value.length;
       const maxLength = input.maxLength;
       counter.textContent = `${inputLength} / ${maxLength}`;
-      input.style.color = inputLength >= maxLength ? '#f00' : '#000';
+      counter.style.color = inputLength >= maxLength ? '#f00' : '#000';
     }
     titleInput.addEventListener('input', function() {
       updateCharCounter(this, titleCharCounter);
