@@ -71,6 +71,12 @@
         p { color: var(--minor-text); }
       }
 
+      .char-counter {
+        display: inline-block;
+        vertical-align: middle;
+        color: #000;
+      }
+
       input, textarea {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         padding: 1vmin;
@@ -119,7 +125,9 @@
       <h1>Title</h1>
       <p>Title your suggestion in a few simple words.</p>
     </label>
-    <input type="text" id="suggestion-title" placeholder="A live game mode like Quizlet Live" required>
+    <input type="text" id="suggestion-title" placeholder="A live game mode like Quizlet Live" maxlength="40" required>
+    <div class="char-counter" id="title-char-counter">0 / 40</div>
+
     <label for="suggestion-desc">
       <h1>Description</h1>
       <p>Describe your suggestion with more details.</p>
@@ -127,7 +135,9 @@
     <textarea id="suggestion-desc"
       placeholder="A live game mode, somewhat similar to Quizlet Live, where players race to complete a set the fastest.
 Time penalties or other punishments may be given for mistakes."
-      required></textarea>
+      maxlength="750" required></textarea>
+    <div class="char-counter" id="desc-char-counter">0 / 750</div>
+
     <button id="suggestion-submit" type="submit">Submit suggestion</button>
   </form>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +167,22 @@ Time penalties or other punishments may be given for mistakes."
     });
   </script>
   <script>
-
+    const titleInput = document.getElementById('suggestion-title');
+    const descInput = document.getElementById('suggestion-desc');
+    const titleCharCounter = document.getElementById('title-char-counter');
+    const descCharCounter = document.getElementById('desc-char-counter');
+    function updateCharCounter(input, counter) {
+      const inputLength = input.value.length;
+      const maxLength = input.maxLength;
+      counter.textContent = `${inputLength} / ${maxLength}`;
+      input.style.color = inputLength >= maxLength ? '#f00' : '#000';
+    }
+    titleInput.addEventListener('input', function() {
+      updateCharCounter(this, titleCharCounter);
+    });
+    descInput.addEventListener('input', function() {
+      updateCharCounter(this, descCharCounter);
+    });
   </script>
   <script type="module" src="/src/app/special-themes/apply.js"></script>
   <script type="module" src="/src/get-recent-deployment-msg.js"></script>
