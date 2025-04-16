@@ -80,7 +80,7 @@
       button#suggestion-submit {
         padding: 1.5vmin 3vmin;
         font-size: 2.5vmin;
-        background-color: var(--foreground-3);
+        background: var(--foreground-3);
         color: var(--bright-text);
         border: none;
         border-radius: 0.5vmin;
@@ -95,8 +95,16 @@
 <body>
   <div class="heading">Suggest a new feature for Clicky Latin</div>
   <form id="suggestion-form" onsubmit="event.preventDefault();">
+    <label for="suggestion-title">
+      <h1>Title</h1>
+      <p>Title your suggestion in a few simple words.</p>
+    </label>
     <input type="text" id="suggestion-title" placeholder="A live game mode like Quizlet Live" required>
-    <textarea id="suggestion-description"
+    <label for="suggestion-desc">
+      <h1>Title</h1>
+      <p>Title your suggestion in a few simple words.</p>
+    </label>
+    <textarea id="suggestion-desc"
       placeholder="A live game mode, somewhat similar to Quizlet Live, where players race to complete a set the fastest."
       required></textarea>
     <button id="suggestion-submit" type="submit">Submit suggestion</button>
