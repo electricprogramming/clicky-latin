@@ -51,6 +51,46 @@
       user-select: none;
       cursor: pointer;
     }
+    #suggestion-form {
+      display: flex;
+      flex-direction: column;
+      gap: 2vmin;
+      width: 80vw;
+      max-width: 600px;
+      margin-top: 5vmin;
+    }
+
+    #suggestion-form input,
+    #suggestion-form textarea {
+      padding: 1vmin;
+      font-size: 2.5vmin;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #555;
+      color: var(--main-text);
+      border: 2px solid var(--ui-accent);
+      border-radius: 0.5vmin;
+    }
+
+    #suggestion-form textarea {
+      min-height: 20vh;
+      max-height: 20vh;
+      resize: none;
+    }
+
+    #suggestion-submit {
+      padding: 1.5vmin 3vmin;
+      font-size: 2.5vmin;
+      background-color: var(--foreground-1);
+      color: var(--bright-text);
+      border: none;
+      border-radius: 0.5vmin;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #suggestion-submit:hover {
+      background-color: var(--foreground-2);
+    }
   </style>
 </head>
 <body>
