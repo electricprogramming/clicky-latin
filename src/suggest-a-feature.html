@@ -93,7 +93,7 @@
 </head>
 <body>
   <div class="heading">Suggest a new feature for Clicky Latin</div>
-  <form id="suggestion-form">
+  <form id="suggestion-form" onsubmit="event.preventDefault();">
     <input type="text" id="suggestion-title" placeholder="A live game mode like Quizlet Live" required>
     <textarea id="suggestion-description"
       placeholder="A live game mode, somewhat similar to Quizlet Live, where players race to complete a set the fastest."
