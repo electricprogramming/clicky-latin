@@ -127,7 +127,7 @@ messages.on('save-confirm', () => {
       cloudSavingCopyURLbtn.style.display = 'block';
       cloudSavingDonebtn.style.display = 'block';
       cloudSavingCopyURLbtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(`https://clickylatin.vercel.app/play/${gameCode}`);
+        navigator.clipboard.writeText(`https://${location.hostname}/play/${gameCode}`);
         const element = document.createElement('div');
         element.innerHTML = gameCopiedSvg;
         const cloudSavingURLcopied = element.querySelector('svg');
