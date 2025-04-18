@@ -15,7 +15,7 @@
   <script>
     document.getElementById('deleteForm').addEventListener('submit', function (event) {
       event.preventDefault();
-      const gameCode = gameCodeInput.value;
+      const gameCode = gameIdInput.value;
       fetch(`/delete?gamecode=${gameId}`)
         .then(res => res.json())
         .then(data => console.log(data))
