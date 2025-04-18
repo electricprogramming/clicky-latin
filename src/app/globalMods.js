@@ -43,6 +43,19 @@ Array.prototype.includesAll = function(...items) {
   return true;
 }
 
+String.lengthOf = function(str) {
+  try {
+    if (window.Intl?.Segmenter) {
+      const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+      return [...segmenter.segment(str)].length;
+    } else {
+      return Array.from(str).length;
+    }
+  } catch (e) {
+    return str.length;
+  }
+}
+
 const originalRemove = Element.prototype.remove;
 Element.prototype.remove = function() {
   const removeEvent = new CustomEvent('remove', {
