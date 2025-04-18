@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  res.send(req.query.gamecode)
   fetch(`https://clickylatin-api.glitch.me?gamecode=${req.query.gamecode}`, {
     method: 'DELETE',
     headers: {
