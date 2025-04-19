@@ -1,13 +1,2 @@
-const timer = new (class {
-  #time;
-  constructor() {
-    this.reset();
-  }
-  reset() {
-    this.#time = Date.now();
-  }
-  get time() {
-    return (Date.now() - this.#time);
-  }
-});
-export default timer;
+import Timer from '../../timers.js';
+export default new Timer({ start: true });
