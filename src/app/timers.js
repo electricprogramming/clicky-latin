@@ -31,6 +31,7 @@ class Timer {
   }
 
   pause() {
+    console.log('pause called on', this)
     if (this.#running) {
       this.#elapsed = performance.now() - this.#startTime;
       this.#running = false;
