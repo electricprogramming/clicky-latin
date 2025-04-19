@@ -15,7 +15,7 @@ class Timer {
   constructor(options) {
     this.#startTime = 0;
     this.#elapsed = 0;
-    this.#running = options?.start;
+    this.#running = false;
     if (options?.start) {
       this.start();
     }
