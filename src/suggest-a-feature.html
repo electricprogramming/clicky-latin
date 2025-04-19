@@ -191,7 +191,7 @@ Time penalties or other punishments may be given for mistakes."
     document.getElementById('suggestion-form').addEventListener('submit', function() {
       document.getElementById('suggestion-submit').disabled = true;
       const { title, desc: body } = Object.fromEntries(new FormData(this));
-      fetch('https://clickylatin-api.glitch.me/feature-suggestion', {
+      fetch('https://clickylatin-api.vercel.app/feature-suggestion', {
         method: 'POST',
         body: JSON.stringify({ title, body }),
         headers: {
