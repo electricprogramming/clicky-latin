@@ -1,2 +1,3 @@
 import Timer from '../../timers.js';
-export default new Timer({ start: true });
+window.timer = new Timer({ start: true });
+export default timer;
