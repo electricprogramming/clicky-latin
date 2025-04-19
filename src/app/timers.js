@@ -1,8 +1,12 @@
+import { LocalMessageSystem } from './messages.js';
 let timers = [];
 document.addEventListener('visibilitychange', () => {
   timers.filter(timer => !timer.ignore_window_change).forEach(timer => {
-    if (document.hidden) timer.pause();
-    else timer.start();
+    if (document.hidden) {
+      timer.pause();
+    } else {
+      timer.start();
+    }
   });
 });
 
@@ -13,10 +17,10 @@ class Timer {
     this.#elapsed = 0;
     this.#running = options?.start;
     if (options?.start) {
-      this.#startTime = performance.now();
       this.start();
     }
     this.ignore_window_change = options?.ignore_window_change;
+    timers.push(this);
   }
 
   start() {
