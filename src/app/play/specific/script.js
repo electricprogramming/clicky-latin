@@ -40,7 +40,7 @@ if (gameName) {
     createGameElement(language, matchId, word);
   });
   loadingSpinner.style.display = 'none';
-  timer.reset();
+  timer.reset(true);
 } else {
   loadGameNotFoundPage();
 }

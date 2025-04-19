@@ -37,10 +37,11 @@ class Timer {
     }
   }
 
-  reset() {
+  reset(start) {
     this.#elapsed = 0;
     this.#startTime = 0;
     this.#running = false;
+    if (start) this.start();
   }
 
   get running() {
