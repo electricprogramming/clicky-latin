@@ -43,6 +43,10 @@ class Timer {
     this.#running = false;
   }
 
+  get running() {
+    return this.#running;
+  }
+  
   get time() {
     if (this.#running) {
       return Math.round(performance.now() - this.#startTime);
