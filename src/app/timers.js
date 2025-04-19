@@ -16,9 +16,9 @@ class Timer {
     this.#startTime = 0;
     this.#elapsed = 0;
     this.#running = false;
-    if (options?.start) {
-      this.start();
-    }
+
+    if (options?.start && !document.hidden) this.start();
+
     this.ignore_window_change = options?.ignore_window_change;
     timers.push(this);
   }
@@ -41,7 +41,7 @@ class Timer {
     this.#elapsed = 0;
     this.#startTime = 0;
     this.#running = false;
-    if (start) this.start();
+    if (start && !document.hidden) this.start();
   }
 
   get running() {
