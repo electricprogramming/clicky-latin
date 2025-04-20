@@ -28,6 +28,7 @@
     { "source": "/freezeframe/(.+)", "destination": "/src/app/freezeframe/index.html" },
     { "source": "/search", "destination": "/src/app/search/index.html" },
     { "source": "/suggest-a-feature", "destination": "/src/suggest-a-feature.html" },
+    { "source": "/report-a-bug", "destination": "/src/report-a-bug.html" },
     { "source": "/(.*)", "destination": "/src/404.html" }
   ]
 }

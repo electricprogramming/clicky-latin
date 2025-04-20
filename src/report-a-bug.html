@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="c2VvJHD-7UVQpVpVi_Y9x3GAge_3c9JJXfz9sC2BPcY" />
-  <title>Clicky Latin - Suggest a Feature</title>
+  <title>Clicky Latin - Report a Bug</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <style>
     html, body {
@@ -52,7 +52,7 @@
       user-select: none;
       cursor: pointer;
     }
-    form#suggestion-form {
+    form#bug-report-form {
       display: flex;
       flex-direction: column;
       gap: 2vmin;
@@ -107,7 +107,7 @@
         max-height: 20vh;
         resize: none;
       }
-      button#suggestion-submit {
+      button#bug-report-submit {
         padding: 1.5vmin 3vmin;
         font-size: 2.5vmin;
         background: var(--foreground-3);
@@ -123,26 +123,25 @@
   </style>
 </head>
 <body>
-  <div class="heading">Suggest a new feature for Clicky Latin</div>
-  <form id="suggestion-form" onsubmit="event.preventDefault();">
-    <label for="suggestion-title">
+  <div class="heading">Report a Bug</div>
+  <form id="bug-report-form" onsubmit="event.preventDefault();">
+    <label for="bug-report-title">
       <h1>Title</h1>
-      <p>Title your suggestion in a few simple words.</p>
+      <p>Title your bug report in a few simple words.</p>
     </label>
-    <input type="text" id="suggestion-title" name="title" placeholder="A live game mode like Quizlet Live" maxlength="40" required>
+    <input type="text" id="bug-report-title" name="title" placeholder="Search page does not load" maxlength="40" required>
     <div class="char-counter" id="title-char-counter">0 / 40</div>
 
-    <label for="suggestion-desc">
+    <label for="bug-report-desc">
       <h1>Description</h1>
-      <p>Describe your suggestion with more details.</p>
+      <p>Describe your bug report with more details.</p>
     </label>
-    <textarea id="suggestion-desc" name="desc"
-      placeholder="A live game mode, somewhat similar to Quizlet Live, where players race to complete a set the fastest.
-Time penalties or other punishments may be given for mistakes."
+    <textarea id="bug-report-desc" name="desc"
+      placeholder="When I go to the search page, the search results never load at all and the loading spinner spins forever."
       maxlength="750" required></textarea>
     <div class="char-counter" id="desc-char-counter">0 / 750</div>
 
-    <button id="suggestion-submit" type="submit">Submit suggestion</button>
+    <button id="bug-report-submit" type="submit">Submit bug report</button>
   </form>
   <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
     <a href="/">
@@ -171,8 +170,8 @@ Time penalties or other punishments may be given for mistakes."
     });
   </script>
   <script>
-    const titleInput = document.getElementById('suggestion-title');
-    const descInput = document.getElementById('suggestion-desc');
+    const titleInput = document.getElementById('bug-report-title');
+    const descInput = document.getElementById('bug-report-desc');
     const titleCharCounter = document.getElementById('title-char-counter');
     const descCharCounter = document.getElementById('desc-char-counter');
     function updateCharCounter(input, counter) {
@@ -188,10 +187,10 @@ Time penalties or other punishments may be given for mistakes."
       updateCharCounter(this, descCharCounter);
     });
 
-    document.getElementById('suggestion-form').addEventListener('submit', function() {
-      document.getElementById('suggestion-submit').disabled = true;
+    document.getElementById('bug-report-form').addEventListener('submit', function() {
+      document.getElementById('bug-report-submit').disabled = true;
       const { title, desc: body } = Object.fromEntries(new FormData(this));
-      fetch('https://clickylatin-api.vercel.app/feature-suggestion', {
+      fetch('https://clickylatin-api.vercel.app/feature-bug-report', {
         method: 'POST',
         body: JSON.stringify({ title, body }),
         headers: {
