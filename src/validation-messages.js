@@ -2,7 +2,7 @@
   const inputTypes = ['input', 'textarea', 'select'];
   const selector = inputTypes.join(', ');
 
-  function applyValidationMessageMessage(el) {
+  function applyValidationMessage(el) {
     if (el.hasAttribute('required') && el.hasAttribute('validation-message')) {
       el.addEventListener('invalid', function () {
         const msg = this.getAttribute('validation-message');
