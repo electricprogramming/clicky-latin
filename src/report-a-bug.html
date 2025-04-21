@@ -132,6 +132,27 @@
     <input type="text" id="bug-report-title" name="title" placeholder="Search page does not load" maxlength="40" required>
     <div class="char-counter" id="title-char-counter">0 / 40</div>
 
+    <select id="bug-device-type" name="deviceType" required
+      oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
+      <option value="phone">Phone</option>
+      <option value="tablet">Tablet</option>
+      <option value="computer" selected>Computer</option>
+      <option value="other">Other</option>
+    </select>
+
+    <select id="bug-device-manufacturer" name="deviceManufacturer" required
+      oninvalid="this.setCustomValidity(`Please select your device's manufacturer.`);" oninput="this.setCustomValidity('');">
+      <option value="" disabled selected hidden>Select...</option>
+      <option>Apple</option>
+      <option>Google</option>
+      <option>Samsung</option>
+      <option>Motorola</option>
+      <option>Microsoft</option>
+      <option>Lenovo</option>
+      <option>Dell</option>
+      <option value=" ">I don't know</option>
+    </select>
+
     <label for="bug-report-desc">
       <h1>Description</h1>
       <p>Describe your bug report with more details.</p>
