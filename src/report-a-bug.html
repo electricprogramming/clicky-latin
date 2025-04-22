@@ -163,7 +163,7 @@
       <legend>Device Information</legend>
       <label style="margin-top:-1vmin; margin-bottom: 0;"> Information about the device where the bug occured. </label>
 
-      <label for="bug-device-type">Device type:</label>
+      <label for="bug-device-type">Device&nbsp;type:</label>
       <select id="bug-device-type" name="deviceType" required
         oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
         <option value="" selected disabled hidden>Select...</option>
@@ -173,7 +173,7 @@
         <option value="other">Other</option>
       </select>
 
-      <label for="bug-device-os" title="Device operating system">Device OS:</label>
+      <label for="bug-device-os" title="Device operating system">Device&nbsp;OS:</label>
       <input list="os-list" id="bug-device-os" name="deviceOS"
         placeholder="Start typing or choose..." required
         oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
@@ -187,7 +187,7 @@
         <option>I don't know</option>
       </datalist>
 
-      <label for="bug-device-manufacturer">Device manufacturer:</label>
+      <label for="bug-device-manufacturer">Device&nbsp;manufacturer:</label>
       <input list="manufacturers-list" id="bug-device-manufacturer" name="deviceManufacturer"
         placeholder="Start typing or choose..." required
         oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
