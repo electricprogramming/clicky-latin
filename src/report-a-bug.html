@@ -73,6 +73,10 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
 
+      fieldset legend {
+        color: var(--main-text);
+      }
+
       label {
         &, * {
           padding: 0;
@@ -144,16 +148,20 @@
 
     <fieldset id="device-info" style="display: block;">
       <legend>Device Information</legend>
+
+      <label for="bug-device-type">Device type:</label>
       <select id="bug-device-type" name="deviceType" required
         oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
+        <option value="" selected disabled hidden>Select...</option>
         <option value="phone">Phone</option>
         <option value="tablet">Tablet</option>
-        <option value="computer" selected>Computer</option>
+        <option value="computer">Computer</option>
         <option value="other">Other</option>
       </select>
 
-      <label for="device-manufacturer">Device manufacturer:</label>
-      <input list="manufacturers-list" id="device-manufacturer" name="deviceManufacturer" placeholder="Start typing or choose..." />
+      <label for="bug-device-manufacturer">Device manufacturer:</label>
+      <input list="manufacturers-list" id="bug-device-manufacturer" name="deviceManufacturer" placeholder="Start typing or choose..."
+        oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
       <datalist id="manufacturers-list">
         <option>Apple</option>
         <option>Google</option>
@@ -164,6 +172,7 @@
         <option>Dell</option>
         <option>Sony</option>
       </datalist>
+
     </fieldset>
 
     <label for="bug-report-desc">
