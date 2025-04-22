@@ -84,9 +84,12 @@
         * {
           margin-top: 1vh;
           margin-bottom: 1vh;
+          &:first-child { margin-top: 0; }
+          &:last-child { margin-bottom: 0; }
         }
+
         legend {
-          font-size: 1.25em;
+          font-size: 1em;
           color: var(--main-text);
         }
       }
