@@ -20,6 +20,7 @@
     .dropdown .dropdown-options {
       position: absolute;
       top: 100%;
+      border: 1px solid #ccc;
     }
 
     .dropdown .dropdown-selected::after {
