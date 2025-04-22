@@ -31,13 +31,23 @@
       --main-ui: #ccc;
       --ui-accent: #39d;
     }
+    
+    /* Removes the down arrow from <input> elements with a list attribute to attach a <datalist> */
+    input[list]::-webkit-calendar-picker-indicator {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .heading {
       color: var(--main-text);
-      font-family:'Times New Roman', Times, serif;
+      font-family: 'Times New Roman', Times, serif;
       font-size: 10vmin;
       text-align: center;
       margin: 2.5vmin;
     }
+
     #back-home-svg {
       width: 20vmin;
       height: auto;
