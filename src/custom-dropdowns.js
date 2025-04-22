@@ -16,6 +16,11 @@
       background: white;
       cursor: pointer;
       user-select: none;
+      overflow: hidden;
+    }
+    .dropdown .dropdown-options {
+      overflow-x: hidden;
+      overflow-y: scroll;
     }
 
     .dropdown .dropdown-selected::after {
