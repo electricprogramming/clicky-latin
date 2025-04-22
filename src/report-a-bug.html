@@ -163,6 +163,20 @@
         <option value="other">Other</option>
       </select>
 
+      <label for="bug-device-os" title="Device operating system">Device OS:</label>
+      <input list="os-list" id="bug-device-os" name="deviceOS"
+        placeholder="Start typing or choose..." required
+        oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
+      <datalist id="os-list">
+        <option>iOS</option>
+        <option>macOS</option>
+        <option>Windows</option>
+        <option>Linux</option>
+        <option>Android</option>
+        <option>Chrome OS</option>
+        <option>I don't know</option>
+      </datalist>
+
       <label for="bug-device-manufacturer">Device manufacturer:</label>
       <input list="manufacturers-list" id="bug-device-manufacturer" name="deviceManufacturer"
         placeholder="Start typing or choose..." required
