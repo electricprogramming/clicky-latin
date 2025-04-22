@@ -164,7 +164,8 @@
       </select>
 
       <label for="bug-device-manufacturer">Device manufacturer:</label>
-      <input list="manufacturers-list" id="bug-device-manufacturer" name="deviceManufacturer" placeholder="Start typing or choose..."
+      <input list="manufacturers-list" id="bug-device-manufacturer" name="deviceManufacturer"
+        placeholder="Start typing or choose..." required
         oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
       <datalist id="manufacturers-list">
         <option>Apple</option>
@@ -175,6 +176,7 @@
         <option>Lenovo</option>
         <option>Dell</option>
         <option>Sony</option>
+        <option value=" ">I don't know</option>
       </datalist>
 
     </fieldset>
