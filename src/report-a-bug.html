@@ -142,38 +142,18 @@
         <option value="other">Other</option>
       </select>
 
-      <div class="dropdown inactive">
-        <input type="dummy" id="device-manufacturer" name="deviceManufacturer" value="" style="top: 20px;" required validation-message="Please select your device manufacturerer.">
-        <div class="option dropdown-selected">Select...</div>
-        <div class="dropdown-options">
-          <div class="option">Apple</div>
-          <div class="option">Google</div>
-          <div class="option">Samsung</div>
-          <div class="option">Motorola</div>
-          <div class="option">Microsoft</div>
-          <div class="option">Lenovo</div>
-          <div class="option">Dell</div>
-          <div class="option" value="">I don't know</div>
-          <div class="option disabled" id="more">More...</div>
-          <div class="extra-options">
-            <div class="option extra">HP</div>
-            <div class="option extra">Acer</div>
-            <div class="option extra">Asus</div>
-            <div class="option extra">Huawei</div>
-            <div class="option extra">OnePlus</div>
-            <div class="option extra">Xiaomi</div>
-            <div class="option extra">LG</div>
-            <div class="option extra">Razer</div>
-            <div class="option extra">Sony</div>
-            <div class="option extra">BlackBerry</div>
-            <div class="option extra">Meizu</div>
-            <div class="option extra">Oppo</div>
-            <div class="option extra">Realme</div>
-            <div class="option extra">Vivo</div>
-            <div class="option extra">Other</div>
-          </div>
-        </div>
-      </div>
+      <label for="device-manufacturer">Device manufacturer:</label>
+      <input list="manufacturers-list" id="device-manufacturer" name="deviceManufacturer" placeholder="Start typing or choose..." />
+      <datalist id="manufacturers-list">
+        <option>Apple</option>
+        <option>Google</option>
+        <option>Samsung</option>
+        <option>Microsoft</option>
+        <option>Motorola</option>
+        <option>Lenovo</option>
+        <option>Dell</option>
+        <option>Sony</option>
+      </datalist>
     </fieldset>
 
     <label for="bug-report-desc">
