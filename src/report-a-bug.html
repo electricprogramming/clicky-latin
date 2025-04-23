@@ -331,10 +331,8 @@
       updateCharCounter(this, bodyCharCounter);
     });
 
-    
     document.getElementById('bug-report-form').addEventListener('submit', function() {
       document.getElementById('bug-report-submit').disabled = true;
-      console.log(JSON.stringify(getFormData(this)))
       fetch('https://clickylatin-api.vercel.app/bug-report', {
         method: 'POST',
         body: JSON.stringify(getFormData(this)),
