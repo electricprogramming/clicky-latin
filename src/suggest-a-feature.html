@@ -52,6 +52,27 @@
       user-select: none;
       cursor: pointer;
     }
+    #loading-spinner {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1.25vmin solid var(--main-ui);
+      border-top: 1.25vmin solid var(--ui-accent);
+      border-radius: 50%;
+      width: 10vmin;
+      height: 10vmin;
+      animation: spin 2s linear infinite;
+    }
+    /* Spin animation */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(-20deg); }
+      25% { transform: translate(-50%, -50%) rotate(55deg); }
+      50% { transform: translate(-50%, -50%) rotate(160deg);}
+      75% { transform: translate(-50%, -50%) rotate(265deg);}
+      100% { transform: translate(-50%, -50%) rotate(340deg); }
+    }
     form#suggestion-form {
       display: flex;
       flex-direction: column;
@@ -127,6 +148,7 @@
   </style>
 </head>
 <body>
+  <div id="loading-spinner" style="display: none;"></div>
   <div class="heading">Suggest a new feature for Clicky Latin</div>
   <form id="suggestion-form" onsubmit="event.preventDefault();">
     <label for="suggestion-title">
@@ -176,6 +198,8 @@ Time penalties or other punishments may be given for mistakes."
   </script>
   <script>
     const form = document.getElementById('suggestion-form');
+    const loadingSpinner = document.getElementById('loading-spinner');
+
     function updateCharCounter(input, counter) {
       const inputLength = input.value.length;
       const maxLength = input.maxLength;
@@ -190,6 +214,7 @@ Time penalties or other punishments may be given for mistakes."
     });
 
     document.getElementById('suggestion-form').addEventListener('submit', function() {
+      loadingSpinner.style.display = 'block';
       const { title, body } = Object.fromEntries(new FormData(this));
       fetch('https://clickylatin-api.vercel.app/feature-suggestion', {
         method: 'POST',
@@ -197,8 +222,17 @@ Time penalties or other punishments may be given for mistakes."
         headers: {
           'Content-Type': 'application/json'
         }
-      });
-
+      })
+        .then(() => {
+          loadingSpinner.style.display = 'none';
+          Array.from(form.elements).forEach(el => el.disabled = false);
+          form.reset();
+          alert('This bug report has been successfully submitted.');
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Submission failed. Please try again later.');
+        });
       Array.from(form.elements).forEach(el => el.disabled = true);
     });
   </script>
