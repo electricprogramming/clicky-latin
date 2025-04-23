@@ -52,6 +52,28 @@
       margin: 2.5vmin;
     }
 
+    #loading-spinner {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1.25vmin solid var(--main-ui);
+      border-top: 1.25vmin solid var(--ui-accent);
+      border-radius: 50%;
+      width: 10vmin;
+      height: 10vmin;
+      animation: spin 2s linear infinite;
+    }
+    /* Spin animation */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(-20deg); }
+      25% { transform: translate(-50%, -50%) rotate(55deg); }
+      50% { transform: translate(-50%, -50%) rotate(160deg);}
+      75% { transform: translate(-50%, -50%) rotate(265deg);}
+      100% { transform: translate(-50%, -50%) rotate(340deg); }
+    }
+
     #back-home-svg {
       width: 20vmin;
       height: auto;
@@ -169,6 +191,7 @@
   </style>
 </head>
 <body>
+  <div id="loading-spinner" style="display: none;"></div>
   <div class="heading">Report a Bug</div>
   <form id="bug-report-form" onsubmit="event.preventDefault();">
     <label for="bug-report-title">
@@ -321,6 +344,7 @@
     }
 
     const form = document.getElementById('bug-report-form');
+    const loadingSpinner = document.getElementById('loading-spinner');
     function updateCharCounter(input, counter) {
       const inputLength = input.value.length;
       const maxLength = input.maxLength;
