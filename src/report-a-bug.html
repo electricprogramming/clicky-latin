@@ -177,7 +177,7 @@
       <label style="margin-top:-1vmin; margin-bottom: 0;">Information about the device where the bug occured.</label>
       <br>
 
-      <label>
+      <label title="Device type">
         Device&nbsp;type:
         <select id="bug-device-type" name="device.type" required
           oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
@@ -206,7 +206,7 @@
         <option>I don't know</option>
       </datalist>
 
-      <label>
+      <label title="Device manufacturer">
         Device&nbsp;manufacturer:
         <input list="manufacturers-list" id="bug-device-manufacturer" name="device.manufacturer"
           placeholder="Start typing or choose..." required
@@ -224,7 +224,7 @@
         <option>I don't know</option>
       </datalist>
 
-      <label>
+      <label title="The browser in which the bug occured">
         Browser:
         <input list="browsers-list" id="bug-device-browser" name="device.browser"
           placeholder="Start typing or choose..." required
