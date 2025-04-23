@@ -274,14 +274,14 @@
         }
       });
 
-      const res = {}
+      const res = {};
       for (const key in obj) {
         if (input.hasOwnProperty(key)) {
           const keys = key.split('.');
           let current = res;
           keys.forEach((k, index) => {
             if (index === keys.length - 1) {
-              current[k] = input[key];
+              current[k] = obj[key];
             } else {
               if (!current[k]) {
                 current[k] = {};
