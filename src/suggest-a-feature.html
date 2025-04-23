@@ -223,7 +223,9 @@ Time penalties or other punishments may be given for mistakes."
           'Content-Type': 'application/json'
         }
       })
-        .then(() => {
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
           loadingSpinner.style.display = 'none';
           Array.from(form.elements).forEach(el => el.disabled = false);
           form.reset();
