@@ -80,8 +80,7 @@
       fieldset {
         display: block;
         box-sizing: border-box;
-        width: 80vw;
-        max-width: 600px;
+        width: clamp(100px, 80vw, 600px) !important;
         border: 2px solid var(--main-ui);
         border-radius: 0.75vmin;
 
