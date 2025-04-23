@@ -20,6 +20,7 @@ window.setCssVar = setCssVar;
 
 if (isChristmas()) {
   setCssVar('background', '#002');
+  setCssVar('main-ui', '#ccc');
   setCssVar('foreground-1', '#d11');
   setCssVar('foreground-2', '#0a2');
   setCssVar('foreground-3', '#d11');
@@ -31,6 +32,7 @@ if (isChristmas()) {
   setCssVar('accent-2', '#d11');
 } else if (isEaster()) {
   setCssVar('background', '#0b3');
+  setCssVar('main-ui', '#555');
   setCssVar('foreground-1', '#f9b');
   setCssVar('foreground-2', '#ff4');
   setCssVar('foreground-3', '#f9b');
@@ -42,6 +44,7 @@ if (isChristmas()) {
   setCssVar('accent-2', '#ff4');
 } else if (isThanksgiving()) {
   setCssVar('background', '#8b1');
+  setCssVar('main-ui', '#fd4');
   setCssVar('foreground-1', '#fa0');
   setCssVar('foreground-2', '#b23');
   setCssVar('foreground-3', '#fa0');
@@ -53,6 +56,7 @@ if (isChristmas()) {
   setCssVar('accent-2', '#b23');
 } else if (isHalloween()) {
   setCssVar('background', '#000');
+  setCssVar('main-ui', '#555');
   setCssVar('foreground-1', '#f80');
   setCssVar('foreground-2', '#ee1');
   setCssVar('foreground-3', '#f80');
@@ -64,6 +68,7 @@ if (isChristmas()) {
   setCssVar('accent-2', '#f80');
 } else if (isAprilFools()) {
   setCssVar('background', '#fff');
+  setCssVar('main-ui', '#ccc');
   setCssVar('foreground-1', '#0001');
   setCssVar('foreground-2', '#0001');
   setCssVar('foreground-3', '#eee');
@@ -75,6 +80,7 @@ if (isChristmas()) {
   setCssVar('accent-2', '#000');
 } else if (isJuly4th()) {
   setCssVar('background', '#fff');
+  setCssVar('main-ui', '#ddd');
   setCssVar('foreground-1', '#f00');
   setCssVar('foreground-2', '#00f');
   setCssVar('foreground-3', '#f00');
@@ -86,6 +92,7 @@ if (isChristmas()) {
   setCssVar('accent-2', '#f00');
 } else if (isValentines()) {
   setCssVar('background', '#fdd');
+  setCssVar('main-ui', '#fbc');
   setCssVar('foreground-1', '#f00');
   setCssVar('foreground-2', '#f8a');
   setCssVar('foreground-3', '#f00');
@@ -98,6 +105,12 @@ if (isChristmas()) {
 } else if (isMay4th()) {
   // Star Wars theme
   setCssVar('background', '#000');
+  setCssVar('main-ui', '#333')
+  setCssVar('main-text', '#f8e71b');
+  setCssVar('minor-text', '#f8e71b');
+  setCssVar('bright-text', '#f8e71b');
+  setCssVar('accent-1', '#f8e71b');
+  setCssVar('accent-2', '#f00');
   const upperGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -150,9 +163,4 @@ if (isChristmas()) {
     #99f 80%,
     #00f 100%
   )`);
-  setCssVar('main-text', '#f8e71b');
-  setCssVar('minor-text', '#f8e71b');
-  setCssVar('bright-text', '#f8e71b');
-  setCssVar('accent-1', '#f8e71b');
-  setCssVar('accent-2', '#f00');
 }

@@ -16,6 +16,7 @@
     }
     :root {
       --background: #333;
+      --main-ui: #555;
       --foreground-1: #0d3;
       --foreground-2: #09f;
       --foreground-3: #0d3;
@@ -70,7 +71,7 @@
     }
     .modal {
       position: relative;
-      background: #454545;
+      background: var(--main-ui);
       border-radius: 2vh;
       width: 39vmin;
       height: 26vmin;
@@ -364,7 +365,7 @@
       cursor: pointer;
     }
     #context-menu li:hover {
-      background-color: #555;
+      background-color: var(--main-ui);
     }
     #back-home-svg {
       width: 20vmin;
