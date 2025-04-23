@@ -190,8 +190,6 @@ Time penalties or other punishments may be given for mistakes."
     });
 
     document.getElementById('suggestion-form').addEventListener('submit', function() {
-      Array.from(form.elements).forEach(el => el.disabled = true);
-      
       const { title, body } = Object.fromEntries(new FormData(this));
       fetch('https://clickylatin-api.vercel.app/feature-suggestion', {
         method: 'POST',
@@ -200,6 +198,8 @@ Time penalties or other punishments may be given for mistakes."
           'Content-Type': 'application/json'
         }
       });
+      
+      Array.from(form.elements).forEach(el => el.disabled = true);
     });
   </script>
   <script type="module" src="/src/app/special-themes/apply.js"></script>
