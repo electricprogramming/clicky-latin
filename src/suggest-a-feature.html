@@ -28,8 +28,8 @@
       --main-text: #fff;
       --minor-text: #fff;
       --bright-text: #fff;
-      --main-ui: #ccc;
-      --ui-accent: #39d;
+      --accent-1: #ccc;
+      --accent-2: #39d;
     }
     .heading {
       color: var(--main-text);
@@ -58,8 +58,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border: 1.25vmin solid var(--main-ui);
-      border-top: 1.25vmin solid var(--ui-accent);
+      border: 1.25vmin solid var(--accent-1);
+      border-top: 1.25vmin solid var(--accent-2);
       border-radius: 50%;
       width: 10vmin;
       height: 10vmin;
@@ -108,7 +108,7 @@
         font-size: 2.5vmin;
         background-color: #555;
         color: var(--minor-text);
-        border: 2px solid var(--main-ui);
+        border: 2px solid var(--accent-1);
         border-radius: 0.75vmin;
 
         &::placeholder {
@@ -118,7 +118,7 @@
         }
         
         &:focus {
-          border: 2px solid var(--ui-accent);
+          border: 2px solid var(--accent-2);
           outline: none;
           box-shadow: none;
         }
