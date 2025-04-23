@@ -224,6 +224,23 @@
         <option>I don't know</option>
       </datalist>
 
+      <label>
+        Browser:
+        <input list="browsers-list" id="bug-device-browser" name="device.browser"
+          placeholder="Start typing or choose..." required
+          oninvalid="this.setCustomValidity(`Please select your browser.`);" oninput="this.setCustomValidity('');"/>
+      </label>
+      <datalist id="browsers-list">
+        <option>Chrome</option>
+        <option>Firefox</option>
+        <option>Safari</option>
+        <option>Edge</option>
+        <option>Opera</option>
+        <option>Brave</option>
+        <option>Vivaldi</option>
+        <option>I don't know</option>
+      </datalist>
+
     </fieldset>
 
     <label for="bug-report-body">
