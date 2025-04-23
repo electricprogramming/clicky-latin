@@ -115,9 +115,13 @@
         border: none;
         border-radius: 0.75vmin;
         cursor: pointer;
-        &:hover {
+        &:hover:not(:disabled) {
           filter: brightness(0.9);
         }
+      }
+      button#bug-report-submit:disabled {
+        filter: brightness(0.8) saturate(0.7);
+        cursor: default;
       }
     }
   </style>
