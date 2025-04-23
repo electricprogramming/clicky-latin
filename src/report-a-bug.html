@@ -341,7 +341,9 @@
         headers: {
           'Content-Type': 'application/json'
         }
-      });
+      })
+        .then(res => console.log(res))
+        .catch(e => console.error(e));
     });
   </script>
   <script type="module" src="/src/app/special-themes/apply.js"></script>
