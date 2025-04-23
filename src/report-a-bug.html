@@ -182,8 +182,9 @@
       <legend>Device Information</legend>
       <label style="margin-top:-1vmin; margin-bottom: 0;">Information about the device where the bug occured.</label>
       <br>
-
-      <label title="Device type">
+      
+      <!-- Use an empty `for` to prevent select focusing on label click, which does werid things if allowed. -->
+      <label title="Device type" for="">
         Device&nbsp;type:
         <select id="bug-device-type" name="device.type" required
           oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
