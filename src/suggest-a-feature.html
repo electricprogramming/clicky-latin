@@ -175,25 +175,23 @@ Time penalties or other punishments may be given for mistakes."
     });
   </script>
   <script>
-    const titleInput = document.getElementById('suggestion-title');
-    const bodyInput = document.getElementById('suggestion-body');
-    const titleCharCounter = document.getElementById('title-char-counter');
-    const bodyCharCounter = document.getElementById('body-char-counter');
+    const form = document.getElementById('suggestion-form');
     function updateCharCounter(input, counter) {
       const inputLength = input.value.length;
       const maxLength = input.maxLength;
       counter.textContent = `${inputLength} / ${maxLength}`;
       counter.style.color = inputLength >= maxLength ? '#f00' : '#000';
     }
-    titleInput.addEventListener('input', function() {
-      updateCharCounter(this, titleCharCounter);
+    document.getElementById('suggestion-title').addEventListener('input', function() {
+      updateCharCounter(this, document.getElementById('title-char-counter'));
     });
-    bodyInput.addEventListener('input', function() {
-      updateCharCounter(this, bodyCharCounter);
+    document.getElementById('suggestion-body').addEventListener('input', function() {
+      updateCharCounter(this, document.getElementById('body-char-counter'));
     });
 
     document.getElementById('suggestion-form').addEventListener('submit', function() {
-      document.getElementById('suggestion-submit').disabled = true;
+      Array.from(form.elements).forEach(el => el.disabled = true);
+      
       const { title, body } = Object.fromEntries(new FormData(this));
       fetch('https://clickylatin-api.vercel.app/feature-suggestion', {
         method: 'POST',
