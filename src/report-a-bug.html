@@ -346,7 +346,7 @@
           loadingSpinner.style.display = 'none';
           Array.from(form.elements).forEach(el => el.disabled = false);
           form.reset();
-          setTimeout(() => alert('This bug report has been successfully submitted.'));
+          setTimeout(() => alert('This bug report has been successfully submitted.'), 20);
         })
         .catch(err => {
           console.error(err);

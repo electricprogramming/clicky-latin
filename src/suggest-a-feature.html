@@ -227,7 +227,7 @@ Time penalties or other punishments may be given for mistakes."
           loadingSpinner.style.display = 'none';
           Array.from(form.elements).forEach(el => el.disabled = false);
           form.reset();
-          requestAnimationFrame(() => alert('This feature suggestion has been successfully submitted.'));
+          setTimeout(() => alert('This feature suggestion has been successfully submitted.'), 20);
         })
         .catch(err => {
           console.error(err);
