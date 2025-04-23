@@ -326,10 +326,10 @@
       counter.textContent = `${inputLength} / ${maxLength}`;
       counter.style.color = inputLength >= maxLength ? '#f00' : '#000';
     }
-    document.getElementById('suggestion-title').addEventListener('input', function() {
+    document.getElementById('bug-report-title').addEventListener('input', function() {
       updateCharCounter(this, document.getElementById('title-char-counter'));
     });
-    document.getElementById('suggestion-body').addEventListener('input', function() {
+    document.getElementById('bug-report-body').addEventListener('input', function() {
       updateCharCounter(this, document.getElementById('body-char-counter'));
     });
 
