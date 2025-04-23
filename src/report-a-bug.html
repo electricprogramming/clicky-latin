@@ -276,7 +276,7 @@
 
       const res = {};
       for (const key in obj) {
-        if (input.hasOwnProperty(key)) {
+        if (obj.hasOwnProperty(key)) {
           const keys = key.split('.');
           let current = res;
           keys.forEach((k, index) => {
