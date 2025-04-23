@@ -180,7 +180,7 @@
 
       <label>
         Device&nbsp;type:
-        <select id="bug-device-type" name="deviceType" required
+        <select id="bug-device-type" name="device.type" required
           oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
           <option value="" selected disabled hidden>Select...</option>
           <option value="phone">Phone</option>
@@ -192,7 +192,7 @@
 
       <label title="Device operating system">
         Device&nbsp;OS:
-        <input list="os-list" id="bug-device-os" name="deviceOS"
+        <input list="os-list" id="bug-device-os" name="device.OS"
           placeholder="Start typing or choose..." required
           oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
       </label>
@@ -209,7 +209,7 @@
 
       <label>
         Device&nbsp;manufacturer:
-        <input list="manufacturers-list" id="bug-device-manufacturer" name="deviceManufacturer"
+        <input list="manufacturers-list" id="bug-device-manufacturer" name="device.manufacturer"
           placeholder="Start typing or choose..." required
           oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
       </label>
@@ -227,14 +227,14 @@
 
     </fieldset>
 
-    <label for="bug-report-desc">
+    <label for="bug-report-body">
       <h1>Description</h1>
       <p>Describe your bug report with more details.</p>
     </label>
-    <textarea id="bug-report-desc" name="desc"
+    <textarea id="bug-report-body" name="body"
       placeholder="When I go to the search page, the search results never load at all and the loading spinner spins forever."
       maxlength="750" required></textarea>
-    <div class="char-counter" id="desc-char-counter">0 / 750</div>
+    <div class="char-counter" id="body-char-counter">0 / 750</div>
 
     <button id="bug-report-submit" type="submit">Submit bug report</button>
   </form>
@@ -275,13 +275,31 @@
         }
       });
 
-      return obj;
+      const res = {}
+      for (const key in obj) {
+        if (input.hasOwnProperty(key)) {
+          const keys = key.split('.');
+          let current = res;
+          keys.forEach((k, index) => {
+            if (index === keys.length - 1) {
+              current[k] = input[key];
+            } else {
+              if (!current[k]) {
+                current[k] = {};
+              }
+              current = current[k];
+            }
+          });
+        }
+      }
+
+      return res;
     }
 
     const titleInput = document.getElementById('bug-report-title');
-    const descInput = document.getElementById('bug-report-desc');
+    const bodyInput = document.getElementById('bug-report-body');
     const titleCharCounter = document.getElementById('title-char-counter');
-    const descCharCounter = document.getElementById('desc-char-counter');
+    const bodyCharCounter = document.getElementById('body-char-counter');
     function updateCharCounter(input, counter) {
       const inputLength = input.value.length;
       const maxLength = input.maxLength;
@@ -291,17 +309,17 @@
     titleInput.addEventListener('input', function() {
       updateCharCounter(this, titleCharCounter);
     });
-    descInput.addEventListener('input', function() {
-      updateCharCounter(this, descCharCounter);
+    bodyInput.addEventListener('input', function() {
+      updateCharCounter(this, bodyCharCounter);
     });
 
     
     document.getElementById('bug-report-form').addEventListener('submit', function() {
       document.getElementById('bug-report-submit').disabled = true;
-      const { title, desc: body } = getFormData(this);
+      console.log(JSON.stringify(getFormData(this)))
       fetch('https://clickylatin-api.vercel.app/bug-report', {
         method: 'POST',
-        body: JSON.stringify({ title, body }),
+        body: JSON.stringify(getFormData(this)),
         headers: {
           'Content-Type': 'application/json'
         }

@@ -88,7 +88,7 @@
         background-color: #555;
         color: var(--minor-text);
         border: 2px solid var(--main-ui);
-        border-radius: 0.5vmin;
+        border-radius: 0.75vmin;
 
         &::placeholder {
           color: var(--minor-text);
@@ -113,7 +113,7 @@
         background: var(--foreground-3);
         color: var(--bright-text);
         border: none;
-        border-radius: 0.5vmin;
+        border-radius: 0.75vmin;
         cursor: pointer;
         &:hover {
           filter: brightness(0.9);
@@ -132,15 +132,15 @@
     <input type="text" id="suggestion-title" name="title" placeholder="A live game mode like Quizlet Live" maxlength="40" required>
     <div class="char-counter" id="title-char-counter">0 / 40</div>
 
-    <label for="suggestion-desc">
+    <label for="suggestion-body">
       <h1>Description</h1>
       <p>Describe your suggestion with more details.</p>
     </label>
-    <textarea id="suggestion-desc" name="desc"
+    <textarea id="suggestion-body" name="body"
       placeholder="A live game mode, somewhat similar to Quizlet Live, where players race to complete a set the fastest.
 Time penalties or other punishments may be given for mistakes."
       maxlength="750" required></textarea>
-    <div class="char-counter" id="desc-char-counter">0 / 750</div>
+    <div class="char-counter" id="body-char-counter">0 / 750</div>
 
     <button id="suggestion-submit" type="submit">Submit suggestion</button>
   </form>
@@ -172,9 +172,9 @@ Time penalties or other punishments may be given for mistakes."
   </script>
   <script>
     const titleInput = document.getElementById('suggestion-title');
-    const descInput = document.getElementById('suggestion-desc');
+    const bodyInput = document.getElementById('suggestion-body');
     const titleCharCounter = document.getElementById('title-char-counter');
-    const descCharCounter = document.getElementById('desc-char-counter');
+    const bodyCharCounter = document.getElementById('body-char-counter');
     function updateCharCounter(input, counter) {
       const inputLength = input.value.length;
       const maxLength = input.maxLength;
@@ -184,13 +184,13 @@ Time penalties or other punishments may be given for mistakes."
     titleInput.addEventListener('input', function() {
       updateCharCounter(this, titleCharCounter);
     });
-    descInput.addEventListener('input', function() {
-      updateCharCounter(this, descCharCounter);
+    bodyInput.addEventListener('input', function() {
+      updateCharCounter(this, bodyCharCounter);
     });
 
     document.getElementById('suggestion-form').addEventListener('submit', function() {
       document.getElementById('suggestion-submit').disabled = true;
-      const { title, desc: body } = Object.fromEntries(new FormData(this));
+      const { title, body } = Object.fromEntries(new FormData(this));
       fetch('https://clickylatin-api.vercel.app/feature-suggestion', {
         method: 'POST',
         body: JSON.stringify({ title, body }),
