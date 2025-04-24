@@ -21,10 +21,10 @@ window.setCssVar = setCssVar;
 if (isChristmas()) {
   setCssVar('background', '#002');
   setCssVar('main-ui', '#ccc');
+  setCssVar('box-upper', '#d11');
+  setCssVar('box-lower', '#0a2');
   setCssVar('foreground-1', '#d11');
   setCssVar('foreground-2', '#0a2');
-  setCssVar('foreground-3', '#d11');
-  setCssVar('foreground-4', '#0a2');
   setCssVar('main-text', '#d11');
   setCssVar('minor-text', '#0a3');
   setCssVar('bright-text', '#fff');
@@ -33,10 +33,10 @@ if (isChristmas()) {
 } else if (isEaster()) {
   setCssVar('background', '#0b3');
   setCssVar('main-ui', '#555');
+  setCssVar('box-upper', '#f9b');
+  setCssVar('box-lower', '#ff4');
   setCssVar('foreground-1', '#f9b');
   setCssVar('foreground-2', '#ff4');
-  setCssVar('foreground-3', '#f9b');
-  setCssVar('foreground-4', '#ff4');
   setCssVar('main-text', '#ff2');
   setCssVar('minor-text', '#fff');
   setCssVar('bright-text', '#fff');
@@ -45,10 +45,10 @@ if (isChristmas()) {
 } else if (isThanksgiving()) {
   setCssVar('background', '#8b1');
   setCssVar('main-ui', '#fd4');
+  setCssVar('box-upper', '#fa0');
+  setCssVar('box-lower', '#b23');
   setCssVar('foreground-1', '#fa0');
   setCssVar('foreground-2', '#b23');
-  setCssVar('foreground-3', '#fa0');
-  setCssVar('foreground-4', '#b23');
   setCssVar('main-text', '#c11');
   setCssVar('minor-text', '#c20');
   setCssVar('bright-text', '#c20');
@@ -57,10 +57,10 @@ if (isChristmas()) {
 } else if (isHalloween()) {
   setCssVar('background', '#000');
   setCssVar('main-ui', '#555');
+  setCssVar('box-upper', '#f80');
+  setCssVar('box-lower', '#ee1');
   setCssVar('foreground-1', '#f80');
   setCssVar('foreground-2', '#ee1');
-  setCssVar('foreground-3', '#f80');
-  setCssVar('foreground-4', '#ee1');
   setCssVar('main-text', '#e50');
   setCssVar('minor-text', '#ee1');
   setCssVar('bright-text', '#ee1');
@@ -69,10 +69,10 @@ if (isChristmas()) {
 } else if (isAprilFools()) {
   setCssVar('background', '#fff');
   setCssVar('main-ui', '#ccc');
-  setCssVar('foreground-1', '#0001');
-  setCssVar('foreground-2', '#0001');
-  setCssVar('foreground-3', '#eee');
-  setCssVar('foreground-4', '#eee');
+  setCssVar('box-upper', '#0001');
+  setCssVar('box-lower', '#0001');
+  setCssVar('foreground-1', '#eee');
+  setCssVar('foreground-2', '#eee');
   setCssVar('main-text', '#000');
   setCssVar('minor-text', '#000');
   setCssVar('bright-text', '#fff');
@@ -81,10 +81,10 @@ if (isChristmas()) {
 } else if (isJuly4th()) {
   setCssVar('background', '#fff');
   setCssVar('main-ui', '#ddd');
+  setCssVar('box-upper', '#f00');
+  setCssVar('box-lower', '#00f');
   setCssVar('foreground-1', '#f00');
   setCssVar('foreground-2', '#00f');
-  setCssVar('foreground-3', '#f00');
-  setCssVar('foreground-4', '#00f');
   setCssVar('main-text', '#f00');
   setCssVar('minor-text', '#00f');
   setCssVar('bright-text', '#00f');
@@ -93,10 +93,10 @@ if (isChristmas()) {
 } else if (isValentines()) {
   setCssVar('background', '#fdd');
   setCssVar('main-ui', '#fbc');
+  setCssVar('box-upper', '#f00');
+  setCssVar('box-lower', '#f8a');
   setCssVar('foreground-1', '#f00');
   setCssVar('foreground-2', '#f8a');
-  setCssVar('foreground-3', '#f00');
-  setCssVar('foreground-4', '#f8a');
   setCssVar('main-text', '#f01');
   setCssVar('minor-text', '#f36');
   setCssVar('bright-text', '#f36');
@@ -127,7 +127,7 @@ if (isChristmas()) {
   </svg>
   `;
   const upperGradientUri = `data:image/svg+xml,${encodeURIComponent(upperGradientDef)}`;
-  setCssVar('foreground-1', `url('${upperGradientUri}#gradient')`);
+  setCssVar('box-upper', `url('${upperGradientUri}#gradient')`);
   const lowerGradientDef = `
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -144,8 +144,8 @@ if (isChristmas()) {
   </svg>
   `;
   const lowerGradientUri = `data:image/svg+xml,${encodeURIComponent(lowerGradientDef)}`;
-  setCssVar('foreground-2', `url('${lowerGradientUri}#gradient')`);
-  setCssVar('foreground-3', `linear-gradient(
+  setCssVar('box-lower', `url('${lowerGradientUri}#gradient')`);
+  setCssVar('foreground-1', `linear-gradient(
     to bottom,
     #0f0 0%,
     #9f9 20%,
@@ -154,7 +154,7 @@ if (isChristmas()) {
     #9f9 80%,
     #0f0 100%
   )`);
-  setCssVar('foreground-4', `linear-gradient(
+  setCssVar('foreground-2', `linear-gradient(
     to bottom,
     #00f 0%,
     #99f 20%,
