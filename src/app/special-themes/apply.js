@@ -105,7 +105,7 @@ if (isChristmas()) {
 } else if (isMay4th()) {
   // Star Wars theme
   setCssVar('background', '#000');
-  setCssVar('main-ui', '#333')
+  setCssVar('main-ui', '#111');
   setCssVar('main-text', '#f8e71b');
   setCssVar('minor-text', '#f8e71b');
   setCssVar('bright-text', '#f8e71b');
