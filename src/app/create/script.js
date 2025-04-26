@@ -1,3 +1,4 @@
+import '../globalMods.js';
 import api from '../api.js';
 import getAsset from '../get-asset.js';
 import messages from '../messages.js';
@@ -60,9 +61,9 @@ messages.on('new-pair-submitted', () => {
     alert('Neither word can be empty.');
   } else if (englishWords.includes(englishWord) || latinWords.includes(latinWord)) {
     alert('At least one of the words is already in this game.');
-  } else if (englishWord.length > 25) {
+  } else if (String.lengthOf(englishWord) > 25) {
     alert('The English word is too long.');
-  } else if (latinWord.length > 25) {
+  } else if (String.lengthOf(latinWord) > 25) {
     alert('The Latin word is too long.');
   } else {
     createPairModal.style.display = 'none';
@@ -127,7 +128,7 @@ messages.on('save-confirm', () => {
       cloudSavingCopyURLbtn.style.display = 'block';
       cloudSavingDonebtn.style.display = 'block';
       cloudSavingCopyURLbtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(`https://clickylatin.vercel.app/play/${gameCode}`);
+        navigator.clipboard.writeText(`https://${location.hostname}/play/${gameCode}`);
         const element = document.createElement('div');
         element.innerHTML = gameCopiedSvg;
         const cloudSavingURLcopied = element.querySelector('svg');

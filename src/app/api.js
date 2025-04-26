@@ -1,5 +1,5 @@
-let isSearching = false;
 window.cachedGames = null;
+const apiUrl = 'https://clickylatin-api.vercel.app';
 
 const api = {
   /**
@@ -8,7 +8,7 @@ const api = {
    */
   GET: async function(id) {
     return new Promise((resolve, reject) => {
-      fetch(`https://clickylatin-api.glitch.me?id=${id}`)
+      fetch(`${apiUrl}/get-game?gamecode=${id}`)
         .then(res => res.json())
         .then(data => {
           resolve(data);
@@ -24,7 +24,7 @@ const api = {
    */
   ALL: async function() {
     return new Promise((resolve, reject) => {
-    fetch('https://clickylatin-api.glitch.me/all')
+    fetch(`${apiUrl}/all`)
       .then(res => res.json())
       .then(data => {
         resolve(data)
@@ -40,7 +40,7 @@ const api = {
    * @returns {Promise<Array<{id: number, name: string, items: Array<string>}>>}
    */
   SEARCH: async function(query, options) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
       const queryKeywords = query.toLowerCase().split(/\s/).filter(item => /\S/.test(item));
       if (options?.re_fetch || !cachedGames) {
         const games = await this.ALL();
@@ -73,33 +73,16 @@ const api = {
    */
   POST: async function(toPost) {
     return new Promise((resolve, reject) => {
-      fetch('https://clickylatin-api.glitch.me', {
+      fetch(`${apiUrl}/create`, {
         method: 'POST',
-        body: JSON.stringify(toPost)
+        body: JSON.stringify(toPost),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
         .then(res => res.json())
         .then(data => {
           resolve(data.gameCode);
-        })
-        .catch(err => {
-          console.error(err);
-          reject(err);
-        });
-    });
-  },
-  /**
-   * @param {number} id 
-   * @returns {Promise}
-   */
-  DELETE: async function(id) {
-    return new Promise((resolve, reject) => {
-      fetch('https://clickylatin-api.glitch.me', {
-        method: 'DELETE',
-        body: String(id)
-      })
-        .then(res => res.json())
-        .then(data => {
-          resolve(data);
         })
         .catch(err => {
           console.error(err);

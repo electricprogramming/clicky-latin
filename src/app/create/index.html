@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clicky Latin - Create</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <script src="/src/seperator-elements.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -17,21 +16,23 @@
     }
     :root {
       --background: #333;
+      --main-ui: #555;
+      --box-upper: #0d3;
+      --box-lower: #09f;
       --foreground-1: #0d3;
       --foreground-2: #09f;
-      --foreground-3: #0d3;
-      --foreground-4: #09f;
       --main-text: #fff;
       --minor-text: #fff;
       --bright-text: #fff;
-      --main-ui: #ccc;
-      --ui-accent: #39d;
+      --accent-1: #ccc;
+      --accent-2: #39d;
     }
     .button {
       user-select: none;
       position: relative;
       top: 3vh;
       left: 3vh;
+      margin-bottom: 2vh;
       display: block;
       height: 15vh;
       font-size: 7.5vmin;
@@ -50,10 +51,10 @@
       filter: brightness(0.85);
     }
     #create-pair-btn {
-      background: var(--foreground-4);
+      background: var(--foreground-2);
     }
     #save-btn {
-      background: var(--foreground-3);
+      background: var(--foreground-1);
     }
     
     .modal-backdrop {
@@ -70,7 +71,7 @@
     }
     .modal {
       position: relative;
-      background: #454545;
+      background: var(--main-ui);
       border-radius: 2vh;
       width: 39vmin;
       height: 26vmin;
@@ -342,10 +343,10 @@
       user-select: none;
     }
     svg path.box-upper {
-      fill: var(--foreground-1);
+      fill: var(--box-upper);
     }
     svg path.box-lower {
-      fill: var(--foreground-2);
+      fill: var(--box-lower);
     }
     #context-menu {
       display: none;
@@ -364,7 +365,7 @@
       cursor: pointer;
     }
     #context-menu li:hover {
-      background-color: #555;
+      background-color: var(--main-ui);
     }
     #back-home-svg {
       width: 20vmin;
@@ -384,7 +385,6 @@
 </head>
 <body>
   <button id="create-pair-btn" class="button"> Create Pair </button>
-    <v-sep gap="2vh"></v-sep>
   <button id="save-btn" class="button"> Save </button>
   <div id="preview-container"></div>
   <div class="modal-backdrop" id="create-pair-modal">

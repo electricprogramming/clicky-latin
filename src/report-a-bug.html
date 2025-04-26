@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="Clicky Latin" content="Clicky Latin is a software designed specifically with the goal of helping students to learn Latin via drag-and-drop technology and responsive audio feedback.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="c2VvJHD-7UVQpVpVi_Y9x3GAge_3c9JJXfz9sC2BPcY" />
+  <title>Clicky Latin - Report a Bug</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      min-height: 100vh;
+      min-width: 100vw;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    :root {
+      --background: #333;
+      --main-ui: #555;
+      --box-upper: #0d3;
+      --box-lower: #09f;
+      --foreground-1: #0d3;
+      --foreground-2: #09f;
+      --main-text: #fff;
+      --minor-text: #fff;
+      --bright-text: #fff;
+      --accent-1: #ccc;
+      --accent-2: #39d;
+    }
+    
+    /* Removes the down arrow from <input> elements that use a list attribute to attach a <datalist> */
+    input[list]::-webkit-calendar-picker-indicator {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .heading {
+      color: var(--main-text);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 10vmin;
+      text-align: center;
+      margin: 2.5vmin;
+    }
+
+    #loading-spinner {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1.25vmin solid var(--accent-1);
+      border-top: 1.25vmin solid var(--accent-2);
+      border-radius: 50%;
+      width: 10vmin;
+      height: 10vmin;
+      animation: spin 2s linear infinite;
+    }
+    /* Spin animation */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(-20deg); }
+      25% { transform: translate(-50%, -50%) rotate(55deg); }
+      50% { transform: translate(-50%, -50%) rotate(160deg);}
+      75% { transform: translate(-50%, -50%) rotate(265deg);}
+      100% { transform: translate(-50%, -50%) rotate(340deg); }
+    }
+
+    #back-home-svg {
+      width: 20vmin;
+      height: auto;
+      position: fixed;
+      bottom: 1vmin;
+      right: 1vmin;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      z-index: 100000;
+    }
+    #back-home-btn {
+      user-select: none;
+      cursor: pointer;
+    }
+    form#bug-report-form {
+      display: flex;
+      flex-direction: column;
+      width: 80vw;
+      max-width: 600px;
+      gap: 2vmin;
+
+      &, * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      fieldset {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        border: 2px solid var(--accent-1);
+        border-radius: 0.75vmin;
+
+        label {
+          margin-top: 1vmin;
+          margin-bottom: 1vmin;
+          display: inline-flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          width: 100%;
+          gap: 2vmin;
+        }
+        legend {
+          font-size: 1.1em;
+          color: var(--main-text);
+        }
+        input, select, textarea {
+          margin-top: 1vh;
+          flex: 1;
+        }
+      }
+
+      label {
+        &, * {
+          padding: 0;
+          margin: 0;
+          color: var(--minor-text);
+        }
+        h1 { color: var(--main-text); }
+      }
+
+      .char-counter {
+        padding: 0;
+        margin-top: -1.5vmin;
+        display: inline-block;
+        font-size: 0.75em;
+        text-align: right;
+        vertical-align: middle;
+        color: var(--minor-text);
+      }
+
+      input, select, textarea {
+        padding: 1vmin;
+        font-size: 2.5vmin;
+        background-color: var(--main-ui);
+        color: var(--minor-text);
+        border: 2px solid var(--accent-1);
+        border-radius: 0.75vmin;
+
+        &::placeholder {
+          color: var(--minor-text);
+          opacity: 0.75;
+          filter: saturate(80%);
+        }
+        
+        &:focus {
+          border: 2px solid var(--accent-2);
+          outline: none;
+          box-shadow: none;
+        }
+      }
+      textarea {
+        min-height: 20vh;
+        max-height: 20vh;
+        resize: none;
+      }
+      button#bug-report-submit {
+        margin-bottom: 2vmin;
+        padding: 1.5vmin 3vmin;
+        font-size: 2.5vmin;
+        background: var(--foreground-1);
+        color: #000;
+        border: none;
+        border-radius: 0.75vmin;
+        cursor: pointer;
+        &:hover:not(:disabled) {
+          filter: brightness(0.9);
+        }
+      }
+      button#bug-report-submit:disabled {
+        filter: brightness(0.8) saturate(0.7);
+        cursor: default;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-spinner" style="display: none;"></div>
+  <div class="heading">Report a Bug</div>
+  <form id="bug-report-form" onsubmit="event.preventDefault();">
+    <label for="bug-report-title">
+      <h1>Title</h1>
+      <p>Title your bug report in a few simple words.</p>
+    </label>
+    <input type="text" id="bug-report-title" name="title" placeholder="Search page does not load" maxlength="40" required>
+    <div class="char-counter" id="title-char-counter">0 / 40</div>
+
+    <fieldset id="device-info">
+      <legend>Device Information</legend>
+      <label style="margin-top:-1vmin; margin-bottom: 0;">Information about the device where the bug occured.</label>
+      <br>
+      
+      <!-- Use an empty `for` to prevent select focusing on label click, which does werid things if allowed. -->
+      <label title="Device type" for="">
+        Device&nbsp;type:
+        <select id="bug-device-type" name="device.type" required
+          oninvalid="this.setCustomValidity(`Please select your device type.`);" oninput="this.setCustomValidity('');">
+          <option value="" selected disabled hidden>Select...</option>
+          <option>Phone</option>
+          <option>Tablet</option>
+          <option>Computer</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label title="Device operating system">
+        Device&nbsp;OS:
+        <input list="os-list" id="bug-device-os" name="device.OS"
+          placeholder="Start typing or choose..." required
+          oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
+      </label>
+      
+      <datalist id="os-list">
+        <option>iOS</option>
+        <option>macOS</option>
+        <option>Windows</option>
+        <option>Linux</option>
+        <option>Android</option>
+        <option>Chrome OS</option>
+        <option>I don't know</option>
+      </datalist>
+
+      <label title="Device manufacturer">
+        Device&nbsp;manufacturer:
+        <input list="manufacturers-list" id="bug-device-manufacturer" name="device.manufacturer"
+          placeholder="Start typing or choose..." required
+          oninvalid="this.setCustomValidity(`Please select your device manufacturer.`);" oninput="this.setCustomValidity('');"/>
+      </label>
+      <datalist id="manufacturers-list">
+        <option>Apple</option>
+        <option>Google</option>
+        <option>Samsung</option>
+        <option>Microsoft</option>
+        <option>Motorola</option>
+        <option>Lenovo</option>
+        <option>Dell</option>
+        <option>Sony</option>
+        <option>I don't know</option>
+      </datalist>
+
+      <label title="The browser in which the bug occured">
+        Browser:
+        <input list="browsers-list" id="bug-device-browser" name="device.browser"
+          placeholder="Start typing or choose..." required
+          oninvalid="this.setCustomValidity(`Please select your browser.`);" oninput="this.setCustomValidity('');"/>
+      </label>
+      <datalist id="browsers-list">
+        <option>Chrome</option>
+        <option>Firefox</option>
+        <option>Safari</option>
+        <option>Edge</option>
+        <option>Opera</option>
+        <option>Brave</option>
+        <option>Vivaldi</option>
+        <option>Samsung Internet</option>
+        <option>I don't know</option>
+      </datalist>
+
+    </fieldset>
+
+    <label for="bug-report-body">
+      <h1>Description</h1>
+      <p>Describe your bug report with more details.</p>
+    </label>
+    <textarea id="bug-report-body" name="body"
+      placeholder="When I go to the search page, the search results never load at all and the loading spinner spins forever."
+      maxlength="750" required></textarea>
+    <div class="char-counter" id="body-char-counter">0 / 750</div>
+
+    <button id="bug-report-submit" type="submit">Submit bug report</button>
+  </form>
+  <svg id="back-home-svg" width="555" height="155" viewbox="0 0 555 155" xmlns="http://www.w3.org/2000/svg">
+    <a href="/">
+      <g id="back-home-btn" transform="translate(2.5,2.5)">
+        <path
+          d="M 475,0 
+            A 75,75 0 1,1 475,150
+            H 75
+            A 75, 75 0 1,1 75,0
+            Z"
+          fill="#ddd9" 
+          stroke="#222" 
+          stroke-width="5" />
+        <text fill="#222" font-family="sans-serif" font-size="80" text-anchor="middle" dominant-baseline="middle" x="275" y="85">Back to Home</text>
+      </g>
+    </a>
+  </svg>
+  <script type="module"> 
+    const homeSVG = document.getElementById('back-home-svg');
+    const homeBtn = document.getElementById('back-home-btn');
+    homeBtn.addEventListener('mouseenter', () => {
+      homeSVG.style.transform = 'scale(1.0)';
+    });
+    homeBtn.addEventListener('mouseleave', () => {
+      homeSVG.style.transform = 'scale(0.9)';
+    });
+  </script>
+  <script>
+    function getFormData(form) {
+      const obj = Object.fromEntries(new FormData(form));
+
+      // Replace `I don't know` with null.
+      Object.entries(obj).forEach(([key, val]) => {
+        if (val === `I don't know`) {
+          obj[key] = null;
+        }
+      });
+
+      const res = {};
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          const keys = key.split('.');
+          let current = res;
+          keys.forEach((k, index) => {
+            if (index === keys.length - 1) {
+              current[k] = obj[key];
+            } else {
+              if (!current[k]) {
+                current[k] = {};
+              }
+              current = current[k];
+            }
+          });
+        }
+      }
+
+      return res;
+    }
+
+    const form = document.getElementById('bug-report-form');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    function updateCharCounter(input, counter) {
+      const inputLength = input.value.length;
+      const maxLength = input.maxLength;
+      counter.textContent = `${inputLength} / ${maxLength}`;
+      counter.style.color = inputLength >= maxLength ? '#f00' : '#000';
+    }
+    document.getElementById('bug-report-title').addEventListener('input', function() {
+      updateCharCounter(this, document.getElementById('title-char-counter'));
+    });
+    document.getElementById('bug-report-body').addEventListener('input', function() {
+      updateCharCounter(this, document.getElementById('body-char-counter'));
+    });
+
+    document.getElementById('bug-report-form').addEventListener('submit', function() {
+      loadingSpinner.style.display = 'block';
+      fetch('https://clickylatin-api.vercel.app/bug-report', {
+        method: 'POST',
+        body: JSON.stringify(getFormData(this)),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          loadingSpinner.style.display = 'none';
+          Array.from(form.elements).forEach(el => el.disabled = false);
+          form.reset();
+          setTimeout(() => alert('This bug report has been successfully submitted.'), 20);
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Submission failed. Please try again later.');
+        });
+
+      Array.from(form.elements).forEach(el => el.disabled = true);
+    });
+  </script>
+  <script type="module" src="/src/app/special-themes/apply.js"></script>
+  <script type="module" src="/src/get-recent-deployment-msg.js"></script>
+</body>
+</html>
