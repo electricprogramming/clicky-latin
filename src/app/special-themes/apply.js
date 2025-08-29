@@ -16,7 +16,7 @@ function setCssVar(name, value) {
   }
 }
 
-window.setCssVar = setCssVar;
+if (location.host.includes('dev')) window.setCssVar = setCssVar;
 
 if (isChristmas()) {
   setCssVar('background', '#002');
