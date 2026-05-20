@@ -14,7 +14,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     maxWidth: "700px",
     width: "90%",
     textAlign: "center",
-    fontFamily: "sans-serif"
+    fontFamily: "Times New Roman"
   });
   const backdrop = document.createElement("div");
   backdrop.id = "download-warning-backdrop";
