@@ -1,20 +1,25 @@
 if (!localStorage.getItem("downloadWarningAcknowledged")) {
   const banner = document.createElement("div");
   banner.id = "download-warning-banner";
+  const banner = document.createElement("div");
+  banner.id = "download-warning-banner";
   Object.assign(banner.style, {
     position: "fixed",
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)",   // Perfect centering trick
-    backgroundColor: "#333",
-    padding: "24px",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#2d2d2d",             // Dark gray background from your image
+    padding: "40px",                        // Generous, even padding all around
     borderRadius: "8px",
-    boxShadow: "0 4px 15px #0009",
-    zIndex: "9999",                       // Sits on top of everything
-    maxWidth: "700px",
+    boxShadow: "0 4px 15px #00000066",
+    zIndex: "9999",
+    maxWidth: "700px",                     // Wider container to match your layout
     width: "90%",
-    textAlign: "center",
-    fontFamily: "Times New Roman"
+    fontFamily: "Times",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",              // Centers content vertically
+    alignItems: "center"                    // Centers content horizontally
   });
   const backdrop = document.createElement("div");
   backdrop.id = "download-warning-backdrop";
