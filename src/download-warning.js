@@ -1,8 +1,6 @@
 if (!localStorage.getItem("downloadWarningAcknowledged")) {
   const banner = document.createElement("div");
   banner.id = "download-warning-banner";
-  const banner = document.createElement("div");
-  banner.id = "download-warning-banner";
   Object.assign(banner.style, {
     position: "fixed",
     top: "50%",
