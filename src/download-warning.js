@@ -32,13 +32,13 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
 
   // 4. Create the text content
   const message = document.createElement("p");
-  message.textContent = "Important notice regarding your download. Please review before proceeding.";
+  message.textContent = "Clicky Latin should NEVER try to download a file to your device. If it does, Clicky Latin has likely been hacked and the file is likely malware which should be deleted immediately.";
   message.style.marginBottom = "20px";
 
   // 5. Create the dismiss button
   const dismissBtn = document.createElement("button");
   dismissBtn.id = "dismiss-warning-button";
-  dismissBtn.textContent = "I Understand";
+  dismissBtn.textContent = "I Understand.";
   Object.assign(dismissBtn.style, {
     padding: "10px 20px",
     backgroundColor: "#007bff",
