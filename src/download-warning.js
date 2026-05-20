@@ -8,7 +8,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     transform: "translate(-50%, -50%)",
     backgroundColor: "#2d2d2d",             // Dark gray background from your image
     padding: "40px",                        // Generous, even padding all around
-    borderRadius: "8px",
+    borderRadius: "20px",
     boxShadow: "0 4px 15px #00000066",
     zIndex: "9999",
     maxWidth: "700px",                     // Wider container to match your layout
@@ -35,7 +35,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
   // 4. Create the text content
   const message = document.createElement("p");
   message.textContent = "IMPORTANT: Clicky Latin will NEVER try to download a file to your device. If it does, Clicky Latin has likely been hacked and the file is likely malware which should be deleted immediately.";
-  message.style.marginBottom = "20px";
+  message.style.marginBottom = "40px";
   message.style.setProperty("color", "#fff", "important");
 
   // 5. Create the dismiss button
