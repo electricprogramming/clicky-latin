@@ -36,7 +36,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
   const message = document.createElement("p");
   message.textContent = "IMPORTANT: Clicky Latin will NEVER try to download a file to your device. If it does, Clicky Latin has likely been hacked and the file is likely malware which should be deleted immediately.";
   message.style.marginBottom = "40px";
-  message.style.fontSize = "50px"
+  message.style.fontSize = "40px"
   message.style.setProperty("color", "#fff", "important");
 
   // 5. Create the dismiss button
