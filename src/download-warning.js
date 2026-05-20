@@ -6,8 +6,8 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",   // Perfect centering trick
-    backgroundColor: "#fff",
-    color: "#333",
+    backgroundColor: "#333",
+    color: "#fff",
     padding: "24px",
     borderRadius: "8px",
     boxShadow: "0 4px 15px #0009",
