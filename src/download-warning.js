@@ -31,7 +31,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
 
   // 4. Create the text content
   const message = document.createElement("p");
-  message.textContent = "IMPORTANT: Clicky Latin should NEVER try to download a file to your device. If it does, Clicky Latin has likely been hacked and the file is likely malware which should be deleted immediately.";
+  message.textContent = "IMPORTANT: Clicky Latin will NEVER try to download a file to your device. If it does, Clicky Latin has likely been hacked and the file is likely malware which should be deleted immediately.";
   message.style.marginBottom = "20px";
   message.style.setProperty("color", "#fff", "important");
 
@@ -46,7 +46,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     border: "none",
     borderRadius: "4px",
     cursor: "pointer",
-    fontSize: "14px"
+    fontSize: "20px"
   });
 
   // 6. Assemble the elements
