@@ -30,6 +30,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     backgroundColor: "#0003", // Darkens the background
     zIndex: "9998",                       // Sits just below the modal
     backdropFilter: "blur(2px)"           // Optional: adds a slight blur
+    pointerEvents: "auto"
   });
 
   // 4. Create the text content
@@ -48,6 +49,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     backgroundColor: "#007bff",
     color: "#fff",
     border: "none",
+    fontFamily: "Times",
     borderRadius: "4px",
     cursor: "pointer",
     fontSize: "20px"
