@@ -52,7 +52,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     fontFamily: "Times",
     borderRadius: "4px",
     cursor: "pointer",
-    fontSize: "20px"
+    fontSize: "4vmin"
   });
 
   // 6. Assemble the elements
