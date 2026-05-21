@@ -29,7 +29,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     height: "100vh",
     backgroundColor: "#0003", // Darkens the background
     zIndex: "9998",                       // Sits just below the modal
-    backdropFilter: "blur(2px)"           // Optional: adds a slight blur
+    backdropFilter: "blur(2px)",           // Optional: adds a slight blur
     pointerEvents: "auto"
   });
 
