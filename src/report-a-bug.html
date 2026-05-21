@@ -199,7 +199,8 @@
       <h1>Title</h1>
       <p>Title your bug report in a few simple words.</p>
     </label>
-    <input type="text" id="bug-report-title" name="title" placeholder="Search page does not load" maxlength="40" required>
+    <input type="text" id="bug-report-title" name="title" placeholder="Search page does not load" maxlength="40" required
+      oninvalid="this.setCustomValidity(`Please title your bug report.`);" oninput="this.setCustomValidity('');">
     <div class="char-counter" id="title-char-counter">0 / 40</div>
 
     <fieldset id="device-info">
@@ -207,7 +208,7 @@
       <label style="margin-top:-1vmin; margin-bottom: 0;">Information about the device where the bug occured.</label>
       <br>
       
-      <!-- Use an empty `for` to prevent select focusing on label click, which does werid things if allowed. -->
+      <!-- Use an empty `for` to prevent select focusing on label click, which does weird things if allowed. -->
       <label title="Device type" for="">
         Device&nbsp;type:
         <select id="bug-device-type" name="device.type" required
@@ -281,7 +282,8 @@
     </label>
     <textarea id="bug-report-body" name="body"
       placeholder="When I go to the search page, the search results never load at all and the loading spinner spins forever."
-      maxlength="750" required></textarea>
+      maxlength="750" required
+      oninvalid="this.setCustomValidity(`Please describe your bug report in more detail.`);" oninput="this.setCustomValidity('');"></textarea>
     <div class="char-counter" id="body-char-counter">0 / 750</div>
 
     <button id="bug-report-submit" type="submit">Submit bug report</button>
