@@ -7,7 +7,7 @@ if (!localStorage.getItem("downloadWarningAcknowledged")) {
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#2d2d2d",             // Dark gray background from your image
-    padding: "40px",                        // Generous, even padding all around
+    padding: "3%",                        // Generous, even padding all around
     borderRadius: "20px",
     boxShadow: "0 4px 15px #00000066",
     zIndex: "200000",
